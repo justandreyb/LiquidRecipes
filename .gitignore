@@ -1,0 +1,33 @@
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Output ###
+.mvn
+mvnw
+mvnw.cmd
+
+target/
+out/
+node_modules/
+src/main/resources/static/font-awesome.min.css
+src/main/resources/static/jquery.js
+src/main/resources/static/tether.min.js
+src/main/resources/static/built/**
+package-lock.json
+index.html
+
+### Log files ###
+*.log
