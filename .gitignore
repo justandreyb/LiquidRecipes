@@ -22,9 +22,6 @@ mvnw.cmd
 target/
 out/
 node_modules/
-src/main/resources/static/font-awesome.min.css
-src/main/resources/static/jquery.js
-src/main/resources/static/tether.min.js
 src/main/resources/static/built/**
 package-lock.json
 index.html
