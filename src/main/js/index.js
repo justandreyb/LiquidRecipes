@@ -19,5 +19,5 @@ render(
   <Provider store = { store } >
     <div className = 'app' > { routes } </div>
   </Provider>,
-    document.getElementById('react')
+  document.getElementById('react')
 );

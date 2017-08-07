@@ -1,5 +1,5 @@
+import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 
@@ -20,5 +20,7 @@ const configureStore = (initialState) => {
 };
 
 const store = configureStore();
+
+export const storedHistory = syncHistoryWithStore(browserHistory, store);
 
 export default store;

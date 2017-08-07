@@ -1,15 +1,13 @@
 import React from 'react';
-import { Router, Route, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { Router, Route } from 'react-router';
+
+import { storedHistory } from './store';
 
 import App from './app';
 import Home from './app/home';
-import store from './store';
-
-const history = syncHistoryWithStore(browserHistory, store);
 
 const routes = (
-  <Router history={ history }>
+  <Router history={ storedHistory }>
     <Route component={ App }>
 
       <Route exact path='/' component={ Home } />
