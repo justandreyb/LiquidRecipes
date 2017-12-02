@@ -1,6 +1,6 @@
 package com.justandreyb.liquid_recipes.repository;
 
-import com.justandreyb.liquid_recipes.bean.Flavor;
+import com.justandreyb.liquid_recipes.entity.Flavor;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
