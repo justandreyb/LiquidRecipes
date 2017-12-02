@@ -1,23 +1,33 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import jquery from 'jquery';
-import Tether from 'tether';
+/**
+ * Entry point for your application. This code will be rendered inside your html root component
+ * @file {projectDir}/src/index.js
+ *
+ * @author justandreyb
+ */
 
-import store from './store';
-import routes from './router';
+import React from "react";
+import ReactDOM from "react-dom";
+import {Provider} from "react-redux";
+import {ConnectedRouter} from "react-router-redux";
 
-window.jQuery = jquery;
-window.Tether = Tether;
+import {store, history} from "./store";
 
-require('bootstrap');
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'toastr/build/toastr.min.css';
-import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
+import {Navigation, Footer} from "./containers"
+import {routes} from "./routes"
 
-render(
-  <Provider store = { store } >
-    <div className = 'app' > { routes } </div>
+import "./styles/main.css";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div>
+        <Navigation/>
+        <div className="layout">
+          {routes}
+        </div>
+        <Footer/>
+      </div>
+    </ConnectedRouter>
   </Provider>,
-  document.getElementById('react')
+  document.getElementById("root"),
 );
