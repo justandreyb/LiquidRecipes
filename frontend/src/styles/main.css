@@ -1,0 +1,16 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  min-height: 100%;
+}
+
+.layout {
+    padding: 50px 10px 50px 10px;
+}
+
+.dynamic-area {
+    padding-top: 20px;
+}
