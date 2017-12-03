@@ -4,18 +4,28 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.Column;
+import javax.persistence.*;
+import java.util.Date;
 
 @Data
-@javax.persistence.Entity
-@EqualsAndHashCode(exclude = {"image", "manufacturer"}, callSuper = false)
-@ToString(exclude = {"image", "manufacturer"})
-public class User extends Entity {
+@Entity
+@EqualsAndHashCode(exclude = {"image"}, callSuper = false)
+@ToString(exclude = {"image"})
+public class User extends BaseEntity {
 
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "email", nullable = false)
+    @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
+    @Column
+    private Date registrationDate = new Date();
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "image_id")
+    private Image image;
 }

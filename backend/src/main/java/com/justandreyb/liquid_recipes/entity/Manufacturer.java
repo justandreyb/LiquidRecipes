@@ -7,10 +7,10 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Data
-@javax.persistence.Entity
+@Entity
 @EqualsAndHashCode(exclude = {"logo", "country"}, callSuper = false)
 @ToString(exclude = {"logo", "country"})
-public class Manufacturer extends Entity {
+public class Manufacturer extends BaseEntity {
     @Column(nullable = false)
     private String name;
 

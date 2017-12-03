@@ -10,10 +10,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@javax.persistence.Entity
-@EqualsAndHashCode(exclude = {"creator", "flavors", "image"}, callSuper = false)
-@ToString(exclude = {"creator", "flavors", "image"})
-public class Recipe extends Entity {
+@Entity
+@EqualsAndHashCode(exclude = {"creator", "flavors", "comments", "likes", "image"}, callSuper = false)
+@ToString(exclude = {"creator", "flavors", "comments", "likes", "image"})
+public class Recipe extends BaseEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -40,9 +40,19 @@ public class Recipe extends Entity {
     private double finalAmount;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "comments_to_news", joinColumns = @JoinColumn(name = "recipe_id"),
+    @JoinTable(name = "items_to_recipe", joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_item_id"))
     private Set<RecipeItem> flavors = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "comments_to_recipe", joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "comment_id"))
+    private Set<Comment> comments = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "likes_to_recipe", joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "like_id"))
+    private Set<Like> likes = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")

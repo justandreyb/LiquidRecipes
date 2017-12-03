@@ -10,10 +10,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@javax.persistence.Entity
-@EqualsAndHashCode(exclude = {"image", "comments", "user"}, callSuper = false)
-@ToString(exclude = {"image", "comments", "user"})
-public class News extends Entity {
+@Entity
+@EqualsAndHashCode(exclude = {"image", "comments", "creator"}, callSuper = false)
+@ToString(exclude = {"image", "comments", "creator"})
+public class News extends BaseEntity {
     @Column
     private String title;
 
@@ -32,7 +32,12 @@ public class News extends Entity {
             inverseJoinColumns = @JoinColumn(name = "comment_id"))
     private Set<Comment> comments = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "likes_to_news", joinColumns = @JoinColumn(name = "news_id"),
+            inverseJoinColumns = @JoinColumn(name = "like_id"))
+    private Set<Like> likes = new HashSet<>();
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User creator;
 }

@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 @Data
-public abstract class Entity {
+public abstract class BaseEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
