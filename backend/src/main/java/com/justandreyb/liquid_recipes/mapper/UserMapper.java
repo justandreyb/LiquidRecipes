@@ -3,11 +3,13 @@ package com.justandreyb.liquid_recipes.mapper;
 import com.justandreyb.liquid_recipes.dto.UserDto;
 import com.justandreyb.liquid_recipes.entity.User;
 import org.mapstruct.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Mapper(
-        nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
-        componentModel = "spring",
-        uses = {ImageMapper.class}
+    nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
+    componentModel = "spring",
+    uses = {ImageMapper.class}
 )
 public interface UserMapper {
 

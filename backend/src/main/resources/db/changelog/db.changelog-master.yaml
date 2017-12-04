@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 2017-08-01--01-initial-schema-import-1
+      id: 2017-12-04--01-initial-schema-import-1
       author: BuretsAS
       changes:
         - createTable:
@@ -23,7 +23,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: type_id
+                  name: type
                   type: char(36)
                   constraints:
                     nullable: false
@@ -37,7 +37,7 @@ databaseChangeLog:
                     nullable: false
 
   - changeSet:
-      id: 2017-08-01--01-initial-schema-import-2
+      id: 2017-12-04--01-initial-schema-import-2
       author: BuretsAS
       changes:
         - createTable:
@@ -60,7 +60,7 @@ databaseChangeLog:
                   type: varchar(225)
 
   - changeSet:
-      id: 2017-08-01--01-initial-schema-import-3
+      id: 2017-12-04--01-initial-schema-import-3
       author: BuretsAS
       changes:
         - createTable:
@@ -82,7 +82,7 @@ databaseChangeLog:
                   type: varchar(225)
 
   - changeSet:
-        id: 2017-08-01--01-initial-schema-import-4
+        id: 2017-12-04--01-initial-schema-import-4
         author: BuretsAS
         changes:
           - createTable:
@@ -123,7 +123,7 @@ databaseChangeLog:
                     type: varchar(225)
 
   - changeSet:
-        id: 2017-08-01--01-initial-schema-import-5
+        id: 2017-12-04--01-initial-schema-import-5
         author: BuretsAS
         changes:
           - createTable:
@@ -143,7 +143,7 @@ databaseChangeLog:
                     type: varchar(225)
 
   - changeSet:
-        id: 2017-08-01--01-initial-schema-import-6
+        id: 2017-12-04--01-initial-schema-import-6
         author: BuretsAS
         changes:
           - createTable:
@@ -173,7 +173,7 @@ databaseChangeLog:
                     type: smallint
 
   - changeSet:
-        id: 2017-08-01--01-initial-schema-import-7
+        id: 2017-12-04--01-initial-schema-import-7
         author: BuretsAS
         changes:
           - createTable:
@@ -193,7 +193,7 @@ databaseChangeLog:
                     type: varchar(225)
 
   - changeSet:
-        id: 2017-08-01--01-initial-schema-import-8
+        id: 2017-12-04--01-initial-schema-import-8
         author: BuretsAS
         changes:
           - createTable:
@@ -217,7 +217,7 @@ databaseChangeLog:
                       nullable: false
 
   - changeSet:
-        id: 2017-08-01--01-initial-schema-import-9
+        id: 2017-12-04--01-initial-schema-import-9
         author: BuretsAS
         changes:
           - createTable:

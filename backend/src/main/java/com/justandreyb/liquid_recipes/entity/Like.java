@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Data
-@Entity
+@Entity(name = "user_like")
 @EqualsAndHashCode(exclude = {"user"}, callSuper = false)
 @ToString(exclude = {"user"})
 public class Like extends BaseEntity {

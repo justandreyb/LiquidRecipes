@@ -18,4 +18,7 @@ public class FlavorService extends EntityService<Flavor, FlavorRepository> {
         return getFlavorsByUser(user.getId());
     }
 
+    public List<Flavor> getTop(int number) {
+        return null;
+    }
 }
