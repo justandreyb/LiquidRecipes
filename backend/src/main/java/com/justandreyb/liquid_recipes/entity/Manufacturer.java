@@ -24,4 +24,9 @@ public class Manufacturer extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image logo;
+
+    @Override
+    public boolean isValid() {
+        return false;
+    }
 }

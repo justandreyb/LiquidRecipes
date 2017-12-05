@@ -17,4 +17,9 @@ public class Image extends BaseEntity {
 
     @Column
     private Date creationDate = new Date();
+
+    @Override
+    public boolean isValid() {
+        return false;
+    }
 }

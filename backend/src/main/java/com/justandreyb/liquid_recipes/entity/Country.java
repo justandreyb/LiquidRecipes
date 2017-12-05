@@ -21,4 +21,9 @@ public class Country extends BaseEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image image;
+
+    @Override
+    public boolean isValid() {
+        return false;
+    }
 }

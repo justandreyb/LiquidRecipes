@@ -20,4 +20,9 @@ public class RecipeItem extends BaseEntity {
 
     @Column(name = "drops", nullable = false)
     private int drops;
+
+    @Override
+    public boolean isValid() {
+        return false;
+    }
 }

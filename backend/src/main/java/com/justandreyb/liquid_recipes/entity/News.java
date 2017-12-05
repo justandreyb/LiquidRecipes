@@ -40,4 +40,9 @@ public class News extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User creator;
+
+    @Override
+    public boolean isValid() {
+        return false;
+    }
 }

@@ -1,6 +1,8 @@
 package com.justandreyb.liquid_recipes.controller;
 
 import com.justandreyb.liquid_recipes.dto.CountryDto;
+import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
+import com.justandreyb.liquid_recipes.exception.NotFoundException;
 import com.justandreyb.liquid_recipes.mapper.CountryMapper;
 import com.justandreyb.liquid_recipes.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,22 +26,22 @@ public class CountryController {
     }
 
     @GetMapping("/{id}")
-    CountryDto getCountry(@RequestParam String id) {
+    CountryDto getCountry(@PathVariable("id") String id) throws NotFoundException {
         return countryMapper.toCountryDto(countryService.get(id));
     }
 
     @PostMapping
-    void addCountry(@RequestBody CountryDto countryDto) {
+    void addCountry(@RequestBody CountryDto countryDto) throws InvalidEntityException {
         countryService.add(countryMapper.fromCountryDto(countryDto));
     }
 
     @PostMapping("/{id}")
-    void updateCountry(@RequestParam CountryDto countryDto) {
+    void updateCountry(@PathVariable("id") CountryDto countryDto) throws InvalidEntityException {
         countryService.update(countryMapper.fromCountryDto(countryDto));
     }
 
     @DeleteMapping("/{id}")
-    void deleteCountry(@RequestParam String id) {
+    void deleteCountry(@PathVariable("id") String id) throws NotFoundException {
         countryService.delete(id);
     }
 }

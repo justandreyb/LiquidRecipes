@@ -4,6 +4,8 @@ import com.justandreyb.liquid_recipes.dto.CommentDto;
 import com.justandreyb.liquid_recipes.dto.ImageDto;
 import com.justandreyb.liquid_recipes.dto.LikeDto;
 import com.justandreyb.liquid_recipes.dto.NewsDto;
+import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
+import com.justandreyb.liquid_recipes.exception.NotFoundException;
 import com.justandreyb.liquid_recipes.mapper.CommentMapper;
 import com.justandreyb.liquid_recipes.mapper.ImageMapper;
 import com.justandreyb.liquid_recipes.mapper.LikeMapper;
@@ -55,72 +57,72 @@ public class NewsController {
     }
 
     @GetMapping("/{id}")
-    NewsDto getNews(@RequestParam String id) {
+    NewsDto getNews(@PathVariable("id") String id) throws NotFoundException {
         return newsMapper.toNewsDto(newsService.get(id));
     }
 
     @GetMapping("/{id}/comments")
-    List<CommentDto> getNewsComments(@RequestParam String id) {
+    List<CommentDto> getNewsComments(@PathVariable("id") String id) throws NotFoundException {
         return commentMapper.toCommentDtos(commentService.getAllByNews(id));
     }
 
     @GetMapping("/{id}/likes")
-    List<LikeDto> getNewsLikes(@RequestParam String id) {
+    List<LikeDto> getNewsLikes(@PathVariable("id") String id) {
         return likeMapper.toLikeDtos(likeService.getAllByNews(id));
     }
 
     @GetMapping("/{id}/image")
-    ImageDto getNewsImage(@RequestParam String id) {
+    ImageDto getNewsImage(@PathVariable("id") String id) {
         return imageMapper.toImageDto(imageService.getByNews(id));
     }
 
     @PostMapping
-    void addNews(@RequestBody NewsDto newsDto) {
+    void addNews(@RequestBody NewsDto newsDto) throws InvalidEntityException {
         newsService.add(newsMapper.fromNewsDto(newsDto));
     }
 
     @PostMapping("/{id}")
-    void updateNews(@RequestParam NewsDto newsDto) {
+    void updateNews(@RequestParam NewsDto newsDto) throws InvalidEntityException {
         newsService.update(newsMapper.fromNewsDto(newsDto));
     }
 
     @PostMapping("/{id}/comments")
-    void addCommentToNews(@RequestParam String id, @RequestBody CommentDto comment) {
+    void addCommentToNews(@RequestParam String id, @RequestBody CommentDto comment) throws NotFoundException, InvalidEntityException {
         commentService.addToNews(id, commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/comments/{commentId}")
-    void updateCommentInNews(@RequestBody CommentDto comment) {
+    void updateCommentInNews(@RequestBody CommentDto comment) throws InvalidEntityException {
         commentService.update(commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/likes")
-    void addLikeToNews(@RequestParam String id, @RequestBody LikeDto like) {
+    void addLikeToNews(@PathVariable("id") String id, @RequestBody LikeDto like) throws NotFoundException, InvalidEntityException {
         likeService.addToNews(id, likeMapper.fromLikeDto(like));
     }
 
     @PostMapping("/{id}/image")
-    void addLikeToNews(@RequestParam String id, @RequestBody ImageDto image) {
+    void addLikeToNews(@PathVariable("id") String id, @RequestBody ImageDto image) throws NotFoundException, InvalidEntityException {
         imageService.addToNews(id, imageMapper.fromImageDto(image));
     }
 
     @DeleteMapping("/{id}")
-    void deleteNews(@RequestParam String id) {
+    void deleteNews(@PathVariable("id") String id) throws NotFoundException {
         newsService.delete(id);
     }
 
     @DeleteMapping("/{id}/comments/{commentId}")
-    void deleteCommentFromNews(@RequestParam String commentId) {
+    void deleteCommentFromNews(@PathVariable("commentId") String commentId) throws NotFoundException {
         commentService.delete(commentId);
     }
 
     @DeleteMapping("/{id}/likes/{likeId}")
-    void deleteLikeFromNews(@RequestParam String likeId) {
+    void deleteLikeFromNews(@PathVariable("likeId") String likeId) throws NotFoundException {
         likeService.delete(likeId);
     }
 
     @DeleteMapping("/{id}/image")
-    void deleteImageFromNews(@RequestBody ImageDto image) {
+    void deleteImageFromNews(@RequestBody ImageDto image) throws NotFoundException {
         imageService.delete(imageMapper.fromImageDto(image));
     }
 

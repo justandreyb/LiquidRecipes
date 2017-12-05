@@ -19,5 +19,7 @@ public abstract class BaseEntity {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     @Column(name = "id")
-    protected String id;
+    private String id;
+
+    public abstract boolean isValid();
 }

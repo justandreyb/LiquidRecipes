@@ -262,4 +262,17 @@
             );
         </sql>
     </changeSet>
+
+    <changeSet id="20170512_20" author="justandreyb">
+        <sql>
+            CREATE TABLE FLAVORS_TO_USERS
+            (
+            FLAVOR_ID varchar(255) NOT NULL,
+            USER_ID varchar(255) NOT NULL,
+            CONSTRAINT FLAVOR_TO_USERS_PK PRIMARY KEY (FLAVOR_ID, USER_ID),
+            CONSTRAINT FKSEFWTHABU87WPDWOC6O10BIRN FOREIGN KEY (FLAVOR_ID) REFERENCES FLAVOR (ID),
+            CONSTRAINT FKSED7U8DIFFIR6XD3TBRX200SX FOREIGN KEY (USER_ID) REFERENCES USER (ID)
+            );
+        </sql>
+    </changeSet>
 </databaseChangeLog>

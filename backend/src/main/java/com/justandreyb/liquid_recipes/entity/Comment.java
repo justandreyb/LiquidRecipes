@@ -16,7 +16,7 @@ import java.util.Date;
 @ToString(exclude = {"user"})
 public class Comment extends BaseEntity {
 
-    @Column(length = 512, columnDefinition = "text", nullable = false)
+    @Column(length = 512, columnDefinition="clob", nullable = false)
     private String text;
 
     @Column
@@ -24,4 +24,9 @@ public class Comment extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @Override
+    public boolean isValid() {
+        return false;
+    }
 }
