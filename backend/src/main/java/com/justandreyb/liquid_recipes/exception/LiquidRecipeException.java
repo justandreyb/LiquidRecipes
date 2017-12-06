@@ -1,6 +1,6 @@
 package com.justandreyb.liquid_recipes.exception;
 
-public abstract class LiquidRecipeException extends Exception {
+public abstract class LiquidRecipeException extends RuntimeException {
 
     public LiquidRecipeException() {
         super();

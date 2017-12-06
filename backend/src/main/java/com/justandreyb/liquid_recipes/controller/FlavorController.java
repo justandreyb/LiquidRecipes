@@ -57,12 +57,12 @@ public class FlavorController {
     }
 
     @GetMapping("/{id}")
-    FlavorDto getFlavor(@PathVariable("id") String id) throws NotFoundException {
+    FlavorDto getFlavor(@PathVariable("id") String id) {
         return flavorMapper.toFlavorDto(flavorService.get(id));
     }
 
     @GetMapping("/{id}/comments")
-    List<CommentDto> getFlavorComments(@PathVariable("id") String id) throws NotFoundException {
+    List<CommentDto> getFlavorComments(@PathVariable("id") String id) {
         return commentMapper.toCommentDtos(commentService.getAllByFlavor(id));
     }
 
@@ -77,52 +77,52 @@ public class FlavorController {
     }
 
     @PostMapping
-    void addFlavor(@RequestBody FlavorDto flavorDto) throws InvalidEntityException {
+    void addFlavor(@RequestBody FlavorDto flavorDto) {
         flavorService.add(flavorMapper.fromFlavorDto(flavorDto));
     }
 
     @PostMapping("/{id}")
-    void updateFlavor(@RequestParam FlavorDto flavorDto) throws InvalidEntityException {
+    void updateFlavor(@RequestParam FlavorDto flavorDto) {
         flavorService.update(flavorMapper.fromFlavorDto(flavorDto));
     }
 
     @PostMapping("/{id}/comments")
-    void addCommentToFlavor(@PathVariable("id") String id, @RequestBody CommentDto comment) throws NotFoundException, InvalidEntityException {
+    void addCommentToFlavor(@PathVariable("id") String id, @RequestBody CommentDto comment) {
         commentService.addToFlavor(id, commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/comments/{commentId}")
-    void updateCommentInFlavor(@RequestBody CommentDto comment) throws InvalidEntityException {
+    void updateCommentInFlavor(@RequestBody CommentDto comment) {
         commentService.update(commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/likes")
-    void addLikeToFlavor(@PathVariable("id") String id, @RequestBody LikeDto like) throws NotFoundException, InvalidEntityException {
+    void addLikeToFlavor(@PathVariable("id") String id, @RequestBody LikeDto like) {
         likeService.addToFlavor(id, likeMapper.fromLikeDto(like));
     }
 
     @PostMapping("/{id}/image")
-    void addLikeToFlavor(@PathVariable("id") String id, @RequestBody ImageDto image) throws NotFoundException, InvalidEntityException {
+    void addLikeToFlavor(@PathVariable("id") String id, @RequestBody ImageDto image) {
         imageService.addToFlavor(id, imageMapper.fromImageDto(image));
     }
 
     @DeleteMapping("/{id}")
-    void deleteFlavor(@PathVariable("id") String id) throws NotFoundException {
+    void deleteFlavor(@PathVariable("id") String id) {
         flavorService.delete(id);
     }
 
     @DeleteMapping("/{id}/comments/{commentId}")
-    void deleteCommentFromFlavor(@PathVariable("commentId") String commentId) throws NotFoundException {
+    void deleteCommentFromFlavor(@PathVariable("commentId") String commentId) {
         commentService.delete(commentId);
     }
 
     @DeleteMapping("/{id}/likes/{likeId}")
-    void deleteLikeFromFlavor(@PathVariable("likeId") String likeId) throws NotFoundException {
+    void deleteLikeFromFlavor(@PathVariable("likeId") String likeId) {
         likeService.delete(likeId);
     }
 
     @DeleteMapping("/{id}/image")
-    void deleteImageFromFlavor(@RequestBody ImageDto image) throws NotFoundException {
+    void deleteImageFromFlavor(@RequestBody ImageDto image) {
         imageService.delete(imageMapper.fromImageDto(image));
     }
 

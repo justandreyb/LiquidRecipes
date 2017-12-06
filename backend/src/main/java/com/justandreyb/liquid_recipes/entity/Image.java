@@ -12,14 +12,20 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 public class Image extends BaseEntity {
 
-    @Column
+    @Column(nullable = false)
     private String path;
 
-    @Column
+    @Column(nullable = false)
     private Date creationDate = new Date();
 
     @Override
     public boolean isValid() {
-        return false;
+        if (path.isEmpty()) {
+            return false;
+        }
+        if (creationDate == null) {
+            return false;
+        }
+        return true;
     }
 }

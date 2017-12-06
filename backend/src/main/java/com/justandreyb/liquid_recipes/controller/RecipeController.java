@@ -52,17 +52,17 @@ public class RecipeController {
     }
 
     @GetMapping("/{id}")
-    RecipeDto getRecipe(@PathVariable("id") String id) throws NotFoundException {
+    RecipeDto getRecipe(@PathVariable("id") String id) {
         return recipeMapper.toFullRecipeDto(recipeService.get(id));
     }
 
     @GetMapping("/{id}/items")
-    List<RecipeItemDto> getRecipeItems(@PathVariable("id") String id) throws NotFoundException {
+    List<RecipeItemDto> getRecipeItems(@PathVariable("id") String id) {
         return recipeItemMapper.toRecipeItemDtos(recipeItemService.getAllByRecipe(id));
     }
 
     @GetMapping("/{id}/comments")
-    List<CommentDto> getRecipeComments(@PathVariable("id") String id) throws NotFoundException {
+    List<CommentDto> getRecipeComments(@PathVariable("id") String id) {
         return commentMapper.toCommentDtos(commentService.getAllByRecipe(id));
     }
 
@@ -77,67 +77,67 @@ public class RecipeController {
     }
 
     @PostMapping
-    void addRecipe(@RequestBody RecipeDto recipeDto) throws InvalidEntityException {
+    void addRecipe(@RequestBody RecipeDto recipeDto) {
         recipeService.add(recipeMapper.fromRecipeDto(recipeDto));
     }
 
     @PostMapping("/{id}")
-    void updateRecipe(@RequestParam RecipeDto recipeDto) throws InvalidEntityException {
+    void updateRecipe(@RequestParam RecipeDto recipeDto) {
         recipeService.update(recipeMapper.fromRecipeDto(recipeDto));
     }
 
     @PostMapping("/{id}/items")
-    void addItemToRecipe(@PathVariable("id") String id, @RequestBody RecipeItemDto recipeItem) throws NotFoundException, InvalidEntityException {
+    void addItemToRecipe(@PathVariable("id") String id, @RequestBody RecipeItemDto recipeItem) {
         recipeItemService.addToRecipe(id, recipeItemMapper.fromRecipeItemDto(recipeItem));
     }
 
     @PostMapping("/{id}/items/{itemId}")
-    void updateItemInRecipe(@RequestBody RecipeItemDto recipeItem) throws InvalidEntityException {
+    void updateItemInRecipe(@RequestBody RecipeItemDto recipeItem) {
         recipeItemService.update(recipeItemMapper.fromRecipeItemDto(recipeItem));
     }
 
     @PostMapping("/{id}/comments")
-    void addCommentToRecipe(@PathVariable("id") String id, @RequestBody CommentDto comment) throws NotFoundException, InvalidEntityException {
+    void addCommentToRecipe(@PathVariable("id") String id, @RequestBody CommentDto comment) {
         commentService.addToRecipe(id, commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/comments/{commentId}")
-    void updateCommentInRecipe(@RequestBody CommentDto comment) throws InvalidEntityException {
+    void updateCommentInRecipe(@RequestBody CommentDto comment) {
         commentService.update(commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/likes")
-    void addLikeToRecipe(@PathVariable("id") String id, @RequestBody LikeDto like) throws NotFoundException, InvalidEntityException {
+    void addLikeToRecipe(@PathVariable("id") String id, @RequestBody LikeDto like) {
         likeService.addToRecipe(id, likeMapper.fromLikeDto(like));
     }
 
     @PostMapping("/{id}/image")
-    void addLikeToRecipe(@PathVariable("id") String id, @RequestBody ImageDto image) throws NotFoundException, InvalidEntityException {
+    void addLikeToRecipe(@PathVariable("id") String id, @RequestBody ImageDto image) {
         imageService.addToRecipe(id, imageMapper.fromImageDto(image));
     }
 
     @DeleteMapping("/{id}")
-    void deleteRecipe(@PathVariable("id") String id) throws NotFoundException {
+    void deleteRecipe(@PathVariable("id") String id) {
         recipeService.delete(id);
     }
 
     @DeleteMapping("/{id}/items/{itemId}")
-    void deleteItemFromRecipe(@PathVariable("itemId") String itemId) throws NotFoundException {
+    void deleteItemFromRecipe(@PathVariable("itemId") String itemId) {
         recipeItemService.delete(itemId);
     }
 
     @DeleteMapping("/{id}/comments/{commentId}")
-    void deleteCommentFromRecipe(@PathVariable("commentId") String commentId) throws NotFoundException {
+    void deleteCommentFromRecipe(@PathVariable("commentId") String commentId) {
         commentService.delete(commentId);
     }
 
     @DeleteMapping("/{id}/likes/{likeId}")
-    void deleteLikeFromRecipe(@PathVariable("likeId") String likeId) throws NotFoundException {
+    void deleteLikeFromRecipe(@PathVariable("likeId") String likeId) {
         likeService.delete(likeId);
     }
 
     @DeleteMapping("/{id}/image")
-    void deleteImageFromRecipe(@RequestBody ImageDto image) throws NotFoundException {
+    void deleteImageFromRecipe(@RequestBody ImageDto image) {
         imageService.delete(imageMapper.fromImageDto(image));
     }
 

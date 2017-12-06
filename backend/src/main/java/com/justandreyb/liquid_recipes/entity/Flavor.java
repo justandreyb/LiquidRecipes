@@ -20,7 +20,7 @@ public class Flavor extends BaseEntity {
     @Column
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "manufacturer_id", nullable = false)
     private Manufacturer manufacturer;
 
@@ -28,22 +28,37 @@ public class Flavor extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private FlavorType type;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinTable(name = "likes_to_flavor", joinColumns = @JoinColumn(name = "flavor_id"),
             inverseJoinColumns = @JoinColumn(name = "like_id"))
     private Set<Like> likes = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinTable(name = "comments_to_flavor", joinColumns = @JoinColumn(name = "flavor_id"),
             inverseJoinColumns = @JoinColumn(name = "comment_id"))
     private Set<Comment> comments = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "image_id")
     private Image image;
 
     @Override
     public boolean isValid() {
-        return false;
+        if (name.isEmpty()) {
+            return false;
+        }
+        if (type == null) {
+            return false;
+        }
+        if (manufacturer == null) {
+            return false;
+        }
+        if (likes == null) {
+            return false;
+        }
+        if (comments == null) {
+            return false;
+        }
+        return true;
     }
 }

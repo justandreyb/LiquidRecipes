@@ -18,12 +18,21 @@ public class Country extends BaseEntity {
     @Column(nullable = false)
     private String code;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "image_id")
     private Image image;
 
     @Override
     public boolean isValid() {
-        return false;
+        if (name.isEmpty()) {
+            return false;
+        }
+        if (code.isEmpty()) {
+            return false;
+        }
+        if (image != null) {
+            return image.isValid();
+        }
+        return true;
     }
 }

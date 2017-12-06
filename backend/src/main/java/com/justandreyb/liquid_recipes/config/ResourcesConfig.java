@@ -1,15 +1,16 @@
-package com.justandreyb.liquid_recipes.service;
+package com.justandreyb.liquid_recipes.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Service;
 
-@Service
+import javax.annotation.Resource;
+
+@Configuration
 @PropertySource("classpath:messages.properties")
-public class ResourceService {
+public class ResourcesConfig {
 
-    @Autowired
+    @Resource
     private Environment environment;
 
     public String getValue(String key) {

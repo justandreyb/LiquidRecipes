@@ -19,15 +19,24 @@ public class ImageService extends EntityService<Image, ImageRepository> {
     private RecipeService recipeService;
 
     public Image getByFlavor(String id) {
-        return null;
+        val image = flavorService.get(id).getImage();
+        checkEntity(image);
+
+        return image;
     }
 
     public Image getByNews(String id) {
-        return null;
+        val image = newsService.get(id).getImage();
+        checkEntity(image);
+
+        return image;
     }
 
     public Image getByRecipe(String id) {
-        return null;
+        val image = recipeService.get(id).getImage();
+        checkEntity(image);
+
+        return image;
     }
 
     public void addToFlavor(String id, Image image) throws InvalidEntityException, NotFoundException {

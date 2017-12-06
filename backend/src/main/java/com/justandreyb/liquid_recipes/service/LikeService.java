@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 
 @Service
 public class LikeService extends EntityService<Like, LikeRepository> {
@@ -22,15 +21,21 @@ public class LikeService extends EntityService<Like, LikeRepository> {
     private RecipeService recipeService;
 
     public Collection<Like> getAllByFlavor(String id) {
-        return null;
+        val flavor = flavorService.get(id);
+
+        return flavor.getLikes();
     }
 
     public Collection<Like> getAllByNews(String id) {
-        return null;
+        val news = newsService.get(id);
+
+        return news.getLikes();
     }
 
     public Collection<Like> getAllByRecipe(String id) {
-        return null;
+        val recipe = recipeService.get(id);
+
+        return recipe.getLikes();
     }
 
     public void addToFlavor(String id, Like like) throws InvalidEntityException, NotFoundException {

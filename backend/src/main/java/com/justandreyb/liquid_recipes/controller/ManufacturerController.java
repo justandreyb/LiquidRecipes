@@ -26,22 +26,22 @@ public class ManufacturerController {
     }
 
     @GetMapping("/{id}")
-    ManufacturerDto getManufacturer(@PathVariable("id") String id) throws NotFoundException {
+    ManufacturerDto getManufacturer(@PathVariable("id") String id) {
         return manufacturerMapper.toManufacturerDto(manufacturerService.get(id));
     }
 
     @PostMapping
-    void addManufacturer(@RequestBody ManufacturerDto manufacturerDto) throws InvalidEntityException {
+    void addManufacturer(@RequestBody ManufacturerDto manufacturerDto) {
         manufacturerService.add(manufacturerMapper.fromManufacturerDto(manufacturerDto));
     }
 
     @PostMapping("/{id}")
-    void updateManufacturer(@RequestParam ManufacturerDto manufacturerDto) throws InvalidEntityException {
+    void updateManufacturer(@RequestParam ManufacturerDto manufacturerDto) {
         manufacturerService.update(manufacturerMapper.fromManufacturerDto(manufacturerDto));
     }
 
     @DeleteMapping("/{id}")
-    void deleteManufacturer(@PathVariable("id") String id) throws NotFoundException {
+    void deleteManufacturer(@PathVariable("id") String id) {
         manufacturerService.delete(id);
     }
 }

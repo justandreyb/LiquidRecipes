@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -22,11 +19,18 @@ public class Comment extends BaseEntity {
     @Column
     private Date date = new Date();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
 
     @Override
     public boolean isValid() {
-        return false;
+        if (text.isEmpty() || text.length() > 512) {
+            return false;
+        }
+        if (user == null) {
+            return false;
+        } else {
+            return user.isValid();
+        }
     }
 }

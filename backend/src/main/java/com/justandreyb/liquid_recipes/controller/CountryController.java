@@ -26,22 +26,22 @@ public class CountryController {
     }
 
     @GetMapping("/{id}")
-    CountryDto getCountry(@PathVariable("id") String id) throws NotFoundException {
+    CountryDto getCountry(@PathVariable("id") String id) {
         return countryMapper.toCountryDto(countryService.get(id));
     }
 
     @PostMapping
-    void addCountry(@RequestBody CountryDto countryDto) throws InvalidEntityException {
+    void addCountry(@RequestBody CountryDto countryDto) {
         countryService.add(countryMapper.fromCountryDto(countryDto));
     }
 
     @PostMapping("/{id}")
-    void updateCountry(@PathVariable("id") CountryDto countryDto) throws InvalidEntityException {
+    void updateCountry(@PathVariable("id") CountryDto countryDto) {
         countryService.update(countryMapper.fromCountryDto(countryDto));
     }
 
     @DeleteMapping("/{id}")
-    void deleteCountry(@PathVariable("id") String id) throws NotFoundException {
+    void deleteCountry(@PathVariable("id") String id) {
         countryService.delete(id);
     }
 }

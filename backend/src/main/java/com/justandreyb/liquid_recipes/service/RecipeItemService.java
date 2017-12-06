@@ -9,12 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 
 @Service
 public class RecipeItemService extends EntityService<RecipeItem, RecipeItemRepository> {
-
-    private static final String INVALID_RECIPE_ITEM_EXCEPTION = "validation.exception.RecipeItemRepository";
 
     @Autowired
     private RecipeService recipeService;
@@ -25,9 +22,7 @@ public class RecipeItemService extends EntityService<RecipeItem, RecipeItemRepos
     }
 
     public void addToRecipe(String id, RecipeItem recipeItem) throws InvalidEntityException, NotFoundException {
-        if (!recipeItem.isValid()) {
-            throw new InvalidEntityException(INVALID_RECIPE_ITEM_EXCEPTION);
-        }
+        checkEntity(recipeItem);
 
         val recipe = recipeService.get(id);
         recipe.getFlavors().add(recipeItem);

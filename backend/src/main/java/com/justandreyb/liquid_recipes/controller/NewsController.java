@@ -57,12 +57,12 @@ public class NewsController {
     }
 
     @GetMapping("/{id}")
-    NewsDto getNews(@PathVariable("id") String id) throws NotFoundException {
+    NewsDto getNews(@PathVariable("id") String id) {
         return newsMapper.toNewsDto(newsService.get(id));
     }
 
     @GetMapping("/{id}/comments")
-    List<CommentDto> getNewsComments(@PathVariable("id") String id) throws NotFoundException {
+    List<CommentDto> getNewsComments(@PathVariable("id") String id) {
         return commentMapper.toCommentDtos(commentService.getAllByNews(id));
     }
 
@@ -77,52 +77,52 @@ public class NewsController {
     }
 
     @PostMapping
-    void addNews(@RequestBody NewsDto newsDto) throws InvalidEntityException {
+    void addNews(@RequestBody NewsDto newsDto) {
         newsService.add(newsMapper.fromNewsDto(newsDto));
     }
 
     @PostMapping("/{id}")
-    void updateNews(@RequestParam NewsDto newsDto) throws InvalidEntityException {
+    void updateNews(@RequestParam NewsDto newsDto) {
         newsService.update(newsMapper.fromNewsDto(newsDto));
     }
 
     @PostMapping("/{id}/comments")
-    void addCommentToNews(@RequestParam String id, @RequestBody CommentDto comment) throws NotFoundException, InvalidEntityException {
+    void addCommentToNews(@RequestParam String id, @RequestBody CommentDto comment) {
         commentService.addToNews(id, commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/comments/{commentId}")
-    void updateCommentInNews(@RequestBody CommentDto comment) throws InvalidEntityException {
+    void updateCommentInNews(@RequestBody CommentDto comment) {
         commentService.update(commentMapper.fromCommentDto(comment));
     }
 
     @PostMapping("/{id}/likes")
-    void addLikeToNews(@PathVariable("id") String id, @RequestBody LikeDto like) throws NotFoundException, InvalidEntityException {
+    void addLikeToNews(@PathVariable("id") String id, @RequestBody LikeDto like) {
         likeService.addToNews(id, likeMapper.fromLikeDto(like));
     }
 
     @PostMapping("/{id}/image")
-    void addLikeToNews(@PathVariable("id") String id, @RequestBody ImageDto image) throws NotFoundException, InvalidEntityException {
+    void addLikeToNews(@PathVariable("id") String id, @RequestBody ImageDto image) {
         imageService.addToNews(id, imageMapper.fromImageDto(image));
     }
 
     @DeleteMapping("/{id}")
-    void deleteNews(@PathVariable("id") String id) throws NotFoundException {
+    void deleteNews(@PathVariable("id") String id) {
         newsService.delete(id);
     }
 
     @DeleteMapping("/{id}/comments/{commentId}")
-    void deleteCommentFromNews(@PathVariable("commentId") String commentId) throws NotFoundException {
+    void deleteCommentFromNews(@PathVariable("commentId") String commentId) {
         commentService.delete(commentId);
     }
 
     @DeleteMapping("/{id}/likes/{likeId}")
-    void deleteLikeFromNews(@PathVariable("likeId") String likeId) throws NotFoundException {
+    void deleteLikeFromNews(@PathVariable("likeId") String likeId) {
         likeService.delete(likeId);
     }
 
     @DeleteMapping("/{id}/image")
-    void deleteImageFromNews(@RequestBody ImageDto image) throws NotFoundException {
+    void deleteImageFromNews(@RequestBody ImageDto image) {
         imageService.delete(imageMapper.fromImageDto(image));
     }
 

@@ -1,4 +1,4 @@
-package com.justandreyb.liquid_recipes.controller;
+package com.justandreyb.liquid_recipes.config;
 
 import com.justandreyb.liquid_recipes.exception.LiquidRecipeException;
 import com.justandreyb.liquid_recipes.exception.NotFoundException;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class ExceptionController {
+public class ExceptionsHandler {
 
     @ExceptionHandler(value = {
             WrongRequestException.class
@@ -27,7 +27,7 @@ public class ExceptionController {
             NotFoundException.class
     })
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Object> notFoundExceptionHandler(WrongRequestException exception) {
+    public ResponseEntity<Object> notFoundExceptionHandler(NotFoundException exception) {
         return ResponseEntity
                 .badRequest()
                 .body(exception.getMessage());
