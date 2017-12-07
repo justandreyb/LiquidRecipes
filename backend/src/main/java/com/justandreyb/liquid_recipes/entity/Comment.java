@@ -4,7 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Data
@@ -13,7 +16,7 @@ import java.util.Date;
 @ToString(exclude = {"user"})
 public class Comment extends BaseEntity {
 
-    @Column(length = 512, columnDefinition="clob", nullable = false)
+    @Column(length = 512, columnDefinition = "clob", nullable = false)
     private String text;
 
     @Column

@@ -1,8 +1,6 @@
 package com.justandreyb.liquid_recipes.controller;
 
 import com.justandreyb.liquid_recipes.dto.CountryDto;
-import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
-import com.justandreyb.liquid_recipes.exception.NotFoundException;
 import com.justandreyb.liquid_recipes.mapper.CountryMapper;
 import com.justandreyb.liquid_recipes.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;

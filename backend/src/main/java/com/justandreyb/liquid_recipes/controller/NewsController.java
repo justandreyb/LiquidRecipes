@@ -4,8 +4,6 @@ import com.justandreyb.liquid_recipes.dto.CommentDto;
 import com.justandreyb.liquid_recipes.dto.ImageDto;
 import com.justandreyb.liquid_recipes.dto.LikeDto;
 import com.justandreyb.liquid_recipes.dto.NewsDto;
-import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
-import com.justandreyb.liquid_recipes.exception.NotFoundException;
 import com.justandreyb.liquid_recipes.mapper.CommentMapper;
 import com.justandreyb.liquid_recipes.mapper.ImageMapper;
 import com.justandreyb.liquid_recipes.mapper.LikeMapper;

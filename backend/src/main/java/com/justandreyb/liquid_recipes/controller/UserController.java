@@ -27,7 +27,7 @@ public class UserController {
     private FlavorMapper flavorMapper;
 
     @GetMapping("/im")
-    // TODO: Make auth
+        // TODO: Make auth
     UserDto getAccountData() {
         // return userMapper.toUserDto(userService.get((String)authentication.getPrincipal()));
         User user = new User();
