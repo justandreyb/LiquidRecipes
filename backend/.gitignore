@@ -21,6 +21,7 @@ mvnw.cmd
 target/
 out/
 src/main/resources/static/built/**
+.database/
 
 ### Log files ###
 *.log

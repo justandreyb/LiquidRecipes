@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="20170512_1" author="justandreyb">
+        <sql>
+            CREATE TABLE IMAGE
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            CREATION_DATE timestamp,
+            PATH varchar(255)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_2" author="justandreyb">
+        <sql>
+            CREATE TABLE USER
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            EMAIL varchar(255) NOT NULL,
+            NAME varchar(255) NOT NULL,
+            PASSWORD varchar(255) NOT NULL,
+            REGISTRATION_DATE timestamp,
+            IMAGE_ID varchar(255),
+            CONSTRAINT FK9HPX11QLU8CQHRKJN0YOR93H FOREIGN KEY (IMAGE_ID) REFERENCES IMAGE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_3" author="justandreyb">
+        <sql>
+            CREATE TABLE COMMENT
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            DATE timestamp,
+            TEXT clob NOT NULL,
+            USER_ID varchar(255),
+            CONSTRAINT FK8KCUM44FVPUPYW6F5BACCX25C FOREIGN KEY (USER_ID) REFERENCES USER (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_4" author="justandreyb">
+        <sql>
+            CREATE TABLE USER_LIKE
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            CREATION_DATE timestamp,
+            USER_ID varchar(255),
+            CONSTRAINT FKJSFB2URRV0SHLTI7SFY9IKTPI FOREIGN KEY (USER_ID) REFERENCES USER (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_5" author="justandreyb">
+        <sql>
+            CREATE TABLE COUNTRY
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            CODE varchar(255) NOT NULL,
+            NAME varchar(255) NOT NULL,
+            IMAGE_ID varchar(255),
+            CONSTRAINT FK3GIYN370F9WUTAYH2SSWA0MNG FOREIGN KEY (IMAGE_ID) REFERENCES IMAGE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_6" author="justandreyb">
+        <sql>
+            CREATE TABLE MANUFACTURER
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            DESCRIPTION varchar(255),
+            NAME varchar(255) NOT NULL,
+            COUNTRY_ID varchar(255),
+            IMAGE_ID varchar(255),
+            CONSTRAINT FKPXWBIDPGDJO58391NM3XAVG56 FOREIGN KEY (COUNTRY_ID) REFERENCES COUNTRY (ID),
+            CONSTRAINT FKOYYVNXXKEPKCL24XC1HQ78OGE FOREIGN KEY (IMAGE_ID) REFERENCES IMAGE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_7" author="justandreyb">
+        <sql>
+            CREATE TABLE FLAVOR
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            DESCRIPTION varchar(255),
+            NAME varchar(255) NOT NULL,
+            TYPE varchar(2147483647),
+            IMAGE_ID varchar(255),
+            MANUFACTURER_ID varchar(255) NOT NULL,
+            CONSTRAINT FKPFGFMYLQQNR35K3KCJ7UKD6NU FOREIGN KEY (IMAGE_ID) REFERENCES IMAGE (ID),
+            CONSTRAINT FKJS7X6UXLT3NP66HGPADDXP5FH FOREIGN KEY (MANUFACTURER_ID) REFERENCES MANUFACTURER (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_8" author="justandreyb">
+        <sql>
+            CREATE TABLE NEWS
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            CREATION_DATE timestamp,
+            TEXT varchar(255),
+            TITLE varchar(255),
+            USER_ID varchar(255),
+            IMAGE_ID varchar(255),
+            CONSTRAINT FK4538GBWFA03NWR9EDL3FDLOO9 FOREIGN KEY (USER_ID) REFERENCES USER (ID),
+            CONSTRAINT FKT3V8O1F9HW1W8PUDAFAUMIIHR FOREIGN KEY (IMAGE_ID) REFERENCES IMAGE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_9" author="justandreyb">
+        <sql>
+            CREATE TABLE RECIPE
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            CREATION_DATE timestamp,
+            DESCRIPTION varchar(255),
+            FINAL_AMOUNT double NOT NULL,
+            NAME varchar(255) NOT NULL,
+            NICOTINE tinyint,
+            PG tinyint,
+            VG tinyint,
+            USER_ID varchar(255),
+            IMAGE_ID varchar(255),
+            CONSTRAINT FKC8O8IO8S0F7NQCD3429U6CXJS FOREIGN KEY (USER_ID) REFERENCES USER (ID),
+            CONSTRAINT FKKY5G165DHA9N8JDYX597KP9WA FOREIGN KEY (IMAGE_ID) REFERENCES IMAGE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_10" author="justandreyb">
+        <sql>
+            CREATE TABLE RECIPE_ITEM
+            (
+            ID varchar(255) PRIMARY KEY NOT NULL,
+            DROPS integer NOT NULL,
+            ML double NOT NULL,
+            FLAVOR_ID varchar(255),
+            CONSTRAINT FK15NHT0GLYC42ALVD2DWD2F3VV FOREIGN KEY (FLAVOR_ID) REFERENCES FLAVOR (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_11" author="justandreyb">
+        <sql>
+            CREATE TABLE USERS_FLAVORS
+            (
+            ID varchar(36) PRIMARY KEY NOT NULL,
+            USER_ID varchar(36) NOT NULL,
+            FLAVOR_ID varchar(36) NOT NULL
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_12" author="justandreyb">
+        <sql>
+            CREATE TABLE USERS_RECIPES
+            (
+            ID varchar(36) PRIMARY KEY NOT NULL,
+            USER_ID varchar(36) NOT NULL,
+            RECIPE_ID varchar(36) NOT NULL
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_13" author="justandreyb">
+        <sql>
+            CREATE TABLE COMMENTS_TO_FLAVOR
+            (
+            FLAVOR_ID varchar(255) NOT NULL,
+            COMMENT_ID varchar(255) NOT NULL,
+            CONSTRAINT COMMENTS_TO_FLAVORS_PK PRIMARY KEY (FLAVOR_ID, COMMENT_ID),
+            CONSTRAINT FK8X8740ASYIP0LP2E24LGXJUUR FOREIGN KEY (FLAVOR_ID) REFERENCES FLAVOR (ID),
+            CONSTRAINT FKN38IHWHT0LOF1IH0DK4QMK466 FOREIGN KEY (COMMENT_ID) REFERENCES COMMENT (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_14" author="justandreyb">
+        <sql>
+            CREATE TABLE COMMENTS_TO_NEWS
+            (
+            NEWS_ID varchar(255) NOT NULL,
+            COMMENT_ID varchar(255) NOT NULL,
+            CONSTRAINT COMMENTS_TO_NEWS_PK PRIMARY KEY (NEWS_ID, COMMENT_ID),
+            CONSTRAINT FK90PX5R45R04KGGUKKW3X2YD7H FOREIGN KEY (NEWS_ID) REFERENCES NEWS (ID),
+            CONSTRAINT FKFU6IWKELV1VREX2O3X8H4CS9S FOREIGN KEY (COMMENT_ID) REFERENCES COMMENT (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_15" author="justandreyb">
+        <sql>
+            CREATE TABLE COMMENTS_TO_RECIPE
+            (
+            RECIPE_ID varchar(255) NOT NULL,
+            COMMENT_ID varchar(255) NOT NULL,
+            CONSTRAINT COMMENTS_TO_RECIPES_PK PRIMARY KEY (RECIPE_ID, COMMENT_ID),
+            CONSTRAINT FKGKJ2B7W48QJ4MLMKMBJOKDFER FOREIGN KEY (RECIPE_ID) REFERENCES RECIPE (ID),
+            CONSTRAINT FKPWG1JV6T2M91ROJ95M1MT2O1P FOREIGN KEY (COMMENT_ID) REFERENCES COMMENT (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_16" author="justandreyb">
+        <sql>
+            CREATE TABLE ITEMS_TO_RECIPE
+            (
+            RECIPE_ID varchar(255) NOT NULL,
+            RECIPE_ITEM_ID varchar(255) NOT NULL,
+            CONSTRAINT ITEMS_TO_RECIPES_PK PRIMARY KEY (RECIPE_ID, RECIPE_ITEM_ID),
+            CONSTRAINT FKMOVAI5VSQBRJF48O7DTF0B60F FOREIGN KEY (RECIPE_ID) REFERENCES RECIPE (ID),
+            CONSTRAINT FK51M71BBF8J2Y57PN67DAJXHPL FOREIGN KEY (RECIPE_ITEM_ID) REFERENCES RECIPE_ITEM (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_17" author="justandreyb">
+        <sql>
+            CREATE TABLE LIKES_TO_FLAVOR
+            (
+            FLAVOR_ID varchar(255) NOT NULL,
+            LIKE_ID varchar(255) NOT NULL,
+            CONSTRAINT LIKES_TO_FLAVORS_PK PRIMARY KEY (FLAVOR_ID, LIKE_ID),
+            CONSTRAINT FKQ93GSOBL1LL9UQH8WIMUHCK89 FOREIGN KEY (FLAVOR_ID) REFERENCES FLAVOR (ID),
+            CONSTRAINT FKOM1SIOIHPLB1PTGJJH2SSM8TH FOREIGN KEY (LIKE_ID) REFERENCES USER_LIKE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_18" author="justandreyb">
+        <sql>
+            CREATE TABLE LIKES_TO_NEWS
+            (
+            NEWS_ID varchar(255) NOT NULL,
+            LIKE_ID varchar(255) NOT NULL,
+            CONSTRAINT LIKE_TO_NEWS_PK KEY (NEWS_ID, LIKE_ID),
+            CONSTRAINT FKASM051K34G0HOWBIYISLEL84V FOREIGN KEY (NEWS_ID) REFERENCES NEWS (ID),
+            CONSTRAINT FKHVWAOJM8S2LJ9IH1XCDMMLSOA FOREIGN KEY (LIKE_ID) REFERENCES USER_LIKE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_19" author="justandreyb">
+        <sql>
+            CREATE TABLE LIKES_TO_RECIPE
+            (
+            RECIPE_ID varchar(255) NOT NULL,
+            LIKE_ID varchar(255) NOT NULL,
+            CONSTRAINT LIKES_TO_RECIPES_PK PRIMARY KEY (RECIPE_ID, LIKE_ID),
+            CONSTRAINT FK81FWTHMIK87WPDWOC6O10BIRN FOREIGN KEY (RECIPE_ID) REFERENCES RECIPE (ID),
+            CONSTRAINT FK5CD7U8D1FFIR6XD3TBSX3H87X FOREIGN KEY (LIKE_ID) REFERENCES USER_LIKE (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20170512_20" author="justandreyb">
+        <sql>
+            CREATE TABLE FLAVORS_TO_USERS
+            (
+            FLAVOR_ID varchar(255) NOT NULL,
+            USER_ID varchar(255) NOT NULL,
+            CONSTRAINT FLAVOR_TO_USERS_PK PRIMARY KEY (FLAVOR_ID, USER_ID),
+            CONSTRAINT FKSEFWTHABU87WPDWOC6O10BIRN FOREIGN KEY (FLAVOR_ID) REFERENCES FLAVOR (ID),
+            CONSTRAINT FKSED7U8DIFFIR6XD3TBRX200SX FOREIGN KEY (USER_ID) REFERENCES USER (ID)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

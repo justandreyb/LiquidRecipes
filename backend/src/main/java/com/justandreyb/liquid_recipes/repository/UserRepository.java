@@ -1,7 +1,9 @@
 package com.justandreyb.liquid_recipes.repository;
 
-import com.justandreyb.liquid_recipes.bean.User;
-import org.springframework.data.repository.CrudRepository;
+import com.justandreyb.liquid_recipes.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends CrudRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, String> {
+
+    User findOneByEmailAndPassword(String email, String password);
 }
