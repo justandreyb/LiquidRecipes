@@ -11,7 +11,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(exclude = {"flavor"}, callSuper = false)
 @ToString(exclude = {"flavor"})
 public class RecipeItem extends BaseEntity {
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "flavor_id")
     private Flavor flavor;
 

@@ -18,7 +18,7 @@ public class Country extends BaseEntity {
     @Column(nullable = false)
     private String code;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image image;
 

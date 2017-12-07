@@ -16,8 +16,8 @@ public class CommentDto extends DTO {
 
     private String text;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private UserDto user;
 }

@@ -23,7 +23,7 @@ public class News extends BaseEntity {
     @Column
     private Date creationDate = new Date();
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image image;
 
@@ -37,7 +37,7 @@ public class News extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "like_id"))
     private Set<Like> likes = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User creator;
 

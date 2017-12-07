@@ -19,7 +19,7 @@ public class Comment extends BaseEntity {
     @Column
     private Date date = new Date();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     @Override
