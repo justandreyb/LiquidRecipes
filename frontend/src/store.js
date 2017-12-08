@@ -23,7 +23,6 @@ const configureStore = (initialState) => {
     )
   );
 
-
   sagaMiddleware.run(globalSagas);
   return store;
 };

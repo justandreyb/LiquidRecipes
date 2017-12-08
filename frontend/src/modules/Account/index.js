@@ -4,6 +4,7 @@ import {takeEvery, takeLatest} from "redux-saga/effects";
 
 
 // ---------------------- CONSTANTS ----------------------- //
+
 const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 const SIGN_UP_FAIL = "SIGN_UP_FAIL";
@@ -24,6 +25,7 @@ const CLEAN_ACCOUNT_DATA = "CLEAN_ACCOUNT_DATA";
 
 
 // --------------------- INITIAL STATE --------------------- //
+
 const initialState = fromJS({
   user: {
     nickname: "Guest"
@@ -35,6 +37,7 @@ const initialState = fromJS({
 
 
 // ----------------------- REDUCER ------------------------ //
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
 
@@ -112,6 +115,7 @@ export const reducer = (state = initialState, action) => {
 
 
 // ----------------- ACTIONS ----------------------- //
+
 export const createAccountRequest = (data) => ({
   type   : SIGN_UP_REQUEST,
   payload: data
@@ -182,6 +186,7 @@ export const cleanAccountData = () => ({
 
 
 // ----------------------- SAGAS ------------------------ //
+
 const url = "/account";
 
 function* createAccount(action) {
@@ -208,6 +213,7 @@ export function* watchAccountActions() {
 }
 
 // ------------------ SELECTORS -------------------- //
+
 export const selectAccountContainer = (state) => state.containers.app.account.info;
 export const selectUserData = (state) => selectAccountContainer(state).get("user");
 export const selectIsGuest = (state) => selectAccountContainer(state).get("guest");
