@@ -1,10 +1,3 @@
-/**
- * Entry point for your application. This code will be rendered inside your html root component
- * @file {projectDir}/src/index.js
- *
- * @author justandreyb
- */
-
 import React from "react";
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";

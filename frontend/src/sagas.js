@@ -1,11 +1,3 @@
-/**
- * Combine all of your components sagas
- * @file {projectDir}/src/sagas.js
- * @export sagas configuration
- *
- * @author justandreyb
- */
-
 import {fork, all} from "redux-saga/effects";
 
 import {watchAppActions} from "./modules/App/index";
@@ -13,16 +5,33 @@ import {watchAccountActions} from "./modules/Account/index";
 import {watchEntityActions} from "./modules/Entity";
 import {watchEntitiesActions} from "./modules/Entities";
 
-/**
- * Array of sagas
- * When you add a new component, you must add his saga here
- */
 const sagas = [
   watchAppActions,
   watchAccountActions,
 
   watchEntityActions,
-  watchEntitiesActions
+  watchEntitiesActions,
+
+  warchUserFlavorsActions,
+  watchUserRecipesActions,
+
+  watchNewsActions,
+  watchNewsSingleActions,
+  watchNewsCommentsActions,
+  watchNewsLikesActions,
+
+  watchFlavorsActions,
+  watchFlavorActions,
+  watchFlavorCommentsActions,
+  watchFlavorLikesActions,
+
+  watchRecipesActions,
+  watchRecipeActions,
+  watchRecipeCommentsActions,
+  watchRecipeLikesActions,
+
+  watchManufacturersActions,
+  watchImagesActions
 ];
 
 export default function* globalSagas() {

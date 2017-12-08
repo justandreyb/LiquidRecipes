@@ -1,23 +1,25 @@
-/**
- * Create your application routes
- * @file {projectDir}/src/routes.js
- * @export routes configuration
- *
- * @author justandreyb
- */
-
 import React from "react";
 import {Switch, Route} from "react-router-dom";
 
 import {App, Home, Entities, Entity} from "./containers";
 
-/**
- * Configuration for routes
- */
 export const routes =
   <Switch>
+
     <Route exact path="/" component={App}/>
     <Route path="/home" component={Home}/>
-    <Route exact path="/entities" component={Entities}/>
-    <Route exact path="/entities/:id" component={Entity}/>
+
+    <Route exact path="/news" component={News}/>
+    <Route exact path="/news/:id" component={NewsSingle}/>
+
+    <Route exact path="/flavors" component={Flavors}/>
+    <Route exact path="/flavors/:id" component={Flavor}/>
+
+    <Route exact path="/recipes" component={Recipes}/>
+    <Route exact path="/recipes/:id" component={Recipe}/>
+
+    <Route exact path="/im" component={User}/>
+    <Route exact path="/im/flavors" component={UserFlavors}/>
+    <Route exact path="/im/recipes" component={UserRecipes}/>
+
   </Switch>;

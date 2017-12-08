@@ -1,11 +1,3 @@
-/**
- * Combine all of your components reducers
- * @file {projectDir}/src/redux.js
- * @export reducers configuration
- *
- * @author justandreyb
- */
-
 import {combineReducers} from "redux";
 import {routerReducer} from "react-router-redux";
 
@@ -15,25 +7,46 @@ import {reducer as authModalReducer} from "./modules/Modals/AuthModal";
 import {reducer as entityReducer} from "./modules/Entity";
 import {reducer as entitiesReducer} from "./modules/Entities";
 
-/**
- * Configuration for reducers, how they will be stored
- * When you add a new component which contain reducer, you must add its reducer here
- */
 const containersReducer = {
   containers: combineReducers({
     app: combineReducers({
       workspace: appReducer,
       account  : combineReducers({
-        info: accountReducer
+        info   : accountReducer,
+        flavors: userFlavorsReducer,
+        recipes: userRecipesReducer
       }),
       modals: combineReducers({
         auth: authModalReducer
       })
     }),
-    entities: combineReducers({
-      list  : entitiesReducer,
-      target: entityReducer
-    })
+    news: combineReducers({
+      list  : newsReducer,
+      target: combineReducers({
+        news    : newsSingleReducer,
+        comments: newsCommentsReducer,
+        likes   : newsLikesReducer
+      })
+    }),
+    flavors: combineReducers({
+      list  : flavorsReducer,
+      target: combineReducers({
+        flavor  : flavorSingleReducer,
+        comments: flavorCommentsReducer,
+        likes   : flavorLikesReducer
+      })
+    }),
+    recipes: combineReducers({
+      list  : recipesReducer,
+      target: combineReducers({
+        recipe  : recipeSingleReducer,
+        comments: recipeCommentsReducer,
+        likes   : recipeLikesReducer,
+        items   : recipeItemsReducer
+      })
+    }),
+    manufacturers: manufacturersReducer,
+    images       : imagesReducer
   })
 };
 
