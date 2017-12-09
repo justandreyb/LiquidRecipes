@@ -134,7 +134,7 @@ export const createRecipeItemFail = (error) => ({
 });
 
 
-export const sendRecipeItems = (recipeId) => ({
+export const getRecipeItems = (recipeId) => ({
   type   : GET_RECIPE_ITEMS_REQUEST,
   payload: recipeId
 });
