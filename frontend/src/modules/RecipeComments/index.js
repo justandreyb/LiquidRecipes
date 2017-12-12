@@ -39,7 +39,7 @@ export const reducer = (state = initialState, action) => {
 
   case CREATE_RECIPE_COMMENT_SUCCESS:
     return state
-      .updateIn(["comments"], (arr) => arr.push(action.payload))
+      .updateIn(["comments"], (arr) => arr.concat(action.payload))
       .set("loading", false)
       .set("error", null);
 

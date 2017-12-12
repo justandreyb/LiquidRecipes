@@ -2,6 +2,8 @@ import {fromJS} from "immutable";
 import {getElements} from "../../api";
 import {takeLatest} from "redux-saga/effects";
 
+import {DELETE_RECIPE_SUCCESS} from "../Recipe";
+
 // ---------------------- CONSTANTS ----------------------- //
 
 const GET_USER_RECIPES_REQUEST = "GET_USER_RECIPES_REQUEST";
@@ -36,6 +38,12 @@ export const reducer = (state = initialState, action) => {
     return state
       .set("loading", false)
       .set("error", action.payload);
+
+  case DELETE_RECIPE_SUCCESS:
+    return state
+      .updateIn(["recipes"], (arr) => arr.filter((val) => val.id !== action.payload))
+      .set("loading", false)
+      .set("error", null);
 
   default:
     return state;

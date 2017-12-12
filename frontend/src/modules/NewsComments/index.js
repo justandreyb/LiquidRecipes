@@ -2,7 +2,7 @@ import {fromJS} from "immutable";
 import {sendElement, deleteElement, getElements} from "../../api";
 import {takeEvery, takeLatest} from "redux-saga/effects";
 
-import {CLEAN_NEWS_SINGLE_WORKSPACE} from "../NewsSingle";
+import {CLEAR_NEWS_SINGLE_WORKSPACE} from "../NewsSingle";
 import {NEWS_URL} from "../News";
 
 // ---------------------- CONSTANTS ----------------------- //
@@ -83,7 +83,7 @@ export const reducer = (state = initialState, action) => {
       .set("loading", false)
       .set("error", action.payload);
 
-  case CLEAN_NEWS_SINGLE_WORKSPACE:
+  case CLEAR_NEWS_SINGLE_WORKSPACE:
     return initialState;
 
   default:

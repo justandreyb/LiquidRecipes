@@ -22,7 +22,7 @@ class NewsContainer extends Component {
           <h3>News</h3>
           <div className="row">
             <NewsComponent
-              elements={this.props.news}
+              news={this.props.news}
             />
           </div>
         </div>

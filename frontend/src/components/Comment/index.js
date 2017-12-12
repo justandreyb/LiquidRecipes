@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class EntitySingle extends Component {
+class Comment extends Component {
   render() {
     return (
       <div className="container">
@@ -22,4 +22,4 @@ class EntitySingle extends Component {
   }
 }
 
-export const EntityComponent = EntitySingle;
+export const CommentComponent = Comment;

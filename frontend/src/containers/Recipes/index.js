@@ -22,7 +22,7 @@ class RecipesContainer extends Component {
           <h3>Recipes</h3>
           <div className="row">
             <RecipesComponent
-              elements={this.props.recipes}
+              recipes={this.props.recipes}
             />
           </div>
         </div>

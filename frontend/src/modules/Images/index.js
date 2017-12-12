@@ -38,7 +38,7 @@ export const reducer = (state = initialState, action) => {
 
   case CREATE_IMAGE_SUCCESS:
     return state
-      .updateIn(["images"], (arr) => arr.push(action.payload))
+      .updateIn(["images"], (arr) => arr.concat(action.payload))
       .set("loading", false)
       .set("error", null);
 

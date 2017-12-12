@@ -2,7 +2,7 @@ import {fromJS} from "immutable";
 import {sendElement, deleteElement, getElements} from "../../api";
 import {takeEvery, takeLatest} from "redux-saga/effects";
 
-import {CLEAN_FLAVOR_WORKSPACE} from "../Flavor";
+import {CLEAR_FLAVOR_WORKSPACE} from "../Flavor";
 import {FLAVORS_URL} from "../Flavors";
 
 // ---------------------- CONSTANTS ----------------------- //
@@ -39,7 +39,7 @@ export const reducer = (state = initialState, action) => {
 
   case CREATE_FLAVOR_COMMENT_SUCCESS:
     return state
-      .updateIn(["comments"], (arr) => arr.push(action.payload))
+      .updateIn(["comments"], (arr) => arr.concat(action.payload))
       .set("loading", false)
       .set("error", null);
 
@@ -83,7 +83,7 @@ export const reducer = (state = initialState, action) => {
       .set("loading", false)
       .set("error", action.payload);
 
-  case CLEAN_FLAVOR_WORKSPACE:
+  case CLEAR_FLAVOR_WORKSPACE:
     return initialState;
 
   default:

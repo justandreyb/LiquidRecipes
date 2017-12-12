@@ -12,18 +12,24 @@ import {
 
 import {
   getFlavorComments,
-  selectFlavorCommentsData
+  selectFlavorCommentsData,
+  createFlavorComment,
+  deleteFlavorComment
 } from "../../modules/FlavorComments"
 
 import {
   getFlavorLikes,
-  selectFlavorLikesData
+  selectFlavorLikesData,
+  createFlavorLike,
+  deleteFlavorLike
 } from "../../modules/FlavorLikes"
 
 class FlavorContainer extends Component {
 
   componentWillMount() {
-    this.props.actions.getFlavor(this.props.match.params.id)
+    this.props.actions.getFlavor(this.props.match.params.id);
+    this.props.actions.getFlavorComments(this.props.match.params.id);
+    this.props.actions.getFlavorLikes(this.props.match.params.id);
   }
 
   componentWillUnmount() {
@@ -37,9 +43,10 @@ class FlavorContainer extends Component {
           <h3>Entities</h3>
           <div className="row">
             <FlavorComponent
-              flavor={this.props.flavor}
-              comments={this.props.comments}
-              likes={this.props.likes}
+              flavor     ={this.props.flavor}
+              comments   ={this.props.comments}
+              likes      ={this.props.likes}
+              interaction={this.props.interaction}
             />
           </div>
         </div>
@@ -60,6 +67,12 @@ export const Flavor = connect(
       cleanFlavorWorkspace,
       getFlavorComments,
       getFlavorLikes
+    }, dispatch),
+    interaction: bindActionCreators({
+      createFlavorComment,
+      deleteFlavorComment,
+      createFlavorLike,
+      deleteFlavorLike
     }, dispatch)
   })
 )(FlavorContainer);

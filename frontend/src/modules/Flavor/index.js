@@ -6,23 +6,23 @@ import {FLAVORS_URL} from "../Flavors";
 
 // ---------------------- CONSTANTS ----------------------- //
 
-const CREATE_FLAVOR_REQUEST = "CREATE_FLAVOR_REQUEST";
-const CREATE_FLAVOR_SUCCESS = "CREATE_FLAVOR_SUCCESS";
-const CREATE_FLAVOR_FAIL = "CREATE_FLAVOR_FAIL";
+export const CREATE_FLAVOR_REQUEST = "CREATE_FLAVOR_REQUEST";
+export const CREATE_FLAVOR_SUCCESS = "CREATE_FLAVOR_SUCCESS";
+export const CREATE_FLAVOR_FAIL = "CREATE_FLAVOR_FAIL";
 
-const GET_FLAVOR_REQUEST = "GET_FLAVOR_REQUEST";
-const GET_FLAVOR_SUCCESS = "GET_FLAVOR_SUCCESS";
-const GET_FLAVOR_FAIL = "GET_FLAVOR_FAIL";
+export const GET_FLAVOR_REQUEST = "GET_FLAVOR_REQUEST";
+export const GET_FLAVOR_SUCCESS = "GET_FLAVOR_SUCCESS";
+export const GET_FLAVOR_FAIL = "GET_FLAVOR_FAIL";
 
-const UPDATE_FLAVOR_REQUEST = "UPDATE_FLAVOR_REQUEST";
-const UPDATE_FLAVOR_SUCCESS = "UPDATE_FLAVOR_SUCCESS";
-const UPDATE_FLAVOR_FAIL = "UPDATE_FLAVOR_FAIL";
+export const UPDATE_FLAVOR_REQUEST = "UPDATE_FLAVOR_REQUEST";
+export const UPDATE_FLAVOR_SUCCESS = "UPDATE_FLAVOR_SUCCESS";
+export const UPDATE_FLAVOR_FAIL = "UPDATE_FLAVOR_FAIL";
 
-const DELETE_FLAVOR_REQUEST = "DELETE_FLAVOR_REQUEST";
-const DELETE_FLAVOR_SUCCESS = "DELETE_FLAVOR_SUCCESS";
-const DELETE_FLAVOR_FAIL = "DELETE_FLAVOR_FAIL";
+export const DELETE_FLAVOR_REQUEST = "DELETE_FLAVOR_REQUEST";
+export const DELETE_FLAVOR_SUCCESS = "DELETE_FLAVOR_SUCCESS";
+export const DELETE_FLAVOR_FAIL = "DELETE_FLAVOR_FAIL";
 
-export const CLEAN_FLAVOR_WORKSPACE = "CLEAN_FLAVOR_WORKSPACE";
+export const CLEAR_FLAVOR_WORKSPACE = "CLEAR_FLAVOR_WORKSPACE";
 
 // --------------------- INITIAL STATE --------------------- //
 
@@ -104,7 +104,7 @@ export const reducer = (state = initialState, action) => {
       .set("loading", false)
       .set("error", action.payload);
 
-  case CLEAN_FLAVOR_WORKSPACE:
+  case CLEAR_FLAVOR_WORKSPACE:
     return initialState;
 
   default:
@@ -182,7 +182,7 @@ export const deleteFlavorFail = (error) => ({
 });
 
 export const cleanFlavorWorkspace = () => ({
-  type: CLEAN_FLAVOR_WORKSPACE
+  type: CLEAR_FLAVOR_WORKSPACE
 });
 
 // ----------------------- SAGAS ------------------------ //

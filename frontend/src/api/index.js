@@ -1,13 +1,13 @@
 import {call, put} from "redux-saga/effects";
 import axios from "axios";
 
-const serverURL = "https://reqres.in/api";
+const serverURL = "https://127.0.0.1:8080/storage";
 
 export function* getElements(url, successHandler, failHandler) {
   try {
     const response = yield call(axios.get, serverURL + url);
 
-    yield put(successHandler(response.data));
+    yield put(successHandler(response.data.data));
   }
   catch (e) {
     yield put(failHandler(e.message));

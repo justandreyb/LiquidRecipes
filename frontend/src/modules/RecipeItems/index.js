@@ -43,7 +43,7 @@ export const reducer = (state = initialState, action) => {
 
   case CREATE_RECIPE_ITEM_SUCCESS:
     return state
-      .updateIn(["items"], (arr) => arr.push(action.payload))
+      .updateIn(["items"], (arr) => arr.concat(action.payload))
       .set("loading", false)
       .set("error", null);
 
@@ -77,7 +77,7 @@ export const reducer = (state = initialState, action) => {
 
   case UPDATE_RECIPE_ITEM_SUCCESS:
     return state
-      .updateIn(["items"], (arr) => arr.push(action.payload))
+      .updateIn(["items"], (arr) => arr.concat(action.payload))
       .set("loading", false)
       .set("error", null);
 

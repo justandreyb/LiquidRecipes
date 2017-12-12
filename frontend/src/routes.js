@@ -10,7 +10,7 @@ import {
   Flavor,
   Recipes,
   Recipe,
-  User,
+  // User,
   UserFlavors,
   UserRecipes
 } from "./containers";
@@ -19,7 +19,6 @@ export const routes =
   <Switch>
 
     <Route exact path="/" component={App}/>
-    <Route path="/home" component={Home}/>
 
     <Route exact path="/news" component={News}/>
     <Route exact path="/news/:id" component={NewsSingle}/>
@@ -30,7 +29,7 @@ export const routes =
     <Route exact path="/recipes" component={Recipes}/>
     <Route exact path="/recipes/:id" component={Recipe}/>
 
-    <Route exact path="/im" component={User}/>
+    {/*<Route exact path="/im" component={User}/>*/}
     <Route exact path="/im/flavors" component={UserFlavors}/>
     <Route exact path="/im/recipes" component={UserRecipes}/>
 

@@ -12,18 +12,24 @@ import {
 
 import {
   getNewsComments,
-  selectNewsCommentsData
+  selectNewsCommentsData,
+  createNewsComment,
+  deleteNewsComment
 } from "../../modules/NewsComments"
 
 import {
   getNewsLikes,
-  selectNewsLikesData
+  selectNewsLikesData,
+  createNewsLike,
+  deleteNewsLike
 } from "../../modules/NewsLikes"
 
 class NewsSingleContainer extends Component {
 
   componentWillMount() {
-    this.props.actions.getNewsSingle(this.props.match.params.id)
+    this.props.actions.getNewsSingle(this.props.match.params.id);
+    this.props.actions.getNewsComments(this.props.match.params.id);
+    this.props.actions.getNewsLikes(this.props.match.params.id);
   }
 
   componentWillUnmount() {
@@ -37,9 +43,10 @@ class NewsSingleContainer extends Component {
           <h3>Entities</h3>
           <div className="row">
             <NewsSingleComponent
-              news={this.props.news}
-              comments={this.props.comments}
-              likes={this.props.likes}
+              news       ={this.props.news}
+              comments   ={this.props.comments}
+              likes      ={this.props.likes}
+              interaction={this.props.interaction}
             />
           </div>
         </div>
@@ -60,6 +67,12 @@ export const NewsSingle = connect(
       cleanNewsSingleWorkspace,
       getNewsComments,
       getNewsLikes
+    }, dispatch),
+    interaction: bindActionCreators({
+      createNewsComment,
+      deleteNewsComment,
+      createNewsLike,
+      deleteNewsLike
     }, dispatch)
   })
 )(NewsSingleContainer);

@@ -15,4 +15,3 @@ export {Flavor} from "./Flavor";
 
 export {Recipes} from "./Recipes";
 export {Recipe} from "./Recipe";
-export {RecipeItem} from "./RecipeItems";

@@ -33,11 +33,17 @@ class NavigationBarContainer extends Component {
 
         <Navbar.Collapse eventkey={0}>
           <Nav navbar>
-            <LinkContainer to="/home">
+            <LinkContainer to="/">
               <NavItem eventkey={1}>Home</NavItem>
             </LinkContainer>
-            <LinkContainer to="/entities">
-              <NavItem eventkey={2}>Entities</NavItem>
+            <LinkContainer to="/recipes">
+              <NavItem eventkey={2}>Recipes</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/flavors">
+              <NavItem eventkey={3}>Flavors</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/news">
+              <NavItem eventkey={4}>News</NavItem>
             </LinkContainer>
             {
               this.props.superuser &&

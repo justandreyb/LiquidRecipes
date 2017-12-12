@@ -39,7 +39,7 @@ export const reducer = (state = initialState, action) => {
 
   case CREATE_RECIPE_LIKE_SUCCESS:
     return state
-      .updateIn(["likes"], (arr) => arr.push(action.payload))
+      .updateIn(["likes"], (arr) => arr.concat(action.payload))
       .set("loading", false)
       .set("error", null);
 

@@ -38,7 +38,7 @@ export const reducer = (state = initialState, action) => {
 
   case CREATE_MANUFACTURER_SUCCESS:
     return state
-      .updateIn(["manufacturers"], (arr) => arr.push(action.payload))
+      .updateIn(["manufacturers"], (arr) => arr.concat(action.payload))
       .set("loading", false)
       .set("error", null);
 
