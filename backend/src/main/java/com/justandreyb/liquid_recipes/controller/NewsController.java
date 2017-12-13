@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/news")
+@CrossOrigin(origins = "http://localhost:3000")
 public class NewsController {
 
     @Autowired

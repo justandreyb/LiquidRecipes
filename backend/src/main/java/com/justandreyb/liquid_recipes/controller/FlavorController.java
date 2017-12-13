@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/flavors")
+@CrossOrigin(origins = "http://localhost:3000")
 public class FlavorController {
 
     @Autowired
