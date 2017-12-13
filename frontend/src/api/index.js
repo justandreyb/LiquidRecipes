@@ -1,13 +1,24 @@
 import {call, put} from "redux-saga/effects";
 import axios from "axios";
 
-const serverURL = "https://127.0.0.1:8080/storage";
+const serverURL = "http://127.0.0.1:8080/storage";
 
 export function* getElements(url, successHandler, failHandler) {
   try {
-    const response = yield call(axios.get, serverURL + url);
+    console.log("Get to :");
+    console.log(serverURL + url);
+    const response = yield call(axios, serverURL + url, {
+      method : "GET",
+      mode   : "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type"               : "application/json"
+      },
+      withCredentials: true,
+      credentials    : "same-origin"
+    });
 
-    yield put(successHandler(response.data.data));
+    yield put(successHandler(response.data));
   }
   catch (e) {
     yield put(failHandler(e.message));
@@ -16,7 +27,18 @@ export function* getElements(url, successHandler, failHandler) {
 
 export function* getElement(url, id, successHandler, failHandler) {
   try {
-    const response = yield call(axios.get, serverURL + url + "/" + id);
+    console.log("Get to :");
+    console.log(serverURL + url + "/" + id);
+    const response = yield call(axios, serverURL + url + "/" + id, {
+      method : "GET",
+      mode   : "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type"               : "application/json"
+      },
+      withCredentials: true,
+      credentials    : "same-origin"
+    });
     yield put(successHandler(response.data));
   }
   catch (e) {
@@ -26,8 +48,17 @@ export function* getElement(url, id, successHandler, failHandler) {
 
 export function* sendElement(url, data, successHandler, failHandler) {
   try {
-    const response = yield call(axios.post, serverURL + url, {data: data});
-    console.log(response);
+    const response = yield call(axios, serverURL + url, {
+      method : "POST",
+      mode   : "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type"               : "application/json"
+      },
+      withCredentials: true,
+      credentials    : "same-origin",
+      data           : data
+    });
     yield put(successHandler(response.data));
   }
   catch (e) {
@@ -37,7 +68,19 @@ export function* sendElement(url, data, successHandler, failHandler) {
 
 export function* updateElement(url, id, data, successHandler, failHandler) {
   try {
-    const response = yield call(axios.post, serverURL + url + "/" + id, {data: data});
+    console.log("Update to :");
+    console.log(serverURL + url + "/" + id);
+    const response = yield call(axios, serverURL + url + "/" + id, {
+      method : "POST",
+      mode   : "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type"               : "application/json"
+      },
+      withCredentials: true,
+      credentials    : "same-origin",
+      data           : data
+    });
     console.log(response);
     yield put(successHandler(response));
   }
@@ -48,7 +91,18 @@ export function* updateElement(url, id, data, successHandler, failHandler) {
 
 export function* deleteElement(url, id, successHandler, failHandler) {
   try {
-    const response = yield call(axios.delete, serverURL + url + "/" + id);
+    console.log("Delete to :");
+    console.log(serverURL + url + "/" + id);
+    const response = yield call(axios, serverURL + url + "/" + id, {
+      method : "DELETE",
+      mode   : "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type"               : "application/json"
+      },
+      withCredentials: true,
+      credentials    : "same-origin"
+    });
     console.log(response);
     yield put(successHandler());
   }

@@ -71,6 +71,7 @@ export const reducer = (state = initialState, action) => {
 
   case CLEAR_TOP_NEWS_WORKSPACE:
     return state
+      .set("news", state.news)
       .set("top", initialState.top)
       .set("loading", false)
       .set("error", null);
