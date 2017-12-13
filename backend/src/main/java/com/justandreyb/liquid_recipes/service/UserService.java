@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService extends EntityService<User, UserRepository> {
 
-    public void signUp(User user) {
-        checkEntity(user);
+    public User signUp(User user) {
 //        TODO: Write
-        repository.save(user);
+        checkEntity(user);
+        user = repository.save(user);
+
+        return user;
     }
 
     public User signIn(String email, String password) {

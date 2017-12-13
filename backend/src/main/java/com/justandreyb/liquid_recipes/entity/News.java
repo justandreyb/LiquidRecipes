@@ -43,6 +43,12 @@ public class News extends BaseEntity {
 
     @Override
     public boolean isValid() {
-        return false;
+        if (title.isEmpty()) {
+            return false;
+        }
+        if (text.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 }

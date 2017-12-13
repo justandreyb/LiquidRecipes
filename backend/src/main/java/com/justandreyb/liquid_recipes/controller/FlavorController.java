@@ -12,6 +12,7 @@ import com.justandreyb.liquid_recipes.service.CommentService;
 import com.justandreyb.liquid_recipes.service.FlavorService;
 import com.justandreyb.liquid_recipes.service.ImageService;
 import com.justandreyb.liquid_recipes.service.LikeService;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,33 +77,39 @@ public class FlavorController {
     }
 
     @PostMapping
-    void addFlavor(@RequestBody FlavorDto flavorDto) {
-        flavorService.add(flavorMapper.fromFlavorDto(flavorDto));
+    FlavorDto addFlavor(@RequestBody FlavorDto flavorDto) {
+        val flavor = flavorMapper.fromFlavorDto(flavorDto);
+        return flavorMapper.toFlavorDto(flavorService.add(flavor));
     }
 
     @PostMapping("/{id}")
-    void updateFlavor(@RequestParam FlavorDto flavorDto) {
-        flavorService.update(flavorMapper.fromFlavorDto(flavorDto));
+    FlavorDto updateFlavor(@RequestParam FlavorDto flavorDto) {
+        val flavor = flavorService.update(flavorMapper.fromFlavorDto(flavorDto));
+        return flavorMapper.toFlavorDto(flavor);
     }
 
     @PostMapping("/{id}/comments")
-    void addCommentToFlavor(@PathVariable("id") String id, @RequestBody CommentDto comment) {
-        commentService.addToFlavor(id, commentMapper.fromCommentDto(comment));
+    CommentDto addCommentToFlavor(@PathVariable("id") String id, @RequestBody CommentDto comment) {
+        val createdComment = commentService.addToFlavor(id, commentMapper.fromCommentDto(comment));
+        return commentMapper.toCommentDto(createdComment);
     }
 
     @PostMapping("/{id}/comments/{commentId}")
-    void updateCommentInFlavor(@RequestBody CommentDto comment) {
-        commentService.update(commentMapper.fromCommentDto(comment));
+    CommentDto updateCommentInFlavor(@RequestBody CommentDto comment) {
+        val updatedComment = commentService.update(commentMapper.fromCommentDto(comment));
+        return commentMapper.toCommentDto(updatedComment);
     }
 
     @PostMapping("/{id}/likes")
-    void addLikeToFlavor(@PathVariable("id") String id, @RequestBody LikeDto like) {
-        likeService.addToFlavor(id, likeMapper.fromLikeDto(like));
+    LikeDto addLikeToFlavor(@PathVariable("id") String id, @RequestBody LikeDto like) {
+        val createdLike = likeService.addToFlavor(id, likeMapper.fromLikeDto(like));
+        return likeMapper.toLikeDto(createdLike);
     }
 
     @PostMapping("/{id}/image")
-    void addLikeToFlavor(@PathVariable("id") String id, @RequestBody ImageDto image) {
-        imageService.addToFlavor(id, imageMapper.fromImageDto(image));
+    ImageDto addImageToFlavor(@PathVariable("id") String id, @RequestBody ImageDto image) {
+        val createdImage = imageService.addToFlavor(id, imageMapper.fromImageDto(image));
+        return imageMapper.toImageDto(createdImage);
     }
 
     @DeleteMapping("/{id}")

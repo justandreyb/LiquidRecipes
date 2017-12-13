@@ -28,11 +28,14 @@ public class FlavorService extends EntityService<Flavor, FlavorRepository> {
         return getAllByRange(0, number);
     }
 
-    public void addToUser(String userId, Flavor flavor) {
+    public Flavor addToUser(String userId, Flavor flavor) {
         checkEntity(flavor);
-        val user = userService.get(userId);
+        flavor = repository.save(flavor);
 
+        val user = userService.get(userId);
         user.getFlavors().add(flavor);
         userService.update(user);
+
+        return flavor;
     }
 }

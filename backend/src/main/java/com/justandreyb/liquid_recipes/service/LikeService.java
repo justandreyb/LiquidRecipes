@@ -38,30 +38,36 @@ public class LikeService extends EntityService<Like, LikeRepository> {
         return recipe.getLikes();
     }
 
-    public void addToFlavor(String id, Like like) throws InvalidEntityException, NotFoundException {
+    public Like addToFlavor(String id, Like like) throws InvalidEntityException, NotFoundException {
         checkEntity(like);
+        repository.save(like);
+
         val flavor = flavorService.get(id);
-
         flavor.getLikes().add(like);
-
         flavorService.update(flavor);
+
+        return like;
     }
 
-    public void addToNews(String id, Like like) throws InvalidEntityException, NotFoundException {
+    public Like addToNews(String id, Like like) throws InvalidEntityException, NotFoundException {
         checkEntity(like);
+        like = repository.save(like);
+
         val news = newsService.get(id);
-
         news.getLikes().add(like);
-
         newsService.update(news);
+
+        return like;
     }
 
-    public void addToRecipe(String id, Like like) throws InvalidEntityException, NotFoundException {
+    public Like addToRecipe(String id, Like like) throws InvalidEntityException, NotFoundException {
         checkEntity(like);
+        like = repository.save(like);
+
         val recipe = recipeService.get(id);
-
         recipe.getLikes().add(like);
-
         recipeService.update(recipe);
+
+        return like;
     }
 }

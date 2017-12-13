@@ -23,6 +23,9 @@ public class RecipeItem extends BaseEntity {
 
     @Override
     public boolean isValid() {
-        return false;
+        if (flavor == null) {
+            return false;
+        }
+        return true;
     }
 }

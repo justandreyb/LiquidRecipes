@@ -7,6 +7,7 @@ import com.justandreyb.liquid_recipes.mapper.FlavorMapper;
 import com.justandreyb.liquid_recipes.mapper.UserMapper;
 import com.justandreyb.liquid_recipes.service.FlavorService;
 import com.justandreyb.liquid_recipes.service.UserService;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,8 +39,9 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    void signUp(@RequestBody UserDto user) {
-        userService.signUp(userMapper.fromUserDto(user));
+    UserDto signUp(@RequestBody UserDto user) {
+        val account = userService.signUp(userMapper.fromUserDto(user));
+        return userMapper.toUserDto(account);
     }
 
     @PostMapping("/login")

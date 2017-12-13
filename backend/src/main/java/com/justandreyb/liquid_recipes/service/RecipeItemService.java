@@ -21,12 +21,14 @@ public class RecipeItemService extends EntityService<RecipeItem, RecipeItemRepos
         return recipe.getFlavors();
     }
 
-    public void addToRecipe(String id, RecipeItem recipeItem) throws InvalidEntityException, NotFoundException {
+    public RecipeItem addToRecipe(String id, RecipeItem recipeItem) throws InvalidEntityException, NotFoundException {
         checkEntity(recipeItem);
+        recipeItem = repository.save(recipeItem);
 
         val recipe = recipeService.get(id);
         recipe.getFlavors().add(recipeItem);
-
         recipeService.update(recipe);
+
+        return recipeItem;
     }
 }

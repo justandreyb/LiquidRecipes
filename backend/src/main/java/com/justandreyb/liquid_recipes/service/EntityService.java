@@ -24,13 +24,13 @@ public abstract class EntityService<T extends BaseEntity, R extends JpaRepositor
     @Autowired
     protected ResourcesConfig resourceService;
 
-    public void add(T entity) throws InvalidEntityException {
+    public T add(T entity) throws InvalidEntityException {
         checkEntity(entity);
-        repository.save(entity);
+        return (T) repository.save(entity);
     }
 
-    public void update(T entity) throws InvalidEntityException {
-        add(entity);
+    public T update(T entity) throws InvalidEntityException {
+        return add(entity);
     }
 
     public T get(String entityId) throws NotFoundException {

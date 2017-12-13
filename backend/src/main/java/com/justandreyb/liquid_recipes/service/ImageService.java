@@ -39,30 +39,36 @@ public class ImageService extends EntityService<Image, ImageRepository> {
         return image;
     }
 
-    public void addToFlavor(String id, Image image) throws InvalidEntityException, NotFoundException {
+    public Image addToFlavor(String id, Image image) throws InvalidEntityException, NotFoundException {
         checkEntity(image);
+        image = repository.save(image);
+
         val flavor = flavorService.get(id);
-
         flavor.setImage(image);
-
         flavorService.update(flavor);
+
+        return image;
     }
 
-    public void addToNews(String id, Image image) throws InvalidEntityException, NotFoundException {
+    public Image addToNews(String id, Image image) throws InvalidEntityException, NotFoundException {
         checkEntity(image);
+        image = repository.save(image);
+
         val news = newsService.get(id);
-
         news.setImage(image);
-
         newsService.update(news);
+
+        return image;
     }
 
-    public void addToRecipe(String id, Image image) throws InvalidEntityException, NotFoundException {
+    public Image addToRecipe(String id, Image image) throws InvalidEntityException, NotFoundException {
         checkEntity(image);
+        image = repository.save(image);
+
         val recipe = recipeService.get(id);
-
         recipe.setImage(image);
-
         recipeService.update(recipe);
+
+        return image;
     }
 }
