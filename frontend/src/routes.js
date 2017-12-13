@@ -3,14 +3,12 @@ import {Switch, Route} from "react-router-dom";
 
 import {
   App,
-  Home,
   News,
   NewsSingle,
   Flavors,
   Flavor,
   Recipes,
   Recipe,
-  // User,
   UserFlavors,
   UserRecipes
 } from "./containers";

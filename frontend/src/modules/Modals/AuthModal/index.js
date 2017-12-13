@@ -24,8 +24,7 @@ export const reducer = (state = initialState, action) => {
       .set("showModal", true);
 
   case AUTH_MODAL_CLOSE:
-    return state
-      .set("showModal", false);
+    return initialState;
 
   case AUTH_MODAL_SWITCH_TO_SIGN_IN:
     return state

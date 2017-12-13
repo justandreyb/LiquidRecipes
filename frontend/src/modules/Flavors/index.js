@@ -21,7 +21,6 @@ export const FLAVORS_URL = "/flavors";
 
 const initialState = fromJS({
   flavors: [],
-  top    : [],
   error  : null,
   loading: false
 });
@@ -60,7 +59,7 @@ export const reducer = (state = initialState, action) => {
 
   case GET_TOP_FLAVORS_SUCCESS:
     return state
-      .set("top", action.payload)
+      .set("flavors", action.payload)
       .set("loading", false)
       .set("error", null);
 
@@ -70,10 +69,7 @@ export const reducer = (state = initialState, action) => {
       .set("error", action.payload);
 
   case CLEAR_TOP_FLAVORS_WORKSPACE:
-    return state
-      .set("top", initialState.top)
-      .set("loading", false)
-      .set("error", null);
+    return initialState;
 
   default:
     return state;
@@ -146,4 +142,4 @@ export function* watchFlavorsActions() {
 
 export const selectFlavorsContainer = (state) => state.containers.flavors.list;
 export const selectFlavorsData = (state) => selectFlavorsContainer(state).get("flavors");
-export const selectTopFlavorsData = (state) => selectFlavorsContainer(state).get("top");
+export const selectTopFlavorsData = (state) => selectFlavorsContainer(state).get("flavors");

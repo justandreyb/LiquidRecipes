@@ -213,4 +213,4 @@ export function* watchFlavorActions() {
 // ------------------ SELECTORS -------------------- //
 
 export const selectFlavorContainer = (state) => state.containers.flavors.target;
-export const selectFlavorData = (state) => selectFlavorContainer(state).get("flavor");
+export const selectFlavorData = (state) => selectFlavorContainer(state).flavor;

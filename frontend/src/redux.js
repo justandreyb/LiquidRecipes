@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import {routerReducer} from "react-router-redux";
+import {reducer as formReducer} from "redux-form";
 
 import {reducer as appReducer} from "./modules/App";
 import {reducer as accountReducer} from "./modules/Account";
@@ -75,7 +76,8 @@ const containersReducer = {
 const globalReducer =
   combineReducers({
     ...containersReducer,
-    route: routerReducer
+    route: routerReducer,
+    form : formReducer
   })
 ;
 

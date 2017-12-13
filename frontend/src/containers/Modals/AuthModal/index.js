@@ -12,10 +12,19 @@ import {
   selectStateOfSwitcher,
   switchToSignIn,
   switchToSignUp
-} from "../../../modules/Modals/AuthModal/index";
+} from "../../../modules/Modals/AuthModal";
+
+import {
+  signIn,
+  signUp
+} from "../../../modules/Account"
+
+import "../../../styles/react-bootstrap-switch.min.css"
 
 import Switch from "react-bootstrap-switch";
-import "../../../styles/react-bootstrap-switch.min.css"
+import {LoginForm, RegistrationForm} from "../../../components";
+import {createNewsComment, deleteNewsComment} from "../../../modules/NewsComments";
+import {createNewsLike, deleteNewsLike} from "../../../modules/NewsLikes";
 
 class AuthModalContainer extends Component {
 
@@ -24,6 +33,10 @@ class AuthModalContainer extends Component {
       this.props.actions.switchToSignUp();
     else
       this.props.actions.switchToSignIn();
+  }
+
+  handleSignIn(data) {
+    console.log(data);
   }
 
   /* TODO: Create auth forms */
@@ -46,15 +59,18 @@ class AuthModalContainer extends Component {
           <Modal.Body>
             <div>
               { this.props.switcherState === true &&
-                <label>Registration form</label>
+                <RegistrationForm
+                  onSubmit={this.handleSignIn}
+                />
               }
               { this.props.switcherState === false &&
-                <label>Login form</label>
+                <LoginForm
+                  onSubmit={this.handleSignIn}
+                />
               }
             </div>
           </Modal.Body>
           <Modal.Footer>
-
             <Button onClick={this.props.actions.closeAuthModal}>Close</Button>
           </Modal.Footer>
         </Modal>
@@ -74,6 +90,10 @@ export const AuthModal = connect(
       closeAuthModal,
       switchToSignIn,
       switchToSignUp
+    }, dispatch),
+    interaction: bindActionCreators({
+      signIn,
+      signUp
     }, dispatch)
   })
 )(AuthModalContainer);

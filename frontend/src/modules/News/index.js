@@ -21,7 +21,6 @@ export const NEWS_URL = "/news";
 
 const initialState = fromJS({
   news   : [],
-  top    : [],
   error  : null,
   loading: false
 });
@@ -60,7 +59,7 @@ export const reducer = (state = initialState, action) => {
 
   case GET_TOP_NEWS_SUCCESS:
     return state
-      .set("top", action.payload)
+      .set("news", action.payload)
       .set("loading", false)
       .set("error", null);
 
@@ -70,11 +69,7 @@ export const reducer = (state = initialState, action) => {
       .set("error", action.payload);
 
   case CLEAR_TOP_NEWS_WORKSPACE:
-    return state
-      .set("news", state.news)
-      .set("top", initialState.top)
-      .set("loading", false)
-      .set("error", null);
+    return initialState;
 
   default:
     return state;
@@ -146,4 +141,4 @@ export function* watchNewsActions() {
 
 export const selectNewsContainer = (state) => state.containers.news.list;
 export const selectNewsData = (state) => selectNewsContainer(state).get("news");
-export const selectTopNewsData = (state) => selectNewsContainer(state).get("top");
+export const selectTopNewsData = (state) => selectNewsContainer(state).get("news");

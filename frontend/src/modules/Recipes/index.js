@@ -21,7 +21,6 @@ export const RECIPES_URL = "/recipes";
 
 const initialState = fromJS({
   recipes: [],
-  top    : [],
   error  : null,
   loading: false
 });
@@ -60,7 +59,7 @@ export const reducer = (state = initialState, action) => {
 
   case GET_TOP_RECIPES_SUCCESS:
     return state
-      .set("top", action.payload)
+      .set("recipes", action.payload)
       .set("loading", false)
       .set("error", null);
 
@@ -70,10 +69,7 @@ export const reducer = (state = initialState, action) => {
       .set("error", action.payload);
 
   case CLEAR_TOP_RECIPES_WORKSPACE:
-    return state
-      .set("top", initialState.top)
-      .set("loading", false)
-      .set("error", null);
+    return initialState;
 
   default:
     return state;
@@ -145,4 +141,4 @@ export function* watchRecipesActions() {
 
 export const selectRecipesContainer = (state) => state.containers.recipes.list;
 export const selectRecipesData = (state) => selectRecipesContainer(state).get("recipes");
-export const selectTopRecipesData = (state) => selectRecipesContainer(state).get("top");
+export const selectTopRecipesData = (state) => selectRecipesContainer(state).get("recipes");

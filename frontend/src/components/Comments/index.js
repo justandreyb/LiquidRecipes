@@ -3,31 +3,25 @@ import React, {Component} from "react";
 import {CommentComponent} from "../Comment";
 
 class Comments extends Component {
-  static createListItem(element) {
+  static createListItem(comment) {
     return (
-      <li key={element.id} className="well col-sm-4">
+      <li key={comment.id} className="well col-sm-4">
         <CommentComponent
-          comment={element}
+          comment={comment}
         />
       </li>
     );
   }
 
-  showComments() {
+  render() {
     let code;
 
-    if (this.props.elements.size === 0)
+    if (this.props.comments.size === 0)
       code = <label>No comments</label>;
     else
-      code = <ul>{this.props.elements.map(Comments.createListItem)}</ul>;
+      code = <ul>{this.props.comments.map(Comments.createListItem)}</ul>;
 
     return code;
-  }
-
-  render() {
-    return (
-      this.showComments()
-    );
   }
 }
 

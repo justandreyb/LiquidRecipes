@@ -20,3 +20,6 @@ export {NewsCarouselComponent} from "./Carousel/news"
 export {FlavorsCarouselComponent} from "./Carousel/flavors"
 export {RecipesCarouselComponent} from "./Carousel/recipes"
 
+export {LoginForm} from "./Auth/login"
+export {RegistrationForm} from "./Auth/registration"
+

@@ -116,7 +116,7 @@ export const reducer = (state = initialState, action) => {
 
 // ----------------- ACTIONS ----------------------- //
 
-export const createAccountRequest = (data) => ({
+export const signUp = (data) => ({
   type   : SIGN_UP_REQUEST,
   payload: data
 });
@@ -132,10 +132,13 @@ export const createAccountFail = (error) => ({
 });
 
 
-export const getAccountRequest = (data) => ({
-  type   : SIGN_IN_REQUEST,
-  payload: data
-});
+export const signIn = (data) => {
+  console.log("GJ");
+  return ({
+    type   : SIGN_IN_REQUEST,
+    payload: data
+  });
+};
 
 export const getAccountSuccess = (data) => ({
   type   : SIGN_IN_SUCCESS,
@@ -149,7 +152,7 @@ export const getAccountFail = (error) => ({
 });
 
 
-export const updateAccountRequest = (data) => ({
+export const updateAccount = (data) => ({
   type   : UPDATE_ACCOUNT_REQUEST,
   payload: data
 });
@@ -165,7 +168,7 @@ export const updateAccountFail = (error) => ({
 });
 
 
-export const deleteAccountRequest = (id) => ({
+export const deleteAccount = (id) => ({
   type   : DELETE_ACCOUNT_REQUEST,
   payload: id
 });
@@ -189,27 +192,27 @@ export const cleanAccountData = () => ({
 
 const url = "/account";
 
-function* createAccount(action) {
+function* createAccountRequest(action) {
   yield sendElement(url, action.payload, createAccountSuccess, createAccountFail);
 }
 
-function* getAccount(action) {
+function* getAccountRequest(action) {
   yield getElement(url, action.payload, getAccountSuccess, getAccountFail);
 }
 
-function* updateAccount(action) {
+function* updateAccountRequest(action) {
   yield updateElement(url, action.payload.id, action.payload, updateAccountSuccess, updateAccountFail);
 }
 
-function* deleteAccount(action) {
+function* deleteAccountRequest(action) {
   yield deleteElement(url, action.payload, deleteAccountSuccess, deleteAccountFail);
 }
 
 export function* watchAccountActions() {
-  yield takeLatest(SIGN_UP_REQUEST, createAccount);
-  yield takeLatest(SIGN_IN_REQUEST, getAccount);
-  yield takeEvery(UPDATE_ACCOUNT_REQUEST, updateAccount);
-  yield takeLatest(DELETE_ACCOUNT_REQUEST, deleteAccount);
+  yield takeLatest(SIGN_UP_REQUEST, createAccountRequest);
+  yield takeLatest(SIGN_IN_REQUEST, getAccountRequest);
+  yield takeEvery(UPDATE_ACCOUNT_REQUEST, updateAccountRequest);
+  yield takeLatest(DELETE_ACCOUNT_REQUEST, deleteAccountRequest);
 }
 
 // ------------------ SELECTORS -------------------- //
