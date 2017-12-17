@@ -213,9 +213,4 @@ export function* watchFlavorActions() {
 // ------------------ SELECTORS -------------------- //
 
 export const selectFlavorContainer = (state) => state.containers.flavors.target;
-export const selectFlavorData = (state) => selectFlavorContainer(state).flavor;
-export const selectEmptyFlavorData = () => ({
-  name       : "",
-  description: "",
-  type       : ""
-});
+export const selectFlavorData = (state) => selectFlavorContainer(state).flavor.get("flavor");

@@ -5,8 +5,7 @@ const serverURL = "http://127.0.0.1:8080/storage";
 
 export function* getElements(url, successHandler, failHandler) {
   try {
-    console.log("Get to :");
-    console.log(serverURL + url);
+    console.log("Get to : " + serverURL + url);
     const response = yield call(axios, serverURL + url, {
       method : "GET",
       mode   : "no-cors",
@@ -27,8 +26,7 @@ export function* getElements(url, successHandler, failHandler) {
 
 export function* getElement(url, id, successHandler, failHandler) {
   try {
-    console.log("Get to :");
-    console.log(serverURL + url + "/" + id);
+    console.log("Get to : " + serverURL + url + "/" + id);
     const response = yield call(axios, serverURL + url + "/" + id, {
       method : "GET",
       mode   : "no-cors",
@@ -68,8 +66,7 @@ export function* sendElement(url, data, successHandler, failHandler) {
 
 export function* updateElement(url, id, data, successHandler, failHandler) {
   try {
-    console.log("Update to :");
-    console.log(serverURL + url + "/" + id);
+    console.log("Update to : " + serverURL + url + "/" + id);
     const response = yield call(axios, serverURL + url + "/" + id, {
       method : "POST",
       mode   : "no-cors",
@@ -91,8 +88,7 @@ export function* updateElement(url, id, data, successHandler, failHandler) {
 
 export function* deleteElement(url, id, successHandler, failHandler) {
   try {
-    console.log("Delete to :");
-    console.log(serverURL + url + "/" + id);
+    console.log("Delete to : " + serverURL + url + "/" + id);
     const response = yield call(axios, serverURL + url + "/" + id, {
       method : "DELETE",
       mode   : "no-cors",

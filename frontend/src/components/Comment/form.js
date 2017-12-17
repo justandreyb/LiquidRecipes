@@ -1,29 +1,23 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form"
+import { Field, reduxForm } from "redux-form";
 
 const CommentForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name">Name</label>
-        <Field name="name" component="input" type="name"/>
+        <label>Notes</label>
+        <div>
+          <Field name="text" component="textarea" />
+        </div>
       </div>
       <div>
-        <label htmlFor="email">Email</label>
-        <Field name="email" component="input" type="email"/>
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <Field name="password" component="input" type="password"/>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Sign up</button>
+        <button type="submit" disabled={pristine || submitting}>Submit</button>
       </div>
     </form>
-  )
+  );
 };
 
 export const CommentFormComponent = reduxForm({
-  form: "comment"
+  form: "commentForm" // a unique identifier for this form
 })(CommentForm);

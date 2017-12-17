@@ -4,6 +4,12 @@ import {CommentsComponent} from "../Comments";
 import {LikeComponent} from "../Like";
 
 class Flavor extends Component {
+
+  checkAndSend(data) {
+    console.log(this.props.flavor);
+    this.props.interaction.createFlavorComment(this.props.flavor.id, data);
+  }
+
   render() {
     return (
       <div>
@@ -14,7 +20,7 @@ class Flavor extends Component {
           />
         </div>
         <CommentFormComponent
-          onCreate={this.props.interaction.createFlavorComment}
+          onSubmit={this.checkAndSend.bind(this)}
         />
         <CommentsComponent
           comments={this.props.comments}

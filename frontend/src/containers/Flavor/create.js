@@ -4,9 +4,14 @@ import { connect } from "react-redux";
 
 import {FlavorFormComponent} from "../../components";
 
-import {createFlavor, selectEmptyFlavorData} from "../../modules/Flavor"
+import {createFlavor} from "../../modules/Flavor"
 
 class FlavorCreateContainer extends Component {
+
+  checkAndSend(data) {
+    console.log(data);
+    this.props.actions.createFlavor(data);
+  }
 
   render() {
     return (
@@ -15,8 +20,7 @@ class FlavorCreateContainer extends Component {
           <h3>Create new flavor</h3>
           <div className="row">
             <FlavorFormComponent
-              flavor={this.props.flavor}
-              target={this.props.actions.createFlavor}
+              onSubmit={this.checkAndSend.bind(this)}
             />
           </div>
         </div>
@@ -26,9 +30,7 @@ class FlavorCreateContainer extends Component {
 }
 
 export const FlavorCreate = connect(
-  () => ({
-    flavor: selectEmptyFlavorData()
-  }),
+  (store) => ({}),
   (dispatch) => ({
     actions: bindActionCreators({
       createFlavor

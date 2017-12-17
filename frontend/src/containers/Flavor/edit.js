@@ -8,6 +8,11 @@ import {selectFlavorData, updateFlavor} from "../../modules/Flavor"
 
 class FlavorEditContainer extends Component {
 
+  checkAndSend(data) {
+    console.log(data);
+    this.props.actions.updateFlavor(data);
+  }
+
   render() {
     return (
       <div className="container col-sm-10">
@@ -16,7 +21,7 @@ class FlavorEditContainer extends Component {
           <div className="row">
             <FlavorFormComponent
               flavor={this.props.flavor}
-              target={this.props.actions.updateFlavor}
+              target={this.checkAndSend.bind(this)}
             />
           </div>
         </div>
