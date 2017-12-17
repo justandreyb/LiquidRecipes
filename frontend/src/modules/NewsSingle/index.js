@@ -213,4 +213,4 @@ export function* watchNewsSingleActions() {
 // ------------------ SELECTORS -------------------- //
 
 export const selectNewsSingleContainer = (state) => state.containers.news.target;
-export const selectNewsSingleData = (state) => selectNewsSingleContainer(state).news;
+export const selectNewsSingleData = (state) => selectNewsSingleContainer(state).news.get("news");

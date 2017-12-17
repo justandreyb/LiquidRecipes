@@ -4,7 +4,7 @@ class Like extends Component {
   render() {
     return (
       <div className="container">
-        <label>{this.props.likes.size}</label>
+        <label>Likes: {this.props.likes.length === 0 ? "No" : this.props.likes.length}</label>
       </div>
     );
   }

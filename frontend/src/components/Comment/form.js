@@ -6,7 +6,7 @@ const CommentForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Notes</label>
+        <label>Create comment</label>
         <div>
           <Field name="text" component="textarea" />
         </div>

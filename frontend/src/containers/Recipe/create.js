@@ -2,24 +2,20 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import {FlavorFormComponent} from "../../components";
+import {RecipeFormComponent} from "../../components";
 
-import {createFlavor} from "../../modules/Flavor"
+import {getFlavors, selectFlavorsData} from "../../modules/Flavors";
+import {createRecipe} from "../../modules/Recipe";
 
-import {
-  getManufacturers,
-  selectManufacturersData
-} from "../../modules/Manufacturers"
-
-class FlavorCreateContainer extends Component {
+class RecipeCreateContainer extends Component {
 
   componentWillMount() {
-    this.props.actions.getManufacturers()
+    this.props.actions.getFlavors()
   }
 
   checkAndSend(data) {
     console.log(data);
-    this.props.actions.createFlavor(data);
+    this.props.actions.createRecipe(data);
   }
 
   render() {
@@ -28,9 +24,9 @@ class FlavorCreateContainer extends Component {
         <div className="text-center">
           <h3>Create new flavor</h3>
           <div className="row">
-            <FlavorFormComponent
+            <RecipeFormComponent
               onSubmit={this.checkAndSend.bind(this)}
-              manufacturers={this.props.manufacturers}
+              flavors={this.props.flavors}
             />
           </div>
         </div>
@@ -39,14 +35,14 @@ class FlavorCreateContainer extends Component {
   }
 }
 
-export const FlavorCreate = connect(
+export const RecipeCreate = connect(
   (store) => ({
-    manufacturers: selectManufacturersData(store)
+    flavors: selectFlavorsData(store)
   }),
   (dispatch) => ({
     actions: bindActionCreators({
-      createFlavor,
-      getManufacturers
+      createRecipe,
+      getFlavors
     }, dispatch)
   })
-)(FlavorCreateContainer);
+)(RecipeCreateContainer);

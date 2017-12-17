@@ -6,7 +6,7 @@ class Recipes extends Component {
   render() {
     let code;
 
-    if (this.props.recipes.size === 0)
+    if (this.props.recipes.length === 0)
       code = <label>Nothing to show...</label>;
     else
       code = <ul>{this.props.recipes.map((recipe) => this.createListItem(recipe))}</ul>;

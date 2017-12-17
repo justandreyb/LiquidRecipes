@@ -213,4 +213,4 @@ export function* watchRecipeActions() {
 // ------------------ SELECTORS -------------------- //
 
 export const selectRecipeContainer = (state) => state.containers.recipes.target;
-export const selectRecipeData = (state) => selectRecipeContainer(state).get("recipe");
+export const selectRecipeData = (state) => selectRecipeContainer(state).recipe.get("recipe");

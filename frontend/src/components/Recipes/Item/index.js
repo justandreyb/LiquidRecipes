@@ -1,10 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
-const imageStyle = {
-  width: "100%"
-};
-
 class RecipeItem extends Component {
   render() {
     return (

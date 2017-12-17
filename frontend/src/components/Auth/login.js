@@ -4,7 +4,7 @@ import { Field, reduxForm } from "redux-form"
 const Login = (props) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <div>
         <label htmlFor="email">Email</label>
         <Field name="email" component="input" type="email"/>
@@ -14,7 +14,7 @@ const Login = (props) => {
         <Field name="password" component="input" type="password"/>
       </div>
       <div>
-        <button type="submit" disabled={pristine || submitting}>Sign in</button>
+        <button type="submit" onSubmit={handleSubmit} disabled={pristine || submitting}>Sign in</button>
       </div>
     </form>
   )

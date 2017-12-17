@@ -5,8 +5,13 @@ import { connect } from "react-redux";
 import {FlavorFormComponent} from "../../components";
 
 import {selectFlavorData, updateFlavor} from "../../modules/Flavor"
+import {getManufacturers, selectManufacturersData} from "../../modules/Manufacturers";
 
 class FlavorEditContainer extends Component {
+
+  componentWillMount() {
+    this.props.actions.getManufacturers()
+  }
 
   checkAndSend(data) {
     console.log(data);
@@ -22,6 +27,7 @@ class FlavorEditContainer extends Component {
             <FlavorFormComponent
               flavor={this.props.flavor}
               target={this.checkAndSend.bind(this)}
+              manufacturers={this.props.manufacturers}
             />
           </div>
         </div>
@@ -32,11 +38,13 @@ class FlavorEditContainer extends Component {
 
 export const FlavorEdit = connect(
   (store) => ({
-    flavor: selectFlavorData(store)
+    flavor       : selectFlavorData(store),
+    manufacturers: selectManufacturersData(store)
   }),
   (dispatch) => ({
     actions: bindActionCreators({
-      updateFlavor
+      updateFlavor,
+      getManufacturers
     }, dispatch)
   })
 )(FlavorEditContainer);

@@ -6,21 +6,21 @@ class News extends Component {
   render() {
     let code;
 
-    if (this.props.news.size === 0)
+    if (this.props.news.length === 0)
       code = <label>Nothing to show...</label>;
     else
-      code = <ul>{this.props.news.map((newsSingle) => this.createListItem(newsSingle))}</ul>;
+      code = <div>{this.props.news.map((newsSingle) => this.createListItem(newsSingle))}</div>;
 
     return code;
   }
 
   createListItem(news) {
     return (
-      <li key={news.id} className="well col-sm-4">
+      <div key={news.id} className="well col-sm-4">
         <NewsSingleItemComponent
           news={news}
         />
-      </li>
+      </div>
     );
   }
 }

@@ -38,17 +38,17 @@ class FlavorContainer extends Component {
 
   render() {
     return (
-      <div className="container col-sm-10">
-        <div className="text-center">
-          <h3>Entities</h3>
-          <div className="row">
-            <FlavorComponent
-              flavor     ={this.props.flavor}
-              comments   ={this.props.comments}
-              likes      ={this.props.likes}
-              interaction={this.props.interaction}
-            />
-          </div>
+      <div className="container">
+        <h3>Flavors</h3>
+        <hr/>
+
+        <div className="row">
+          <FlavorComponent
+            flavor     ={this.props.flavor}
+            comments   ={this.props.comments}
+            likes      ={this.props.likes}
+            interaction={this.props.interaction}
+          />
         </div>
       </div>
     )

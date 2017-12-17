@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Carousel} from "react-bootstrap";
+import Link from "react-router-dom/es/Link";
 
 class NewsCarousel extends Component {
   render() {
@@ -16,10 +17,9 @@ class NewsCarousel extends Component {
   createListItem(news) {
     return (
       <Carousel.Item>
-        <img width={900} height={500} alt="900x500" src="/assets/carousel.png" />
+        <img width={900} height={500} alt="900x500" src={news.image.path} />
         <Carousel.Caption>
-          <h3>{news.title}</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3><Link to={"/news/" + news.id}>{news.title}</Link></h3>
         </Carousel.Caption>
       </Carousel.Item>
     );

@@ -17,3 +17,5 @@ export {FlavorEdit} from "./Flavor/edit";
 
 export {Recipes} from "./Recipes";
 export {Recipe} from "./Recipe";
+export {RecipeCreate} from "./Recipe/create";
+export {RecipeEdit} from "./Recipe/edit";

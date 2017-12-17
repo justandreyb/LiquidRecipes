@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Carousel} from "react-bootstrap";
+import Link from "react-router-dom/es/Link";
 
 class RecipesCarousel extends Component {
   render() {
@@ -16,10 +17,10 @@ class RecipesCarousel extends Component {
   createListItem(recipe) {
     return (
       <Carousel.Item>
-        <img width={900} height={500} alt="900x500" src="/assets/carousel.png" />
+        <img width={900} height={500} alt="900x500" src={recipe.image.path} />
         <Carousel.Caption>
-          <h3>{recipe.name}</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3><Link to={"/recipes/" + recipe.id}>{recipe.name}</Link></h3>
+          <p>{recipe.description}</p>
         </Carousel.Caption>
       </Carousel.Item>
     );

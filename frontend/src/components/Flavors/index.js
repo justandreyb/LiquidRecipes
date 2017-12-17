@@ -6,21 +6,21 @@ class Flavors extends Component {
   render() {
     let code;
 
-    if (this.props.flavors.size === 0)
+    if (this.props.flavors.length === 0)
       code = <label>Nothing to show...</label>;
     else
-      code = <ul>{this.props.flavors.map((flavor) => this.createListItem(flavor))}</ul>;
+      code = <div>{this.props.flavors.map((flavor) => this.createListItem(flavor))}</div>;
 
     return code;
   }
 
   createListItem(flavor) {
     return (
-      <li key={flavor.id} className="well col-sm-4">
+      <div key={flavor.id} className="well col-sm-4">
         <FlavorItemComponent
           flavor={flavor}
         />
-      </li>
+      </div>
     );
   }
 }

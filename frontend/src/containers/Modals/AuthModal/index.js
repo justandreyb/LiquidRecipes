@@ -23,8 +23,6 @@ import "../../../styles/react-bootstrap-switch.min.css"
 
 import Switch from "react-bootstrap-switch";
 import {LoginForm, RegistrationForm} from "../../../components";
-import {createNewsComment, deleteNewsComment} from "../../../modules/NewsComments";
-import {createNewsLike, deleteNewsLike} from "../../../modules/NewsLikes";
 
 class AuthModalContainer extends Component {
 
@@ -38,8 +36,6 @@ class AuthModalContainer extends Component {
   handleSignIn(data) {
     console.log(data);
   }
-
-  /* TODO: Create auth forms */
 
   render() {
     return (

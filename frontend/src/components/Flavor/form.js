@@ -2,7 +2,8 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 const FlavorForm = (props) => {
-  const { handleSubmit, pristine, reset, submitting, flavor } = props;
+  const { handleSubmit, pristine, submitting, flavor, manufacturers } = props;
+  console.log(manufacturers);
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -23,57 +24,33 @@ const FlavorForm = (props) => {
             name="description"
             component="input"
             type="textarea"
+            placeholder={flavor == null ? "" : flavor.description}
           />
         </div>
       </div>
       <div>
-        <label>Sex</label>
+        <label>Manufacturer</label>
         <div>
-          <label>
-            <Field name="sex" component="input" type="radio" value="male" />
-            {" "}
-            Male
-          </label>
-          <label>
-            <Field name="sex" component="input" type="radio" value="female" />
-            {" "}
-            Female
-          </label>
-        </div>
-      </div>
-      <div>
-        <label>Favorite Color</label>
-        <div>
-          <Field name="favoriteColor" component="select">
-            <option />
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
+          <Field name="manufacturer" component="select">
+            {
+              manufacturers.map((manufacturer) =>
+                <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>
+              )
+            }
           </Field>
         </div>
       </div>
       <div>
-        <label htmlFor="employed">Employed</label>
+        <label>Flavor type</label>
         <div>
-          <Field
-            name="employed"
-            id="employed"
-            component="input"
-            type="checkbox"
-          />
+          <Field name="type" component="select">
+            <option value="Fruit">Fruit</option>
+            <option value="Tobacco">Tobacco</option>
+          </Field>
         </div>
       </div>
       <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea" />
-        </div>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
+        <button type="submit" disabled={pristine || submitting}>Save</button>
       </div>
     </form>
   );
