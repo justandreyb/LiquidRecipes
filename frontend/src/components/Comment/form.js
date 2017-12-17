@@ -1,10 +1,10 @@
-import React from "react"
+import React from "react";
 import { Field, reduxForm } from "redux-form"
 
-const Registration = (props) => {
+const CommentForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
-    <form onSubmit={console.log("Here!")}>
+    <form>
       <div>
         <label htmlFor="name">Name</label>
         <Field name="name" component="input" type="name"/>
@@ -24,6 +24,6 @@ const Registration = (props) => {
   )
 };
 
-export const RegistrationForm = reduxForm({
-  form: "signUp"
-})(Registration);
+export const CommentFormComponent = reduxForm({
+  form: "comment"
+})(CommentForm);

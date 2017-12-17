@@ -12,6 +12,8 @@ export {NewsSingle} from "./NewsSingle";
 
 export {Flavors} from "./Flavors";
 export {Flavor} from "./Flavor";
+export {FlavorCreate} from "./Flavor/create";
+export {FlavorEdit} from "./Flavor/edit";
 
 export {Recipes} from "./Recipes";
 export {Recipe} from "./Recipe";

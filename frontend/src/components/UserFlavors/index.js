@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import {FlavorItemComponent} from "../Flavors/Item";
 
-class UserRecipes extends Component {
+class UserFlavors extends Component {
   render() {
     let code;
 
@@ -26,4 +26,4 @@ class UserRecipes extends Component {
   }
 }
 
-export const UserRecipesComponent = UserRecipes;
+export const UserFlavorsComponent = UserFlavors;
