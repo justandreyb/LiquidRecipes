@@ -9,10 +9,7 @@ import {createNewsSingle} from "../../modules/NewsSingle";
 class NewsCreateContainer extends Component {
 
   checkAndSend(data) {
-    console.log(data);
-
-    // this.props.actions.createNewsSingle(data);
-
+    this.props.actions.createNewsSingle(data);
   }
 
   render() {

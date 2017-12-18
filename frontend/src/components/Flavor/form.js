@@ -31,7 +31,7 @@ const FlavorForm = (props) => {
       <div>
         <label>Manufacturer</label>
         <div>
-          <Field name="manufacturer" component="select">
+          <Field name="manufacturerId" component="select">
             {
               manufacturers.map((manufacturer) =>
                 <option key={manufacturer.id} value={manufacturer.id}>{manufacturer.name}</option>

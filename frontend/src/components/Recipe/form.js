@@ -21,7 +21,7 @@ const renderItems = ({flavors, fields, meta: { touched, error, submitFailed } })
         <div>
           <label>Flavor</label>
           <div>
-            <Field name={`${item}.manufacturer`} component="select" validate={required}>
+            <Field name={`${item}.flavorId`} component="select" validate={required}>
               {
                 flavors.map((flavor) =>
                   <option key={flavor.id} value={flavor.id}>{flavor.name}</option>
@@ -51,7 +51,6 @@ const renderItems = ({flavors, fields, meta: { touched, error, submitFailed } })
               parse={(value) => Number(value)}
               name={`${item}.drops`}
               component="input"
-              step="0.1"
               type="number"
             />
           </div>
@@ -146,7 +145,7 @@ const RecipeForm = (props) => {
         </div>
       </div>
 
-      <FieldArray validate={required} name="items" component={renderItems} flavors={flavors} />
+      <FieldArray validate={required} name="flavors" component={renderItems} flavors={flavors} />
 
       <div>
         <button type="submit" disabled={pristine || submitting}>Save</button>

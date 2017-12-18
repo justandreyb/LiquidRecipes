@@ -14,8 +14,7 @@ class RecipeCreateContainer extends Component {
   }
 
   checkAndSend(data) {
-    console.log(data);
-    // this.props.actions.createRecipe(data);
+    this.props.actions.createRecipe(data);
   }
 
   render() {
