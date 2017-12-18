@@ -5,12 +5,16 @@ import {
   App,
   News,
   NewsSingle,
+  NewsCreate,
+  NewsEdit,
   Flavors,
   Flavor,
   FlavorCreate,
   FlavorEdit,
   Recipes,
   Recipe,
+  RecipeCreate,
+  RecipeEdit,
   UserFlavors,
   UserRecipes
 } from "./containers";
@@ -21,7 +25,9 @@ export const routes =
     <Route exact path="/" component={App}/>
 
     <Route exact path="/news" component={News}/>
+    <Route exact path="/news/new" component={NewsCreate}/>
     <Route exact path="/news/:id" component={NewsSingle}/>
+    <Route exact path="/news/:id/edit" component={NewsEdit}/>
 
     <Route exact path="/flavors" component={Flavors}/>
     <Route exact path="/flavors/new" component={FlavorCreate}/>

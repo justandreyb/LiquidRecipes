@@ -9,6 +9,8 @@ export {UserRecipes} from "./UserRecipes";
 
 export {News} from "./News";
 export {NewsSingle} from "./NewsSingle";
+export {NewsCreate} from "./NewsSingle/create";
+export {NewsEdit} from "./NewsSingle/edit";
 
 export {Flavors} from "./Flavors";
 export {Flavor} from "./Flavor";

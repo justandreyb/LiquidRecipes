@@ -1,14 +1,75 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, FieldArray, reduxForm } from "redux-form";
+
+const required = (value) => value ? undefined : "Required";
+
+const renderItems = ({flavors, fields, meta: { touched, error, submitFailed } }) =>
+  <ul>
+    <li>
+      <button type="button" onClick={() => fields.push({})}>Add flavor</button>
+      {(touched || submitFailed) && error && <span>{error}</span>}
+    </li>
+    {fields.map((item, index) =>
+      <li key={index}>
+        <button
+          type="button"
+          title="Remove item"
+          onClick={() => fields.remove(index)}>
+          Remove item #{index + 1}
+        </button>
+        <h4>Item #{index + 1}</h4>
+        <div>
+          <label>Flavor</label>
+          <div>
+            <Field name={`${item}.manufacturer`} component="select" validate={required}>
+              {
+                flavors.map((flavor) =>
+                  <option key={flavor.id} value={flavor.id}>{flavor.name}</option>
+                )
+              }
+            </Field>
+          </div>
+        </div>
+        <div>
+          <label>Ml</label>
+          <div>
+            <Field
+              validate={required}
+              parse={(value) => Number(value)}
+              name={`${item}.ml`}
+              component="input"
+              step="0.1"
+              type="number"
+            />
+          </div>
+        </div>
+        <div>
+          <label>Drops</label>
+          <div>
+            <Field
+              validate={required}
+              parse={(value) => Number(value)}
+              name={`${item}.drops`}
+              component="input"
+              step="0.1"
+              type="number"
+            />
+          </div>
+        </div>
+      </li>
+    )}
+  </ul>
+;
 
 const RecipeForm = (props) => {
-  const { handleSubmit, pristine, submitting, flavor: recipe, flavors } = props;
+  const { handleSubmit, pristine, submitting, recipe, flavors } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name</label>
         <div>
           <Field
+            validate={required}
             name="name"
             component="input"
             type="text"
@@ -20,9 +81,10 @@ const RecipeForm = (props) => {
         <label>Description</label>
         <div>
           <Field
+            validate={required}
             name="description"
-            component="input"
-            type="textarea"
+            component="textarea"
+            type="text"
             placeholder={recipe == null ? "" : recipe.description}
           />
         </div>
@@ -31,9 +93,12 @@ const RecipeForm = (props) => {
         <label>PG</label>
         <div>
           <Field
+            validate={required}
+            parse={(value) => Number(value)}
             name="pg"
             component="input"
             type="number"
+            step="0.1"
             placeholder={recipe == null ? 50 : recipe.pg}
           />
         </div>
@@ -42,9 +107,12 @@ const RecipeForm = (props) => {
         <label>VG</label>
         <div>
           <Field
+            validate={required}
+            parse={(value) => Number(value)}
             name="vg"
             component="input"
             type="number"
+            step="0.1"
             placeholder={recipe == null ? 50 : recipe.vg}
           />
         </div>
@@ -53,9 +121,12 @@ const RecipeForm = (props) => {
         <label>Nicotine</label>
         <div>
           <Field
+            validate={required}
+            parse={(value) => Number(value)}
             name="nicotine"
             component="input"
             type="number"
+            step="0.1"
             placeholder={recipe == null ? 50 : recipe.nicotine}
           />
         </div>
@@ -64,26 +135,19 @@ const RecipeForm = (props) => {
         <label>Final amount</label>
         <div>
           <Field
+            validate={required}
+            parse={(value) => Number(value)}
             name="finalAmount"
             component="input"
             type="text"
+            step="0.1"
             placeholder={recipe == null ? 110 : recipe.finalAmount}
           />
         </div>
       </div>
 
-      <div>
-        <label>Flavors</label>
-        <div>
-          <Field name="flavors" component="select" multiple={true}>
-            {
-              flavors.map((flavor) =>
-                <option key={flavor.id} value={flavor.id}>{flavor.name}</option>
-              )
-            }
-          </Field>
-        </div>
-      </div>
+      <FieldArray validate={required} name="items" component={renderItems} flavors={flavors} />
+
       <div>
         <button type="submit" disabled={pristine || submitting}>Save</button>
       </div>

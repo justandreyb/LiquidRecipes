@@ -15,12 +15,12 @@ class RecipeCreateContainer extends Component {
 
   checkAndSend(data) {
     console.log(data);
-    this.props.actions.createRecipe(data);
+    // this.props.actions.createRecipe(data);
   }
 
   render() {
     return (
-      <div className="container col-sm-10">
+      <div className="container layout">
         <div className="text-center">
           <h3>Create new flavor</h3>
           <div className="row">
