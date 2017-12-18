@@ -18,16 +18,21 @@ public interface RecipeItemMapper {
     @Named("toRecipeItemDto")
     @Mappings({
         @Mapping(target = "flavor", qualifiedByName = "toFlavorDto"),
+        @Mapping(target = "flavorId", ignore = true),
         @Mapping(target = "ml", ignore = true),
         @Mapping(target = "drops", ignore = true)
     })
     RecipeItemDto toRecipeItemDto(RecipeItem recipeItem);
 
     @Named("toFullRecipeItemDto")
-    @Mapping(target = "flavor", qualifiedByName = "toFlavorDto")
+    @Mappings({
+        @Mapping(target = "flavor", qualifiedByName = "toFlavorDto"),
+        @Mapping(target = "flavorId", ignore = true)
+    })
     RecipeItemDto toFullRecipeItemDto(RecipeItem recipeItem);
 
     @Named("fromRecipeItemDto")
+    @Mapping(target = "flavor", ignore = true)
     RecipeItem fromRecipeItemDto(RecipeItemDto recipeItemDto);
 
     @Named("toRecipeItemDtos")

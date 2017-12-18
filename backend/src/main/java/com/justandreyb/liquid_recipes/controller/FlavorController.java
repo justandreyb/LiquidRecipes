@@ -4,14 +4,8 @@ import com.justandreyb.liquid_recipes.dto.CommentDto;
 import com.justandreyb.liquid_recipes.dto.FlavorDto;
 import com.justandreyb.liquid_recipes.dto.ImageDto;
 import com.justandreyb.liquid_recipes.dto.LikeDto;
-import com.justandreyb.liquid_recipes.mapper.CommentMapper;
-import com.justandreyb.liquid_recipes.mapper.FlavorMapper;
-import com.justandreyb.liquid_recipes.mapper.ImageMapper;
-import com.justandreyb.liquid_recipes.mapper.LikeMapper;
-import com.justandreyb.liquid_recipes.service.CommentService;
-import com.justandreyb.liquid_recipes.service.FlavorService;
-import com.justandreyb.liquid_recipes.service.ImageService;
-import com.justandreyb.liquid_recipes.service.LikeService;
+import com.justandreyb.liquid_recipes.mapper.*;
+import com.justandreyb.liquid_recipes.service.*;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +19,8 @@ public class FlavorController {
 
     @Autowired
     private FlavorService flavorService;
+    @Autowired
+    private ManufacturerService manufacturerService;
     @Autowired
     private CommentService commentService;
     @Autowired
@@ -79,13 +75,15 @@ public class FlavorController {
     @PostMapping
     FlavorDto addFlavor(@RequestBody FlavorDto flavorDto) {
         val flavor = flavorMapper.fromFlavorDto(flavorDto);
+        flavor.setManufacturer(manufacturerService.get(flavorDto.getManufacturerId()));
         return flavorMapper.toFlavorDto(flavorService.add(flavor));
     }
 
     @PostMapping("/{id}")
     FlavorDto updateFlavor(@RequestParam FlavorDto flavorDto) {
-        val flavor = flavorService.update(flavorMapper.fromFlavorDto(flavorDto));
-        return flavorMapper.toFlavorDto(flavor);
+        val flavor = flavorMapper.fromFlavorDto(flavorDto);
+        flavor.setManufacturer(manufacturerService.get(flavorDto.getManufacturerId()));
+        return flavorMapper.toFlavorDto(flavorService.update(flavor));
     }
 
     @PostMapping("/{id}/comments")

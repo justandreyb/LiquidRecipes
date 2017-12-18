@@ -8,10 +8,7 @@ import com.justandreyb.liquid_recipes.mapper.CommentMapper;
 import com.justandreyb.liquid_recipes.mapper.ImageMapper;
 import com.justandreyb.liquid_recipes.mapper.LikeMapper;
 import com.justandreyb.liquid_recipes.mapper.NewsMapper;
-import com.justandreyb.liquid_recipes.service.CommentService;
-import com.justandreyb.liquid_recipes.service.ImageService;
-import com.justandreyb.liquid_recipes.service.LikeService;
-import com.justandreyb.liquid_recipes.service.NewsService;
+import com.justandreyb.liquid_recipes.service.*;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +22,8 @@ public class NewsController {
 
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private CommentService commentService;
     @Autowired
@@ -78,8 +77,10 @@ public class NewsController {
 
     @PostMapping
     NewsDto addNews(@RequestBody NewsDto newsDto) {
-        val news = newsService.add(newsMapper.fromNewsDto(newsDto));
-        return newsMapper.toNewsDto(news);
+        val news = newsMapper.fromNewsDto(newsDto);
+        news.setImage(imageService.getPlaceholderImage());
+        news.setCreator(userService.getGuest());
+        return newsMapper.toNewsDto(newsService.add(news));
     }
 
     @PostMapping("/{id}")

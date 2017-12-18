@@ -20,6 +20,7 @@ public class RecipeDto extends DTO {
     private String description;
 
     private UserDto creator;
+    private String creatorId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date creationDate;
@@ -33,10 +34,14 @@ public class RecipeDto extends DTO {
     private double finalAmount;
 
     private List<RecipeItemDto> flavors;
+    private List<String> flavorsIds;
 
     private List<CommentDto> comments;
+    private List<String> commentsIds;
 
     private List<LikeDto> likes;
+    private List<String> likesIds;
 
     private ImageDto image;
+    private String imageId;
 }

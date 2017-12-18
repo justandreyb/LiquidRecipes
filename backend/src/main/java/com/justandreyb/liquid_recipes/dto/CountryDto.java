@@ -16,4 +16,5 @@ public class CountryDto extends DTO {
     private String code;
 
     private ImageDto image;
+    private String imageId;
 }

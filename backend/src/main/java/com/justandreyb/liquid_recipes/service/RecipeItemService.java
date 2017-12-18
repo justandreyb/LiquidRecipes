@@ -15,6 +15,8 @@ public class RecipeItemService extends EntityService<RecipeItem, RecipeItemRepos
 
     @Autowired
     private RecipeService recipeService;
+    @Autowired
+    private FlavorService flavorService;
 
     public Collection<RecipeItem> getAllByRecipe(String id) throws NotFoundException {
         val recipe = recipeService.get(id);

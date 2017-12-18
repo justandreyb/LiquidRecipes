@@ -1,6 +1,7 @@
 package com.justandreyb.liquid_recipes.controller;
 
 import com.justandreyb.liquid_recipes.dto.*;
+import com.justandreyb.liquid_recipes.entity.RecipeItem;
 import com.justandreyb.liquid_recipes.mapper.*;
 import com.justandreyb.liquid_recipes.service.*;
 import lombok.val;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/recipes")
@@ -17,6 +20,8 @@ public class RecipeController {
     @Autowired
     private RecipeService recipeService;
     @Autowired
+    private UserService userService;
+    @Autowired
     private RecipeItemService recipeItemService;
     @Autowired
     private CommentService commentService;
@@ -24,6 +29,8 @@ public class RecipeController {
     private LikeService likeService;
     @Autowired
     private ImageService imageService;
+    @Autowired
+    private FlavorService flavorService;
 
     @Autowired
     private RecipeMapper recipeMapper;
@@ -78,8 +85,19 @@ public class RecipeController {
 
     @PostMapping
     RecipeDto addRecipe(@RequestBody RecipeDto recipeDto) {
-        val recipe = recipeService.add(recipeMapper.fromRecipeDto(recipeDto));
-        return recipeMapper.toRecipeDto(recipe);
+        val recipe = recipeMapper.fromRecipeDto(recipeDto);
+        recipe.setImage(imageService.getPlaceholderImage());
+        recipe.setCreator(userService.getGuest());
+        Set<RecipeItem> items = recipeDto.getFlavors().stream().map((recipeItemDto -> {
+            RecipeItem item = new RecipeItem();
+            item.setDrops(recipeItemDto.getDrops());
+            item.setMl(recipeItemDto.getMl());
+            item.setFlavor(flavorService.get(recipeItemDto.getFlavorId()));
+
+            return recipeItemService.add(item);
+        })).collect(Collectors.toSet());
+        recipe.setFlavors(items);
+        return recipeMapper.toRecipeDto(recipeService.add(recipe));
     }
 
     @PostMapping("/{id}")

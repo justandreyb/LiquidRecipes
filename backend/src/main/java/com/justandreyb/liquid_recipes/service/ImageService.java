@@ -71,4 +71,8 @@ public class ImageService extends EntityService<Image, ImageRepository> {
 
         return image;
     }
+
+    public Image getPlaceholderImage() {
+        return repository.findAll().get(0);
+    }
 }

@@ -28,26 +28,39 @@ public interface RecipeMapper {
         @Mapping(target = "nicotine", ignore = true),
         @Mapping(target = "finalAmount", ignore = true),
         @Mapping(target = "likes", qualifiedByName = "toLikeDtos"),
+        @Mapping(target = "likesIds", ignore = true),
         @Mapping(target = "comments", ignore = true),
-        @Mapping(target = "image", qualifiedByName = "toImageDto")
+        @Mapping(target = "commentsIds", ignore = true),
+        @Mapping(target = "image", qualifiedByName = "toImageDto"),
+        @Mapping(target = "imageId", ignore = true),
+        @Mapping(target = "creatorId", ignore = true),
+        @Mapping(target = "flavors", qualifiedByName = "toRecipeItemsDtos"),
+        @Mapping(target = "flavorsIds", ignore = true)
     })
     RecipeDto toRecipeDto(Recipe recipe);
 
     @Named("toFullRecipeDto")
     @Mappings({
         @Mapping(target = "creator", qualifiedByName = "toUserDto"),
+        @Mapping(target = "creatorId", ignore = true),
         @Mapping(target = "likes", qualifiedByName = "toLikeDtos"),
+        @Mapping(target = "likesIds", ignore = true),
         @Mapping(target = "comments", qualifiedByName = "toCommentDtos"),
-        @Mapping(target = "image", qualifiedByName = "toImageDto")
+        @Mapping(target = "commentsIds", ignore = true),
+        @Mapping(target = "image", qualifiedByName = "toImageDto"),
+        @Mapping(target = "imageId", ignore = true),
+        @Mapping(target = "flavors", qualifiedByName = "toRecipeItemsDtos"),
+        @Mapping(target = "flavorsIds", ignore = true)
     })
     RecipeDto toFullRecipeDto(Recipe recipe);
 
     @Named("fromRecipeDto")
     @Mappings({
-        @Mapping(target = "creator", qualifiedByName = "fromUserDto"),
-        @Mapping(target = "likes", qualifiedByName = "fromLikeDto"),
-        @Mapping(target = "image", qualifiedByName = "fromImageDto"),
-        @Mapping(target = "comments", qualifiedByName = "fromCommentDtos")
+        @Mapping(target = "creator", ignore = true),
+        @Mapping(target = "likes", ignore = true),
+        @Mapping(target = "image", ignore = true),
+        @Mapping(target = "comments", ignore = true),
+        @Mapping(target = "flavors", ignore = true)
     })
     Recipe fromRecipeDto(RecipeDto recipeDto);
 

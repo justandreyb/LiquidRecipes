@@ -20,4 +20,5 @@ public class CommentDto extends DTO {
     private Date date;
 
     private UserDto user;
+    private String userId;
 }

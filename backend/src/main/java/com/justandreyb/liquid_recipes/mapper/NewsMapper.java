@@ -42,10 +42,10 @@ public interface NewsMapper {
 
     @Named("fromNewsDto")
     @Mappings({
-        @Mapping(target = "creator", qualifiedByName = "fromUserDto"),
-        @Mapping(target = "likes", qualifiedByName = "fromLikeDtos"),
-        @Mapping(target = "image", qualifiedByName = "fromImageDto"),
-        @Mapping(target = "comments", qualifiedByName = "fromCommentDto")
+        @Mapping(target = "creator", ignore = true),
+        @Mapping(target = "likes", ignore = true),
+        @Mapping(target = "image", ignore = true),
+        @Mapping(target = "comments", ignore = true)
     })
     News fromNewsDto(NewsDto newsDto);
 
