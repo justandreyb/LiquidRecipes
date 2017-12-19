@@ -17,7 +17,7 @@ class FlavorsCarousel extends Component {
   createListItem(flavor) {
     return (
       <Carousel.Item>
-        <img width={900} height={500} alt="900x500" src={flavor.image.path} />
+        <img width={600} height={600} alt="600x600" src={flavor.image.path} />
         <Carousel.Caption>
           <h3><Link to={"/flavors/" + flavor.id}>{flavor.name}</Link></h3>
           <h2>{flavor.description}</h2>

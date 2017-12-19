@@ -17,7 +17,7 @@ class RecipesCarousel extends Component {
   createListItem(recipe) {
     return (
       <Carousel.Item>
-        <img width={900} height={500} alt="900x500" src={recipe.image.path} />
+        <img width={600} height={600} alt="900x500" src={recipe.image.path} />
         <Carousel.Caption>
           <h3><Link to={"/recipes/" + recipe.id}>{recipe.name}</Link></h3>
           <p>{recipe.description}</p>

@@ -46,6 +46,9 @@ const FlavorForm = (props) => {
           <Field name="type" component="select">
             <option value="Fruit">Fruit</option>
             <option value="Tobacco">Tobacco</option>
+            <option value="Backed">Backed</option>
+            <option value="Alcohol">Alcohol</option>
+            <option value="Other">Other</option>
           </Field>
         </div>
       </div>

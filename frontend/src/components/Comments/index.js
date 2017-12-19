@@ -5,7 +5,7 @@ import {CommentComponent} from "../Comment";
 class Comments extends Component {
   static createListItem(comment) {
     return (
-      <div key={comment.id} className="well col-sm-4">
+      <div key={comment.id} className="well">
         <CommentComponent
           comment={comment}
         />
@@ -19,7 +19,7 @@ class Comments extends Component {
     if (this.props.comments.size === 0)
       code = <label>No comments</label>;
     else
-      code = <div>{this.props.comments.map(Comments.createListItem)}</div>;
+      code = <div className="container">{this.props.comments.map(Comments.createListItem)}</div>;
 
     return code;
   }

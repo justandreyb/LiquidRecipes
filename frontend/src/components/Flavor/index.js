@@ -12,21 +12,25 @@ class Flavor extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div>
           <div className="col-md-10">
-            <h3>{this.props.flavor.name}</h3>
-          </div>
-          <div className="col-md-2">
-            <LikeComponent
-              likes={this.props.likes}
-            />
+            <h2>{this.props.flavor.name} - TPA</h2>
+            <h4>{this.props.flavor.type}</h4>
           </div>
         </div>
+        <div className="col-md-2">
+          <LikeComponent
+            likes={this.props.likes}
+          />
+        </div>
         <hr/>
-        <CommentFormComponent
-          onSubmit={this.checkAndSend.bind(this)}
-        />
+        <div className="container">
+          <CommentFormComponent
+            onSubmit={this.checkAndSend.bind(this)}
+          />
+        </div>
+        <hr />
         <CommentsComponent
           comments={this.props.comments}
         />

@@ -4,17 +4,15 @@ import { Field, reduxForm } from "redux-form";
 const CommentForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
         <label>Create comment</label>
         <div>
           <Field name="text" component="textarea" />
         </div>
-      </div>
-      <div>
         <button type="submit" disabled={pristine || submitting}>Submit</button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

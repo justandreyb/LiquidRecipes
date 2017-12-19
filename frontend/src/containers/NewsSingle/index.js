@@ -40,7 +40,7 @@ class NewsSingleContainer extends Component {
     return (
       <div className="container col-sm-10">
         <div className="text-center">
-          <h3>Entities</h3>
+          <h3>News</h3>
           <div className="row">
             <NewsSingleComponent
               news       ={this.props.news}

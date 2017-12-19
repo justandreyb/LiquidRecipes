@@ -9,18 +9,18 @@ class Recipes extends Component {
     if (this.props.recipes.length === 0)
       code = <label>Nothing to show...</label>;
     else
-      code = <ul>{this.props.recipes.map((recipe) => this.createListItem(recipe))}</ul>;
+      code = <div>{this.props.recipes.map((recipe) => this.createListItem(recipe))}</div>;
 
     return code;
   }
 
   createListItem(recipe) {
     return (
-      <li key={recipe.id} className="well col-sm-4">
+      <div key={recipe.id} className="well col-sm-4">
         <RecipeItemComponent
           recipe={recipe}
         />
-      </li>
+      </div>
     );
   }
 }
