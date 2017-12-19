@@ -30,10 +30,6 @@ public class Comment extends BaseEntity {
         if (text.isEmpty() || text.length() > 512) {
             return false;
         }
-        if (user == null) {
-            return false;
-        } else {
-            return user.isValid();
-        }
+        return true;
     }
 }
