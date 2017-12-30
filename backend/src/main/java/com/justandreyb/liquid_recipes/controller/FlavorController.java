@@ -1,9 +1,6 @@
 package com.justandreyb.liquid_recipes.controller;
 
-import com.justandreyb.liquid_recipes.dto.CommentDto;
-import com.justandreyb.liquid_recipes.dto.FlavorDto;
-import com.justandreyb.liquid_recipes.dto.ImageDto;
-import com.justandreyb.liquid_recipes.dto.LikeDto;
+import com.justandreyb.liquid_recipes.dto.*;
 import com.justandreyb.liquid_recipes.mapper.*;
 import com.justandreyb.liquid_recipes.service.*;
 import lombok.val;
@@ -30,6 +27,8 @@ public class FlavorController {
 
     @Autowired
     private FlavorMapper flavorMapper;
+    @Autowired
+    private ManufacturerMapper manufacturerMapper;
     @Autowired
     private CommentMapper commentMapper;
     @Autowired
@@ -70,6 +69,11 @@ public class FlavorController {
     @GetMapping("/{id}/image")
     ImageDto getFlavorImage(@PathVariable("id") String id) {
         return imageMapper.toImageDto(imageService.getByFlavor(id));
+    }
+
+    @GetMapping("/{id}/manufacturer")
+    ManufacturerDto getFlavorManufacturer(@PathVariable("id") String id) {
+        return manufacturerMapper.toManufacturerDto(manufacturerService.getByFlavor(id));
     }
 
     @PostMapping

@@ -23,12 +23,11 @@ public interface FlavorMapper {
 
     @Named("toFlavorDto")
     @Mappings({
-        @Mapping(target = "description", ignore = true),
-        @Mapping(target = "manufacturer", qualifiedByName = "toManufacturerDto"),
+        @Mapping(target = "manufacturer", ignore = true),
         @Mapping(target = "manufacturerId", ignore = true),
-        @Mapping(target = "likes", qualifiedByName = "toLikeDtos"),
+        @Mapping(target = "likes", ignore = true),
         @Mapping(target = "likesIds", ignore = true),
-        @Mapping(target = "image", qualifiedByName = "toImageDto"),
+        @Mapping(target = "image", ignore = true),
         @Mapping(target = "imageId", ignore = true)
     })
     FlavorDto toFlavorDto(Flavor flavor);
