@@ -18,6 +18,8 @@ import {reducer as flavorsReducer} from "./modules/Flavors";
 import {reducer as flavorReducer} from "./modules/Flavor";
 import {reducer as flavorCommentsReducer} from "./modules/FlavorComments";
 import {reducer as flavorLikesReducer} from "./modules/FlavorLikes";
+import {reducer as flavorImageReducer} from "./modules/FlavorImage";
+import {reducer as flavorManufacturerReducer} from "./modules/FlavorManufacturer";
 
 import {reducer as recipesReducer} from "./modules/Recipes";
 import {reducer as recipeReducer} from "./modules/Recipe";
@@ -53,9 +55,11 @@ const containersReducer = {
     flavors: combineReducers({
       list  : flavorsReducer,
       target: combineReducers({
-        flavor  : flavorReducer,
-        comments: flavorCommentsReducer,
-        likes   : flavorLikesReducer
+        flavor      : flavorReducer,
+        comments    : flavorCommentsReducer,
+        likes       : flavorLikesReducer,
+        image       : flavorImageReducer,
+        manufacturer: flavorManufacturerReducer
       })
     }),
     recipes: combineReducers({

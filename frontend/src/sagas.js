@@ -15,6 +15,8 @@ import {watchFlavorsActions} from "./modules/Flavors";
 import {watchFlavorActions} from "./modules/Flavor";
 import {watchFlavorCommentsActions} from "./modules/FlavorComments";
 import {watchFlavorLikesActions} from "./modules/FlavorLikes";
+import {watchFlavorImageActions} from "./modules/FlavorImage";
+import {watchFlavorManufacturerActions} from "./modules/FlavorManufacturer";
 
 import {watchRecipesActions} from "./modules/Recipes";
 import {watchRecipeActions} from "./modules/Recipe";
@@ -42,6 +44,8 @@ const sagas = [
   watchFlavorActions,
   watchFlavorCommentsActions,
   watchFlavorLikesActions,
+  watchFlavorImageActions,
+  watchFlavorManufacturerActions,
 
   watchRecipesActions,
   watchRecipeActions,

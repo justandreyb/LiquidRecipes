@@ -26,8 +26,8 @@ export function* getElements(url, successHandler, failHandler) {
 
 export function* getElement(url, id, successHandler, failHandler) {
   try {
-    console.log("Get to : " + serverURL + url + "/" + id);
-    const response = yield call(axios, serverURL + url + "/" + id, {
+    console.log("Get to : " + serverURL + url + (id === null ? "" : "/" + id));
+    const response = yield call(axios, serverURL + url + (id === null ? "" : "/" + id), {
       method : "GET",
       mode   : "no-cors",
       headers: {
@@ -88,8 +88,8 @@ export function* updateElement(url, id, data, successHandler, failHandler) {
 
 export function* deleteElement(url, id, successHandler, failHandler) {
   try {
-    console.log("Delete to : " + serverURL + url + "/" + id);
-    const response = yield call(axios, serverURL + url + "/" + id, {
+    console.log("Delete to : " + serverURL + url + id === null ? "" : "/" + id);
+    const response = yield call(axios, serverURL + url + id === null ? "" : "/" + id, {
       method : "DELETE",
       mode   : "no-cors",
       headers: {

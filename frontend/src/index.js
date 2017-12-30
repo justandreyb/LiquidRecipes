@@ -13,7 +13,7 @@ import "./styles/main.css";
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
+      <div className="container-fluid">
         <Navigation/>
         <div className="layout">
           {routes}

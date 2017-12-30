@@ -16,7 +16,7 @@ class Comments extends Component {
   render() {
     let code;
 
-    if (this.props.comments.size === 0)
+    if (this.props.comments.length === 0)
       code = <label>No comments</label>;
     else
       code = <div className="container">{this.props.comments.map(Comments.createListItem)}</div>;

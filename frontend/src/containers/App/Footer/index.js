@@ -6,8 +6,11 @@ class FooterContainer extends Component {
   render() {
     return (
       <Navbar fixedBottom>
-        <p className="container text-center">App created by @justandreyb</p>
-        <p className="container text-center">2017</p>
+        <p className="container text-center">
+          App created by
+          @justandreyb
+          2017-2018
+        </p>
       </Navbar>
     );
   }

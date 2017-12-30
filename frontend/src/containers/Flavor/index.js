@@ -23,6 +23,8 @@ import {
   createFlavorLike,
   deleteFlavorLike
 } from "../../modules/FlavorLikes"
+import {getFlavorImage, selectFlavorImageData} from "../../modules/FlavorImage";
+import {getFlavorManufacturer, selectFlavorManufacturerData} from "../../modules/FlavorManufacturer";
 
 class FlavorContainer extends Component {
 
@@ -30,6 +32,8 @@ class FlavorContainer extends Component {
     this.props.actions.getFlavor(this.props.match.params.id);
     this.props.actions.getFlavorComments(this.props.match.params.id);
     this.props.actions.getFlavorLikes(this.props.match.params.id);
+    this.props.actions.getFlavorImage(this.props.match.params.id);
+    this.props.actions.getFlavorManufacturer(this.props.match.params.id);
   }
 
   componentWillUnmount() {
@@ -44,10 +48,12 @@ class FlavorContainer extends Component {
 
         <div className="row">
           <FlavorComponent
-            flavor     ={this.props.flavor}
-            comments   ={this.props.comments}
-            likes      ={this.props.likes}
-            interaction={this.props.interaction}
+            flavor       ={this.props.flavor}
+            comments     ={this.props.comments}
+            likes        ={this.props.likes}
+            image        ={this.props.image}
+            manufacturer ={this.props.manufacturer}
+            interaction  ={this.props.interaction}
           />
         </div>
       </div>
@@ -57,16 +63,20 @@ class FlavorContainer extends Component {
 
 export const Flavor = connect(
   (state) => ({
-    flavor  : selectFlavorData(state),
-    comments: selectFlavorCommentsData(state),
-    likes   : selectFlavorLikesData(state)
+    flavor      : selectFlavorData(state),
+    image       : selectFlavorImageData(state),
+    manufacturer: selectFlavorManufacturerData(state),
+    comments    : selectFlavorCommentsData(state),
+    likes       : selectFlavorLikesData(state)
   }),
   (dispatch) => ({
     actions: bindActionCreators({
       getFlavor,
       cleanFlavorWorkspace,
       getFlavorComments,
-      getFlavorLikes
+      getFlavorLikes,
+      getFlavorImage,
+      getFlavorManufacturer
     }, dispatch),
     interaction: bindActionCreators({
       createFlavorComment,

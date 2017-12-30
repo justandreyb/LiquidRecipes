@@ -5,35 +5,49 @@ import {LikeComponent} from "../Like";
 
 class Flavor extends Component {
 
-  checkAndSend(data) {
-    console.log(this.props.flavor);
+  checkAndSendComment(data) {
     this.props.interaction.createFlavorComment(this.props.flavor.id, data);
   }
 
   render() {
     return (
-      <div className="container">
-        <div>
-          <div className="col-md-10">
-            <h2>{this.props.flavor.name} - TPA</h2>
-            <h4>{this.props.flavor.type}</h4>
+      <div className="container-fluid">
+        <div className="entity-view__container">
+          <div className="entity-view__container__name-bar">
+            <div className="entity-view__container__name-bar__name">
+              <div className="entity-view__container__name-bar__name__title">
+                <label>{this.props.flavor.name}</label>
+              </div>
+              <div className="entity-view__container__name-bar__name__additional">
+                <span className="label label-info">{this.props.flavor.type}</span>
+              </div>
+            </div>
+            <div className="entity-view__container__name-bar__like">
+              <LikeComponent
+                entityId={this.props.flavor.id}
+                likes={this.props.likes}
+                interaction={this.props.interaction}
+              />
+            </div>
+          </div>
+          <div className="entity-view__container__image">
+            <img width={300} height={300} alt="Image was missed" src={this.props.image.path}/>
+          </div>
+          <div className="entity-view__container__description">{this.props.flavor.description}</div>
+        </div>
+        <div className="comments__container">
+          <hr/>
+          <div className="comments__container__form">
+            <CommentFormComponent
+              onSubmit={this.checkAndSendComment.bind(this)}
+            />
+          </div>
+          <div className="comments__container__list">
+            <CommentsComponent
+              comments={this.props.comments}
+            />
           </div>
         </div>
-        <div className="col-md-2">
-          <LikeComponent
-            likes={this.props.likes}
-          />
-        </div>
-        <hr/>
-        <div className="container">
-          <CommentFormComponent
-            onSubmit={this.checkAndSend.bind(this)}
-          />
-        </div>
-        <hr />
-        <CommentsComponent
-          comments={this.props.comments}
-        />
       </div>
     );
   }
