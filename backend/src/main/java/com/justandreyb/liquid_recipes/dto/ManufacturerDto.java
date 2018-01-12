@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +17,8 @@ public class ManufacturerDto extends DTO {
     private String description;
 
     private CountryDto country;
+    private String countryId;
 
     private ImageDto logo;
+    private String logoId;
 }

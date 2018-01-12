@@ -1,19 +1,28 @@
-/**
- * This directory contains components of your app.
- * In this dir you can create components which will render as html code
- *
- * For create new component you can use template components:
- *  {projectDir}/src/components/Entities/index.js - for list of components
- *  {projectDir}/src/components/Entities/Entity/single.js - for single component
- *  {projectDir}/src/components/Entities/Entity/listItem - for rendering component in list
- *
- * @file {projectDir}/src/components/index.js
- * @description Main file for components directory which provide
- * export point for all inner components
- *
- * @author justandreyb
- */
+export {UserFlavorsComponent} from "./UserFlavors";
+export {UserRecipesComponent} from "./UserRecipes";
 
-export {EntityComponent} from "./Entities/Entity/single";
-export {EntityItemComponent} from "./Entities/Entity/listItem";
-export {EntitiesComponent} from "./Entities/index";
+export {NewsComponent} from "./News";
+export {NewsSingleComponent} from "./NewsSingle";
+export {NewsFormComponent} from "./NewsSingle/form";
+
+export {FlavorsComponent} from "./Flavors";
+export {FlavorComponent} from "./Flavor";
+export {FlavorFormComponent} from "./Flavor/form";
+
+export {RecipesComponent} from "./Recipes";
+export {RecipeComponent} from "./Recipe";
+export {RecipeFormComponent} from "./Recipe/form";
+
+export {LikeComponent} from "./Like";
+
+export {CommentsComponent} from "./Comments";
+export {CommentFormComponent} from "./Comment/form";
+
+export {CarouselComponent} from "./Carousel"
+export {NewsCarouselComponent} from "./Carousel/news"
+export {FlavorsCarouselComponent} from "./Carousel/flavors"
+export {RecipesCarouselComponent} from "./Carousel/recipes"
+
+export {LoginForm} from "./Auth/login"
+export {RegistrationForm} from "./Auth/registration"
+

@@ -19,7 +19,9 @@ public interface ManufacturerMapper {
     @Named("toManufacturerDto")
     @Mappings({
         @Mapping(target = "logo", qualifiedByName = "toImageDto"),
+        @Mapping(target = "logoId", ignore = true),
         @Mapping(target = "country", ignore = true),
+        @Mapping(target = "countryId", ignore = true),
         @Mapping(target = "description", ignore = true)
     })
     ManufacturerDto toManufacturerDto(Manufacturer manufacturer);
@@ -27,11 +29,17 @@ public interface ManufacturerMapper {
     @Named("toFullManufacturerDto")
     @Mappings({
         @Mapping(target = "logo", qualifiedByName = "toImageDto"),
-        @Mapping(target = "country", qualifiedByName = "toCountryDto")
+        @Mapping(target = "logoId", ignore = true),
+        @Mapping(target = "country", qualifiedByName = "toCountryDto"),
+        @Mapping(target = "countryId", ignore = true)
     })
     ManufacturerDto toFullManufacturerDto(Manufacturer manufacturer);
 
     @Named("fromManufacturerDto")
+    @Mappings({
+            @Mapping(target = "logo", ignore = true),
+            @Mapping(target = "country", ignore = true)
+    })
     Manufacturer fromManufacturerDto(ManufacturerDto manufacturerDto);
 
     @Named("toManufacturerDtos")

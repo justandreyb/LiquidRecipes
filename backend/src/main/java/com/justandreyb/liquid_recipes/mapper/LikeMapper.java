@@ -17,14 +17,21 @@ import java.util.List;
 public interface LikeMapper {
 
     @Named("toLikeDto")
-    @Mapping(target = "user", ignore = true)
+    @Mappings({
+        @Mapping(target = "user", ignore = true),
+        @Mapping(target = "userId", ignore = true)
+    })
     LikeDto toLikeDto(Like like);
 
     @Named("toFullLikeDto")
-    @Mapping(target = "user", qualifiedByName = "toUserDto")
+    @Mappings({
+        @Mapping(target = "user", qualifiedByName = "toUserDto"),
+        @Mapping(target = "userId", ignore = true)
+    })
     LikeDto toFullLikeDto(Like like);
 
     @Named("fromLikeDto")
+    @Mapping(target = "user", ignore = true)
     Like fromLikeDto(LikeDto likeDto);
 
     @Named("toLikeDtos")

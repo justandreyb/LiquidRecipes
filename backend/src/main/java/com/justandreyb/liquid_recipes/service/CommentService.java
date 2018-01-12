@@ -16,6 +16,8 @@ public class CommentService extends EntityService<Comment, CommentRepository> {
     @Autowired
     private FlavorService flavorService;
     @Autowired
+    private UserService userService;
+    @Autowired
     private NewsService newsService;
     @Autowired
     private RecipeService recipeService;
@@ -38,30 +40,39 @@ public class CommentService extends EntityService<Comment, CommentRepository> {
         return recipe.getComments();
     }
 
-    public void addToFlavor(String id, Comment comment) throws InvalidEntityException, NotFoundException {
+    public Comment addToFlavor(String id, Comment comment) throws InvalidEntityException, NotFoundException {
         checkEntity(comment);
+        comment.setUser(userService.getGuest());
+        comment = repository.save(comment);
+
         val flavor = flavorService.get(id);
-
         flavor.getComments().add(comment);
-
         flavorService.update(flavor);
+
+        return comment;
     }
 
-    public void addToNews(String id, Comment comment) throws InvalidEntityException, NotFoundException {
+    public Comment addToNews(String id, Comment comment) throws InvalidEntityException, NotFoundException {
         checkEntity(comment);
+        comment.setUser(userService.getGuest());
+        comment = repository.save(comment);
+
         val news = newsService.get(id);
-
         news.getComments().add(comment);
-
         newsService.update(news);
+
+        return comment;
     }
 
-    public void addToRecipe(String id, Comment comment) throws InvalidEntityException, NotFoundException {
+    public Comment addToRecipe(String id, Comment comment) throws InvalidEntityException, NotFoundException {
         checkEntity(comment);
+        comment.setUser(userService.getGuest());
+        comment = repository.save(comment);
+
         val recipe = recipeService.get(id);
-
         recipe.getComments().add(comment);
-
         recipeService.update(recipe);
+
+        return comment;
     }
 }

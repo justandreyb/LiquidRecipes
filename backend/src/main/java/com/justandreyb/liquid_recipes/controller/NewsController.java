@@ -8,10 +8,8 @@ import com.justandreyb.liquid_recipes.mapper.CommentMapper;
 import com.justandreyb.liquid_recipes.mapper.ImageMapper;
 import com.justandreyb.liquid_recipes.mapper.LikeMapper;
 import com.justandreyb.liquid_recipes.mapper.NewsMapper;
-import com.justandreyb.liquid_recipes.service.CommentService;
-import com.justandreyb.liquid_recipes.service.ImageService;
-import com.justandreyb.liquid_recipes.service.LikeService;
-import com.justandreyb.liquid_recipes.service.NewsService;
+import com.justandreyb.liquid_recipes.service.*;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +17,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/news")
+@CrossOrigin(origins = "http://localhost:3000")
 public class NewsController {
 
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private CommentService commentService;
     @Autowired
@@ -75,33 +76,41 @@ public class NewsController {
     }
 
     @PostMapping
-    void addNews(@RequestBody NewsDto newsDto) {
-        newsService.add(newsMapper.fromNewsDto(newsDto));
+    NewsDto addNews(@RequestBody NewsDto newsDto) {
+        val news = newsMapper.fromNewsDto(newsDto);
+        news.setImage(imageService.getPlaceholderImage());
+        news.setCreator(userService.getGuest());
+        return newsMapper.toNewsDto(newsService.add(news));
     }
 
     @PostMapping("/{id}")
-    void updateNews(@RequestParam NewsDto newsDto) {
-        newsService.update(newsMapper.fromNewsDto(newsDto));
+    NewsDto updateNews(@RequestParam NewsDto newsDto) {
+        val news = newsService.update(newsMapper.fromNewsDto(newsDto));
+        return newsMapper.toNewsDto(news);
     }
 
     @PostMapping("/{id}/comments")
-    void addCommentToNews(@RequestParam String id, @RequestBody CommentDto comment) {
-        commentService.addToNews(id, commentMapper.fromCommentDto(comment));
+    CommentDto addCommentToNews(@RequestParam String id, @RequestBody CommentDto comment) {
+        val createdComment = commentService.addToNews(id, commentMapper.fromCommentDto(comment));
+        return commentMapper.toCommentDto(createdComment);
     }
 
     @PostMapping("/{id}/comments/{commentId}")
-    void updateCommentInNews(@RequestBody CommentDto comment) {
-        commentService.update(commentMapper.fromCommentDto(comment));
+    CommentDto updateCommentInNews(@RequestBody CommentDto comment) {
+        val updatedComment = commentService.update(commentMapper.fromCommentDto(comment));
+        return commentMapper.toCommentDto(updatedComment);
     }
 
     @PostMapping("/{id}/likes")
-    void addLikeToNews(@PathVariable("id") String id, @RequestBody LikeDto like) {
-        likeService.addToNews(id, likeMapper.fromLikeDto(like));
+    LikeDto addLikeToNews(@PathVariable("id") String id, @RequestBody LikeDto like) {
+        val createdLike = likeService.addToNews(id, likeMapper.fromLikeDto(like));
+        return likeMapper.toLikeDto(createdLike);
     }
 
     @PostMapping("/{id}/image")
-    void addLikeToNews(@PathVariable("id") String id, @RequestBody ImageDto image) {
-        imageService.addToNews(id, imageMapper.fromImageDto(image));
+    ImageDto addImageToNews(@PathVariable("id") String id, @RequestBody ImageDto image) {
+        val createdImage = imageService.addToNews(id, imageMapper.fromImageDto(image));
+        return imageMapper.toImageDto(createdImage);
     }
 
     @DeleteMapping("/{id}")

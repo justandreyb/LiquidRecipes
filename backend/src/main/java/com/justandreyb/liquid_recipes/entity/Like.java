@@ -22,6 +22,9 @@ public class Like extends BaseEntity {
 
     @Override
     public boolean isValid() {
-        return false;
+        if (user == null) {
+            return false;
+        }
+        return true;
     }
 }

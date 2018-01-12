@@ -3,6 +3,7 @@ package com.justandreyb.liquid_recipes.controller;
 import com.justandreyb.liquid_recipes.dto.CountryDto;
 import com.justandreyb.liquid_recipes.mapper.CountryMapper;
 import com.justandreyb.liquid_recipes.service.CountryService;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/countries")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CountryController {
 
     @Autowired
@@ -29,13 +31,15 @@ public class CountryController {
     }
 
     @PostMapping
-    void addCountry(@RequestBody CountryDto countryDto) {
-        countryService.add(countryMapper.fromCountryDto(countryDto));
+    CountryDto addCountry(@RequestBody CountryDto countryDto) {
+        val country = countryService.add(countryMapper.fromCountryDto(countryDto));
+        return countryMapper.toCountryDto(country);
     }
 
     @PostMapping("/{id}")
-    void updateCountry(@PathVariable("id") CountryDto countryDto) {
-        countryService.update(countryMapper.fromCountryDto(countryDto));
+    CountryDto updateCountry(@PathVariable("id") CountryDto countryDto) {
+        val country = countryService.update(countryMapper.fromCountryDto(countryDto));
+        return countryMapper.toCountryDto(country);
     }
 
     @DeleteMapping("/{id}")

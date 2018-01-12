@@ -19,13 +19,17 @@ public class FlavorDto extends DTO {
     private String description;
 
     private ManufacturerDto manufacturer;
+    private String manufacturerId;
 
     private FlavorType type;
 
-    private List<LikeDto> likes;
-
     private List<CommentDto> comments;
+    private List<String> commentsIds;
+
+    private List<LikeDto> likes;
+    private List<String> likesIds;
 
     private ImageDto image;
+    private String imageId;
 
 }

@@ -3,7 +3,7 @@ import {fromJS} from "immutable";
 // --------------------- INITIAL STATE --------------------- //
 
 const initialState = fromJS({
-  applicationName: "Boilerplate App"
+  applicationName: "Liquid Recipes"
 });
 
 // ----------------------- REDUCER ------------------------ //

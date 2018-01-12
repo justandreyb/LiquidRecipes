@@ -1,19 +1,26 @@
 package com.justandreyb.liquid_recipes.controller;
 
 import com.justandreyb.liquid_recipes.dto.*;
+import com.justandreyb.liquid_recipes.entity.RecipeItem;
 import com.justandreyb.liquid_recipes.mapper.*;
 import com.justandreyb.liquid_recipes.service.*;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/recipes")
+@CrossOrigin(origins = "http://localhost:3000")
 public class RecipeController {
 
     @Autowired
     private RecipeService recipeService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private RecipeItemService recipeItemService;
     @Autowired
@@ -22,6 +29,8 @@ public class RecipeController {
     private LikeService likeService;
     @Autowired
     private ImageService imageService;
+    @Autowired
+    private FlavorService flavorService;
 
     @Autowired
     private RecipeMapper recipeMapper;
@@ -75,43 +84,62 @@ public class RecipeController {
     }
 
     @PostMapping
-    void addRecipe(@RequestBody RecipeDto recipeDto) {
-        recipeService.add(recipeMapper.fromRecipeDto(recipeDto));
+    RecipeDto addRecipe(@RequestBody RecipeDto recipeDto) {
+        val recipe = recipeMapper.fromRecipeDto(recipeDto);
+        recipe.setImage(imageService.getPlaceholderImage());
+        recipe.setCreator(userService.getGuest());
+        Set<RecipeItem> items = recipeDto.getFlavors().stream().map((recipeItemDto -> {
+            RecipeItem item = new RecipeItem();
+            item.setDrops(recipeItemDto.getDrops());
+            item.setMl(recipeItemDto.getMl());
+            item.setFlavor(flavorService.get(recipeItemDto.getFlavorId()));
+
+            return recipeItemService.add(item);
+        })).collect(Collectors.toSet());
+        recipe.setFlavors(items);
+        return recipeMapper.toRecipeDto(recipeService.add(recipe));
     }
 
     @PostMapping("/{id}")
-    void updateRecipe(@RequestParam RecipeDto recipeDto) {
-        recipeService.update(recipeMapper.fromRecipeDto(recipeDto));
+    RecipeDto updateRecipe(@RequestParam RecipeDto recipeDto) {
+        val recipe = recipeService.update(recipeMapper.fromRecipeDto(recipeDto));
+        return recipeMapper.toRecipeDto(recipe);
     }
 
     @PostMapping("/{id}/items")
-    void addItemToRecipe(@PathVariable("id") String id, @RequestBody RecipeItemDto recipeItem) {
-        recipeItemService.addToRecipe(id, recipeItemMapper.fromRecipeItemDto(recipeItem));
+    RecipeItemDto addItemToRecipe(@PathVariable("id") String id, @RequestBody RecipeItemDto recipeItem) {
+        val createdItem = recipeItemService.addToRecipe(id, recipeItemMapper.fromRecipeItemDto(recipeItem));
+        return recipeItemMapper.toRecipeItemDto(createdItem);
     }
 
     @PostMapping("/{id}/items/{itemId}")
-    void updateItemInRecipe(@RequestBody RecipeItemDto recipeItem) {
-        recipeItemService.update(recipeItemMapper.fromRecipeItemDto(recipeItem));
+    RecipeItemDto updateItemInRecipe(@RequestBody RecipeItemDto recipeItem) {
+        val updatedItem = recipeItemService.update(recipeItemMapper.fromRecipeItemDto(recipeItem));
+        return recipeItemMapper.toRecipeItemDto(updatedItem);
     }
 
     @PostMapping("/{id}/comments")
-    void addCommentToRecipe(@PathVariable("id") String id, @RequestBody CommentDto comment) {
-        commentService.addToRecipe(id, commentMapper.fromCommentDto(comment));
+    CommentDto addCommentToRecipe(@PathVariable("id") String id, @RequestBody CommentDto comment) {
+        val createdComment = commentService.addToRecipe(id, commentMapper.fromCommentDto(comment));
+        return commentMapper.toCommentDto(createdComment);
     }
 
     @PostMapping("/{id}/comments/{commentId}")
-    void updateCommentInRecipe(@RequestBody CommentDto comment) {
-        commentService.update(commentMapper.fromCommentDto(comment));
+    CommentDto updateCommentInRecipe(@RequestBody CommentDto comment) {
+        val updatedComment = commentService.update(commentMapper.fromCommentDto(comment));
+        return commentMapper.toCommentDto(updatedComment);
     }
 
     @PostMapping("/{id}/likes")
-    void addLikeToRecipe(@PathVariable("id") String id, @RequestBody LikeDto like) {
-        likeService.addToRecipe(id, likeMapper.fromLikeDto(like));
+    LikeDto addLikeToRecipe(@PathVariable("id") String id, @RequestBody LikeDto like) {
+        val createdLike = likeService.addToRecipe(id, likeMapper.fromLikeDto(like));
+        return likeMapper.toLikeDto(createdLike);
     }
 
     @PostMapping("/{id}/image")
-    void addLikeToRecipe(@PathVariable("id") String id, @RequestBody ImageDto image) {
-        imageService.addToRecipe(id, imageMapper.fromImageDto(image));
+    ImageDto addImageToRecipe(@PathVariable("id") String id, @RequestBody ImageDto image) {
+        val createdImage = imageService.addToRecipe(id, imageMapper.fromImageDto(image));
+        return imageMapper.toImageDto(createdImage);
     }
 
     @DeleteMapping("/{id}")

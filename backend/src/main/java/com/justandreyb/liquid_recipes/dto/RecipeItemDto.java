@@ -13,6 +13,8 @@ public class RecipeItemDto extends DTO {
 
     private FlavorDto flavor;
 
+    private String flavorId;
+
     private double ml;
 
     private int drops;

@@ -1,6 +1,6 @@
 {
-  "name": "react-redux-saga-boilerplate",
-  "version": "0.1.0",
+  "name": "liquid_recipes",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
@@ -17,6 +17,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.7.2",
+    "redux-form": "^7.2.0",
     "redux-saga": "^0.16.0"
   },
   "devDependencies": {

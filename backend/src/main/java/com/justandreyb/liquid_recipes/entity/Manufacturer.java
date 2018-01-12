@@ -27,6 +27,12 @@ public class Manufacturer extends BaseEntity {
 
     @Override
     public boolean isValid() {
-        return false;
+        if (name.isEmpty()) {
+            return false;
+        }
+        if (country == null) {
+            return false;
+        }
+        return true;
     }
 }

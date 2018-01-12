@@ -17,14 +17,23 @@ import java.util.List;
 public interface CommentMapper {
 
     @Named("toCommentDto")
-    @Mapping(target = "user", ignore = true)
+    @Mappings({
+            @Mapping(target = "user", ignore = true),
+            @Mapping(target = "userId", ignore = true)
+    })
     CommentDto toCommentDto(Comment comment);
 
     @Named("toFullCommentDto")
-    @Mapping(target = "user", qualifiedByName = "toUserDto")
+    @Mappings({
+            @Mapping(target = "user", qualifiedByName = "toUserDto"),
+            @Mapping(target = "userId", ignore = true)
+    })
     CommentDto toFullCommentDto(Comment comment);
 
     @Named("fromCommentDto")
+    @Mappings({
+            @Mapping(target = "user", ignore = true)
+    })
     Comment fromCommentDto(CommentDto commentDto);
 
     @Named("toCommentDtos")

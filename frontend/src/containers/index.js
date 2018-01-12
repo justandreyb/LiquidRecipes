@@ -1,27 +1,23 @@
-/**
- * This directory contains containers of your app components.
- * In this dir you can create containers which will describe
- *  needed data for component to render
- *  actions for components
- *  handling lifecycle for components
- *  binding components to containers
- *
- * For create new container you can use template containers:
- *  {projectDir}/src/containers/Entity
- *  {projectDir}/src/containers/Entities
- *
- * @file {projectDir}/src/containers/index.js
- * @description Main file for containers directory which provide
- * export point for all inner containers
- *
- * @author justandreyb
- */
+export {App} from "./App";
+export {Navigation} from "./App/NavigationBar";
+export {Footer} from "./App/Footer";
 
-export { App } from "./App";
-export { Navigation } from "./App/NavigationBar";
-export { Footer } from "./App/Footer";
+export {Home} from "./Home";
 
-export { Home } from "./Home";
+export {UserFlavors} from "./UserFlavors";
+export {UserRecipes} from "./UserRecipes";
 
-export { Entity } from "./Entity";
-export { Entities } from "./Entities";
+export {News} from "./News";
+export {NewsSingle} from "./NewsSingle";
+export {NewsCreate} from "./NewsSingle/create";
+export {NewsEdit} from "./NewsSingle/edit";
+
+export {Flavors} from "./Flavors";
+export {Flavor} from "./Flavor";
+export {FlavorCreate} from "./Flavor/create";
+export {FlavorEdit} from "./Flavor/edit";
+
+export {Recipes} from "./Recipes";
+export {Recipe} from "./Recipe";
+export {RecipeCreate} from "./Recipe/create";
+export {RecipeEdit} from "./Recipe/edit";

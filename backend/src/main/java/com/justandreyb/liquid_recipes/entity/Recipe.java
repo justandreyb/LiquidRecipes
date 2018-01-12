@@ -60,6 +60,12 @@ public class Recipe extends BaseEntity {
 
     @Override
     public boolean isValid() {
-        return false;
+        if (name.isEmpty()) {
+            return false;
+        }
+        if (creator == null) {
+            return false;
+        }
+        return true;
     }
 }

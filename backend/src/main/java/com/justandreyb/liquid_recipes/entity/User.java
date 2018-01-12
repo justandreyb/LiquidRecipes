@@ -38,6 +38,15 @@ public class User extends BaseEntity {
 
     @Override
     public boolean isValid() {
-        return false;
+        if (name.isEmpty()) {
+            return false;
+        }
+        if (email.isEmpty()) {
+            return false;
+        }
+        if (password.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 }

@@ -1,11 +1,3 @@
-/**
- * Set redux devTools, redux, redux-saga, and connect react-router
- * @file {projectDir}/src/store.js
- * @export store configuration
- *
- * @author justandreyb
- */
-
 import {createStore, applyMiddleware, compose} from "redux";
 import {routerMiddleware} from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
@@ -30,7 +22,6 @@ const configureStore = (initialState) => {
       )
     )
   );
-
 
   sagaMiddleware.run(globalSagas);
   return store;

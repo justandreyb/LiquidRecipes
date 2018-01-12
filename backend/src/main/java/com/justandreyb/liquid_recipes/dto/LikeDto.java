@@ -15,6 +15,7 @@ import java.util.Date;
 public class LikeDto extends DTO {
 
     private UserDto user;
+    private String userId;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date creationDate;

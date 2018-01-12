@@ -25,8 +25,11 @@ public class NewsDto extends DTO {
     private ImageDto image;
 
     private List<CommentDto> comments;
+    private List<String> commentsIds;
 
     private List<LikeDto> likes;
+    private List<String> likesIds;
 
     private UserDto creator;
+    private String creatorId;
 }

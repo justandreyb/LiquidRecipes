@@ -1,19 +1,10 @@
-/**
- * This file describe Account component for redux and saga
- * @file {projectRoot}/src/modules/Account/index.js
- *
- * @author justandreyb
- */
-
 import {fromJS} from "immutable";
 import {sendElement, getElement, updateElement, deleteElement} from "../../api/index";
 import {takeEvery, takeLatest} from "redux-saga/effects";
 
 
 // ---------------------- CONSTANTS ----------------------- //
-/**
- * Constants for naming actions
- */
+
 const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 const SIGN_UP_FAIL = "SIGN_UP_FAIL";
@@ -34,11 +25,7 @@ const CLEAN_ACCOUNT_DATA = "CLEAN_ACCOUNT_DATA";
 
 
 // --------------------- INITIAL STATE --------------------- //
-/**
- * Describing initial state.
- * You will find this data after starting app in
- * <p><code>store.containers.app.account.info</code></p>
- */
+
 const initialState = fromJS({
   user: {
     nickname: "Guest"
@@ -50,16 +37,7 @@ const initialState = fromJS({
 
 
 // ----------------------- REDUCER ------------------------ //
-/**
- * Creating reducer.
- * Here you can describe, on which action type and how will be store changed
- *
- * "payload" is a good practice for naming data in action object, so
- * every data you will put in action must be wrapped in payload
- *
- * You can use action.type constants from another components if you want change state
- * of account based on some action not described in this component
- */
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
 
@@ -137,14 +115,8 @@ export const reducer = (state = initialState, action) => {
 
 
 // ----------------- ACTIONS ----------------------- //
-/**
- * Writing actions.
- * Here you can create actions which will used in your app
- *
- * "payload" is a good practice for naming data in action object, so
- * every data you will put in action must be wrapped in payload
- */
-export const createAccountRequest = (data) => ({
+
+export const signUp = (data) => ({
   type   : SIGN_UP_REQUEST,
   payload: data
 });
@@ -160,10 +132,13 @@ export const createAccountFail = (error) => ({
 });
 
 
-export const getAccountRequest = (data) => ({
-  type   : SIGN_IN_REQUEST,
-  payload: data
-});
+export const signIn = (data) => {
+  console.log("GJ");
+  return ({
+    type   : SIGN_IN_REQUEST,
+    payload: data
+  });
+};
 
 export const getAccountSuccess = (data) => ({
   type   : SIGN_IN_SUCCESS,
@@ -177,7 +152,7 @@ export const getAccountFail = (error) => ({
 });
 
 
-export const updateAccountRequest = (data) => ({
+export const updateAccount = (data) => ({
   type   : UPDATE_ACCOUNT_REQUEST,
   payload: data
 });
@@ -193,7 +168,7 @@ export const updateAccountFail = (error) => ({
 });
 
 
-export const deleteAccountRequest = (id) => ({
+export const deleteAccount = (id) => ({
   type   : DELETE_ACCOUNT_REQUEST,
   payload: id
 });
@@ -214,48 +189,34 @@ export const cleanAccountData = () => ({
 
 
 // ----------------------- SAGAS ------------------------ //
-/**
- * Writing sagas.
- * Here you can create sagas which will used in your app for CRUD entities
- *
- * Saga is a function creator, which will make some async process
- * in your app and after finish, write result by calling described actions
- *
- * Good practice for sagas is wrapping all sagas from one component in one
- * function creator with name "watch*ComponentName*Actions" which will imported
- * in {projectRoot}/sagas.js
- */
+
 const url = "/account";
 
-function* createAccount(action) {
+function* createAccountRequest(action) {
   yield sendElement(url, action.payload, createAccountSuccess, createAccountFail);
 }
 
-function* getAccount(action) {
+function* getAccountRequest(action) {
   yield getElement(url, action.payload, getAccountSuccess, getAccountFail);
 }
 
-function* updateAccount(action) {
+function* updateAccountRequest(action) {
   yield updateElement(url, action.payload.id, action.payload, updateAccountSuccess, updateAccountFail);
 }
 
-function* deleteAccount(action) {
+function* deleteAccountRequest(action) {
   yield deleteElement(url, action.payload, deleteAccountSuccess, deleteAccountFail);
 }
 
 export function* watchAccountActions() {
-  yield takeLatest(SIGN_UP_REQUEST, createAccount);
-  yield takeLatest(SIGN_IN_REQUEST, getAccount);
-  yield takeEvery(UPDATE_ACCOUNT_REQUEST, updateAccount);
-  yield takeLatest(DELETE_ACCOUNT_REQUEST, deleteAccount);
+  yield takeLatest(SIGN_UP_REQUEST, createAccountRequest);
+  yield takeLatest(SIGN_IN_REQUEST, getAccountRequest);
+  yield takeEvery(UPDATE_ACCOUNT_REQUEST, updateAccountRequest);
+  yield takeLatest(DELETE_ACCOUNT_REQUEST, deleteAccountRequest);
 }
 
 // ------------------ SELECTORS -------------------- //
-/**
- * Describing selectors.
- *
- * Selectors will used in your containers, when you want get data from app store
- */
+
 export const selectAccountContainer = (state) => state.containers.app.account.info;
 export const selectUserData = (state) => selectAccountContainer(state).get("user");
 export const selectIsGuest = (state) => selectAccountContainer(state).get("guest");
