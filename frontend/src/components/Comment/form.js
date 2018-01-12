@@ -4,18 +4,13 @@ import { Field, reduxForm } from "redux-form";
 const CommentForm = (props) => {
   const { handleSubmit, pristine, submitting } = props;
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit}>
-        <label>Create comment</label>
-        <div>
-          <Field name="text" component="textarea" />
-        </div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <Field name="text" component="textarea" maxlength="255" placeholder="Enter your comment here" />
+      <button type="submit" disabled={pristine || submitting}>Send</button>
+    </form>
   );
 };
 
 export const CommentFormComponent = reduxForm({
-  form: "commentForm" // a unique identifier for this form
+  form: "commentForm"
 })(CommentForm);

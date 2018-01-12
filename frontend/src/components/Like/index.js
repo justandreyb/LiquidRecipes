@@ -13,8 +13,8 @@ class Like extends Component {
   render() {
     return (
       <div onClick={this.putLike.bind(this)}>
-        <span className={"label " + (this.props.pressed ? "label-primary" : "label-success")}>
-          ❤️ {this.props.likes.length === 0 ? "No likes" : this.props.likes.length}
+        <span className={"label --label-rounded " + (this.props.pressed ? "label-primary" : "label-success")}>
+          <span role="img" aria-label="Like symbol">❤</span>️ {this.props.likes.length === 0 ? "No likes" : this.props.likes.length}
         </span>
       </div>
     );

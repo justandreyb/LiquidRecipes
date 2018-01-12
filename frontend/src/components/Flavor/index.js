@@ -12,31 +12,47 @@ class Flavor extends Component {
   render() {
     return (
       <div className="container-fluid">
+
         <div className="entity-view__container">
-          <div className="entity-view__container__name-bar">
-            <div className="entity-view__container__name-bar__name">
-              <div className="entity-view__container__name-bar__name__title">
+
+          <div className="entity-view__container__information">
+
+            <div className="entity-view__container__information__bar">
+              <div className="entity-view__container__information__bar__title">
                 <label>{this.props.flavor.name}</label>
               </div>
-              <div className="entity-view__container__name-bar__name__additional">
-                <span className="label label-info">{this.props.flavor.type}</span>
+              <div className="entity-view__container__information__bar__labels">
+                <div className="entity-view__container__information__bar__labels__item">
+                  <span className="label label-info">{this.props.flavor.type}</span>
+                </div>
               </div>
             </div>
-            <div className="entity-view__container__name-bar__like">
-              <LikeComponent
-                entityId={this.props.flavor.id}
-                likes={this.props.likes}
-                interaction={this.props.interaction}
-              />
+
+            <div className="entity-view__container__information__main">
+              <div className="entity-view__container__information__main__image">
+                <img alt={"Image for " + this.props.flavor.name} src={this.props.image.path}/>
+              </div>
+              <div className="entity-view__container__information__main__description">{this.props.flavor.description}</div>
             </div>
+
           </div>
-          <div className="entity-view__container__image">
-            <img width={300} height={300} alt="Image was missed" src={this.props.image.path}/>
+
+          <div className="entity-view__container__like">
+            <LikeComponent
+              entityId={this.props.flavor.id}
+              likes={this.props.likes}
+              interaction={this.props.interaction}
+            />
           </div>
-          <div className="entity-view__container__description">{this.props.flavor.description}</div>
+
         </div>
+
+        <hr/>
+
         <div className="comments__container">
-          <hr/>
+          <div className="comments__container__title">
+            <label>Comments <span className={"badge"}>{this.props.comments.length}</span></label>
+          </div>
           <div className="comments__container__form">
             <CommentFormComponent
               onSubmit={this.checkAndSendComment.bind(this)}
@@ -48,6 +64,7 @@ class Flavor extends Component {
             />
           </div>
         </div>
+
       </div>
     );
   }

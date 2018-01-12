@@ -16,7 +16,6 @@ export {RecipeFormComponent} from "./Recipe/form";
 export {LikeComponent} from "./Like";
 
 export {CommentsComponent} from "./Comments";
-export {CommentComponent} from "./Comment";
 export {CommentFormComponent} from "./Comment/form";
 
 export {CarouselComponent} from "./Carousel"

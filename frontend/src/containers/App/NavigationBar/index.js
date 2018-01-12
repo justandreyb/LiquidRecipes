@@ -25,7 +25,7 @@ class NavigationBarContainer extends Component {
           <Navbar.Brand>
             <Link to="/" activestyle={{color: "#33e0ff"}}>
               <div/>
-              <span>{this.props.appName}</span>
+              <span className="application__title">{this.props.appName}</span>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle/>
