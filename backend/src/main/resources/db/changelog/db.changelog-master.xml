@@ -8,5 +8,6 @@
 
     <include file="classpath:db/changelog/db.changelog-create-tables.xml"/>
     <include file="classpath:db/changelog/db.changelog-initial-data.xml"/>
+    <include file="classpath:db/changelog/security/db.changelog-13012018.xml"/>
 
 </databaseChangeLog>

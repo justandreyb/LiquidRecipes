@@ -1,5 +1,5 @@
 import {fromJS} from "immutable";
-import {sendElement, deleteElement, getElements, getElement} from "../../api";
+import {deleteElement, getElement} from "../../api";
 import {takeEvery, takeLatest} from "redux-saga/effects";
 
 import {CLEAR_FLAVOR_WORKSPACE} from "../Flavor";

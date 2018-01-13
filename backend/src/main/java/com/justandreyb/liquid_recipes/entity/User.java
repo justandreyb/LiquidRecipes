@@ -12,7 +12,7 @@ import java.util.Set;
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {"image", "flavors"}, callSuper = false)
-@ToString(exclude = {"image", "flavors"})
+@ToString(exclude = {"image", "flavors", "roles"})
 public class User extends BaseEntity {
 
     @Column(nullable = false)
@@ -35,6 +35,11 @@ public class User extends BaseEntity {
     @JoinTable(name = "flavors_to_users", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "flavor_id"))
     private Set<Flavor> flavors = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "roles_to_users", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     @Override
     public boolean isValid() {

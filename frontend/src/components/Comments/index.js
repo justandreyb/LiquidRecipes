@@ -9,10 +9,10 @@ class Comments extends Component {
         <div className="comments__container__list__view__item__info">
           <div className="--flex">
             {/*
-              <img src={comment.user.image} />
+              <img alt={comment.user.nickname} src={comment.user.image} />
               <label>{comment.user.nickname}</label>
             */}
-            <img src="http://via.placeholder.com/900x500"/>
+            <img alt="nickname" src="http://via.placeholder.com/900x500"/>
             <label>{comment.id}</label>
           </div>
           <span className="--small-font --lighter-text-color --span-no-wrap">{comment.date}</span>
