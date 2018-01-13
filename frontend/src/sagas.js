@@ -10,6 +10,7 @@ import {watchNewsActions} from "./modules/News";
 import {watchNewsSingleActions} from "./modules/NewsSingle";
 import {watchNewsCommentsActions} from "./modules/NewsComments";
 import {watchNewsLikesActions} from "./modules/NewsLikes";
+import {watchNewsImageActions} from "./modules/NewsImage";
 
 import {watchFlavorsActions} from "./modules/Flavors";
 import {watchFlavorActions} from "./modules/Flavor";
@@ -39,6 +40,7 @@ const sagas = [
   watchNewsSingleActions,
   watchNewsCommentsActions,
   watchNewsLikesActions,
+  watchNewsImageActions,
 
   watchFlavorsActions,
   watchFlavorActions,

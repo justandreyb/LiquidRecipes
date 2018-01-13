@@ -13,6 +13,7 @@ import {reducer as newsReducer} from "./modules/News";
 import {reducer as newsSingleReducer} from "./modules/NewsSingle";
 import {reducer as newsCommentsReducer} from "./modules/NewsComments";
 import {reducer as newsLikesReducer} from "./modules/NewsLikes";
+import {reducer as newsImageReducer} from "./modules/NewsImage";
 
 import {reducer as flavorsReducer} from "./modules/Flavors";
 import {reducer as flavorReducer} from "./modules/Flavor";
@@ -49,7 +50,8 @@ const containersReducer = {
       target: combineReducers({
         news    : newsSingleReducer,
         comments: newsCommentsReducer,
-        likes   : newsLikesReducer
+        likes   : newsLikesReducer,
+        image   : newsImageReducer
       })
     }),
     flavors: combineReducers({

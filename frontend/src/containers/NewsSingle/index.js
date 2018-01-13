@@ -24,12 +24,18 @@ import {
   deleteNewsLike
 } from "../../modules/NewsLikes"
 
+import {
+  getNewsImage,
+  selectNewsImageData
+} from "../../modules/NewsImage"
+
 class NewsSingleContainer extends Component {
 
   componentWillMount() {
     this.props.actions.getNewsSingle(this.props.match.params.id);
     this.props.actions.getNewsComments(this.props.match.params.id);
     this.props.actions.getNewsLikes(this.props.match.params.id);
+    this.props.actions.getNewsImage(this.props.match.params.id);
   }
 
   componentWillUnmount() {
@@ -38,17 +44,18 @@ class NewsSingleContainer extends Component {
 
   render() {
     return (
-      <div className="container col-sm-10">
-        <div className="text-center">
-          <h3>News</h3>
-          <div className="row">
-            <NewsSingleComponent
-              news       ={this.props.news}
-              comments   ={this.props.comments}
-              likes      ={this.props.likes}
-              interaction={this.props.interaction}
-            />
-          </div>
+      <div className="container">
+        <h3>News</h3>
+        <hr/>
+
+        <div className="row">
+          <NewsSingleComponent
+            news       ={this.props.news}
+            comments   ={this.props.comments}
+            likes      ={this.props.likes}
+            image      ={this.props.image}
+            interaction={this.props.interaction}
+          />
         </div>
       </div>
     )
@@ -59,14 +66,16 @@ export const NewsSingle = connect(
   (state) => ({
     news    : selectNewsSingleData(state),
     comments: selectNewsCommentsData(state),
-    likes   : selectNewsLikesData(state)
+    likes   : selectNewsLikesData(state),
+    image   : selectNewsImageData(state)
   }),
   (dispatch) => ({
     actions: bindActionCreators({
       getNewsSingle,
       cleanNewsSingleWorkspace,
       getNewsComments,
-      getNewsLikes
+      getNewsLikes,
+      getNewsImage
     }, dispatch),
     interaction: bindActionCreators({
       createNewsComment,

@@ -79,9 +79,6 @@ body {
 .entity-view__container__information__bar__labels__item {
     font-size: 17px;
 }
-.entity-view__container__information__bar__labels__item span {
-    cursor: pointer;
-}
 
 .entity-view__container__information__main {
     display: flex;
@@ -116,6 +113,13 @@ body {
 
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 17px;
+}
+
+.entity-view__container__information__additional {
+    padding-top: 15px;
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
 }
 
 .entity-view__container__like {
@@ -248,4 +252,8 @@ body {
 
 .--flex {
     display: flex;
+}
+
+.--clickable {
+    cursor: pointer;
 }
