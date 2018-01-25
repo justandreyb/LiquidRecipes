@@ -1,21 +1,22 @@
 package com.justandreyb.liquid_recipes.controller;
 
+import com.justandreyb.liquid_recipes.config.role.CheckRoles;
+import com.justandreyb.liquid_recipes.config.role.Role;
 import com.justandreyb.liquid_recipes.dto.FlavorDto;
 import com.justandreyb.liquid_recipes.dto.UserDto;
-import com.justandreyb.liquid_recipes.entity.User;
 import com.justandreyb.liquid_recipes.mapper.FlavorMapper;
 import com.justandreyb.liquid_recipes.mapper.UserMapper;
 import com.justandreyb.liquid_recipes.service.FlavorService;
 import com.justandreyb.liquid_recipes.service.UserService;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/accounts")
-@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
@@ -28,11 +29,10 @@ public class UserController {
     @Autowired
     private FlavorMapper flavorMapper;
 
+    @CheckRoles({Role.ADMIN, Role.CLIENT})
     @GetMapping("/im")
-        // TODO: Make auth
     UserDto getAccountData() {
-        // return userMapper.toUserDto(userService.get((String)authentication.getPrincipal()));
-        return userMapper.toUserDto(userService.getGuest());
+        return userMapper.toUserDto(userService.getCurrentUser());
     }
 
     @PostMapping("/registration")
@@ -41,21 +41,13 @@ public class UserController {
         return userMapper.toUserDto(account);
     }
 
-    @PostMapping("/login")
-    UserDto signIn(@RequestBody UserDto user) {
-        return userMapper.toUserDto(userService.signIn(user.getEmail(), user.getPassword()));
-    }
-
     @GetMapping("/im/flavors")
     List<FlavorDto> getUserFlavors() {
-        // TODO: Get id from auth credentials
-        return flavorMapper.toFlavorDtos(flavorService.getFlavorsByUser(userService.getGuest().getId()));
+        return flavorMapper.toFlavorDtos(flavorService.getFlavorsByUser(userService.getCurrentUser()));
     }
 
     @PostMapping("/im/flavors")
     void getUserFlavors(@RequestBody FlavorDto flavor) {
-        // TODO: Get id from auth credentials
-        flavorService.addToUser(userService.getGuest().getId(), flavorMapper.fromFlavorDto(flavor));
+        flavorService.addToUser(userService.getCurrentUser(), flavorMapper.fromFlavorDto(flavor));
     }
-
 }

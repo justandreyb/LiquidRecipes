@@ -1,16 +1,22 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Form, Field } from "react-final-form"
 
 const CommentForm = (props) => {
-  const { handleSubmit, pristine, submitting } = props;
+  const onSubmit = (data) => {
+    props.processSubmit(data);
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <Field name="text" component="textarea" maxLength="255" placeholder="Enter your comment here" />
-      <button type="submit" disabled={pristine || submitting}>Send</button>
-    </form>
+    <Form
+      onSubmit={onSubmit}
+      render={({handleSubmit, submitting, pristine}) =>
+        <form onSubmit={handleSubmit}>
+          <Field name="text" component="textarea" maxLength="255" placeholder="Enter your comment here"/>
+          <button type="submit" disabled={pristine || submitting}>Send</button>
+        </form>
+      }
+    />
   );
 };
 
-export const CommentFormComponent = reduxForm({
-  form: "commentForm"
-})(CommentForm);
+export const CommentFormComponent = CommentForm;

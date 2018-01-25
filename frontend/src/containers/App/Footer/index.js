@@ -11,6 +11,7 @@ class FooterContainer extends Component {
           @justandreyb
           2017-2018
         </p>
+        <div id="spinner" />
       </Navbar>
     );
   }

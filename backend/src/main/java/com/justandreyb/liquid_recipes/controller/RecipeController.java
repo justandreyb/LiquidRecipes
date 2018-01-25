@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/recipes")
-@CrossOrigin(origins = "http://localhost:3000")
 public class RecipeController {
 
     @Autowired
@@ -87,7 +86,7 @@ public class RecipeController {
     RecipeDto addRecipe(@RequestBody RecipeDto recipeDto) {
         val recipe = recipeMapper.fromRecipeDto(recipeDto);
         recipe.setImage(imageService.getPlaceholderImage());
-        recipe.setCreator(userService.getGuest());
+        recipe.setCreator(userService.getCurrentUser());
         Set<RecipeItem> items = recipeDto.getFlavors().stream().map((recipeItemDto -> {
             RecipeItem item = new RecipeItem();
             item.setDrops(recipeItemDto.getDrops());

@@ -1,5 +1,7 @@
 package com.justandreyb.liquid_recipes.security;
 
+import com.justandreyb.liquid_recipes.config.paths.Paths;
+import com.justandreyb.liquid_recipes.config.role.Role;
 import com.justandreyb.liquid_recipes.security.service.ClientDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,10 +24,10 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConf extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${jwt.key}")
-    private String jwtKey;
+    @Value("${security.jwt.key}")
+    private String tokenSigningKey;
 
     @Autowired
     private ClientDetailService detailService;
@@ -50,17 +52,21 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+            .authorizeRequests()
+                .antMatchers(Paths.getByRole(Role.ANY)).permitAll()
+                .antMatchers(Paths.getByRole(Role.GUEST)).permitAll()
+                .anyRequest().authenticated()
+        .and()
             .csrf()
-            .disable();
+                .disable();
     }
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey(jwtKey);
-//        converter.setAccessTokenConverter();
+        converter.setSigningKey(tokenSigningKey);
         return converter;
     }
 

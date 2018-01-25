@@ -15,12 +15,8 @@ public class FlavorService extends EntityService<Flavor, FlavorRepository> {
     @Autowired
     private UserService userService;
 
-    public Collection<Flavor> getFlavorsByUser(String userId) {
-        return userService.get(userId).getFlavors();
-    }
-
     public Collection<Flavor> getFlavorsByUser(User user) {
-        return getFlavorsByUser(user.getId());
+        return user.getFlavors();
     }
 
     public Collection<Flavor> getTop(int number) {
@@ -28,11 +24,10 @@ public class FlavorService extends EntityService<Flavor, FlavorRepository> {
         return getAllByRange(0, number);
     }
 
-    public Flavor addToUser(String userId, Flavor flavor) {
+    public Flavor addToUser(User user, Flavor flavor) {
         checkEntity(flavor);
         flavor = repository.save(flavor);
 
-        val user = userService.get(userId);
         user.getFlavors().add(flavor);
         userService.update(user);
 

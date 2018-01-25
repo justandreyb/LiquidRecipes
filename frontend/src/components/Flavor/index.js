@@ -62,7 +62,7 @@ class Flavor extends Component {
           </div>
           <div className="comments__container__form">
             <CommentFormComponent
-              onSubmit={this.checkAndSendComment.bind(this)}
+              processSubmit={this.checkAndSendComment.bind(this)}
             />
           </div>
           <div className="comments__container__list">

@@ -1,5 +1,6 @@
 import React from "react";
-import { Field, FieldArray, reduxForm } from "redux-form";
+import { Form, Field } from "react-final-form"
+import { FieldArray } from "react-final-form-arrays"
 
 const required = (value) => value ? undefined : "Required";
 
@@ -61,99 +62,105 @@ const renderItems = ({flavors, fields, meta: { touched, error, submitFailed } })
 ;
 
 const RecipeForm = (props) => {
-  const { handleSubmit, pristine, submitting, recipe, flavors } = props;
+  const onSubmit = (data) => {
+    props.processSubmit(data);
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name</label>
-        <div>
-          <Field
-            validate={required}
-            name="name"
-            component="input"
-            type="text"
-            placeholder={recipe == null ? "Name" : recipe.name}
-          />
-        </div>
-      </div>
-      <div>
-        <label>Description</label>
-        <div>
-          <Field
-            validate={required}
-            name="description"
-            component="textarea"
-            type="text"
-            placeholder={recipe == null ? "" : recipe.description}
-          />
-        </div>
-      </div>
-      <div>
-        <label>PG</label>
-        <div>
-          <Field
-            validate={required}
-            parse={(value) => Number(value)}
-            name="pg"
-            component="input"
-            type="number"
-            step="0.1"
-            placeholder={recipe == null ? 50 : recipe.pg}
-          />
-        </div>
-      </div>
-      <div>
-        <label>VG</label>
-        <div>
-          <Field
-            validate={required}
-            parse={(value) => Number(value)}
-            name="vg"
-            component="input"
-            type="number"
-            step="0.1"
-            placeholder={recipe == null ? 50 : recipe.vg}
-          />
-        </div>
-      </div>
-      <div>
-        <label>Nicotine</label>
-        <div>
-          <Field
-            validate={required}
-            parse={(value) => Number(value)}
-            name="nicotine"
-            component="input"
-            type="number"
-            step="0.1"
-            placeholder={recipe == null ? 50 : recipe.nicotine}
-          />
-        </div>
-      </div>
-      <div>
-        <label>Final amount</label>
-        <div>
-          <Field
-            validate={required}
-            parse={(value) => Number(value)}
-            name="finalAmount"
-            component="input"
-            type="text"
-            step="0.1"
-            placeholder={recipe == null ? 110 : recipe.finalAmount}
-          />
-        </div>
-      </div>
+    <Form
+      onSubmit={onSubmit}
+      render={({handleSubmit, pristine, submitting, recipe, flavors}) =>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Name</label>
+            <div>
+              <Field
+                validate={required}
+                name="name"
+                component="input"
+                type="text"
+                placeholder={recipe == null ? "Name" : recipe.name}
+              />
+            </div>
+          </div>
+          <div>
+            <label>Description</label>
+            <div>
+              <Field
+                validate={required}
+                name="description"
+                component="textarea"
+                type="text"
+                placeholder={recipe == null ? "" : recipe.description}
+              />
+            </div>
+          </div>
+          <div>
+            <label>PG</label>
+            <div>
+              <Field
+                validate={required}
+                parse={(value) => Number(value)}
+                name="pg"
+                component="input"
+                type="number"
+                step="0.1"
+                placeholder={recipe == null ? 50 : recipe.pg}
+              />
+            </div>
+          </div>
+          <div>
+            <label>VG</label>
+            <div>
+              <Field
+                validate={required}
+                parse={(value) => Number(value)}
+                name="vg"
+                component="input"
+                type="number"
+                step="0.1"
+                placeholder={recipe == null ? 50 : recipe.vg}
+              />
+            </div>
+          </div>
+          <div>
+            <label>Nicotine</label>
+            <div>
+              <Field
+                validate={required}
+                parse={(value) => Number(value)}
+                name="nicotine"
+                component="input"
+                type="number"
+                step="0.1"
+                placeholder={recipe == null ? 50 : recipe.nicotine}
+              />
+            </div>
+          </div>
+          <div>
+            <label>Final amount</label>
+            <div>
+              <Field
+                validate={required}
+                parse={(value) => Number(value)}
+                name="finalAmount"
+                component="input"
+                type="text"
+                step="0.1"
+                placeholder={recipe == null ? 110 : recipe.finalAmount}
+              />
+            </div>
+          </div>
 
-      <FieldArray validate={required} name="flavors" component={renderItems} flavors={flavors} />
+          <FieldArray validate={required} name="flavors" component={renderItems} flavors={flavors}/>
 
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Save</button>
-      </div>
-    </form>
+          <div>
+            <button type="submit" disabled={pristine || submitting}>Save</button>
+          </div>
+        </form>
+      }
+    />
   );
 };
 
-export const RecipeFormComponent = reduxForm({
-  form: "recipeForm"
-})(RecipeForm);
+export const RecipeFormComponent = RecipeForm;

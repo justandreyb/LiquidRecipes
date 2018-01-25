@@ -17,16 +17,22 @@ import java.util.Collections;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConf extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Value("${jwt.token.action.time}")
-    private int tokenActionTime;
+    @Value("${security.resource-servers.liquid-recipes.id}")
+    private String liquidRecipesResourceId;
 
-    @Value("${resource.backendId}")
-    private String backendId;
+    @Value("${security.clients.react-app.id}")
+    private String reactAppId;
 
-    @Value("${resource.frontendId}")
-    private String frontendId;
+    @Value("${security.clients.react-app.grant-types}")
+    private String[] reactAppGrantTypes;
+    @Value("${security.clients.react-app.secret}")
+    private String reactAppSecret;
+    @Value("${security.clients.react-app.scopes}")
+    private String[] reactAppScopes;
+    @Value("${security.clients.react-app.token-action-time}")
+    private int reactAppTokenActionTime;
 
     @Autowired
     private TokenStore tokenStore;
@@ -39,19 +45,21 @@ public class AuthorizationServerConf extends AuthorizationServerConfigurerAdapte
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+        security
+            .tokenKeyAccess("permitAll()")
+            .checkTokenAccess("isAuthenticated()");
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
             .inMemory()
-            .withClient(frontendId)
-            .secret("secret")
-            .authorizedGrantTypes("password")
-            .scopes("read", "write")
-            .resourceIds(backendId)
-            .accessTokenValiditySeconds(tokenActionTime);
+            .withClient(reactAppId)
+                .secret(reactAppSecret)
+                .scopes(reactAppScopes)
+                .resourceIds(liquidRecipesResourceId)
+                .authorizedGrantTypes(reactAppGrantTypes)
+                .accessTokenValiditySeconds(reactAppTokenActionTime);
     }
 
     @Override

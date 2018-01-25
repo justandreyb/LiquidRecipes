@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/news")
-@CrossOrigin(origins = "http://localhost:3000")
 public class NewsController {
 
     @Autowired
@@ -79,7 +78,7 @@ public class NewsController {
     NewsDto addNews(@RequestBody NewsDto newsDto) {
         val news = newsMapper.fromNewsDto(newsDto);
         news.setImage(imageService.getPlaceholderImage());
-        news.setCreator(userService.getGuest());
+        news.setCreator(userService.getCurrentUser());
         return newsMapper.toNewsDto(newsService.add(news));
     }
 

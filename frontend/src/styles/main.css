@@ -1,5 +1,6 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css");
 @import url('https://fonts.googleapis.com/css?family=Lobster|Source+Sans+Pro:400,700|Ubuntu:400,700&subset=cyrillic-ext,latin-ext');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css');
 
 body {
   margin: 0;

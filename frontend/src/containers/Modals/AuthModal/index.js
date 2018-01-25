@@ -37,6 +37,10 @@ class AuthModalContainer extends Component {
     console.log(data);
   }
 
+  handleSignUp(data) {
+    console.log(data);
+  }
+
   render() {
     return (
       <div>
@@ -56,12 +60,12 @@ class AuthModalContainer extends Component {
             <div>
               { this.props.switcherState === true &&
                 <RegistrationForm
-                  onSubmit={this.handleSignIn}
+                  onSubmit={this.handleSignUp.bind(this)}
                 />
               }
               { this.props.switcherState === false &&
                 <LoginForm
-                  onSubmit={this.handleSignIn}
+                  onSubmit={this.handleSignIn.bind(this)}
                 />
               }
             </div>

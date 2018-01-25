@@ -8,7 +8,7 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 @Configuration
 public class PasswordEncoderConf {
 
-    @Value("${sha.length}")
+    @Value("${security.sha.length}")
     private int shaLength;
 
     @Bean

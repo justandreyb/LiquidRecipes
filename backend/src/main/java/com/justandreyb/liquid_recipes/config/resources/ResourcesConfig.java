@@ -1,4 +1,4 @@
-package com.justandreyb.liquid_recipes.config;
+package com.justandreyb.liquid_recipes.config.resources;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

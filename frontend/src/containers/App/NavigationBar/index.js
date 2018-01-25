@@ -14,8 +14,6 @@ import {
   selectIsSuperuser,
   selectUserData
 } from "../../../modules/Account/index";
-import { showAuthModal } from "../../../modules/Modals/AuthModal";
-import { AuthModal } from "../../Modals/AuthModal";
 
 class NavigationBarContainer extends Component {
   render() {
@@ -57,14 +55,13 @@ class NavigationBarContainer extends Component {
           <Nav navbar pullRight>
             {
               this.props.guest &&
-              <NavItem eventkey={6}>
-                <div onClick={this.props.actions.showAuthModal}>Account</div>
-                <AuthModal />
-              </NavItem>
+              <LinkContainer to="/account">
+                <NavItem eventkey={7}>Account</NavItem>
+              </LinkContainer>
             }
             {
               !this.props.guest &&
-              <LinkContainer to="/account">
+              <LinkContainer to="/im">
                 <NavItem eventkey={7}>Account</NavItem>
               </LinkContainer>
             }
@@ -84,7 +81,6 @@ export const Navigation = connect(
   }),
   (dispatch) => ({
     actions: bindActionCreators({
-      showAuthModal
     }, dispatch)
   })
 )(NavigationBarContainer);

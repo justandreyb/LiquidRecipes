@@ -1,25 +1,27 @@
 import {fromJS} from "immutable";
-import {sendElement, getElement, updateElement, deleteElement} from "../../api/index";
-import {takeEvery, takeLatest} from "redux-saga/effects";
+import {call, put, takeEvery, takeLatest} from "redux-saga/effects";
+import axios from "axios/index";
+import {ACCESS_TOKEN_NAME, API_URL, CLIENT_ID, CLIENT_SECRET} from "../../settings";
+import {getCookies, removeCookies, setCookies} from "../App/Cookies";
+import {showSuccess} from "../Notifications";
 
 
 // ---------------------- CONSTANTS ----------------------- //
+
+const ENDPOINT_AUTH = API_URL + "/oauth";
+const ENDPOINT_ACCOUNT = API_URL + "/accounts";
 
 const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 const SIGN_UP_FAIL = "SIGN_UP_FAIL";
 
-const SIGN_IN_REQUEST = "SIGN_IN_REQUEST";
-const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
-const SIGN_IN_FAIL = "SIGN_IN_FAIL";
+const GET_TOKEN_REQUEST = "GET_TOKEN_REQUEST";
+const GET_TOKEN_SUCCESS = "GET_TOKEN_SUCCESS";
+const GET_TOKEN_FAIL = "GET_TOKEN_FAIL";
 
-const UPDATE_ACCOUNT_REQUEST = "UPDATE_ACCOUNT_REQUEST";
-const UPDATE_ACCOUNT_SUCCESS = "UPDATE_ACCOUNT_SUCCESS";
-const UPDATE_ACCOUNT_FAIL = "UPDATE_ACCOUNT_FAIL";
-
-const DELETE_ACCOUNT_REQUEST = "DELETE_ACCOUNT_REQUEST";
-const DELETE_ACCOUNT_SUCCESS = "DELETE_ACCOUNT_SUCCESS";
-const DELETE_ACCOUNT_FAIL = "DELETE_ACCOUNT_FAIL";
+const LOAD_ACCOUNT_REQUEST = "LOAD_ACCOUNT_REQUEST";
+const LOAD_ACCOUNT_SUCCESS = "LOAD_ACCOUNT_SUCCESS";
+const LOAD_ACCOUNT_FAIL = "LOAD_ACCOUNT_FAIL";
 
 const CLEAN_ACCOUNT_DATA = "CLEAN_ACCOUNT_DATA";
 
@@ -28,11 +30,13 @@ const CLEAN_ACCOUNT_DATA = "CLEAN_ACCOUNT_DATA";
 
 const initialState = fromJS({
   user: {
-    nickname: "Guest"
+    name: "Guest"
   },
-  guest    : true,
-  superuser: false,
-  error    : null
+  auth         : {},
+  authenticated: false,
+  guest        : true,
+  superuser    : false,
+  error        : null
 });
 
 
@@ -46,64 +50,49 @@ export const reducer = (state = initialState, action) => {
       .set("error", null);
 
   case SIGN_UP_SUCCESS:
-    return state
-      .set("user", action.payload.user)
-      .set("guest", false)
-      .set("superuser", action.payload.superuser);
+    return state;
 
   case SIGN_UP_FAIL:
     return state
       .set("error", action.payload);
 
 
-  case SIGN_IN_REQUEST:
-    return state
-      .set("error", null);
-
-  case SIGN_IN_SUCCESS:
-    return state
-      .set("account", action.payload)
-      .set("loading", false)
-      .set("error", null);
-
-  case SIGN_IN_FAIL:
-    return state
-      .set("loading", false)
-      .set("error", action.payload);
-
-
-  case UPDATE_ACCOUNT_REQUEST:
+  case GET_TOKEN_REQUEST:
     return state
       .set("loading", true)
       .set("error", null);
 
-  case UPDATE_ACCOUNT_SUCCESS:
+  case GET_TOKEN_SUCCESS:
     return state
-      .set("account", action.payload)
+      .set("auth", action.payload)
+      .set("authenticated", true)
       .set("loading", false)
       .set("error", null);
 
-  case UPDATE_ACCOUNT_FAIL:
+  case GET_TOKEN_FAIL:
     return state
+      .set("auth", {})
+      .set("authenticated", false)
       .set("loading", false)
       .set("error", action.payload);
 
 
-  case DELETE_ACCOUNT_REQUEST:
+  case LOAD_ACCOUNT_REQUEST:
     return state
       .set("loading", true)
       .set("error", null);
 
-  case DELETE_ACCOUNT_SUCCESS:
+  case LOAD_ACCOUNT_SUCCESS:
     return state
-      .set("account", action.payload)
+      .set("user", action.payload)
       .set("loading", false)
       .set("error", null);
 
-  case DELETE_ACCOUNT_FAIL:
+  case LOAD_ACCOUNT_FAIL:
     return state
       .set("loading", false)
       .set("error", action.payload);
+
 
   case CLEAN_ACCOUNT_DATA:
     return initialState;
@@ -132,53 +121,34 @@ export const createAccountFail = (error) => ({
 });
 
 
-export const signIn = (data) => {
-  console.log("GJ");
-  return ({
-    type   : SIGN_IN_REQUEST,
-    payload: data
-  });
-};
-
-export const getAccountSuccess = (data) => ({
-  type   : SIGN_IN_SUCCESS,
+export const signIn = (data) => ({
+  type   : GET_TOKEN_REQUEST,
   payload: data
 });
 
-export const getAccountFail = (error) => ({
-  type   : SIGN_IN_FAIL,
+export const getTokenSuccess = (data) => ({
+  type   : GET_TOKEN_SUCCESS,
+  payload: data
+});
+
+export const getTokenFail = (error) => ({
+  type   : GET_TOKEN_FAIL,
   payload: error,
   error  : true
 });
 
 
-export const updateAccount = (data) => ({
-  type   : UPDATE_ACCOUNT_REQUEST,
+export const loadAccount = () => ({
+  type: LOAD_ACCOUNT_REQUEST
+});
+
+export const loadAccountSuccess = (data) => ({
+  type   : LOAD_ACCOUNT_SUCCESS,
   payload: data
 });
 
-export const updateAccountSuccess = () => ({
-  type: UPDATE_ACCOUNT_SUCCESS
-});
-
-export const updateAccountFail = (error) => ({
-  type   : UPDATE_ACCOUNT_FAIL,
-  payload: error,
-  error  : true
-});
-
-
-export const deleteAccount = (id) => ({
-  type   : DELETE_ACCOUNT_REQUEST,
-  payload: id
-});
-
-export const deleteAccountSuccess = () => ({
-  type: DELETE_ACCOUNT_SUCCESS
-});
-
-export const deleteAccountFail = (error) => ({
-  type   : DELETE_ACCOUNT_FAIL,
+export const loadAccountFail = (error) => ({
+  type   : LOAD_ACCOUNT_FAIL,
   payload: error,
   error  : true
 });
@@ -187,32 +157,85 @@ export const cleanAccountData = () => ({
   type: CLEAN_ACCOUNT_DATA
 });
 
-
 // ----------------------- SAGAS ------------------------ //
 
-const url = "/account";
+function* tokenRequest(action) {
+  try {
+    const body = `username=${encodeURIComponent(action.payload.email)}&password=${encodeURIComponent(action.payload.password)}&grant_type=password`;
 
-function* createAccountRequest(action) {
-  yield sendElement(url, action.payload, createAccountSuccess, createAccountFail);
+    const response = yield call(axios, ENDPOINT_AUTH + "/token", {
+      method : "POST",
+      data   : body,
+      headers: getLoginHeaders()
+    });
+
+    yield put(getTokenSuccess(response.data));
+  }
+  catch (e) {
+    yield put(getTokenFail(e.message));
+  }
 }
 
-function* getAccountRequest(action) {
-  yield getElement(url, action.payload, getAccountSuccess, getAccountFail);
+function* signUpRequest(action) {
+  try {
+    const response = yield call(axios.post, ENDPOINT_ACCOUNT + "/registration", action.payload);
+
+    yield put(createAccountSuccess(response.data));
+    yield put(showSuccess("Account created"));
+  }
+  catch (e) {
+    yield put(createAccountFail(e.message));
+  }
 }
 
-function* updateAccountRequest(action) {
-  yield updateElement(url, action.payload.id, action.payload, updateAccountSuccess, updateAccountFail);
+function* loadAccountRequest() {
+  try {
+    const response = yield call(axios.get, ENDPOINT_ACCOUNT + "/im", { headers: getAuthenticationHeader() });
+
+    yield put(loadAccountSuccess(response.data));
+  }
+  catch (e) {
+    yield put(loadAccountFail(e.message));
+  }
 }
 
-function* deleteAccountRequest(action) {
-  yield deleteElement(url, action.payload, deleteAccountSuccess, deleteAccountFail);
+function* handleToken(action) {
+  yield* setCookies(ACCESS_TOKEN_NAME, action.payload.access_token, action.payload.expires_in);
+  yield* showSuccess("You are signed in");
+
+  yield put(loadAccount());
+}
+
+function* handleSuccessSignUp(action) {
+  yield* showSuccess("Account created. You can enter now");
+}
+
+function* removeTokenFromCookies(action) {
+  yield* removeCookies(ACCESS_TOKEN_NAME);
 }
 
 export function* watchAccountActions() {
-  yield takeLatest(SIGN_UP_REQUEST, createAccountRequest);
-  yield takeLatest(SIGN_IN_REQUEST, getAccountRequest);
-  yield takeEvery(UPDATE_ACCOUNT_REQUEST, updateAccountRequest);
-  yield takeLatest(DELETE_ACCOUNT_REQUEST, deleteAccountRequest);
+  yield takeLatest(SIGN_UP_REQUEST, signUpRequest);
+  yield takeLatest(GET_TOKEN_REQUEST, tokenRequest);
+  yield takeEvery(LOAD_ACCOUNT_REQUEST, loadAccountRequest);
+
+  yield takeEvery(GET_TOKEN_SUCCESS, handleToken);
+  yield takeEvery(SIGN_UP_SUCCESS, handleSuccessSignUp);
+  yield takeEvery(GET_TOKEN_FAIL, removeTokenFromCookies);
+  yield takeEvery(CLEAN_ACCOUNT_DATA, removeTokenFromCookies);
+}
+
+function getLoginHeaders() {
+  return {
+    "Authorization": "Basic " + btoa(CLIENT_ID + ":" + CLIENT_SECRET),
+    "Content-Type" : "application/x-www-form-urlencoded; charset=utf-8"
+  };
+}
+
+export function getAuthenticationHeader() {
+  return {
+    "Authorization": `Bearer ${getCookies(ACCESS_TOKEN_NAME)}`
+  };
 }
 
 // ------------------ SELECTORS -------------------- //

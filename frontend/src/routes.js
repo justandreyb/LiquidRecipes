@@ -4,6 +4,7 @@ import {Switch, Route} from "react-router-dom";
 import {
   App,
   News,
+  PageForSign,
   NewsSingle,
   NewsCreate,
   NewsEdit,
@@ -38,6 +39,8 @@ export const routes =
     <Route exact path="/recipes/new" component={RecipeCreate}/>
     <Route exact path="/recipes/:id" component={Recipe}/>
     <Route exact path="/recipes/:id/edit" component={RecipeEdit}/>
+
+    <Route exact path="/account" component={PageForSign}/>
 
     {/*<Route exact path="/im" component={User}/>*/}
     <Route exact path="/im/flavors" component={UserFlavors}/>

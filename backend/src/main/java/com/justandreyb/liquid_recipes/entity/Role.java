@@ -18,6 +18,6 @@ public class Role extends BaseEntity {
 
     @Override
     public boolean isValid() {
-        return true;
+        return !name.isEmpty();
     }
 }

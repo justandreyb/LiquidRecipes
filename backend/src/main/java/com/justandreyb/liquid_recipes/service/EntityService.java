@@ -1,16 +1,17 @@
 package com.justandreyb.liquid_recipes.service;
 
-import com.justandreyb.liquid_recipes.config.ResourcesConfig;
-import com.justandreyb.liquid_recipes.entity.BaseEntity;
-import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
-import com.justandreyb.liquid_recipes.exception.NotFoundException;
+import java.lang.reflect.ParameterizedType;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import java.lang.reflect.ParameterizedType;
-import java.util.Collection;
-import java.util.stream.Collectors;
+import com.justandreyb.liquid_recipes.config.resources.ResourcesConfig;
+import com.justandreyb.liquid_recipes.entity.BaseEntity;
+import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
+import com.justandreyb.liquid_recipes.exception.NotFoundException;
 
 @NoRepositoryBean
 public abstract class EntityService<T extends BaseEntity, R extends JpaRepository> {

@@ -1,4 +1,4 @@
-package com.justandreyb.liquid_recipes.config;
+package com.justandreyb.liquid_recipes.config.exception;
 
 import com.justandreyb.liquid_recipes.exception.LiquidRecipeException;
 import com.justandreyb.liquid_recipes.exception.NotFoundException;
