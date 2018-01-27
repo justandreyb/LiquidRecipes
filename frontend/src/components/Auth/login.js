@@ -1,6 +1,6 @@
 import React from "react"
 import { Form, Field } from "react-final-form"
-import {composeValidators, minLength, required} from "../../modules/Form/validators";
+import {composeValidators, minLength, required} from "../../modules/App/Form/validators";
 
 const Login = (props) => {
   const onSubmit = (data) => {

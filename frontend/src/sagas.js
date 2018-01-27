@@ -29,7 +29,7 @@ import {watchManufacturersActions} from "./modules/Manufacturers";
 import {watchImagesActions} from "./modules/Images";
 import {watchCountriesActions} from "./modules/Countries";
 
-import {watchNotificationsActions} from "./modules/Notifications";
+import {watchNotificationsActions} from "./modules/App/Notificator";
 
 const sagas = [
   watchAppActions,

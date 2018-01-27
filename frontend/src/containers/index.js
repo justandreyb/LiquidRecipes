@@ -4,6 +4,8 @@ export {Footer} from "./App/Footer";
 
 export {Home} from "./Home";
 
+export {PrivateRoute} from "./App/PrivateRoute";
+
 export {PageForSign} from "./Account";
 
 export {UserFlavors} from "./UserFlavors";

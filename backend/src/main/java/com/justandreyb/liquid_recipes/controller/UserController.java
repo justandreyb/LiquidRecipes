@@ -32,7 +32,7 @@ public class UserController {
     @CheckRoles({Role.ADMIN, Role.CLIENT})
     @GetMapping("/im")
     UserDto getAccountData() {
-        return userMapper.toUserDto(userService.getCurrentUser());
+        return userMapper.toUserInfoDto(userService.getCurrentUser());
     }
 
     @PostMapping("/registration")

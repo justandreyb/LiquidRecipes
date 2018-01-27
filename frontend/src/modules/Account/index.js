@@ -3,7 +3,8 @@ import {call, put, takeEvery, takeLatest} from "redux-saga/effects";
 import axios from "axios/index";
 import {ACCESS_TOKEN_NAME, API_URL, CLIENT_ID, CLIENT_SECRET} from "../../settings";
 import {getCookies, removeCookies, setCookies} from "../App/Cookies";
-import {showSuccess} from "../Notifications";
+import {showSuccess} from "../App/Notificator";
+import {navigateTo} from "../App/Navigator";
 
 
 // ---------------------- CONSTANTS ----------------------- //
@@ -14,6 +15,10 @@ const ENDPOINT_ACCOUNT = API_URL + "/accounts";
 const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 const SIGN_UP_FAIL = "SIGN_UP_FAIL";
+
+const LOGOUT_REQUEST = "LOGOUT_REQUEST";
+const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+const LOGOUT_FAIL = "LOGOUT_FAIL";
 
 const GET_TOKEN_REQUEST = "GET_TOKEN_REQUEST";
 const GET_TOKEN_SUCCESS = "GET_TOKEN_SUCCESS";
@@ -33,10 +38,9 @@ const initialState = fromJS({
     name: "Guest"
   },
   auth         : {},
-  authenticated: false,
-  guest        : true,
-  superuser    : false,
-  error        : null
+  roles        : ["guest"],
+  error        : null,
+  authenticated: false
 });
 
 
@@ -84,15 +88,33 @@ export const reducer = (state = initialState, action) => {
 
   case LOAD_ACCOUNT_SUCCESS:
     return state
-      .set("user", action.payload)
+      .set("user", {
+        id              : action.payload.id,
+        name            : action.payload.name,
+        email           : action.payload.email,
+        registrationDate: action.payload.registrationDate
+      })
+      .set("roles", action.payload.roles.map((role) => role.name))
       .set("loading", false)
       .set("error", null);
 
   case LOAD_ACCOUNT_FAIL:
     return state
       .set("loading", false)
+      .set("roles", ["guest"])
+      .set("authenticated", false)
       .set("error", action.payload);
 
+  case LOGOUT_REQUEST:
+    return state
+      .set("error", null);
+
+  case LOGOUT_SUCCESS:
+    return initialState;
+
+  case LOGOUT_FAIL:
+    return state
+      .set("error", action.payload);
 
   case CLEAN_ACCOUNT_DATA:
     return initialState;
@@ -153,6 +175,22 @@ export const loadAccountFail = (error) => ({
   error  : true
 });
 
+
+export const logout = () => ({
+  type: LOGOUT_REQUEST
+});
+
+export const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS
+});
+
+export const logoutFail = (error) => ({
+  type   : LOGOUT_FAIL,
+  payload: error,
+  error  : true
+});
+
+
 export const cleanAccountData = () => ({
   type: CLEAN_ACCOUNT_DATA
 });
@@ -181,7 +219,6 @@ function* signUpRequest(action) {
     const response = yield call(axios.post, ENDPOINT_ACCOUNT + "/registration", action.payload);
 
     yield put(createAccountSuccess(response.data));
-    yield put(showSuccess("Account created"));
   }
   catch (e) {
     yield put(createAccountFail(e.message));
@@ -199,11 +236,30 @@ function* loadAccountRequest() {
   }
 }
 
+function* logoutRequest() {
+  try {
+    yield put(logoutSuccess());
+  }
+  catch (e) {
+    yield put(logoutFail(e.message));
+  }
+}
+
 function* handleToken(action) {
   yield* setCookies(ACCESS_TOKEN_NAME, action.payload.access_token, action.payload.expires_in);
   yield* showSuccess("You are signed in");
 
   yield put(loadAccount());
+}
+
+function* handleLogin(action) {
+  yield* navigateTo("/");
+}
+
+function* handleLogout() {
+  yield* removeCookies(ACCESS_TOKEN_NAME);
+  yield* showSuccess("Logout complete");
+  yield* navigateTo("/");
 }
 
 function* handleSuccessSignUp(action) {
@@ -218,9 +274,13 @@ export function* watchAccountActions() {
   yield takeLatest(SIGN_UP_REQUEST, signUpRequest);
   yield takeLatest(GET_TOKEN_REQUEST, tokenRequest);
   yield takeEvery(LOAD_ACCOUNT_REQUEST, loadAccountRequest);
+  yield takeEvery(LOGOUT_REQUEST, logoutRequest);
 
   yield takeEvery(GET_TOKEN_SUCCESS, handleToken);
+  yield takeEvery(LOAD_ACCOUNT_SUCCESS, handleLogin);
   yield takeEvery(SIGN_UP_SUCCESS, handleSuccessSignUp);
+  yield takeEvery(LOGOUT_SUCCESS, handleLogout);
+
   yield takeEvery(GET_TOKEN_FAIL, removeTokenFromCookies);
   yield takeEvery(CLEAN_ACCOUNT_DATA, removeTokenFromCookies);
 }
@@ -242,5 +302,6 @@ export function getAuthenticationHeader() {
 
 export const selectAccountContainer = (state) => state.containers.app.account.info;
 export const selectUserData = (state) => selectAccountContainer(state).get("user");
-export const selectIsGuest = (state) => selectAccountContainer(state).get("guest");
-export const selectIsSuperuser = (state) => selectAccountContainer(state).get("superuser");
+export const selectIsAuthenticated = (state) => selectAccountContainer(state).get("authenticated");
+export const selectIsRole = (state, role) => selectAccountContainer(state).get("roles").indexOf(role) > -1;
+export const selectIsAdmin = (state) => selectIsRole(state, "admin");

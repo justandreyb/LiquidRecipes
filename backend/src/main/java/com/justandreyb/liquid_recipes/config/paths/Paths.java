@@ -12,6 +12,8 @@ public enum Paths {
     ROOT("/", ANY),
     HOME("/home", ANY),
 
+    TOKEN("/oauth/token", ANY),
+
     LOGIN("/accounts/login/**", GUEST),
     REGISTRATION("/accounts/registration/**", GUEST, ADMIN),
     LOGOUT("/accounts/logout/**", CLIENT, ADMIN),

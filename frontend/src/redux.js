@@ -3,7 +3,7 @@ import {routerReducer} from "react-router-redux";
 
 import {reducer as appReducer} from "./modules/App";
 import {reducer as accountReducer} from "./modules/Account";
-import {reducer as authModalReducer} from "./modules/Modals/AuthModal";
+import {reducer as authModalReducer} from "./modules/App/Modals/AuthModal";
 
 import {reducer as userFlavorsReducer} from "./modules/UserFlavors";
 import {reducer as userRecipesReducer} from "./modules/UserRecipes";

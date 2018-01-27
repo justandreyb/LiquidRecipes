@@ -12,7 +12,7 @@ import {
   selectStateOfSwitcher,
   switchToSignIn,
   switchToSignUp
-} from "../../../modules/Modals/AuthModal";
+} from "../../../modules/App/Modals/AuthModal";
 
 import {
   signIn,

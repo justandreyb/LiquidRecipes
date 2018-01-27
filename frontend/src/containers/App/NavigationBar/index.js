@@ -8,14 +8,19 @@ import Navbar from "react-bootstrap/lib/Navbar";
 import Nav from "react-bootstrap/lib/Nav";
 import NavItem from "react-bootstrap/lib/NavItem";
 
-import { selectApplicationName } from "../../../modules/App";
-import {
-  selectIsGuest,
-  selectIsSuperuser,
-  selectUserData
-} from "../../../modules/Account/index";
+import {selectApplicationName} from "../../../modules/App";
+import {selectIsAdmin, selectUserData} from "../../../modules/Account/index";
+import {MenuItem, NavDropdown} from "react-bootstrap";
+import {ACCESS_TOKEN_NAME} from "../../../settings";
+import {getCookies} from "../../../modules/App/Cookies";
+import {loadAccount, logout, selectIsAuthenticated} from "../../../modules/Account";
 
 class NavigationBarContainer extends Component {
+
+  componentWillMount() {
+    if (getCookies(ACCESS_TOKEN_NAME)) this.props.actions.loadAccount()
+  }
+
   render() {
     return (
       <Navbar fixedTop>
@@ -43,27 +48,38 @@ class NavigationBarContainer extends Component {
             <LinkContainer to="/news">
               <NavItem eventkey={4}>News</NavItem>
             </LinkContainer>
-            {
-              this.props.superuser &&
-              <LinkContainer to="/dashboard">
-                <NavItem eventkey={5}>
-                  Dashboard
-                </NavItem>
-              </LinkContainer>
-            }
           </Nav>
           <Nav navbar pullRight>
             {
-              this.props.guest &&
+              !this.props.authenticated &&
               <LinkContainer to="/account">
                 <NavItem eventkey={7}>Account</NavItem>
               </LinkContainer>
             }
             {
-              !this.props.guest &&
-              <LinkContainer to="/im">
-                <NavItem eventkey={7}>Account</NavItem>
-              </LinkContainer>
+              this.props.authenticated &&
+              <NavDropdown eventKey={8} title={"" + this.props.user.name} id="account_component">
+                <LinkContainer to="/im">
+                  <MenuItem eventkey={8.1}>Profile</MenuItem>
+                </LinkContainer>
+                {
+                  this.props.superuser &&
+                  <LinkContainer to="/dashboard">
+                    <MenuItem eventkey={8.2}>
+                      Dashboard
+                    </MenuItem>
+                  </LinkContainer>
+                }
+                <LinkContainer to="/im/flavors">
+                  <MenuItem eventKey={8.3}>Flavors</MenuItem>
+                </LinkContainer>
+                <LinkContainer to="/im/recipes">
+                  <MenuItem eventKey={8.4}>Recipes</MenuItem>
+                </LinkContainer>
+                <MenuItem divider />
+
+                <MenuItem eventkey={8.5} onClick={this.props.actions.logout}> Logout</MenuItem>
+              </NavDropdown>
             }
           </Nav>
         </Navbar.Collapse>
@@ -74,13 +90,15 @@ class NavigationBarContainer extends Component {
 
 export const Navigation = connect(
   (state) => ({
-    appName  : selectApplicationName(state),
-    user     : selectUserData(state),
-    guest    : selectIsGuest(state),
-    superuser: selectIsSuperuser(state)
+    authenticated: selectIsAuthenticated(state),
+    appName      : selectApplicationName(state),
+    user         : selectUserData(state),
+    superuser    : selectIsAdmin(state)
   }),
   (dispatch) => ({
     actions: bindActionCreators({
+      loadAccount,
+      logout
     }, dispatch)
   })
 )(NavigationBarContainer);

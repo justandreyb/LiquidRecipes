@@ -9,16 +9,25 @@ import org.springframework.stereotype.Component;
 @Mapper(
     nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
     componentModel = "spring",
-    uses = {ImageMapper.class}
+    uses = {ImageMapper.class, RoleMapper.class}
 )
 public interface UserMapper {
 
     @Mappings({
         @Mapping(target = "password", ignore = true),
-        @Mapping(target = "image", ignore = true)
+        @Mapping(target = "image", ignore = true),
+        @Mapping(target = "roles", ignore = true)
     })
     @Named("toUserDto")
     UserDto toUserDto(User user);
+
+    @Mappings({
+        @Mapping(target = "password", ignore = true),
+        @Mapping(target = "image", qualifiedByName = "toImageDto"),
+        @Mapping(target = "roles", qualifiedByName = "toRoleDto")
+    })
+    @Named("toUserInfoDto")
+    UserDto toUserInfoDto(User user);
 
     @Mappings({
         @Mapping(target = "password", ignore = true),
@@ -28,5 +37,6 @@ public interface UserMapper {
     UserDto toFullUserDto(User user);
 
     @Named("fromUserDto")
+    @Mapping(target = "roles", ignore = true)
     User fromUserDto(UserDto user);
 }
