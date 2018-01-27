@@ -69,14 +69,12 @@ export const reducer = (state = initialState, action) => {
   case GET_TOKEN_SUCCESS:
     return state
       .set("auth", action.payload)
-      .set("authenticated", true)
       .set("loading", false)
       .set("error", null);
 
   case GET_TOKEN_FAIL:
     return state
       .set("auth", {})
-      .set("authenticated", false)
       .set("loading", false)
       .set("error", action.payload);
 
@@ -95,6 +93,7 @@ export const reducer = (state = initialState, action) => {
         registrationDate: action.payload.registrationDate
       })
       .set("roles", action.payload.roles.map((role) => role.name))
+      .set("authenticated", true)
       .set("loading", false)
       .set("error", null);
 
