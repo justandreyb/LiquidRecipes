@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Carousel} from "react-bootstrap";
+// import {Carousel} from "react-bootstrap";
 
 class RootCarousel extends Component {
   render() {
@@ -7,13 +7,13 @@ class RootCarousel extends Component {
 
     if (this.props.elements.size === 0)
       code = <label>Nothing to show...</label>;
-    else
-      code = <Carousel>{this.props.elements.map((element) => this.createListItem(element))}</Carousel>;
+    // else
+    //   code = <Carousel>{this.props.elements.map((element) => this.createListItem(element))}</Carousel>;
 
     return code;
   }
 
-  createListItem(element) {
+  /*createListItem(element) {
     return (
       <Carousel.Item>
         <img width={900} height={500} alt="900x500" src="/assets/carousel.png" />
@@ -23,7 +23,7 @@ class RootCarousel extends Component {
         </Carousel.Caption>
       </Carousel.Item>
     );
-  }
+  }*/
 }
 
 export const CarouselComponent = RootCarousel;

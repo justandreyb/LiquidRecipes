@@ -1,6 +1,7 @@
 import React from "react"
-import { Form, Field } from "react-final-form"
-import {composeValidators, minLength, required} from "../../modules/App/Form/validators";
+import { Form } from "react-final-form"
+import {required} from "../../modules/App/Form/validators";
+import {FormField} from "../FormField";
 
 const Login = (props) => {
   const onSubmit = (data) => {
@@ -11,37 +12,12 @@ const Login = (props) => {
     <Form
       onSubmit={onSubmit}
       render={({handleSubmit, submitting}) =>
-        <form onSubmit={handleSubmit}>
+        <form className="authentication__form form" onSubmit={handleSubmit}>
 
-          <Field
-            name="email"
-            validate={required}
-          >
-            {({input, meta}) =>
-              <div>
-                <label>Email</label>
-                <input {...input} type="email" placeholder="Email"/>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            }
-          </Field>
+          <FormField name="email" type="email" label="Email" validate={required} />
+          <FormField name="password" type="password" label="Password" validate={required} />
 
-          <Field
-            name="password"
-            validate={composeValidators(required, minLength(8))}
-          >
-            {({input, meta}) =>
-              <div>
-                <label>Password</label>
-                <input {...input} type="password" placeholder="Password"/>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            }
-          </Field>
-
-          <button type="submit" disabled={submitting}>
-          Submit
-          </button>
+          <button type="submit" className="form__submit-button" disabled={submitting}>Submit</button>
         </form>
       }
     />)

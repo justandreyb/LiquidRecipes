@@ -1,0 +1,73 @@
+/* FORMS */
+
+.form {
+    --background-color: var(--primary-color);
+    --text-color: var(--secondary-color);
+    --border-color: var(--secondary-color);
+    --border-color--hover: var(--secondary-color--hover);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__component {
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 10px;
+}
+
+.form__field {
+    font-size: var(--default-font-size);
+    font-family: var(--secondary-font-family);
+    position: relative;
+    padding-top: 0.85rem;
+}
+
+.form__input {
+    outline: none;
+
+    border: 0 var(--background-color);
+    border-bottom: 2px var(--border-color) solid;
+    font-size: 1.3rem;
+    padding: 3px;
+    box-sizing: border-box;
+
+    transition: border-bottom-color 0.15s linear 0s;
+}
+
+.form__input:focus {
+    border-bottom-color: var(--additional-color);
+}
+
+.form__input--invalid {
+    border-bottom-color: var(--error-color);
+}
+
+.form__label {
+    position: absolute;
+    left: 5px;
+    top: 0.85rem;
+    cursor: text;
+    font-size: 1.3rem;
+
+    transition: top 0.3s ease-in-out 0s, left 0.3s ease-in-out 0s, font-size 0.3s ease-in-out 0s;
+}
+
+.form__input:focus + .form__label, .form__label--touched {
+    top: 0;
+    left: 0;
+    font-size: 0.85rem;
+}
+
+.form__error {
+    padding-top: 5px;
+    font-size: 0.85rem;
+
+    color: var(--error-color--hover);
+}
+
+.form__submit-button {
+}

@@ -7,15 +7,16 @@ import {store, history} from "./store";
 
 import {Navigation, Footer} from "./containers"
 import {routes} from "./routes"
+import {getFontSetting, getThemeSetting} from "./settings";
 
 import "./styles/main.css";
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
+      <div className={"application " + getThemeSetting() + "-theme " + getFontSetting() + "-fonts"}>
         <Navigation/>
-        <div className="layout">
+        <div className="content">
           {routes}
         </div>
         <Footer/>

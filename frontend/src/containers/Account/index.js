@@ -28,16 +28,16 @@ class AuthContainer extends Component {
 
   render() {
     return (
-      <div className="">
-        <div className="">
-          <label>Registration</label>
+      <div className="authentication">
+        <div className="authentication__block">
+          <label className="authentication__title">Sign up</label>
           <RegistrationForm
             processSubmit={this.handleSignUp.bind(this)}
           />
         </div>
-        <hr />
-        <div className="">
-          <label>Log in</label>
+        <div className="divider" />
+        <div className="authentication__block">
+          <label className="authentication__title">Sign in</label>
           <LoginForm
             processSubmit={this.handleSignIn.bind(this)}
           />

@@ -14,7 +14,7 @@ class NewsCreateContainer extends Component {
 
   render() {
     return (
-      <div className="container layout">
+      <div className="container content">
         <div className="text-center">
           <h3>Create new news</h3>
           <div className="row">

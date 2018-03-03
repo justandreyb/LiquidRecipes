@@ -26,3 +26,5 @@ export {RecipesCarouselComponent} from "./Carousel/recipes"
 export {LoginForm} from "./Auth/login"
 export {RegistrationForm} from "./Auth/registration"
 
+export {FormField} from "./FormField"
+

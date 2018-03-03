@@ -1,0 +1,66 @@
+.light-theme {
+    --primary-color: #F1FAEE;
+    --primary-color--hover: #9AA098;
+
+    --secondary-color: #1D3557;
+    --secondary-color--hover: #132238;
+
+    --additional-color: #E63946;
+    --additional-color--hover: #A82A33;
+
+    --element-primary-color: #A8DADC;
+    --element-primary-color--hover: #6B8B8C;
+    --element-secondary-color: #457B9D;
+    --element-secondary-color--hover: #2C4F64;
+}
+
+.night-theme {
+    --primary-color: #1D3557;
+    --primary-color--hover: #132238;
+
+    --secondary-color: #F1FAEE;
+    --secondary-color--hover: #9AA098;
+
+    --additional-color: #E63946;
+    --additional-color--hover: #A82A33;
+
+    --element-primary-color: #A8DADC;
+    --element-primary-color--hover: #6B8B8C;
+    --element-secondary-color: #457B9D;
+    --element-secondary-color--hover: #2C4F64;
+}
+
+.modern-theme {
+    --primary-color: #FFFFFF;
+    --primary-color--hover: #E8E8E8;
+
+    --secondary-color: #003459;
+    --secondary-color--hover: #002641;
+
+    --additional-color: #00A8E8;
+    --additional-color--hover: #0099D3;
+
+    --element-primary-color: #00171F;
+    --element-primary-color--hover: #00171F;
+    --element-secondary-color: #007EA7;
+    --element-secondary-color--hover: #007398;
+
+    --error-color: #E63946;
+    --error-color--hover: #A82A33;
+}
+
+.modern-night-theme {
+    --primary-color: #003459;
+    --primary-color--hover: #002641;
+
+    --secondary-color: #FFFFFF;
+    --secondary-color--hover: #E8E8E8;
+
+    --additional-color: #00A8E8;
+    --additional-color--hover: #0099D3;
+
+    --element-primary-color: #00171F;
+    --element-primary-color--hover: #00171F;
+    --element-secondary-color: #007EA7;
+    --element-secondary-color--hover: #007398;
+}

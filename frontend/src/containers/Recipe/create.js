@@ -19,7 +19,7 @@ class RecipeCreateContainer extends Component {
 
   render() {
     return (
-      <div className="container layout">
+      <div className="container content">
         <div className="text-center">
           <h3>Create new flavor</h3>
           <div className="row">

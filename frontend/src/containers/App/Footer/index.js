@@ -1,18 +1,23 @@
 import React, { Component } from "react";
+import {getCookies, setCookies} from "../../../modules/App/Cookies";
+import {DEFAULT_THEME, THEME} from "../../../settings";
 
-import Navbar from "react-bootstrap/lib/Navbar";
+const getThemeSetting = () => {
+  const themeCookies = getCookies(THEME);
+  if (themeCookies == null || themeCookies === "")
+    setCookies(THEME, DEFAULT_THEME);
+
+  return getCookies(THEME);
+};
 
 class FooterContainer extends Component {
   render() {
     return (
-      <Navbar fixedBottom>
-        <p className="container text-center">
-          App created by
-          @justandreyb
-          2017-2018
-        </p>
-        <div id="spinner" />
-      </Navbar>
+      <footer className="footer">
+        <div className="footer__panel">
+          <label className="footer__information">App created by <a className="footer__author --fast-transition --clickable" href="https://github.com/justandreyb">@justandreyb</a> 2017-2018</label>
+        </div>
+      </footer>
     );
   }
 }

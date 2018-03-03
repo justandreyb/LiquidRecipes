@@ -5,10 +5,10 @@ export const mustBeString = (value) => typeof value === "string" ? "Must be a st
 export const mustBeNumber = (value) => isNaN(value) ? "Must be a number" : undefined;
 
 export const minLength = (min) => (value) =>
-  value.length < min ? undefined : `Length must be greater than ${min}`;
+  !value || value.length < min ? `Length must be greater than ${min}` : undefined;
 
 export const maxLength = (max) => (value) =>
-  value.length < max ? undefined : `Length must be smaller than ${max}`;
+  value && value.length < max ? undefined : `Length must be smaller than ${max}`;
 
 export const minValue = (min) => (value) =>
   isNaN(value) || value >= min ? undefined : `Should be greater than ${min}`;

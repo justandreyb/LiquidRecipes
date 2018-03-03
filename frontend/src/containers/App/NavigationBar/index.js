@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
-
-import Navbar from "react-bootstrap/lib/Navbar";
-import Nav from "react-bootstrap/lib/Nav";
-import NavItem from "react-bootstrap/lib/NavItem";
 
 import {selectApplicationName} from "../../../modules/App";
 import {selectIsAdmin, selectUserData} from "../../../modules/Account/index";
-import {MenuItem, NavDropdown} from "react-bootstrap";
 import {ACCESS_TOKEN_NAME} from "../../../settings";
 import {getCookies} from "../../../modules/App/Cookies";
 import {loadAccount, logout, selectIsAuthenticated} from "../../../modules/Account";
+import {LinkContainer} from "react-router-bootstrap";
 
 class NavigationBarContainer extends Component {
 
@@ -23,12 +17,56 @@ class NavigationBarContainer extends Component {
 
   render() {
     return (
-      <Navbar fixedTop>
+      <nav className="navigation">
+        <div className="navigation__panel">
+
+          <div className="navigation__logo">
+            <LinkContainer to="/">
+              <div className="navigation__logo--link --clickable --transition">{this.props.appName}</div>
+            </LinkContainer>
+          </div>
+
+          <div className="navigation__content">
+            <div className="navigation__links">
+              <LinkContainer to="/recipes">
+                <div className="navigation__links--link --clickable --fast-transition"><i className="fas fa-glass-martini --small-font"/>  Recipes</div>
+              </LinkContainer>
+              <LinkContainer to="/flavors">
+                <div className="navigation__links--link --clickable --fast-transition"><i className="fas fa-tint --small-font"/>   Flavors</div>
+              </LinkContainer>
+              <LinkContainer to="/news">
+                <div className="navigation__links--link --clickable --fast-transition"><i className="fas fa-newspaper --small-font"/>   News</div>
+              </LinkContainer>
+            </div>
+
+            <div className="navigation__auth">
+              {
+                !this.props.authenticated &&
+                <LinkContainer to="/account">
+                  <div className="navigation__auth--link --clickable --fast-transition"><i className="fas fa-users"/></div>
+                </LinkContainer>
+              }
+              {
+                this.props.authenticated &&
+                <LinkContainer to="/im">
+                  <div className="navigation__auth--link --clickable --fast-transition"><i className="fas fa-user"/></div>
+                </LinkContainer>
+              }
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
+}
+
+/*
+<Navbar fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/" activestyle={{color: "#33e0ff"}}>
               <div/>
-              <span className="application__title">{this.props.appName}</span>
+              <span className="application__title"></span>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle/>
@@ -84,9 +122,7 @@ class NavigationBarContainer extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    );
-  }
-}
+ */
 
 export const Navigation = connect(
   (state) => ({

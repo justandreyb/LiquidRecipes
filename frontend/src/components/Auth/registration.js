@@ -1,6 +1,7 @@
 import React from "react"
-import { Form, Field } from "react-final-form"
+import { Form } from "react-final-form"
 import {composeValidators, minLength, required, valuesEqual} from "../../modules/App/Form/validators";
+import {FormField} from "../FormField";
 
 const Registration = (props) => {
   const onSubmit = (data) => {
@@ -12,60 +13,14 @@ const Registration = (props) => {
     <Form
       onSubmit={onSubmit}
       render={({handleSubmit, submitting}) =>
-        <form onSubmit={handleSubmit}>
-          <Field
-            name="name"
-            validate={required}
-          >
-            {({input, meta}) =>
-              <div>
-                <label>Name</label>
-                <input {...input} type="text" placeholder="Name"/>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            }
-          </Field>
+        <form className="authentication__form form" onSubmit={handleSubmit}>
 
-          <Field
-            name="email"
-            validate={required}
-          >
-            {({input, meta}) =>
-              <div>
-                <label>Email</label>
-                <input {...input} type="email" placeholder="Email"/>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            }
-          </Field>
+          <FormField name="name" label="Name" validate={required} />
+          <FormField name="email" type="email" label="Email" validate={required} />
+          <FormField name="password" type="password" label="Password" validate={minLength(8)} />
+          <FormField name="rePassword" type="password" label="Repeat Password" validate={composeValidators(required, minLength(8))} />
 
-          <Field
-            name="password"
-            validate={composeValidators(required, minLength(8))}
-          >
-            {({input, meta}) =>
-              <div>
-                <label>Password</label>
-                <input {...input} type="password" placeholder="Password"/>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            }
-          </Field>
-
-          <Field
-            name="rePassword"
-            validate={composeValidators(required, minLength(8))}
-          >
-            {({input, meta}) =>
-              <div>
-                <label>Password repeat</label>
-                <input {...input} type="password" placeholder="Password"/>
-                {meta.error && meta.touched && <span>{meta.error}</span>}
-              </div>
-            }
-          </Field>
-
-          <button type="submit" disabled={submitting}>
+          <button type="submit" className="form__submit-button" disabled={submitting}>
             Submit
           </button>
         </form>

@@ -1,0 +1,38 @@
+/* LOGIN AND REGISTRATION PAGES */
+
+.authentication {
+    margin: auto;
+    max-height: 600px;
+    display: flex;
+}
+@media (max-width: 670px) {
+    .authentication {
+        flex-flow: column;
+    }
+}
+@media (min-width: 670px) {
+    .authentication {
+        flex-flow: row;
+        justify-content: center;
+    }
+}
+
+.authentication__block {
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.authentication__title {
+    padding-bottom: 10px;
+
+    font-size: var(--big-font-size);
+}
+
+.authentication__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

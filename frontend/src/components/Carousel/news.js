@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Carousel} from "react-bootstrap";
+// import {Carousel} from "react-bootstrap";
 import Link from "react-router-dom/es/Link";
 
 class NewsCarousel extends Component {
@@ -8,13 +8,13 @@ class NewsCarousel extends Component {
 
     if (this.props.news.size === 0)
       code = <label>Nothing to show...</label>;
-    else
-      code = <Carousel>{this.props.news.map((news) => this.createListItem(news))}</Carousel>;
+    // else
+    //   code = <Carousel>{this.props.news.map((news) => this.createListItem(news))}</Carousel>;
 
     return code;
   }
 
-  createListItem(news) {
+ /* createListItem(news) {
     return (
       <Carousel.Item>
         <img width={600} height={600} alt="600x600" src={news.image.path} />
@@ -23,7 +23,7 @@ class NewsCarousel extends Component {
         </Carousel.Caption>
       </Carousel.Item>
     );
-  }
+  }*/
 }
 
 export const NewsCarouselComponent = NewsCarousel;

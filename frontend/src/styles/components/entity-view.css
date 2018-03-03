@@ -1,0 +1,107 @@
+/* ENTITY VIEW PAGE STYLES */
+
+.entity-view__container {
+    display: flex;
+    cursor: default;
+}
+@media (max-width: 670px) {
+    .entity-view__container {
+        flex-flow: column;
+    }
+}
+@media (min-width: 670px) {
+    .entity-view__container {
+        flex-flow: row;
+    }
+}
+.entity-view__container__information {
+    flex-grow: 2;
+
+    display: flex;
+    flex-flow: column;
+}
+
+.entity-view__container__information__bar {
+    display: flex;
+    flex-flow: row;
+    padding-bottom: 15px;
+}
+@media (max-width: 670px) {
+    .entity-view__container__information__bar {
+        flex-wrap: wrap;
+    }
+}
+@media (min-width: 670px) {
+    .entity-view__container__information__bar {
+        flex-wrap: nowrap;
+    }
+}
+
+.entity-view__container__information__bar__title {
+    padding-right: 5px;
+
+    font-size: var(--big-font-size);
+}
+
+.entity-view__container__information__bar__labels {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 1px 5px 0 0;
+}
+
+.entity-view__container__information__bar__labels__item {
+    font-size: var(--medium-font-size);
+}
+
+.entity-view__container__information__main {
+    display: flex;
+    justify-content: space-between;
+}
+@media (max-width: 600px) {
+    .entity-view__container__information__main {
+        flex-flow: column;
+    }
+}
+@media (min-width: 600px) {
+    .entity-view__container__information__main {
+        flex-flow: row;
+    }
+}
+
+.entity-view__container__information__main__image {
+    flex-basis: 50%;
+    flex-shrink: 0;
+}
+.entity-view__container__information__main__image img {
+    width: 100%;
+    max-width: 800px;
+    max-height: 800px;
+    border-radius: 5px;
+}
+
+.entity-view__container__information__main__description {
+    flex-basis: 48%;
+    flex-shrink: 1;
+    padding: 15px 0 15px 0;
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: var(--medium-font-size);
+}
+
+.entity-view__container__information__additional {
+    padding-top: 15px;
+
+    font-family: var(--secondary-font-family);
+    font-size: var(--default-font-size);
+}
+
+.entity-view__container__like {
+    font-size: var(--medium-font-size);
+}
+
+.entity-view__container__like span:hover {
+    cursor: pointer;
+    filter: brightness(85%)
+}
