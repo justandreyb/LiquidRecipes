@@ -1,4 +1,4 @@
-import {getCookies, setCookies} from "./modules/App/Cookies";
+import {getCookies, setCookies} from "./utils/cookies";
 
 export const API_URL = "http://localhost:8080/storage";
 

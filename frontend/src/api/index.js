@@ -2,7 +2,7 @@ import {call, put} from "redux-saga/effects";
 import axios from "axios";
 
 import {API_URL} from "../settings";
-import {getAuthenticationHeader} from "../modules/Account";
+import {getAuthenticationHeader} from "../modules/user";
 
 export function* getElements(url, successHandler, failHandler) {
   try {

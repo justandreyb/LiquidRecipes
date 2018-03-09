@@ -2,48 +2,48 @@ import React from "react";
 import {Switch, Route} from "react-router-dom";
 
 import {
-  App,
-  News,
+  ApplicationRoot,
+  NewsList,
   PageForSign,
-  NewsSingle,
+  NewsView,
   NewsCreate,
   NewsEdit,
-  Flavors,
-  Flavor,
+  FlavorsList,
+  FlavorView,
   FlavorCreate,
   FlavorEdit,
-  Recipes,
-  Recipe,
+  RecipesList,
+  RecipeView,
   RecipeCreate,
   RecipeEdit,
-  UserFlavors,
-  UserRecipes
+  UserFlavorsList,
+  UserRecipesList
 } from "./containers";
 
 export const routes =
   <Switch>
 
-    <Route exact path="/" component={App}/>
+    <Route exact path="/" component={ApplicationRoot}/>
 
-    <Route exact path="/news" component={News}/>
+    <Route exact path="/news" component={NewsList}/>
     <Route exact path="/news/new" component={NewsCreate}/>
-    <Route exact path="/news/:id" component={NewsSingle}/>
+    <Route exact path="/news/:id" component={NewsView}/>
     <Route exact path="/news/:id/edit" component={NewsEdit}/>
 
-    <Route exact path="/flavors" component={Flavors}/>
+    <Route exact path="/flavors" component={FlavorsList}/>
     <Route exact path="/flavors/new" component={FlavorCreate}/>
-    <Route exact path="/flavors/:id" component={Flavor}/>
+    <Route exact path="/flavors/:id" component={FlavorView}/>
     <Route exact path="/flavors/:id/edit" component={FlavorEdit}/>
 
-    <Route exact path="/recipes" component={Recipes}/>
+    <Route exact path="/recipes" component={RecipesList}/>
     <Route exact path="/recipes/new" component={RecipeCreate}/>
-    <Route exact path="/recipes/:id" component={Recipe}/>
+    <Route exact path="/recipes/:id" component={RecipeView}/>
     <Route exact path="/recipes/:id/edit" component={RecipeEdit}/>
 
     <Route exact path="/account" component={PageForSign}/>
 
     {/*<Route exact path="/im" component={User}/>*/}
-    <Route exact path="/im/flavors" component={UserFlavors}/>
-    <Route exact path="/im/recipes" component={UserRecipes}/>
+    <Route exact path="/im/flavors" component={UserFlavorsList}/>
+    <Route exact path="/im/recipes" component={UserRecipesList}/>
 
   </Switch>;

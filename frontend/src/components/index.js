@@ -1,30 +1,22 @@
-export {UserFlavorsComponent} from "./UserFlavors";
-export {UserRecipesComponent} from "./UserRecipes";
+export {NewsListComponent} from "./news/list";
+export {NewsViewComponent} from "./news/view";
+export {NewsFormComponent} from "./news/edit_form";
 
-export {NewsComponent} from "./News";
-export {NewsSingleComponent} from "./NewsSingle";
-export {NewsFormComponent} from "./NewsSingle/form";
+export {FlavorsListComponent} from "./flavors/list";
+export {FlavorViewComponent} from "./flavors/view";
+export {FlavorFormComponent} from "./flavors/edit_form";
 
-export {FlavorsComponent} from "./Flavors";
-export {FlavorComponent} from "./Flavor";
-export {FlavorFormComponent} from "./Flavor/form";
+export {RecipesListComponent} from "./recipes/list";
+export {RecipeViewComponent} from "./recipes/view";
+export {RecipeFormComponent} from "./recipes/edit_form";
 
-export {RecipesComponent} from "./Recipes";
-export {RecipeComponent} from "./Recipe";
-export {RecipeFormComponent} from "./Recipe/form";
+export {LikeComponent} from "./users/like";
 
-export {LikeComponent} from "./Like";
+export {CommentsComponent} from "./users/comments";
+export {CommentFormComponent} from "./users/comment";
 
-export {CommentsComponent} from "./Comments";
-export {CommentFormComponent} from "./Comment/form";
+export {LoginForm} from "./users/login"
+export {RegistrationForm} from "./users/registration"
 
-export {CarouselComponent} from "./Carousel"
-export {NewsCarouselComponent} from "./Carousel/news"
-export {FlavorsCarouselComponent} from "./Carousel/flavors"
-export {RecipesCarouselComponent} from "./Carousel/recipes"
-
-export {LoginForm} from "./Auth/login"
-export {RegistrationForm} from "./Auth/registration"
-
-export {FormField} from "./FormField"
+export {FormField} from "./form/input_field"
 

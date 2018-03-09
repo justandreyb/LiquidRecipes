@@ -3,7 +3,7 @@ import {routerMiddleware} from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 import createSagaMiddleware from "redux-saga";
 
-import globalReducer from "./redux";
+import globalReducer from "./reducers";
 import globalSagas from "./sagas";
 
 export const history = createHistory();

@@ -1,27 +1,25 @@
-export {App} from "./App";
-export {Navigation} from "./App/NavigationBar";
-export {Footer} from "./App/Footer";
+export {ApplicationRoot} from "./root/application";
+export {Navigation} from "./root/navigation_bar";
+export {Footer} from "./root/footer";
+export {Home} from "./root/home";
 
-export {Home} from "./Home";
+export {PrivateRoute} from "./routing/PrivateRoute";
 
-export {PrivateRoute} from "./App/PrivateRoute";
+export {PageForSign} from "./users/unauthenticated";
 
-export {PageForSign} from "./Account";
+export {UserFlavorsList} from "./flavors/user_list";
+export {FlavorsList} from "./flavors/list";
+export {FlavorView} from "./flavors/view";
+export {FlavorCreate} from "./flavors/create";
+export {FlavorEdit} from "./flavors/edit";
 
-export {UserFlavors} from "./UserFlavors";
-export {UserRecipes} from "./UserRecipes";
+export {UserRecipesList} from "./recipes/user_list";
+export {RecipesList} from "./recipes/list";
+export {RecipeView} from "./recipes/view";
+export {RecipeCreate} from "./recipes/create";
+export {RecipeEdit} from "./recipes/edit";
 
-export {News} from "./News";
-export {NewsSingle} from "./NewsSingle";
-export {NewsCreate} from "./NewsSingle/create";
-export {NewsEdit} from "./NewsSingle/edit";
-
-export {Flavors} from "./Flavors";
-export {Flavor} from "./Flavor";
-export {FlavorCreate} from "./Flavor/create";
-export {FlavorEdit} from "./Flavor/edit";
-
-export {Recipes} from "./Recipes";
-export {Recipe} from "./Recipe";
-export {RecipeCreate} from "./Recipe/create";
-export {RecipeEdit} from "./Recipe/edit";
+export {NewsList} from "./news/list";
+export {NewsView} from "./news/view";
+export {NewsCreate} from "./news/create";
+export {NewsEdit} from "./news/edit";

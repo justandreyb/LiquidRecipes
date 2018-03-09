@@ -3,12 +3,11 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {ConnectedRouter} from "react-router-redux";
 
+import {getFontSetting, getThemeSetting} from "./settings";
 import {store, history} from "./store";
+import {routes} from "./routes"
 
 import {Navigation, Footer} from "./containers"
-import {routes} from "./routes"
-import {getFontSetting, getThemeSetting} from "./settings";
-
 import "./styles/main.css";
 
 ReactDOM.render(

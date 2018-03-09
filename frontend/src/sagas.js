@@ -1,35 +1,35 @@
 import {fork, all} from "redux-saga/effects";
 
-import {watchAppActions} from "./modules/App/index";
-import {watchAccountActions} from "./modules/Account/index";
+import {watchAppActions} from "./modules/application";
+import {watchAccountActions} from "./modules/user";
 
-import {watchUserFlavorsActions} from "./modules/UserFlavors";
-import {watchUserRecipesActions} from "./modules/UserRecipes";
+import {watchUserFlavorsActions} from "./modules/flavors/user_flavors";
+import {watchUserRecipesActions} from "./modules/recipes/user_recipes";
 
-import {watchNewsActions} from "./modules/News";
-import {watchNewsSingleActions} from "./modules/NewsSingle";
-import {watchNewsCommentsActions} from "./modules/NewsComments";
-import {watchNewsLikesActions} from "./modules/NewsLikes";
-import {watchNewsImageActions} from "./modules/NewsImage";
+import {watchNewsActions} from "./modules/news/news_list";
+import {watchNewsSingleActions} from "./modules/news/news";
+import {watchNewsCommentsActions} from "./modules/news/news_comments";
+import {watchNewsLikesActions} from "./modules/news/news_likes";
+import {watchNewsImageActions} from "./modules/news/news_image";
 
-import {watchFlavorsActions} from "./modules/Flavors";
-import {watchFlavorActions} from "./modules/Flavor";
-import {watchFlavorCommentsActions} from "./modules/FlavorComments";
-import {watchFlavorLikesActions} from "./modules/FlavorLikes";
-import {watchFlavorImageActions} from "./modules/FlavorImage";
-import {watchFlavorManufacturerActions} from "./modules/FlavorManufacturer";
+import {watchFlavorsActions} from "./modules/flavors/flavors";
+import {watchFlavorActions} from "./modules/flavors/flavor";
+import {watchFlavorCommentsActions} from "./modules/flavors/flavor_comments";
+import {watchFlavorLikesActions} from "./modules/flavors/flavor_likes";
+import {watchFlavorImageActions} from "./modules/flavors/flavor_image";
+import {watchFlavorManufacturerActions} from "./modules/flavors/flavor_manufacturer";
 
-import {watchRecipesActions} from "./modules/Recipes";
-import {watchRecipeActions} from "./modules/Recipe";
-import {watchRecipeCommentsActions} from "./modules/RecipeComments";
-import {watchRecipeLikesActions} from "./modules/RecipeLikes";
-import {watchRecipeItemsActions} from "./modules/RecipeItems";
+import {watchRecipesActions} from "./modules/recipes/recipes";
+import {watchRecipeActions} from "./modules/recipes/recipe";
+import {watchRecipeCommentsActions} from "./modules/recipes/recipe_comments";
+import {watchRecipeLikesActions} from "./modules/recipes/recipe_likes";
+import {watchRecipeItemsActions} from "./modules/recipes/recipe_items";
 
-import {watchManufacturersActions} from "./modules/Manufacturers";
-import {watchImagesActions} from "./modules/Images";
-import {watchCountriesActions} from "./modules/Countries";
+import {watchManufacturersActions} from "./modules/manufacturers";
+import {watchImagesActions} from "./modules/images";
+import {watchCountriesActions} from "./modules/countries";
 
-import {watchNotificationsActions} from "./modules/App/Notificator";
+import {watchNotificationsActions} from "./utils/notificator";
 
 const sagas = [
   watchAppActions,
