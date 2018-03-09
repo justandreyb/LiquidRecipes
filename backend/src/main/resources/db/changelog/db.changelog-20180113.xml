@@ -10,7 +10,7 @@
         <sql>
             CREATE TABLE ROLE
             (
-            ID varchar(255) PRIMARY KEY NOT NULL,
+            ID char(36) PRIMARY KEY NOT NULL,
             NAME varchar(255) NOT NULL
             );
         </sql>
@@ -20,8 +20,8 @@
         <sql>
             CREATE TABLE ROLES_TO_USERS
             (
-            ROLE_ID varchar(255) NOT NULL,
-            USER_ID varchar(255) NOT NULL,
+            ROLE_ID char(36) NOT NULL,
+            USER_ID char(36) NOT NULL,
             CONSTRAINT ROLES_TO_USERS_PK PRIMARY KEY (ROLE_ID, USER_ID),
             CONSTRAINT FKSEFROLEABU87WPDWOC6O10BIRN FOREIGN KEY (ROLE_ID) REFERENCES ROLE (ID),
             CONSTRAINT FKSEDUSERSIFFIR6XD3TBRX200SX FOREIGN KEY (USER_ID) REFERENCES USER (ID)

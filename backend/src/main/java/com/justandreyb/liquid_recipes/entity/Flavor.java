@@ -24,8 +24,8 @@ public class Flavor extends BaseEntity {
     @JoinColumn(name = "manufacturer_id", nullable = false)
     private Manufacturer manufacturer;
 
-    @Column(columnDefinition = "varchar")
-    @Enumerated(EnumType.STRING)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id", nullable = false)
     private FlavorType type;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)

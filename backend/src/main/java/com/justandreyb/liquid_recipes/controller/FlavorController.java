@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/flavors")
-@CrossOrigin(origins = "http://localhost:3000")
 public class FlavorController {
 
     @Autowired
@@ -24,6 +23,8 @@ public class FlavorController {
     private LikeService likeService;
     @Autowired
     private ImageService imageService;
+    @Autowired
+    private FlavorTypeService flavorTypeService;
 
     @Autowired
     private FlavorMapper flavorMapper;
@@ -35,6 +36,8 @@ public class FlavorController {
     private LikeMapper likeMapper;
     @Autowired
     private ImageMapper imageMapper;
+    @Autowired
+    private FlavorTypeMapper flavorTypeMapper;
 
     @GetMapping
     List<FlavorDto> getAllFlavors() {
@@ -51,9 +54,14 @@ public class FlavorController {
         return flavorMapper.toFlavorDtos(flavorService.getTop(number));
     }
 
+    @GetMapping("/types")
+    List<FlavorTypeDto> getFlavorTypes() {
+        return flavorTypeMapper.toFullFlavorTypeDtos(flavorTypeService.getAll());
+    }
+
     @GetMapping("/{id}")
     FlavorDto getFlavor(@PathVariable("id") String id) {
-        return flavorMapper.toFlavorDto(flavorService.get(id));
+        return flavorMapper.toFullFlavorDto(flavorService.get(id));
     }
 
     @GetMapping("/{id}/comments")

@@ -21,29 +21,55 @@
         </sql>
     </changeSet>
 
-
     <changeSet id="20170612_3" author="justandreyb">
+        <insert tableName="FLAVOR_TYPE">
+            <column name="ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="NAME" value="Fruit"/>
+        </insert>
+        <insert tableName="FLAVOR_TYPE">
+            <column name="ID" value="fae8a148-2096-40d1-b404-7fb7ae3327f0"/>
+            <column name="NAME" value="Menthol and mints"/>
+        </insert>
+        <insert tableName="FLAVOR_TYPE">
+            <column name="ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="NAME" value="Drinks"/>
+        </insert>
+        <insert tableName="FLAVOR_TYPE">
+            <column name="ID" value="275d019b-011c-4fb1-b717-6327a2aa5f42"/>
+            <column name="NAME" value="Tobacco"/>
+        </insert>
+        <insert tableName="FLAVOR_TYPE">
+            <column name="ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="NAME" value="Bakery"/>
+        </insert>
+        <insert tableName="FLAVOR_TYPE">
+            <column name="ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="NAME" value="Other"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20170612_4" author="justandreyb">
         <sql>
             INSERT INTO PUBLIC.MANUFACTURER (ID, DESCRIPTION, NAME, COUNTRY_ID, IMAGE_ID) VALUES ('df0f2d30-e623-4a70-812d-382ccd02b650', 'The best', 'TPA', 'b0cad7ba-d9c7-438d-b0b5-9d5f6db4cd90', '502d6c4b-ab33-45d5-9855-2ba4af564b6c');
             INSERT INTO PUBLIC.MANUFACTURER (ID, DESCRIPTION, NAME, COUNTRY_ID, IMAGE_ID) VALUES ('95a57172-b651-4e68-9873-56be10d9cb8e', null, 'Capella', 'b0cad7ba-d9c7-438d-b0b5-9d5f6db4cd90', '502d6c4b-ab33-45d5-9855-2ba4af564b6c');
         </sql>
     </changeSet>
 
-    <changeSet id="20170612_4" author="justandreyb">
+    <changeSet id="20170612_5" author="justandreyb">
         <sql>
-            INSERT INTO PUBLIC.FLAVOR (ID, DESCRIPTION, NAME, TYPE, IMAGE_ID, MANUFACTURER_ID) VALUES ('a86f3abe-601f-4fe1-b6f7-70d7dd14bee1', 'Green apple flavor', 'Apple', 'Fruit', '502d6c4b-ab33-45d5-9855-2ba4af564b6c', 'df0f2d30-e623-4a70-812d-382ccd02b650');
-            INSERT INTO PUBLIC.FLAVOR (ID, DESCRIPTION, NAME, TYPE, IMAGE_ID, MANUFACTURER_ID) VALUES ('c401c504-b931-488c-9269-4c222bfcd0f1', 'Tobacco', 'Tobacco', 'Tobacco', '502d6c4b-ab33-45d5-9855-2ba4af564b6c', 'df0f2d30-e623-4a70-812d-382ccd02b650');
+            INSERT INTO PUBLIC.FLAVOR (ID, DESCRIPTION, NAME, TYPE_ID, IMAGE_ID, MANUFACTURER_ID) VALUES ('a86f3abe-601f-4fe1-b6f7-70d7dd14bee1', 'Green apple flavor', 'Apple', 'f01452fd-4b6e-424c-a2e3-1b7e332e4596', '502d6c4b-ab33-45d5-9855-2ba4af564b6c', 'df0f2d30-e623-4a70-812d-382ccd02b650');
+            INSERT INTO PUBLIC.FLAVOR (ID, DESCRIPTION, NAME, TYPE_ID, IMAGE_ID, MANUFACTURER_ID) VALUES ('c401c504-b931-488c-9269-4c222bfcd0f1', 'Tobacco', 'Tobacco', '275d019b-011c-4fb1-b717-6327a2aa5f42', '502d6c4b-ab33-45d5-9855-2ba4af564b6c', 'df0f2d30-e623-4a70-812d-382ccd02b650');
         </sql>
     </changeSet>
 
-    <changeSet id="20170612_5" author="justandreyb">
+    <changeSet id="20170612_6" author="justandreyb">
         <sql>
             INSERT INTO PUBLIC.USER (ID, EMAIL, NAME, PASSWORD, REGISTRATION_DATE, IMAGE_ID) VALUES ('188f2ccb-9cfa-4c0c-94d5-001527164828', 'test@email.com', 'Test', '123456789', '2017-12-05 11:05:43.444000000', '502d6c4b-ab33-45d5-9855-2ba4af564b6c');
             INSERT INTO PUBLIC.USER (ID, EMAIL, NAME, PASSWORD, REGISTRATION_DATE, IMAGE_ID) VALUES ('5ff93334-9d61-446a-9cbe-6160828ab42f', 'test1@email.com', 'Test1', '123456789', '2017-12-05 11:06:12.084000000', '502d6c4b-ab33-45d5-9855-2ba4af564b6c');
         </sql>
     </changeSet>
 
-    <changeSet id="20170612_6" author="justandreyb">
+    <changeSet id="20170612_7" author="justandreyb">
         <sql>
             INSERT INTO PUBLIC.NEWS (ID, CREATION_DATE, TEXT, TITLE, USER_ID, IMAGE_ID) VALUES ('dee827af-cf08-46ff-bff8-35443df21871', '2017-12-05 11:03:33.749000000', 'Test news 1 text', 'Test news 1', '188f2ccb-9cfa-4c0c-94d5-001527164828', '502d6c4b-ab33-45d5-9855-2ba4af564b6c');
             INSERT INTO PUBLIC.NEWS (ID, CREATION_DATE, TEXT, TITLE, USER_ID, IMAGE_ID) VALUES ('bf11bb48-2caf-445b-9e9a-5f32b959e35c', '2017-12-05 11:03:36.222000000', 'Test news 2 text', 'Test news 2', '5ff93334-9d61-446a-9cbe-6160828ab42f', '502d6c4b-ab33-45d5-9855-2ba4af564b6c');
