@@ -1,46 +1,30 @@
 package com.justandreyb.liquid_recipes.controller;
 
-import com.justandreyb.liquid_recipes.dto.*;
-import com.justandreyb.liquid_recipes.entity.RecipeItem;
-import com.justandreyb.liquid_recipes.mapper.*;
-import com.justandreyb.liquid_recipes.service.*;
-import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import lombok.val;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.justandreyb.liquid_recipes.config.role.CheckRoles;
+import com.justandreyb.liquid_recipes.dto.CommentDto;
+import com.justandreyb.liquid_recipes.dto.ImageDto;
+import com.justandreyb.liquid_recipes.dto.LikeDto;
+import com.justandreyb.liquid_recipes.dto.RecipeDto;
+import com.justandreyb.liquid_recipes.dto.RecipeItemDto;
+import com.justandreyb.liquid_recipes.entity.RecipeItem;
+
 @RestController
 @RequestMapping("/recipes")
-public class RecipeController {
-
-    @Autowired
-    private RecipeService recipeService;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private RecipeItemService recipeItemService;
-    @Autowired
-    private CommentService commentService;
-    @Autowired
-    private LikeService likeService;
-    @Autowired
-    private ImageService imageService;
-    @Autowired
-    private FlavorService flavorService;
-
-    @Autowired
-    private RecipeMapper recipeMapper;
-    @Autowired
-    private RecipeItemMapper recipeItemMapper;
-    @Autowired
-    private CommentMapper commentMapper;
-    @Autowired
-    private LikeMapper likeMapper;
-    @Autowired
-    private ImageMapper imageMapper;
+public class RecipeController extends ApplicationController {
 
     @GetMapping
     List<RecipeDto> getAllRecipes() {

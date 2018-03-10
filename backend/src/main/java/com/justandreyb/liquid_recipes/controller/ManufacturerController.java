@@ -13,17 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/manufacturers")
-public class ManufacturerController {
-
-    @Autowired
-    private ManufacturerService manufacturerService;
-    @Autowired
-    private CountryService countryService;
-    @Autowired
-    private ImageService imageService;
-
-    @Autowired
-    private ManufacturerMapper manufacturerMapper;
+public class ManufacturerController extends ApplicationController {
 
     @GetMapping
     List<ManufacturerDto> getAllManufacturers() {

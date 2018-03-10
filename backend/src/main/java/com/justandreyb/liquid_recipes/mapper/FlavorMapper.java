@@ -16,7 +16,8 @@ import java.util.List;
         ManufacturerMapper.class,
         LikeMapper.class,
         CommentMapper.class,
-        ImageMapper.class
+        ImageMapper.class,
+        FlavorTypeMapper.class
     }
 )
 public interface FlavorMapper {
@@ -35,6 +36,7 @@ public interface FlavorMapper {
     @Named("toFullFlavorDto")
     @Mappings({
         @Mapping(target = "manufacturer", qualifiedByName = "toManufacturerDto"),
+        @Mapping(target = "type", qualifiedByName = "toFlavorTypeDto"),
         @Mapping(target = "likes", qualifiedByName = "toLikeDtos"),
         @Mapping(target = "image", qualifiedByName = "toImageDto"),
         @Mapping(target = "comments", qualifiedByName = "toCommentDtos")

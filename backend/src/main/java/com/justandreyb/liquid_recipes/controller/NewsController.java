@@ -17,27 +17,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/news")
-public class NewsController {
+public class NewsController extends ApplicationController {
 
-    @Autowired
-    private NewsService newsService;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private CommentService commentService;
-    @Autowired
-    private LikeService likeService;
-    @Autowired
-    private ImageService imageService;
 
-    @Autowired
-    private NewsMapper newsMapper;
-    @Autowired
-    private CommentMapper commentMapper;
-    @Autowired
-    private LikeMapper likeMapper;
-    @Autowired
-    private ImageMapper imageMapper;
 
     @GetMapping
     List<NewsDto> getAllNews() {

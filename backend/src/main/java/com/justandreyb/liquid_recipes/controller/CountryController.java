@@ -11,13 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/countries")
-public class CountryController {
-
-    @Autowired
-    private CountryService countryService;
-
-    @Autowired
-    private CountryMapper countryMapper;
+public class CountryController extends ApplicationController {
 
     @GetMapping
     List<CountryDto> getAllCountries() {

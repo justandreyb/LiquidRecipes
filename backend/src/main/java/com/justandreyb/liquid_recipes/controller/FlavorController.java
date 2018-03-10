@@ -11,33 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/flavors")
-public class FlavorController {
-
-    @Autowired
-    private FlavorService flavorService;
-    @Autowired
-    private ManufacturerService manufacturerService;
-    @Autowired
-    private CommentService commentService;
-    @Autowired
-    private LikeService likeService;
-    @Autowired
-    private ImageService imageService;
-    @Autowired
-    private FlavorTypeService flavorTypeService;
-
-    @Autowired
-    private FlavorMapper flavorMapper;
-    @Autowired
-    private ManufacturerMapper manufacturerMapper;
-    @Autowired
-    private CommentMapper commentMapper;
-    @Autowired
-    private LikeMapper likeMapper;
-    @Autowired
-    private ImageMapper imageMapper;
-    @Autowired
-    private FlavorTypeMapper flavorTypeMapper;
+public class FlavorController extends ApplicationController {
 
     @GetMapping
     List<FlavorDto> getAllFlavors() {
