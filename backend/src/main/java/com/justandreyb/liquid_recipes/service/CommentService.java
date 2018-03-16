@@ -1,14 +1,16 @@
 package com.justandreyb.liquid_recipes.service;
 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.justandreyb.liquid_recipes.entity.Comment;
 import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
 import com.justandreyb.liquid_recipes.exception.NotFoundException;
 import com.justandreyb.liquid_recipes.repository.CommentRepository;
-import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import lombok.val;
 
 @Service
 public class CommentService extends EntityService<Comment, CommentRepository> {
@@ -22,19 +24,19 @@ public class CommentService extends EntityService<Comment, CommentRepository> {
     @Autowired
     private RecipeService recipeService;
 
-    public Collection<Comment> getAllByFlavor(String id) throws NotFoundException {
+    public Iterable<Comment> getAllByFlavor(String id) throws NotFoundException {
         val flavor = flavorService.get(id);
 
         return flavor.getComments();
     }
 
-    public Collection<Comment> getAllByNews(String id) throws NotFoundException {
+    public Iterable<Comment> getAllByNews(String id) throws NotFoundException {
         val news = newsService.get(id);
 
         return news.getComments();
     }
 
-    public Collection<Comment> getAllByRecipe(String id) throws NotFoundException {
+    public Iterable<Comment> getAllByRecipe(String id) throws NotFoundException {
         val recipe = recipeService.get(id);
 
         return recipe.getComments();
@@ -47,7 +49,7 @@ public class CommentService extends EntityService<Comment, CommentRepository> {
 
         val flavor = flavorService.get(id);
         flavor.getComments().add(comment);
-        flavorService.update(flavor);
+        flavorService.update(id, flavor);
 
         return comment;
     }
@@ -59,7 +61,7 @@ public class CommentService extends EntityService<Comment, CommentRepository> {
 
         val news = newsService.get(id);
         news.getComments().add(comment);
-        newsService.update(news);
+        newsService.update(id, news);
 
         return comment;
     }
@@ -71,7 +73,7 @@ public class CommentService extends EntityService<Comment, CommentRepository> {
 
         val recipe = recipeService.get(id);
         recipe.getComments().add(comment);
-        recipeService.update(recipe);
+        recipeService.update(id, recipe);
 
         return comment;
     }

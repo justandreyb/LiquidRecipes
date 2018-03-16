@@ -1,13 +1,13 @@
 package com.justandreyb.liquid_recipes.service;
 
-import com.justandreyb.liquid_recipes.entity.Flavor;
-import com.justandreyb.liquid_recipes.entity.User;
-import com.justandreyb.liquid_recipes.repository.FlavorRepository;
-import lombok.val;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import com.justandreyb.liquid_recipes.entity.Flavor;
+import com.justandreyb.liquid_recipes.entity.User;
+import com.justandreyb.liquid_recipes.repository.FlavorRepository;
 
 @Service
 public class FlavorService extends EntityService<Flavor, FlavorRepository> {
@@ -15,11 +15,11 @@ public class FlavorService extends EntityService<Flavor, FlavorRepository> {
     @Autowired
     private UserService userService;
 
-    public Collection<Flavor> getFlavorsByUser(User user) {
+    public Iterable<Flavor> getFlavorsByUser(User user) {
         return user.getFlavors();
     }
 
-    public Collection<Flavor> getTop(int number) {
+    public Iterable<Flavor> getTop(int number) {
         // TODO: Create get top method
         return getAllByRange(0, number);
     }
@@ -29,7 +29,7 @@ public class FlavorService extends EntityService<Flavor, FlavorRepository> {
         flavor = repository.save(flavor);
 
         user.getFlavors().add(flavor);
-        userService.update(user);
+        userService.update(user.getId(), user);
 
         return flavor;
     }

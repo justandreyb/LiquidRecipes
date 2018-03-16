@@ -1,9 +1,10 @@
 package com.justandreyb.liquid_recipes.repository;
 
-import com.justandreyb.liquid_recipes.entity.Recipe;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.justandreyb.liquid_recipes.entity.Recipe;
 
 public interface RecipeRepository extends JpaRepository<Recipe, String> {
     List<Recipe> findByName(String name);

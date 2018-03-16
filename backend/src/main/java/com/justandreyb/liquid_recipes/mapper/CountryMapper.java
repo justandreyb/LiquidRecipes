@@ -1,42 +1,52 @@
 package com.justandreyb.liquid_recipes.mapper;
 
-import com.justandreyb.liquid_recipes.dto.CountryDto;
-import com.justandreyb.liquid_recipes.entity.Country;
-import org.mapstruct.*;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.List;
+
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.ReportingPolicy;
+import org.springframework.stereotype.Component;
+
+import com.justandreyb.liquid_recipes.dto.CountryDto;
+import com.justandreyb.liquid_recipes.entity.Country;
 
 @Component
 @Mapper(
     nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
     componentModel = "spring",
-    uses = {ImageMapper.class}
+    uses = {
+        ImageMapper.class
+    },
+    unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface CountryMapper {
 
-    @Named("toCountryDto")
-    @Mapping(target = "image", ignore = true)
-    CountryDto toCountryDto(Country country);
+    @Named("toCountryDtoWithCode")
+    @Mappings({
+        @Mapping(target = "code", ignore = true),
+        @Mapping(target = "imageId", ignore = true),
+        @Mapping(target = "image", qualifiedByName = "toImageDto")
+    })
+    CountryDto toCountryDtoWithCode(Country country);
 
-    @Named("toFullCountryDto")
-    @Mapping(target = "image", qualifiedByName = "toImageDto")
-    CountryDto toFullCountryDto(Country country);
+    @Named("toCountryDtoWithName")
+    @Mappings({
+        @Mapping(target = "name", ignore = true),
+        @Mapping(target = "imageId", ignore = true),
+        @Mapping(target = "image", qualifiedByName = "toImageDto")
+    })
+    CountryDto toCountryDtoWithName(Country country);
 
     @Named("fromCountryDto")
     Country fromCountryDto(CountryDto countryDto);
 
-    @Named("toCountryDtos")
-    @IterableMapping(qualifiedByName = "toCountryDto")
-    List<CountryDto> toCountryDtos(Collection<Country> countries);
-
-    @Named("toFullCountryDtos")
-    @IterableMapping(qualifiedByName = "toFullCountryDto")
-    List<CountryDto> toFullCountryDtos(Collection<Country> countries);
-
-    @Named("fromCountryDtos")
-    @IterableMapping(qualifiedByName = "fromCountryDto")
-    List<Country> fromCountryDtos(Collection<CountryDto> countryDtos);
+    @Named("toCountriesDtosWithName")
+    @IterableMapping(qualifiedByName = "toCountryDtoWithName")
+    List<CountryDto> toCountriesDtosWithName(Iterable<Country> countries);
 
 }

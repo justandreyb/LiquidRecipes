@@ -1,12 +1,14 @@
 package com.justandreyb.liquid_recipes.service;
 
-import com.justandreyb.liquid_recipes.entity.Manufacturer;
-import com.justandreyb.liquid_recipes.repository.ManufacturerRepository;
-import lombok.val;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.justandreyb.liquid_recipes.entity.Manufacturer;
+import com.justandreyb.liquid_recipes.repository.ManufacturerRepository;
+
+import lombok.val;
 
 @Service
 public class ManufacturerService extends EntityService<Manufacturer, ManufacturerRepository> {
@@ -21,7 +23,7 @@ public class ManufacturerService extends EntityService<Manufacturer, Manufacture
         return manufacturer;
     }
 
-    public List<Manufacturer> getAllManufacturers() {
+    public Iterable<Manufacturer> getAllManufacturers() {
         return repository.findAll();
     }
 

@@ -1,8 +1,9 @@
 package com.justandreyb.liquid_recipes.service;
 
+import org.springframework.stereotype.Service;
+
 import com.justandreyb.liquid_recipes.entity.Role;
 import com.justandreyb.liquid_recipes.repository.RoleRepository;
-import org.springframework.stereotype.Service;
 
 @Service
 public class RoleService extends EntityService<Role, RoleRepository> {

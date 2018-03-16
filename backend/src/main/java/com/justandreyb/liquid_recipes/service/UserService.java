@@ -1,15 +1,16 @@
 package com.justandreyb.liquid_recipes.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import lombok.val;
+
 import com.justandreyb.liquid_recipes.config.role.Role;
 import com.justandreyb.liquid_recipes.entity.User;
 import com.justandreyb.liquid_recipes.exception.AuthException;
 import com.justandreyb.liquid_recipes.repository.UserRepository;
-import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UserService extends EntityService<User, UserRepository> {

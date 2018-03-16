@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.justandreyb.liquid_recipes.exception.SecurityException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,6 +13,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+
+import com.justandreyb.liquid_recipes.exception.SecurityException;
 
 @Aspect
 @Component

@@ -1,14 +1,16 @@
 package com.justandreyb.liquid_recipes.service;
 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.justandreyb.liquid_recipes.entity.Like;
 import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
 import com.justandreyb.liquid_recipes.exception.NotFoundException;
 import com.justandreyb.liquid_recipes.repository.LikeRepository;
-import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import lombok.val;
 
 @Service
 public class LikeService extends EntityService<Like, LikeRepository> {
@@ -20,19 +22,19 @@ public class LikeService extends EntityService<Like, LikeRepository> {
     @Autowired
     private RecipeService recipeService;
 
-    public Collection<Like> getAllByFlavor(String id) {
+    public Iterable<Like> getAllByFlavor(String id) {
         val flavor = flavorService.get(id);
 
         return flavor.getLikes();
     }
 
-    public Collection<Like> getAllByNews(String id) {
+    public Iterable<Like> getAllByNews(String id) {
         val news = newsService.get(id);
 
         return news.getLikes();
     }
 
-    public Collection<Like> getAllByRecipe(String id) {
+    public Iterable<Like> getAllByRecipe(String id) {
         val recipe = recipeService.get(id);
 
         return recipe.getLikes();
@@ -44,7 +46,7 @@ public class LikeService extends EntityService<Like, LikeRepository> {
 
         val flavor = flavorService.get(id);
         flavor.getLikes().add(like);
-        flavorService.update(flavor);
+        flavorService.update(id, flavor);
 
         return like;
     }
@@ -55,7 +57,7 @@ public class LikeService extends EntityService<Like, LikeRepository> {
 
         val news = newsService.get(id);
         news.getLikes().add(like);
-        newsService.update(news);
+        newsService.update(id, news);
 
         return like;
     }
@@ -66,7 +68,7 @@ public class LikeService extends EntityService<Like, LikeRepository> {
 
         val recipe = recipeService.get(id);
         recipe.getLikes().add(like);
-        recipeService.update(recipe);
+        recipeService.update(id, recipe);
 
         return like;
     }

@@ -1,12 +1,19 @@
 package com.justandreyb.liquid_recipes.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Entity
@@ -24,9 +31,9 @@ public class Flavor extends BaseEntity {
     @JoinColumn(name = "manufacturer_id", nullable = false)
     private Manufacturer manufacturer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type_id", nullable = false)
-    private FlavorType type;
+    private FlavorType flavorType;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinTable(name = "likes_to_flavor", joinColumns = @JoinColumn(name = "flavor_id"),
@@ -47,7 +54,7 @@ public class Flavor extends BaseEntity {
         if (name.isEmpty()) {
             return false;
         }
-        if (type == null) {
+        if (flavorType == null) {
             return false;
         }
         if (manufacturer == null) {

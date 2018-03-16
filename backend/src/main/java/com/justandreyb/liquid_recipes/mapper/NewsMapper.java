@@ -1,12 +1,19 @@
 package com.justandreyb.liquid_recipes.mapper;
 
-import com.justandreyb.liquid_recipes.dto.NewsDto;
-import com.justandreyb.liquid_recipes.entity.News;
-import org.mapstruct.*;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.List;
+
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.ReportingPolicy;
+import org.springframework.stereotype.Component;
+
+import com.justandreyb.liquid_recipes.dto.NewsDto;
+import com.justandreyb.liquid_recipes.entity.News;
 
 @Component
 @Mapper(
@@ -17,48 +24,42 @@ import java.util.List;
         LikeMapper.class,
         CommentMapper.class,
         ImageMapper.class
-    }
+    },
+    unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface NewsMapper {
 
     @Named("toNewsDto")
     @Mappings({
-        @Mapping(target = "text", ignore = true),
-        @Mapping(target = "creator", ignore = true),
-        @Mapping(target = "likes", qualifiedByName = "toLikeDtos"),
-        @Mapping(target = "comments", ignore = true),
-        @Mapping(target = "image", qualifiedByName = "toImageDto")
+        @Mapping(target = "creator", qualifiedByName = "toUserDtoAsCreator"),
+        @Mapping(target = "creatorId", ignore = true),
+        @Mapping(target = "likes", qualifiedByName = "toLikesDtos"),
+        @Mapping(target = "likesIds", ignore = true),
+        @Mapping(target = "comments", qualifiedByName = "toCommentsDtos"),
+        @Mapping(target = "commentsIds", ignore = true),
+        @Mapping(target = "image", qualifiedByName = "toImageDto"),
+        @Mapping(target = "imageId", ignore = true)
     })
     NewsDto toNewsDto(News news);
 
-    @Named("toFullNewsDto")
+    @Named("toNewsDtoAsListItem")
     @Mappings({
-        @Mapping(target = "creator", qualifiedByName = "toUserDto"),
-        @Mapping(target = "likes", qualifiedByName = "toLikeDtos"),
-        @Mapping(target = "comments", qualifiedByName = "toCommentDtos"),
-        @Mapping(target = "image", qualifiedByName = "toImageDto")
+        @Mapping(target = "text", ignore = true),
+        @Mapping(target = "creator", qualifiedByName = "toUserDtoAsCreator"),
+        @Mapping(target = "creatorId", ignore = true),
+        @Mapping(target = "likes", qualifiedByName = "toLikesDtosWithOnlyId"),
+        @Mapping(target = "likesIds", ignore = true),
+        @Mapping(target = "comments", qualifiedByName = "toCommentsDtosWithOnlyId"),
+        @Mapping(target = "commentsIds", ignore = true),
+        @Mapping(target = "image", qualifiedByName = "toImageDto"),
+        @Mapping(target = "imageId", ignore = true)
     })
-    NewsDto toFullNewsDto(News news);
+    NewsDto toNewsDtoAsListItem(News news);
 
     @Named("fromNewsDto")
-    @Mappings({
-        @Mapping(target = "creator", ignore = true),
-        @Mapping(target = "likes", ignore = true),
-        @Mapping(target = "image", ignore = true),
-        @Mapping(target = "comments", ignore = true)
-    })
     News fromNewsDto(NewsDto newsDto);
 
-
     @Named("toNewsDtos")
-    @IterableMapping(qualifiedByName = "toNewsDto")
-    List<NewsDto> toNewsDtos(Collection<News> news);
-
-    @Named("toFullNewsDtos")
-    @IterableMapping(qualifiedByName = "toFullNewsDto")
-    List<NewsDto> toFullNewsDtos(Collection<News> news);
-
-    @Named("fromNewsDtos")
-    @IterableMapping(qualifiedByName = "fromNewsDto")
-    List<News> fromNewsDtos(Collection<NewsDto> newsDtos);
+    @IterableMapping(qualifiedByName = "toNewsDtoAsListItem")
+    List<NewsDto> toNewsDtos(Iterable<News> news);
 }

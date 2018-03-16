@@ -1,11 +1,11 @@
 package com.justandreyb.liquid_recipes.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.Date;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity

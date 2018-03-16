@@ -1,12 +1,13 @@
 package com.justandreyb.liquid_recipes.entity;
 
-import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import lombok.Data;
 
 @MappedSuperclass
 @Data

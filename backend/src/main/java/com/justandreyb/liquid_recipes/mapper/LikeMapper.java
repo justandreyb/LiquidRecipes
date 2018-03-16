@@ -1,48 +1,53 @@
 package com.justandreyb.liquid_recipes.mapper;
 
-import com.justandreyb.liquid_recipes.dto.LikeDto;
-import com.justandreyb.liquid_recipes.entity.Like;
-import org.mapstruct.*;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.List;
+
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.ReportingPolicy;
+import org.springframework.stereotype.Component;
+
+import com.justandreyb.liquid_recipes.dto.LikeDto;
+import com.justandreyb.liquid_recipes.entity.Like;
 
 @Component
 @Mapper(
     nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
     componentModel = "spring",
-    uses = {UserMapper.class}
+    uses = {
+        UserMapper.class
+    },
+    unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface LikeMapper {
 
     @Named("toLikeDto")
     @Mappings({
-        @Mapping(target = "user", ignore = true),
+        @Mapping(target = "user", qualifiedByName = "toUserDtoAsCreator"),
         @Mapping(target = "userId", ignore = true)
     })
     LikeDto toLikeDto(Like like);
 
-    @Named("toFullLikeDto")
+    @Named("toLikeDtoWithOnlyId")
     @Mappings({
-        @Mapping(target = "user", qualifiedByName = "toUserDto"),
+        @Mapping(target = "user", ignore = true),
         @Mapping(target = "userId", ignore = true)
     })
-    LikeDto toFullLikeDto(Like like);
+    LikeDto toLikeDtoWithOnlyId(Like like);
 
     @Named("fromLikeDto")
-    @Mapping(target = "user", ignore = true)
     Like fromLikeDto(LikeDto likeDto);
 
-    @Named("toLikeDtos")
+    @Named("toLikesDtos")
     @IterableMapping(qualifiedByName = "toLikeDto")
-    List<LikeDto> toLikeDtos(Collection<Like> likes);
+    List<LikeDto> toLikesDtos(Iterable<Like> likes);
 
-    @Named("toFullLikeDtos")
-    @IterableMapping(qualifiedByName = "toFullLikeDto")
-    List<LikeDto> toFullLikeDtos(Collection<Like> likes);
-
-    @Named("fromLikeDtos")
-    @IterableMapping(qualifiedByName = "fromLikeDto")
-    List<Like> fromLikeDtos(Collection<LikeDto> likeDtos);
+    @Named("toLikesDtosWithOnlyId")
+    @IterableMapping(qualifiedByName = "toLikeDtoWithOnlyId")
+    List<LikeDto> toLikesDtosWithOnlyId(Iterable<Like> likes);
 }

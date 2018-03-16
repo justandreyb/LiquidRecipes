@@ -1,51 +1,54 @@
 package com.justandreyb.liquid_recipes.mapper;
 
-import com.justandreyb.liquid_recipes.dto.CommentDto;
-import com.justandreyb.liquid_recipes.entity.Comment;
-import org.mapstruct.*;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.List;
+
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.ReportingPolicy;
+import org.springframework.stereotype.Component;
+
+import com.justandreyb.liquid_recipes.dto.CommentDto;
+import com.justandreyb.liquid_recipes.entity.Comment;
 
 @Component
 @Mapper(
     nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
     componentModel = "spring",
-    uses = {UserMapper.class}
+    uses = {
+        UserMapper.class
+    },
+    unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface CommentMapper {
 
     @Named("toCommentDto")
     @Mappings({
-            @Mapping(target = "user", ignore = true),
-            @Mapping(target = "userId", ignore = true)
+        @Mapping(target = "user", qualifiedByName = "toUserDtoAsCreator"),
+        @Mapping(target = "userId", ignore = true)
     })
     CommentDto toCommentDto(Comment comment);
 
-    @Named("toFullCommentDto")
+    @Named("toCommentDtoWithOnlyId")
     @Mappings({
-            @Mapping(target = "user", qualifiedByName = "toUserDto"),
-            @Mapping(target = "userId", ignore = true)
+        @Mapping(target = "user", ignore = true),
+        @Mapping(target = "userId", ignore = true),
+        @Mapping(target = "text", ignore = true)
     })
-    CommentDto toFullCommentDto(Comment comment);
+    CommentDto toCommentDtoWithOnlyId(Comment comment);
 
     @Named("fromCommentDto")
-    @Mappings({
-            @Mapping(target = "user", ignore = true)
-    })
     Comment fromCommentDto(CommentDto commentDto);
 
-    @Named("toCommentDtos")
+    @Named("toCommentsDtos")
     @IterableMapping(qualifiedByName = "toCommentDto")
-    List<CommentDto> toCommentDtos(Collection<Comment> comments);
+    List<CommentDto> toCommentDtos(Iterable<Comment> comments);
 
-    @Named("toFullCommentDtos")
-    @IterableMapping(qualifiedByName = "toFullCommentDto")
-    List<CommentDto> toFullCommentDtos(Collection<Comment> comments);
-
-    @Named("fromCommentDtos")
-    @IterableMapping(qualifiedByName = "fromCommentDto")
-    List<Comment> fromCommentDtos(Collection<CommentDto> commentDtos);
-
+    @Named("toCommentsDtosWithOnlyId")
+    @IterableMapping(qualifiedByName = "toCommentDtoWithOnlyId")
+    List<CommentDto> toCommentsDtosWithOnlyId(Iterable<Comment> comments);
 }

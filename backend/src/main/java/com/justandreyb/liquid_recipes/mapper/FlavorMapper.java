@@ -1,12 +1,18 @@
 package com.justandreyb.liquid_recipes.mapper;
 
-import com.justandreyb.liquid_recipes.dto.FlavorDto;
-import com.justandreyb.liquid_recipes.entity.Flavor;
-import org.mapstruct.*;
+import java.util.List;
+
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.List;
+import com.justandreyb.liquid_recipes.dto.FlavorDto;
+import com.justandreyb.liquid_recipes.entity.Flavor;
 
 @Component
 @Mapper(
@@ -18,51 +24,46 @@ import java.util.List;
         CommentMapper.class,
         ImageMapper.class,
         FlavorTypeMapper.class
-    }
+    },
+    unmappedTargetPolicy = ReportingPolicy.WARN
 )
 public interface FlavorMapper {
 
     @Named("toFlavorDto")
     @Mappings({
-        @Mapping(target = "manufacturer", ignore = true),
+        @Mapping(target = "manufacturer", qualifiedByName = "toManufacturerDtoOnlyWithLogo"),
         @Mapping(target = "manufacturerId", ignore = true),
-        @Mapping(target = "likes", ignore = true),
+        @Mapping(target = "flavorType", qualifiedByName = "toFlavorTypeDtoWithOnlyName"),
+        @Mapping(target = "flavorTypeId", ignore = true),
+        @Mapping(target = "likes", qualifiedByName = "toLikesDtos"),
         @Mapping(target = "likesIds", ignore = true),
-        @Mapping(target = "image", ignore = true),
-        @Mapping(target = "imageId", ignore = true)
+        @Mapping(target = "image", qualifiedByName = "toImageDto"),
+        @Mapping(target = "imageId", ignore = true),
+        @Mapping(target = "comments", qualifiedByName = "toCommentsDtos"),
+        @Mapping(target = "commentsIds", ignore = true)
     })
     FlavorDto toFlavorDto(Flavor flavor);
 
-    @Named("toFullFlavorDto")
+    @Named("toFlavorDtoAsListItem")
     @Mappings({
-        @Mapping(target = "manufacturer", qualifiedByName = "toManufacturerDto"),
-        @Mapping(target = "type", qualifiedByName = "toFlavorTypeDto"),
-        @Mapping(target = "likes", qualifiedByName = "toLikeDtos"),
+        @Mapping(target = "manufacturer", qualifiedByName = "toManufacturerDtoOnlyWithLogo"),
+        @Mapping(target = "manufacturerId", ignore = true),
+        @Mapping(target = "flavorType", qualifiedByName = "toFlavorTypeDtoWithOnlyName"),
+        @Mapping(target = "flavorTypeId", ignore = true),
+        @Mapping(target = "likes", qualifiedByName = "toLikesDtosWithOnlyId"),
+        @Mapping(target = "likesIds", ignore = true),
         @Mapping(target = "image", qualifiedByName = "toImageDto"),
-        @Mapping(target = "comments", qualifiedByName = "toCommentDtos")
+        @Mapping(target = "imageId", ignore = true),
+        @Mapping(target = "comments", qualifiedByName = "toCommentsDtosWithOnlyId"),
+        @Mapping(target = "commentsIds", ignore = true)
     })
-    FlavorDto toFullFlavorDto(Flavor flavor);
+    FlavorDto toFlavorDtoAsListItem(Flavor flavor);
 
     @Named("fromFlavorDto")
-    @Mappings({
-        @Mapping(target = "manufacturer", ignore = true),
-        @Mapping(target = "likes", ignore = true),
-        @Mapping(target = "image", ignore = true),
-        @Mapping(target = "comments", ignore = true)
-    })
     Flavor fromFlavorDto(FlavorDto flavorDto);
 
-
-    @Named("toFlavorDtos")
-    @IterableMapping(qualifiedByName = "toFlavorDto")
-    List<FlavorDto> toFlavorDtos(Collection<Flavor> flavors);
-
-    @Named("toFullFlavorDtos")
-    @IterableMapping(qualifiedByName = "toFullFlavorDto")
-    List<FlavorDto> toFullFlavorDtos(Collection<Flavor> flavors);
-
-    @Named("fromFlavorDtos")
-    @IterableMapping(qualifiedByName = "fromFlavorDto")
-    List<Flavor> fromFlavorDtos(Collection<FlavorDto> flavorDtos);
+    @Named("toFlavorsDtos")
+    @IterableMapping(qualifiedByName = "toFlavorDtoAsListItem")
+    List<FlavorDto> toFlavorsDtos(Iterable<Flavor> flavors);
 
 }

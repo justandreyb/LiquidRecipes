@@ -2,7 +2,6 @@ package com.justandreyb.liquid_recipes.controller;
 
 import java.util.List;
 
-import lombok.val;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +12,8 @@ import com.justandreyb.liquid_recipes.config.role.CheckRoles;
 import com.justandreyb.liquid_recipes.dto.FlavorDto;
 import com.justandreyb.liquid_recipes.dto.UserDto;
 
+import lombok.val;
+
 import static com.justandreyb.liquid_recipes.config.role.Role.*;
 
 @RestController
@@ -22,7 +23,7 @@ public class UserController extends ApplicationController {
     @CheckRoles(value = {ADMIN, CLIENT}, message = "You must be logged in")
     @GetMapping("/im")
     UserDto getAccountData() {
-        return userMapper.toUserInfoDto(userService.getCurrentUser());
+        return userMapper.toUserDto(userService.getCurrentUser());
     }
 
     @CheckRoles(value = {ADMIN, GUEST}, message = "You already have account")
@@ -35,7 +36,7 @@ public class UserController extends ApplicationController {
     @CheckRoles({ADMIN, CLIENT})
     @GetMapping("/im/flavors")
     List<FlavorDto> getUserFlavors() {
-        return flavorMapper.toFlavorDtos(flavorService.getFlavorsByUser(userService.getCurrentUser()));
+        return flavorMapper.toFlavorsDtos(flavorService.getFlavorsByUser(userService.getCurrentUser()));
     }
 
     @CheckRoles({ADMIN, CLIENT})

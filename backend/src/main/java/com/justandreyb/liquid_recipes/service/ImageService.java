@@ -1,12 +1,17 @@
 package com.justandreyb.liquid_recipes.service;
 
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.justandreyb.liquid_recipes.config.resources.ImageResolutions;
 import com.justandreyb.liquid_recipes.entity.Image;
 import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
 import com.justandreyb.liquid_recipes.exception.NotFoundException;
 import com.justandreyb.liquid_recipes.repository.ImageRepository;
+
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ImageService extends EntityService<Image, ImageRepository> {
@@ -17,6 +22,16 @@ public class ImageService extends EntityService<Image, ImageRepository> {
     private NewsService newsService;
     @Autowired
     private RecipeService recipeService;
+
+    public Image safeGet(String imageId, ImageResolutions imageResolution) throws NotFoundException {
+        Image image;
+        try {
+            image = super.get(imageId);
+        } catch (NotFoundException e) {
+            image = getPlaceholderImage(imageResolution);
+        }
+        return image;
+    }
 
     public Image getByFlavor(String id) {
         val image = flavorService.get(id).getImage();
@@ -45,7 +60,7 @@ public class ImageService extends EntityService<Image, ImageRepository> {
 
         val flavor = flavorService.get(id);
         flavor.setImage(image);
-        flavorService.update(flavor);
+        flavorService.update(id, flavor);
 
         return image;
     }
@@ -56,7 +71,7 @@ public class ImageService extends EntityService<Image, ImageRepository> {
 
         val news = newsService.get(id);
         news.setImage(image);
-        newsService.update(news);
+        newsService.update(id, news);
 
         return image;
     }
@@ -67,12 +82,19 @@ public class ImageService extends EntityService<Image, ImageRepository> {
 
         val recipe = recipeService.get(id);
         recipe.setImage(image);
-        recipeService.update(recipe);
+        recipeService.update(id, recipe);
 
         return image;
     }
 
-    public Image getPlaceholderImage() {
-        return repository.findAll().get(0);
+    public Image getPlaceholderImage(ImageResolutions imageResolution) {
+        Image placeholder = repository.findByPathContains("placeholder.com/" + imageResolution.getResolution());
+        if (placeholder == null) {
+            placeholder = new Image();
+            placeholder.setCreationDate(new Date());
+            placeholder.setPath("http://via.placeholder.com/" + imageResolution.getResolution());
+            placeholder = add(placeholder);
+        }
+        return placeholder;
     }
 }

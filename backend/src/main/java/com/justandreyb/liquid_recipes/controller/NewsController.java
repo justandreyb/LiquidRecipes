@@ -1,29 +1,65 @@
 package com.justandreyb.liquid_recipes.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.justandreyb.liquid_recipes.config.resources.ImageResolutions;
+import com.justandreyb.liquid_recipes.config.role.CheckRoles;
 import com.justandreyb.liquid_recipes.dto.CommentDto;
 import com.justandreyb.liquid_recipes.dto.ImageDto;
 import com.justandreyb.liquid_recipes.dto.LikeDto;
 import com.justandreyb.liquid_recipes.dto.NewsDto;
-import com.justandreyb.liquid_recipes.mapper.CommentMapper;
-import com.justandreyb.liquid_recipes.mapper.ImageMapper;
-import com.justandreyb.liquid_recipes.mapper.LikeMapper;
-import com.justandreyb.liquid_recipes.mapper.NewsMapper;
-import com.justandreyb.liquid_recipes.service.*;
-import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.justandreyb.liquid_recipes.entity.Comment;
 
-import java.util.List;
+import lombok.val;
+
+import static com.justandreyb.liquid_recipes.config.role.Role.ADMIN;
+import static com.justandreyb.liquid_recipes.config.role.Role.CLIENT;
 
 @RestController
 @RequestMapping("/news")
 public class NewsController extends ApplicationController {
 
-
-
     @GetMapping
-    List<NewsDto> getAllNews() {
+    List<NewsDto> getNews() {
         return newsMapper.toNewsDtos(newsService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    NewsDto getNews(@PathVariable("id") String id) {
+        return newsMapper.toNewsDto(newsService.get(id));
+    }
+
+    @CheckRoles(ADMIN)
+    @PostMapping
+    NewsDto addNews(@RequestBody NewsDto newsDto) {
+        val news = newsMapper.fromNewsDto(newsDto);
+        news.setImage(imageService.safeGet(newsDto.getImageId(), ImageResolutions.MEDIUM));
+        news.setCreator(userService.getCurrentUser());
+        return newsMapper.toNewsDto(newsService.add(news));
+    }
+
+    @CheckRoles(ADMIN)
+    @PostMapping("/{id}")
+    NewsDto updateNews(@PathVariable("id") String id, @RequestParam NewsDto newsDto) {
+        val news = newsMapper.fromNewsDto(newsDto);
+        news.setImage(imageService.safeGet(newsDto.getImageId(), ImageResolutions.MEDIUM));
+        news.setCreator(userService.getCurrentUser());
+        return newsMapper.toNewsDto(newsService.update(id, news));
+    }
+
+    @CheckRoles(ADMIN)
+    @DeleteMapping("/{id}")
+    void deleteNews(@PathVariable("id") String id) {
+        newsService.delete(id);
     }
 
     @GetMapping("/top")
@@ -36,79 +72,58 @@ public class NewsController extends ApplicationController {
         return newsMapper.toNewsDtos(newsService.getTop(number));
     }
 
-    @GetMapping("/{id}")
-    NewsDto getNews(@PathVariable("id") String id) {
-        return newsMapper.toNewsDto(newsService.get(id));
-    }
-
-    @GetMapping("/{id}/comments")
-    List<CommentDto> getNewsComments(@PathVariable("id") String id) {
-        return commentMapper.toCommentDtos(commentService.getAllByNews(id));
-    }
-
-    @GetMapping("/{id}/likes")
-    List<LikeDto> getNewsLikes(@PathVariable("id") String id) {
-        return likeMapper.toLikeDtos(likeService.getAllByNews(id));
-    }
-
-    @GetMapping("/{id}/image")
-    ImageDto getNewsImage(@PathVariable("id") String id) {
-        return imageMapper.toImageDto(imageService.getByNews(id));
-    }
-
-    @PostMapping
-    NewsDto addNews(@RequestBody NewsDto newsDto) {
-        val news = newsMapper.fromNewsDto(newsDto);
-        news.setImage(imageService.getPlaceholderImage());
-        news.setCreator(userService.getCurrentUser());
-        return newsMapper.toNewsDto(newsService.add(news));
-    }
-
-    @PostMapping("/{id}")
-    NewsDto updateNews(@RequestParam NewsDto newsDto) {
-        val news = newsService.update(newsMapper.fromNewsDto(newsDto));
-        return newsMapper.toNewsDto(news);
-    }
-
-    @PostMapping("/{id}/comments")
-    CommentDto addCommentToNews(@RequestParam String id, @RequestBody CommentDto comment) {
-        val createdComment = commentService.addToNews(id, commentMapper.fromCommentDto(comment));
-        return commentMapper.toCommentDto(createdComment);
-    }
-
-    @PostMapping("/{id}/comments/{commentId}")
-    CommentDto updateCommentInNews(@RequestBody CommentDto comment) {
-        val updatedComment = commentService.update(commentMapper.fromCommentDto(comment));
-        return commentMapper.toCommentDto(updatedComment);
-    }
-
-    @PostMapping("/{id}/likes")
-    LikeDto addLikeToNews(@PathVariable("id") String id, @RequestBody LikeDto like) {
-        val createdLike = likeService.addToNews(id, likeMapper.fromLikeDto(like));
-        return likeMapper.toLikeDto(createdLike);
-    }
-
+    @CheckRoles(ADMIN)
     @PostMapping("/{id}/image")
-    ImageDto addImageToNews(@PathVariable("id") String id, @RequestBody ImageDto image) {
-        val createdImage = imageService.addToNews(id, imageMapper.fromImageDto(image));
-        return imageMapper.toImageDto(createdImage);
+    ImageDto addImageToNews(@PathVariable("id") String id, @RequestBody ImageDto imageDto) {
+        val image = imageMapper.fromImageDto(imageDto);
+        return imageMapper.toImageDto(imageService.addToNews(id, image));
     }
 
-    @DeleteMapping("/{id}")
-    void deleteNews(@PathVariable("id") String id) {
-        newsService.delete(id);
+    @CheckRoles(CLIENT)
+    @PostMapping("/{id}/likes")
+    LikeDto addLikeToNews(@PathVariable("id") String id, @RequestBody LikeDto likeDto) {
+        val like = likeMapper.fromLikeDto(likeDto);
+        like.setUser(userService.getCurrentUser());
+        return likeMapper.toLikeDto(likeService.addToNews(id, like));
     }
 
+    @CheckRoles(CLIENT)
+    @PostMapping("/{id}/comments")
+    CommentDto addCommentToNews(@RequestParam String id, @RequestBody CommentDto commentDto) {
+        val comment = commentMapper.fromCommentDto(commentDto);
+        comment.setUser(userService.getCurrentUser());
+        return commentMapper.toCommentDto(commentService.addToNews(id, comment));
+    }
+
+    @CheckRoles(CLIENT)
+    @PostMapping("/{id}/comments/{commentId}")
+    CommentDto updateCommentInNews(@PathVariable("commentId") String id, @RequestBody CommentDto commentDto) {
+        checkThatCurrentUserIsCreatorOfEntity(commentDto.getUserId());
+
+        Comment comment = commentMapper.fromCommentDto(commentDto);
+        comment.setUser(userService.getCurrentUser());
+        return commentMapper.toCommentDto(commentService.addToNews(id, comment));
+    }
+
+    @CheckRoles({ADMIN, CLIENT})
     @DeleteMapping("/{id}/comments/{commentId}")
     void deleteCommentFromNews(@PathVariable("commentId") String commentId) {
+        val comment = commentService.get(commentId);
+        checkThatCurrentUserIsCreatorOfEntity(comment.getUser().getId());
+
         commentService.delete(commentId);
     }
 
+    @CheckRoles({ADMIN, CLIENT})
     @DeleteMapping("/{id}/likes/{likeId}")
     void deleteLikeFromNews(@PathVariable("likeId") String likeId) {
+        val like = likeService.get(likeId);
+        checkThatCurrentUserIsCreatorOfEntity(like.getUser().getId());
+
         likeService.delete(likeId);
     }
 
+    @CheckRoles(ADMIN)
     @DeleteMapping("/{id}/image")
     void deleteImageFromNews(@RequestBody ImageDto image) {
         imageService.delete(imageMapper.fromImageDto(image));

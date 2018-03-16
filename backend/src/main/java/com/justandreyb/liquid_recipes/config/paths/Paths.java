@@ -1,9 +1,9 @@
 package com.justandreyb.liquid_recipes.config.paths;
 
-import com.justandreyb.liquid_recipes.config.role.Role;
-
 import java.util.Arrays;
 import java.util.List;
+
+import com.justandreyb.liquid_recipes.config.role.Role;
 
 import static com.justandreyb.liquid_recipes.config.role.Role.*;
 

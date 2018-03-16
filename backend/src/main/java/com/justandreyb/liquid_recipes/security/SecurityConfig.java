@@ -1,8 +1,5 @@
 package com.justandreyb.liquid_recipes.security;
 
-import com.justandreyb.liquid_recipes.config.paths.Paths;
-import com.justandreyb.liquid_recipes.config.role.Role;
-import com.justandreyb.liquid_recipes.security.service.ClientDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +17,10 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+
+import com.justandreyb.liquid_recipes.config.paths.Paths;
+import com.justandreyb.liquid_recipes.config.role.Role;
+import com.justandreyb.liquid_recipes.security.service.ClientDetailService;
 
 @Configuration
 @EnableWebSecurity

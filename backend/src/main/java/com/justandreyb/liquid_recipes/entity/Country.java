@@ -1,10 +1,14 @@
 package com.justandreyb.liquid_recipes.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
-import javax.persistence.*;
 
 @Data
 @EqualsAndHashCode(exclude = {"image"}, callSuper = true)

@@ -1,16 +1,17 @@
 package com.justandreyb.liquid_recipes.config.exception;
 
-import com.justandreyb.liquid_recipes.exception.LiquidRecipeException;
-import com.justandreyb.liquid_recipes.exception.NotFoundException;
-import com.justandreyb.liquid_recipes.exception.OtherException;
-import com.justandreyb.liquid_recipes.exception.SecurityException;
-import com.justandreyb.liquid_recipes.exception.WrongRequestException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.justandreyb.liquid_recipes.exception.LiquidRecipeException;
+import com.justandreyb.liquid_recipes.exception.NotFoundException;
+import com.justandreyb.liquid_recipes.exception.OtherException;
+import com.justandreyb.liquid_recipes.exception.SecurityException;
+import com.justandreyb.liquid_recipes.exception.WrongRequestException;
 
 @ControllerAdvice
 public class ExceptionsHandler {
@@ -81,7 +82,7 @@ public class ExceptionsHandler {
 
     private HttpHeaders getHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("content-type", "application/json");
+        httpHeaders.add("content-flavorType", "application/json");
         return httpHeaders;
     }
 }

@@ -1,27 +1,40 @@
 package com.justandreyb.liquid_recipes.mapper;
 
-import com.justandreyb.liquid_recipes.dto.RoleDto;
-import com.justandreyb.liquid_recipes.entity.Role;
-import org.mapstruct.*;
+import java.util.Collection;
+import java.util.List;
+
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.ReportingPolicy;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import com.justandreyb.liquid_recipes.dto.RoleDto;
+import com.justandreyb.liquid_recipes.entity.Role;
 
 @Component
 @Mapper(
-        nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
-        componentModel = "spring"
+    nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
+    componentModel = "spring",
+    unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface RoleMapper {
 
     @Named("toRoleDto")
-    @Mapping(target = "id", ignore = true)
     RoleDto toRoleDto(Role role);
 
-    @Named("toFullRoleDto")
-    RoleDto toFullRoleDto(Role role);
+    @Named("toRoleDtoWithOnlyName")
+    @Mapping(target = "id", ignore = true)
+    RoleDto toRoleDtoWithOnlyName(Role role);
 
-    @Named("toLikeDtos")
+    @Named("toRolesDtos")
     @IterableMapping(qualifiedByName = "toRoleDto")
-    List<RoleDto> toRoleDtos(List<Role> roles);
+    List<RoleDto> toRolesDtos(Iterable<Role> roles);
+
+    @Named("toRolesDtosWithOnlyName")
+    @IterableMapping(qualifiedByName = "toRoleDtoWithOnlyName")
+    List<RoleDto> toRolesDtosWithOnlyName(Iterable<Role> roles);
+
 }

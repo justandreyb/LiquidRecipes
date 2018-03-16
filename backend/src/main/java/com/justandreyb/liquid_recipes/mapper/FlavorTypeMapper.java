@@ -1,34 +1,40 @@
 package com.justandreyb.liquid_recipes.mapper;
 
-import com.justandreyb.liquid_recipes.dto.FlavorTypeDto;
-import com.justandreyb.liquid_recipes.dto.RoleDto;
-import com.justandreyb.liquid_recipes.entity.FlavorType;
-import com.justandreyb.liquid_recipes.entity.Role;
-import org.mapstruct.*;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.List;
+
+import org.mapstruct.IterableMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
+import org.mapstruct.ReportingPolicy;
+import org.springframework.stereotype.Component;
+
+import com.justandreyb.liquid_recipes.dto.FlavorTypeDto;
+import com.justandreyb.liquid_recipes.entity.FlavorType;
 
 @Component
 @Mapper(
     nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
-    componentModel = "spring"
+    componentModel = "spring",
+    unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface FlavorTypeMapper {
 
     @Named("toFlavorTypeDto")
-    @Mapping(target = "id", ignore = true)
     FlavorTypeDto toFlavorTypeDto(FlavorType role);
 
-    @Named("toFullFlavorTypeDto")
-    FlavorTypeDto toFullFlavorTypeDto(FlavorType role);
+    @Named("toFlavorTypeDtoWithOnlyName")
+    @Mapping(target = "id", ignore = true)
+    FlavorTypeDto toFlavorTypeDtoWithOnlyName(FlavorType role);
 
-    @Named("toFlavorTypeDtos")
+    @Named("toFlavorTypesDtos")
     @IterableMapping(qualifiedByName = "toFlavorTypeDto")
-    List<FlavorTypeDto> toFlavorTypeDtos(Collection<FlavorType> flavorTypes);
+    List<FlavorTypeDto> toFlavorTypeDtos(Iterable<FlavorType> flavorTypes);
 
-    @Named("toFlavorTypeDtos")
-    @IterableMapping(qualifiedByName = "toFullFlavorTypeDto")
-    List<FlavorTypeDto> toFullFlavorTypeDtos(Collection<FlavorType> flavorTypes);
+    @Named("toFlavorTypesDtosWithOnlyName")
+    @IterableMapping(qualifiedByName = "toFlavorTypeDtoWithOnlyName")
+    List<FlavorTypeDto> toFlavorTypesDtosWithOnlyName(Iterable<FlavorType> flavorTypes);
+
 }
