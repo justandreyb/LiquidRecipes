@@ -11,25 +11,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import com.justandreyb.liquid_recipes.validator.Validatable;
+
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {"image", "comments", "creator"}, callSuper = false)
 @ToString(exclude = {"image", "comments", "creator"})
-public class News extends BaseEntity {
+public class News extends BaseEntity implements Validatable {
+
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column
     private String title;
 
+    @NotNull
+    @Size(min = 1, max = 1024)
     @Column
     private String text;
 
+    @NotNull
     @Column
     private Date creationDate = new Date();
 
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "image_id")
     private Image image;
@@ -48,14 +59,4 @@ public class News extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User creator;
 
-    @Override
-    public boolean isValid() {
-        if (title.isEmpty()) {
-            return false;
-        }
-        if (text.isEmpty()) {
-            return false;
-        }
-        return true;
-    }
 }

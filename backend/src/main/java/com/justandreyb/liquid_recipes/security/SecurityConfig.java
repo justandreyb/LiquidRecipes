@@ -18,8 +18,8 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-import com.justandreyb.liquid_recipes.config.paths.Paths;
-import com.justandreyb.liquid_recipes.config.role.Role;
+import com.justandreyb.liquid_recipes.config.Paths;
+import com.justandreyb.liquid_recipes.config.Roles;
 import com.justandreyb.liquid_recipes.security.service.ClientDetailService;
 
 @Configuration
@@ -56,8 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .authorizeRequests()
-                .antMatchers(Paths.getByRole(Role.ANY)).permitAll()
-                .antMatchers(Paths.getByRole(Role.GUEST)).permitAll()
+                .antMatchers(Paths.getByRole(Roles.ANY)).permitAll()
+                .antMatchers(Paths.getByRole(Roles.GUEST)).permitAll()
                 .anyRequest().authenticated()
         .and()
             .csrf()

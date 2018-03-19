@@ -1,5 +1,7 @@
 package com.justandreyb.liquid_recipes.service;
 
+import java.util.HashSet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.val;
 
-import com.justandreyb.liquid_recipes.config.role.Role;
+import com.justandreyb.liquid_recipes.config.Roles;
 import com.justandreyb.liquid_recipes.entity.User;
 import com.justandreyb.liquid_recipes.exception.AuthException;
 import com.justandreyb.liquid_recipes.repository.UserRepository;
@@ -31,7 +33,8 @@ public class UserService extends EntityService<User, UserRepository> {
                 getExceptionMessage("Auth.credentials.exception.already_exists")
             );
         }
-        user.getRoles().add(roleService.getByRole(Role.CLIENT));
+        user.setRoles(new HashSet<>());
+        user.getRoles().add(roleService.getByRole(Roles.CLIENT));
         user = repository.save(user);
 
         return user;

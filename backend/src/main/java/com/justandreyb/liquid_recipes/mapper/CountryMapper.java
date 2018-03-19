@@ -28,7 +28,7 @@ public interface CountryMapper {
 
     @Named("toCountryDtoWithCode")
     @Mappings({
-        @Mapping(target = "code", ignore = true),
+        @Mapping(target = "name", ignore = true),
         @Mapping(target = "imageId", ignore = true),
         @Mapping(target = "image", qualifiedByName = "toImageDto")
     })
@@ -36,7 +36,7 @@ public interface CountryMapper {
 
     @Named("toCountryDtoWithName")
     @Mappings({
-        @Mapping(target = "name", ignore = true),
+        @Mapping(target = "code", ignore = true),
         @Mapping(target = "imageId", ignore = true),
         @Mapping(target = "image", qualifiedByName = "toImageDto")
     })

@@ -10,28 +10,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import com.justandreyb.liquid_recipes.validator.Validatable;
+
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {"image", "manufacturer", "likes", "comments"}, callSuper = false)
 @ToString(exclude = {"image", "manufacturer", "likes", "comments"})
-public class Flavor extends BaseEntity {
+public class Flavor extends BaseEntity implements Validatable {
 
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(nullable = false)
     private String name;
 
     @Column
+    @Size(min = 1, max = 512)
     private String description;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manufacturer_id", nullable = false)
     private Manufacturer manufacturer;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)
     private FlavorType flavorType;
 
@@ -45,27 +54,9 @@ public class Flavor extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "comment_id"))
     private Set<Comment> comments = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "image_id")
     private Image image;
 
-    @Override
-    public boolean isValid() {
-        if (name.isEmpty()) {
-            return false;
-        }
-        if (flavorType == null) {
-            return false;
-        }
-        if (manufacturer == null) {
-            return false;
-        }
-        if (likes == null) {
-            return false;
-        }
-        if (comments == null) {
-            return false;
-        }
-        return true;
-    }
 }

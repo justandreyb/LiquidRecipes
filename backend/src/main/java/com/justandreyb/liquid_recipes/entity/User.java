@@ -10,26 +10,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import com.justandreyb.liquid_recipes.validator.Validatable;
+
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {"image", "flavors"}, callSuper = false)
 @ToString(exclude = {"image", "flavors", "roles"})
-public class User extends BaseEntity {
+public class User extends BaseEntity implements Validatable {
 
+    @NotNull
+    @Size(min = 1, max = 128)
     @Column(nullable = false)
     private String name;
 
+    @NotNull
+    @Email
     @Column(nullable = false)
     private String email;
 
+    @NotNull
+    @Size(min = 8)
     @Column(nullable = false)
     private String password;
 
+    @NotNull
     @Column
     private Date registrationDate = new Date();
 
@@ -47,17 +59,4 @@ public class User extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @Override
-    public boolean isValid() {
-        if (name.isEmpty()) {
-            return false;
-        }
-        if (email.isEmpty()) {
-            return false;
-        }
-        if (password.isEmpty()) {
-            return false;
-        }
-        return true;
-    }
 }

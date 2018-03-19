@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import com.justandreyb.liquid_recipes.config.role.Role;
+import com.justandreyb.liquid_recipes.config.Roles;
 import com.justandreyb.liquid_recipes.exception.SecurityException;
 import com.justandreyb.liquid_recipes.mapper.CommentMapper;
 import com.justandreyb.liquid_recipes.mapper.CountryMapper;
@@ -99,7 +99,7 @@ public abstract class ApplicationController {
                         .getAuthentication()
                         .getAuthorities()
                         .stream()
-                        .noneMatch(authority -> Role.ADMIN.getValue().equals(authority.getAuthority()));
+                        .noneMatch(authority -> Roles.ADMIN.getValue().equals(authority.getAuthority()));
 
         if (!creator) {
             throw new SecurityException("Only creator of this entity can perform this action");

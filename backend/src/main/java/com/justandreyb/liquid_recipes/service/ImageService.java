@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.justandreyb.liquid_recipes.config.resources.ImageResolutions;
+import com.justandreyb.liquid_recipes.config.ImageResolutions;
 import com.justandreyb.liquid_recipes.entity.Image;
 import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
 import com.justandreyb.liquid_recipes.exception.NotFoundException;

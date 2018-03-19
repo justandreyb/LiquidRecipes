@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.justandreyb.liquid_recipes.config.resources.ImageResolutions;
-import com.justandreyb.liquid_recipes.config.role.CheckRoles;
+import com.justandreyb.liquid_recipes.config.ImageResolutions;
+import com.justandreyb.liquid_recipes.config.annotation.CheckRoles;
 import com.justandreyb.liquid_recipes.dto.CountryDto;
 
 import lombok.val;
 
-import static com.justandreyb.liquid_recipes.config.role.Role.ADMIN;
+import static com.justandreyb.liquid_recipes.config.Roles.ADMIN;
 
 @RestController
 @RequestMapping("/countries")

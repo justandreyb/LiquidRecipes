@@ -1,12 +1,19 @@
 package com.justandreyb.liquid_recipes.exception;
 
-public class InvalidEntityException extends LiquidRecipeException {
+import java.util.Map;
+
+public class InvalidEntityException extends ApplicationExceptionWithAdditionalData {
+
     public InvalidEntityException() {
         super();
     }
 
     public InvalidEntityException(String message) {
         super(message);
+    }
+
+    public InvalidEntityException(String message, Map<String, String> data) {
+        super(message, data);
     }
 
     public InvalidEntityException(String message, Throwable cause) {

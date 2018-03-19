@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.justandreyb.liquid_recipes.config.resources.ImageResolutions;
-import com.justandreyb.liquid_recipes.config.role.CheckRoles;
+import com.justandreyb.liquid_recipes.config.ImageResolutions;
+import com.justandreyb.liquid_recipes.config.annotation.CheckRoles;
 import com.justandreyb.liquid_recipes.dto.CommentDto;
 import com.justandreyb.liquid_recipes.dto.ImageDto;
 import com.justandreyb.liquid_recipes.dto.LikeDto;
@@ -24,8 +24,8 @@ import com.justandreyb.liquid_recipes.entity.RecipeItem;
 
 import lombok.val;
 
-import static com.justandreyb.liquid_recipes.config.role.Role.ADMIN;
-import static com.justandreyb.liquid_recipes.config.role.Role.CLIENT;
+import static com.justandreyb.liquid_recipes.config.Roles.ADMIN;
+import static com.justandreyb.liquid_recipes.config.Roles.CLIENT;
 
 @RestController
 @RequestMapping("/recipes")

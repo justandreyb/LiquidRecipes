@@ -30,10 +30,14 @@
     </changeSet>
 
     <changeSet id="20180113_3" author="justandreyb">
-        <sql>
-            INSERT INTO PUBLIC.ROLE (ID, NAME) VALUES ('e446eb5e-c01f-4d6c-b7b9-671786f06a53', 'admin');
-            INSERT INTO PUBLIC.ROLE (ID, NAME) VALUES ('502d6c4b-ab33-4r5d-2855-2ba4af564b6c', 'client');
-        </sql>
+        <insert tableName="ROLE">
+            <column name="ID" value="e446eb5e-c01f-4d6c-b7b9-671786f06a53"/>
+            <column name="NAME" value="admin"/>
+        </insert>
+        <insert tableName="ROLE">
+            <column name="ID" value="502d6c4b-ab33-4r5d-2855-2ba4af564b6c"/>
+            <column name="NAME" value="client"/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>

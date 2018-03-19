@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.justandreyb.liquid_recipes.config.role.CheckRoles;
+import com.justandreyb.liquid_recipes.config.annotation.CheckRoles;
 import com.justandreyb.liquid_recipes.dto.FlavorDto;
 import com.justandreyb.liquid_recipes.dto.UserDto;
 
 import lombok.val;
 
-import static com.justandreyb.liquid_recipes.config.role.Role.*;
+import static com.justandreyb.liquid_recipes.config.Roles.*;
 
 @RestController
 @RequestMapping("/accounts")

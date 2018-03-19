@@ -1,17 +1,18 @@
 package com.justandreyb.liquid_recipes.service;
 
-import java.lang.reflect.ParameterizedType;
-import java.util.Collection;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import com.justandreyb.liquid_recipes.config.resources.ResourcesConfig;
+import com.justandreyb.liquid_recipes.util.GenericUtils;
+import com.justandreyb.liquid_recipes.util.MessagesProvider;
 import com.justandreyb.liquid_recipes.entity.BaseEntity;
 import com.justandreyb.liquid_recipes.exception.InvalidEntityException;
 import com.justandreyb.liquid_recipes.exception.NotFoundException;
+import com.justandreyb.liquid_recipes.validator.Validator;
 
 @NoRepositoryBean
 public abstract class EntityService<T extends BaseEntity, R extends JpaRepository> {
@@ -23,7 +24,7 @@ public abstract class EntityService<T extends BaseEntity, R extends JpaRepositor
     protected R repository;
 
     @Autowired
-    protected ResourcesConfig resourceService;
+    protected MessagesProvider messagesProvider;
 
     public T add(T entity) throws InvalidEntityException {
         checkReceivedEntity(entity);
@@ -49,6 +50,9 @@ public abstract class EntityService<T extends BaseEntity, R extends JpaRepositor
     }
 
     public T safeGet(String entityId) {
+        if (entityId == null) {
+            return null;
+        }
         return (T) repository.findOne(entityId);
     }
 
@@ -76,48 +80,37 @@ public abstract class EntityService<T extends BaseEntity, R extends JpaRepositor
 
     private void checkFoundEntity(T entity) throws NotFoundException {
         if (entity == null) {
-            throw new NotFoundException(
-                    getExceptionMessage(NOT_FOUND_EXCEPTION_KEY)
-            );
+            throw new NotFoundException(getExceptionMessage(NOT_FOUND_EXCEPTION_KEY));
         }
     }
 
     private void checkReceivedEntity(T entity) throws NotFoundException, InvalidEntityException {
-        if (entity == null || !entity.isValid()) {
-            throw new NotFoundException(
-                    getExceptionMessage(VALIDATION_EXCEPTION_KEY)
-            );
+        if (entity == null) {
+            throw new InvalidEntityException(getExceptionMessage(VALIDATION_EXCEPTION_KEY));
         }
+        validateEntity(entity);
     }
 
     void checkEntity(T entity) throws NotFoundException, InvalidEntityException {
         if (entity == null) {
-            throw new NotFoundException(
-                    getExceptionMessage(NOT_FOUND_EXCEPTION_KEY)
-            );
+            throw new NotFoundException(getExceptionMessage(NOT_FOUND_EXCEPTION_KEY));
         }
-        if (!entity.isValid()) {
-            throw new InvalidEntityException(
-                    getExceptionMessage(VALIDATION_EXCEPTION_KEY)
-            );
+        validateEntity(entity);
+    }
+
+    void validateEntity(T entity) throws InvalidEntityException {
+        Map<String, String> fieldsWithErrors = Validator.validate(entity);
+        if (fieldsWithErrors.size() != 0) {
+            throw new InvalidEntityException(getExceptionMessage(VALIDATION_EXCEPTION_KEY), fieldsWithErrors);
         }
     }
 
     protected String getExceptionMessage(String key) {
-        String ex = resourceService.getValue(
-                getGenericName() + key);
+        String ex = messagesProvider.getValue(GenericUtils.getClassName(this.getClass()) + key);
         if (ex == null || "".equals(ex)) {
-            ex = resourceService.getValue(
-                    "Default" + key);
+            ex = messagesProvider.getValue("Default" + key);
         }
 
         return ex;
-    }
-
-    private String getGenericName() {
-        String name = ((ParameterizedType) getClass()
-                .getGenericSuperclass()).getActualTypeArguments()[0].getTypeName();
-        name = name.substring(name.lastIndexOf(".") + 1);
-        return name;
     }
 }

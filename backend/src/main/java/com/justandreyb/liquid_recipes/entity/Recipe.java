@@ -11,38 +11,54 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import com.justandreyb.liquid_recipes.validator.Validatable;
+
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {"creator", "flavors", "comments", "likes", "image"}, callSuper = false)
 @ToString(exclude = {"creator", "flavors", "comments", "likes", "image"})
-public class Recipe extends BaseEntity {
+public class Recipe extends BaseEntity implements Validatable {
+
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Size(min = 1, max = 512)
     @Column
     private String description;
 
+    @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User creator;
 
+    @NotNull
     @Column
     private Date creationDate = new Date();
 
+    @Min(0) @Max(100)
     @Column
     private byte pg;
 
+    @Min(0) @Max(100)
     @Column
     private byte vg;
 
+    @Min(0) @Max(24)
     @Column
     private byte nicotine;
 
+    @Min(0) @Max(500)
     @Column(nullable = false)
     private double finalAmount;
 
@@ -65,14 +81,4 @@ public class Recipe extends BaseEntity {
     @JoinColumn(name = "image_id")
     private Image image;
 
-    @Override
-    public boolean isValid() {
-        if (name.isEmpty()) {
-            return false;
-        }
-        if (creator == null) {
-            return false;
-        }
-        return true;
-    }
 }
