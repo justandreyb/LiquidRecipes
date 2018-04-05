@@ -6,6 +6,8 @@ export const CLIENT_ID = "liquid_recipes_frontend";
 export const CLIENT_SECRET = "lirefrse";
 export const ACCESS_TOKEN_NAME = "access_token";
 
+export const NOTIFICATION_TIMEOUT = 2500;
+
 /* Available themes: light, night, modern, modern-night */
 
 export const THEME = "theme";

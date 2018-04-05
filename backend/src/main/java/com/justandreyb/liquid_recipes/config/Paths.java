@@ -20,9 +20,12 @@ public enum Paths {
     LOGOUT("/accounts/logout/**", CLIENT, ADMIN),
     IM("/accounts/im/**", CLIENT, ADMIN),
 
-    NEWS("/news/**", CLIENT, ADMIN),
-    FLAVORS("/flavors/**", CLIENT, ADMIN),
-    RECIPES("/recipes/**", CLIENT, ADMIN),
+    NEWS("/news", ANY),
+    NEWS_VIEW("/news/**", CLIENT, ADMIN),
+    FLAVORS("/flavors", ANY),
+    FLAVOR_VIEW("/flavors/**", CLIENT, ADMIN),
+    RECIPES("/recipes", ANY),
+    RECIPES_VIEW("/recipes/**", CLIENT, ADMIN),
 
     DASHBOARD("/dashboard/**", ADMIN);
 

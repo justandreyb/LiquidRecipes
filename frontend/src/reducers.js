@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import {routerReducer} from "react-router-redux";
+import {snackbarReducer} from "react-redux-snackbar";
 
 import {reducer as appReducer} from "./modules/application";
 import {reducer as accountReducer} from "./modules/user";
@@ -77,7 +78,8 @@ const containersReducer = {
 const globalReducer =
   combineReducers({
     ...containersReducer,
-    route: routerReducer
+    route   : routerReducer,
+    snackbar: snackbarReducer
   })
 ;
 

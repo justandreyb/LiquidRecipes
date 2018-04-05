@@ -1,5 +1,9 @@
 import {takeEvery} from "redux-saga/effects";
-import toastr from "toastr";
+import {showSnack} from "react-redux-snackbar";
+import {put} from "redux-saga/effects";
+
+import {getCurrentDate} from "./date-utils";
+import {NOTIFICATION_TIMEOUT} from "../settings";
 
 /*
 import {Spinner} from "spin.js";
@@ -27,17 +31,19 @@ let spinnerOptions = {
 };
 */
 
-let toastrOptions = {
-  timeOut: 5000
-};
-
 export function* showFail(action) {
-  yield* toastr.error(action.payload, "Something went wrong..", toastrOptions);
+  yield put(showSnack(getCurrentDate(), {
+    label  : action.payload,
+    timeout: NOTIFICATION_TIMEOUT
+  }));
 }
 
 
-export function* showSuccess(data) {
-  yield* toastr.success(data, "Success !", toastrOptions);
+export function* showSuccess(action) {
+  yield put(showSnack(getCurrentDate(), {
+    label  : action.payload,
+    timeout: NOTIFICATION_TIMEOUT
+  }));
 }
 
 /*

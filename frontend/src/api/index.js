@@ -5,14 +5,12 @@ import {API_URL} from "../settings";
 import {getAuthenticationHeader} from "../modules/user";
 
 export function* getElements(url, successHandler, failHandler) {
-  try {
-    const response = yield call(axios.get, API_URL + url, { headers: getAuthenticationHeader() });
-
-    yield put(successHandler(response.data));
-  }
-  catch (e) {
-    yield put(failHandler(e.message));
-  }
+  yield axios.get(API_URL + url, { headers: getAuthenticationHeader() })
+    .then((response) => put(successHandler(response.data)))
+    .catch((exception) => {
+      call(console.log, "[Get elements]: " + exception);
+      put(failHandler(exception.error))
+    });
 }
 
 export function* getElement(url, id, successHandler, failHandler) {
@@ -21,7 +19,8 @@ export function* getElement(url, id, successHandler, failHandler) {
     yield put(successHandler(response.data));
   }
   catch (e) {
-    yield put(failHandler(e.message));
+    yield call(console.log, "[Get element]: " + e);
+    yield put(failHandler(e.error_description));
   }
 }
 
@@ -34,7 +33,8 @@ export function* sendElement(url, data, successHandler, failHandler) {
     yield put(successHandler(response.data));
   }
   catch (e) {
-    yield put(failHandler(e.message));
+    yield call(console.log, "[Send element]: " + e);
+    yield put(failHandler(e.error_description));
   }
 }
 
@@ -47,7 +47,8 @@ export function* updateElement(url, id, data, successHandler, failHandler) {
     yield put(successHandler(response));
   }
   catch (e) {
-    yield put(failHandler(e.message));
+    yield call(console.log, "[Update element]: " + e);
+    yield put(failHandler(e.error_description));
   }
 }
 
@@ -58,6 +59,7 @@ export function* deleteElement(url, id, successHandler, failHandler) {
     yield put(successHandler());
   }
   catch (e) {
-    yield put(failHandler(e.message));
+    yield call(console.log, "[Delete element]: " + e);
+    yield put(failHandler(e.error_description));
   }
 }

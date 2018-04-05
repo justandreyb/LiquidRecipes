@@ -292,9 +292,10 @@ function getLoginHeaders() {
 }
 
 export function getAuthenticationHeader() {
-  return {
-    "Authorization": `Bearer ${getCookies(ACCESS_TOKEN_NAME)}`
-  };
+  if (getCookies(ACCESS_TOKEN_NAME) != null)
+    return {
+      "Authorization": `Bearer ${getCookies(ACCESS_TOKEN_NAME)}`
+    };
 }
 
 // ------------------ SELECTORS -------------------- //

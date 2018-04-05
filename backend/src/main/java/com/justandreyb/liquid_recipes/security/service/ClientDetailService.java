@@ -26,7 +26,7 @@ public class ClientDetailService implements UserDetailsService {
         User user = userRepository.findByEmail(s);
 
         if (user == null) {
-            throw new UsernameNotFoundException(String.format("The username %s doesn't exist", s));
+            throw new SecurityException(String.format("The username %s does not exist", s));
         }
 
         List<GrantedAuthority> authorities =
