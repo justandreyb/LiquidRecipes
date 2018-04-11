@@ -1,0 +1,2518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- Manufacturers & logos -->
+    <changeSet id="20180411_1" author="justandreyb">
+        <insert tableName="IMAGE">
+            <column name="ID" value="4ba1f371-3e8b-4ac0-8cd4-cc375681e2d1"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/manufacturers/capella.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="3c64bb55-c001-4a4e-ad67-a5cce63b7a17"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/manufacturers/flavor-west.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="9aa76860-8fa1-401c-bf7f-f71248e5362f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/manufacturers/smoke-kitchen.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="2a5fcde4-31f4-4d1d-abcf-862e703dfeed"/>
+            <column name="CREATION_DATE" value="2018-04-19 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/manufacturers/tpa.jpg"/>
+        </insert>
+    </changeSet>
+    <changeSet id="20180411_2" author="justandreyb">
+        <insert tableName="MANUFACTURER">
+            <column name="ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+            <column name="DESCRIPTION" value="Capella Flavors offers the most diverse and delicious line of water soluble, highly concentrated, multi-purpose flavoring."/>
+            <column name="NAME" value="Capella"/>
+            <column name="COUNTRY_ID" value="e92cad1a-505c-4528-ae67-d1c673ae01de"/>
+            <column name="IMAGE_ID" value="4ba1f371-3e8b-4ac0-8cd4-cc375681e2d1"/>
+        </insert>
+        <insert tableName="MANUFACTURER">
+            <column name="ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+            <column name="DESCRIPTION" value="Flavor West's flavorings are affordable, easy to mix, and exceptionally delicious in their candy-flavor variety. This is an excellent brand for flavor experimentation in your DIY e-juice recipes."/>
+            <column name="NAME" value="Flavor West"/>
+            <column name="COUNTRY_ID" value="e92cad1a-505c-4528-ae67-d1c673ae01de"/>
+            <column name="IMAGE_ID" value="3c64bb55-c001-4a4e-ad67-a5cce63b7a17"/>
+        </insert>
+        <insert tableName="MANUFACTURER">
+            <column name="ID" value="5e4c8030-404c-4aa3-9fbd-d9b067d47ed8"/>
+            <column name="DESCRIPTION" value="Our mission - to please people with exclusively qualitative production, setting the highest standards in the vaping industry"/>
+            <column name="NAME" value="Smoke Kitchen"/>
+            <column name="COUNTRY_ID" value="2725c83f-c4c2-4cc4-9439-8a5dc0be43df"/>
+            <column name="IMAGE_ID" value="9aa76860-8fa1-401c-bf7f-f71248e5362f"/>
+        </insert>
+        <insert tableName="MANUFACTURER">
+            <column name="ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+            <column name="DESCRIPTION" value="A flavor company well established and recognized throughout North America and the world over for their Professional Grade High Strength Flavour and Aromas."/>
+            <column name="NAME" value="TPA"/>
+            <column name="COUNTRY_ID" value="e92cad1a-505c-4528-ae67-d1c673ae01de"/>
+            <column name="IMAGE_ID" value="2a5fcde4-31f4-4d1d-abcf-862e703dfeed"/>
+        </insert>
+    </changeSet>
+
+    <!-- Capella flavors & images-->
+    <changeSet id="20180411_3" author="justandreyb">
+        <insert tableName="IMAGE">
+            <column name="ID" value="a704be08-7aa1-4902-a7b9-49e7d4558cb2"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sweet-guava.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b33b9218-22a9-41ab-a194-5b9bd7743449"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sugar-cookie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="fd93e712-9e64-4a6d-8076-3ba60bc379d8"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/hot-cocoa.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="d21a3996-7c7f-4729-84fa-a3ffb2c46f24"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/apricot.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="bb90576b-276e-467a-a4ac-7bcc4da19a7b"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/apple-pie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="df2da5aa-cdeb-477a-b939-c5f02e4c79b3"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/blueberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a5698b74-d22d-44af-8313-aaf98dda7ba3"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/juicy-lemon.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f7d074ac-b2f1-4692-b942-37576fef4339"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/vanilla-whipped-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="3be6a2a0-5b44-4b73-819a-9a99e5a56c00"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/glazed-doughnut.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="1e5220ea-10b0-48dc-ac82-da22122bbf1f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/harvest-berry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="1059b0be-8d02-440e-8cbd-f9290e27bdb4"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/marshmallow.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7040b1bc-b4fe-48bc-b79f-d5172f8461f3"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/cappuccino.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5f165143-1afb-468d-bea3-dc2b773d7961"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/pear.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="84afd004-d65d-43bb-9225-0e508af59624"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/vanilla-cupcake.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="fb8203b0-6cdf-408f-abac-817685b106c2"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/chocolate-fudge-brownie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b6c88067-3c72-40f9-828d-fe4f04da120f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/peppermint.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="6aa4c036-db79-492b-9e76-480c40d65190"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/lemon-meringue-pie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5a2ed773-025a-4ac6-9a48-d2778baad36f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sweet-mango.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="46bbf8b2-2eb3-4fcf-afb8-528ffef3a211"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/cranberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="8bb57d4c-1a48-40e0-a9c8-a7aa2ccdf79b"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/strawberry-taffy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5c37c244-add7-491b-9b6e-36b704dde730"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/golden-butter.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="2f01bc26-484b-4588-89d7-c0d0ed93778f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sweet-strawberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="6fb3a859-8c73-4701-bd16-e4d7f315473c"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/peach-with-stevia.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5132e92f-b312-49e7-86c2-7f332b8dc51b"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/grape.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="adbf88d3-f2bb-4702-aca6-e17d83706e54"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/creamy-yogurt.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="6e0fd427-e53b-42a4-ba46-32e80ee52269"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/french-vanilla.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="23580c76-fee9-489a-804e-cabb2d4e5a34"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/blueberry-jam.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a7c5ba07-b914-409f-9691-ca2d64b97f22"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/cake-batter.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="9deb3c23-a910-4c82-afc4-5f10a6c47705"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/blackberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="ab0fa9c5-7bc3-4df9-bfa9-507a236bfa52"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/graham-cracker.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="226c5170-92bf-49e0-8b1e-0d5f45f221ca"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/banana-split.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="4a54be7b-ecb0-4787-861b-3a34f32cb614"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/gingerbread.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5d46adb7-cf1f-4021-8522-0c0258b87182"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/grapefruit.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="ee2e0539-d9ab-4108-9ac8-d464ef5a909e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/churro.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="2c6aeadf-fd8d-413d-a2b5-31b09a5ae160"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/honeydew-melon.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="02661105-965d-4bf1-a402-5cc1913dec27"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/vanilla-custard.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5ba38788-6acc-471d-8bd2-4d490f021caf"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/jelly-candy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="83db416e-9eb6-46f9-9a1f-123f1589ddde"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/waffle.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7fd24425-c258-4b88-adb6-c0cfb839c93e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sweet-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="40e15b96-5db6-456b-9041-a8b2f5e7f672"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/golden-pineapple.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="6f8595fd-b5a9-4487-b9a0-f5740ec3b24e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sweet-watermelon.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="4d1fdde2-eb24-493d-b2b0-2adc74bb17f2"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/boston-cream-pie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f2b847ad-0464-4217-b13e-b47b03b25e28"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/pink-lemonade.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f34b908a-1044-4d2b-97b8-1bc3740950df"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sweet-tangerine.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="0e6c07e1-a22e-43e0-9f99-2ff740cb1208"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/yellow-peach.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="93da90a0-cf04-467a-9c02-431526ca8764"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/juicy-orange.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="c70e13d4-eb21-4bd9-b6dc-bc28431d8345"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/green-apple.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="0e8417eb-912e-4aad-a41d-a265bf9a9f96"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/raspberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b9ce213b-eb9b-4a7d-8283-234b22a7735a"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/cinnamon-danish-swirl.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="e97a97a2-6ee3-4a32-bb43-6a3c8fef7943"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/sweet-lychee.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="2e264892-b22c-4c06-8c0c-f32ee61b3829"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/capella/milk-chocolate-toffee.jpg"/>
+        </insert>
+
+    </changeSet>
+    <changeSet id="20180411_4" author="justandreyb">
+        <insert tableName="FLAVOR">
+            <column name="ID" value="96505d52-f6c7-46fd-a1b5-5f546eed42b2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Sweet Guava"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="a704be08-7aa1-4902-a7b9-49e7d4558cb2"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="005d0e06-9182-4751-8fa1-f190f9367c85"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Sugar Cookie"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="b33b9218-22a9-41ab-a194-5b9bd7743449"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="316809d1-3454-4ac1-9ec1-d656e477cda8"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Hot Cocoa"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="fd93e712-9e64-4a6d-8076-3ba60bc379d8"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="b43c2659-3960-4c7d-be8b-a7b7086c6970"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Apricot"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="d21a3996-7c7f-4729-84fa-a3ffb2c46f24"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="3e507012-2259-46db-bcd4-13cc7cdbf907"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Apple Pie"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="bb90576b-276e-467a-a4ac-7bcc4da19a7b"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="3c707a26-c992-417f-b098-776268ae9fcc"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Blueberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="df2da5aa-cdeb-477a-b939-c5f02e4c79b3"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="3762b290-c7fd-4cb9-8e1f-e182b0287eca"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Juicy Lemon"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="a5698b74-d22d-44af-8313-aaf98dda7ba3"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="19a43b1d-3ef6-41e5-9fab-ca60c8a13799"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Vanilla Whipped Cream"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="f7d074ac-b2f1-4692-b942-37576fef4339"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ee00b3fa-876e-4057-9544-3c1517c1020c"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Glazed Doughnut"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="3be6a2a0-5b44-4b73-819a-9a99e5a56c00"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="83e380b3-06c2-4dd0-9f2f-118478d8bcb3"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Harvest Berry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="1e5220ea-10b0-48dc-ac82-da22122bbf1f"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="bd4bb7a7-eda4-4524-b62b-86aead6a21a8"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Marshmallow"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="1059b0be-8d02-440e-8cbd-f9290e27bdb4"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="7106ddf0-ad1c-4fda-b8b3-d9da6afe854a"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Cappuccino"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="7040b1bc-b4fe-48bc-b79f-d5172f8461f3"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e03ea73e-3ab6-4258-a8d4-72f72973b3df"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Pear"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5f165143-1afb-468d-bea3-dc2b773d7961"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="1537da19-b156-4178-b601-bab36fa2ee9f"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Vanilla Cupcake"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="84afd004-d65d-43bb-9225-0e508af59624"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="73d2b068-8856-4b46-be96-6d132484d799"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Chocolate Fudge Brownie"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="fb8203b0-6cdf-408f-abac-817685b106c2"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="4ab4f844-3b0a-4053-a248-4b868d1948d8"/>
+            <column name="DESCRIPTION" value="Tasty menthol and mints flavor"/>
+            <column name="NAME" value="Peppermint"/>
+            <column name="TYPE_ID" value="fae8a148-2096-40d1-b404-7fb7ae3327f0"/>
+            <column name="IMAGE_ID" value="b6c88067-3c72-40f9-828d-fe4f04da120f"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="9631b1ce-b76b-4959-9e61-47cc8a91970a"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Lemon Meringue Pie"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="6aa4c036-db79-492b-9e76-480c40d65190"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="42a27bda-555b-49dc-b2e2-406c56d90ac7"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Sweet Mango"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5a2ed773-025a-4ac6-9a48-d2778baad36f"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="7b3a4193-c9b9-47e9-94f0-78c74dff7b16"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Cranberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="46bbf8b2-2eb3-4fcf-afb8-528ffef3a211"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="0b5bca39-efb4-4906-9c9b-f2ca0cfd502d"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Strawberry Taffy"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="8bb57d4c-1a48-40e0-a9c8-a7aa2ccdf79b"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="558ca34b-d8d2-4652-804e-3fc8785e7899"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Golden Butter"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="5c37c244-add7-491b-9b6e-36b704dde730"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="c7f9ed2a-a3bc-41d6-8e75-757990ca9338"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Sweet Strawberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="2f01bc26-484b-4588-89d7-c0d0ed93778f"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e2493142-cba5-478b-9f57-40883cdd0b9c"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Peach with Stevia"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="6fb3a859-8c73-4701-bd16-e4d7f315473c"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ab2cc7e0-25d5-4a5c-bee5-8118f0a2cba2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Grape"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5132e92f-b312-49e7-86c2-7f332b8dc51b"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="1339e0f3-4f4c-4cf1-af8d-8a44f30bb777"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Creamy Yogurt"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="adbf88d3-f2bb-4702-aca6-e17d83706e54"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="778c200b-8e41-4697-90c6-1e31ce1f9adc"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="French Vanilla"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="6e0fd427-e53b-42a4-ba46-32e80ee52269"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="7acada74-5b52-4570-9255-592e10fbbbe3"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Blueberry Jam"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="23580c76-fee9-489a-804e-cabb2d4e5a34"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="470e00fc-09fc-4269-a418-bee615b29da0"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cake Batter"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="a7c5ba07-b914-409f-9691-ca2d64b97f22"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d1f6a477-1396-417d-b846-e318220b8782"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Blackberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="9deb3c23-a910-4c82-afc4-5f10a6c47705"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="6b36f6fe-2ba9-458c-ab31-b39e9aed8775"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Graham Cracker"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="ab0fa9c5-7bc3-4df9-bfa9-507a236bfa52"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="7ac69768-f156-45fd-96e0-b92bfa6a4788"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Banana Split"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="226c5170-92bf-49e0-8b1e-0d5f45f221ca"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5bb095f1-6833-483c-8d69-4d73f0bb9f06"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Gingerbread"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="4a54be7b-ecb0-4787-861b-3a34f32cb614"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e57179b5-5251-4509-b4b7-3d50a8e06fb2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Grapefruit"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5d46adb7-cf1f-4021-8522-0c0258b87182"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="9a7cbc41-cd94-4ad0-9541-15c022db0e95"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Churro"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="ee2e0539-d9ab-4108-9ac8-d464ef5a909e"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ba5c33fe-284d-4707-b226-18b82ee2ba63"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Honeydew Melon"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="2c6aeadf-fd8d-413d-a2b5-31b09a5ae160"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d60cc285-9309-4b8a-a3ae-a938ebc8d6fa"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Vanilla Custard"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="02661105-965d-4bf1-a402-5cc1913dec27"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="c0a02f8b-5095-4078-81e7-d3067199639f"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Jelly Candy"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5ba38788-6acc-471d-8bd2-4d490f021caf"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="fb5d5220-20ca-45c2-9dad-432278bd6171"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Waffle"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="83db416e-9eb6-46f9-9a1f-123f1589ddde"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="0356a7ec-fde4-45fe-bc7d-c9dec29c367f"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Sweet Cream"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="7fd24425-c258-4b88-adb6-c0cfb839c93e"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="b4550010-e7a1-459a-b834-cceb01520eda"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Golden Pineapple"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="40e15b96-5db6-456b-9041-a8b2f5e7f672"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d397dfdf-d931-4891-8716-2b4426f87a91"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Sweet Watermelon"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="6f8595fd-b5a9-4487-b9a0-f5740ec3b24e"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ed072785-77f1-4880-82c6-31ebba50bd08"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Boston Cream Pie"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="4d1fdde2-eb24-493d-b2b0-2adc74bb17f2"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="89f65064-c99c-4468-abfe-5f76cd611582"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Pink Lemonade"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="f2b847ad-0464-4217-b13e-b47b03b25e28"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="37658333-f8ff-4e7a-9d2d-69a9fadc00ba"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Sweet Tangerine"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="f34b908a-1044-4d2b-97b8-1bc3740950df"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="314e98d6-4555-46d4-8df1-92e92244f7f2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Yellow Peach"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="0e6c07e1-a22e-43e0-9f99-2ff740cb1208"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="bb4e78ec-0fae-4966-9de4-5508343d002a"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Juicy Orange"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="93da90a0-cf04-467a-9c02-431526ca8764"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d7258a6e-53bc-4b36-bbb2-db3d98f66b82"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Green Apple"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="c70e13d4-eb21-4bd9-b6dc-bc28431d8345"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e7fc7e5f-75b1-4a12-96d1-23e2858e8736"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Raspberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="0e8417eb-912e-4aad-a41d-a265bf9a9f96"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="742a8622-864f-4b43-9d2d-867d2ac6cc7a"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cinnamon Danish Swirl"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="b9ce213b-eb9b-4a7d-8283-234b22a7735a"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="2bf799c4-1883-4162-a05b-5238ac04e7fc"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Sweet Lychee"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="e97a97a2-6ee3-4a32-bb43-6a3c8fef7943"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="8907d460-4e79-4a5d-8de8-e0f3d3434bc0"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Milk Chocolate Toffee"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="2e264892-b22c-4c06-8c0c-f32ee61b3829"/>
+            <column name="MANUFACTURER_ID" value="186bb6a0-23e0-4894-ae18-7303b483125b"/>
+        </insert>
+
+    </changeSet>
+
+    <!-- TPA flavors & images -->
+    <changeSet id="20180411_5" author="justandreyb">
+        <insert tableName="IMAGE">
+            <column name="ID" value="d751b3e9-41c1-47d3-99e9-8975c675605c"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/white-chocolate.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="86718f25-748a-424b-bcd4-d1491aff9cd9"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/greek-yogurt.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="200092fc-512e-4aae-9aa4-17d73a10aa53"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/watermelon-candy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="d01a640a-d73c-4064-b120-f92d4decef81"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/mojito-havana.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="c585975d-8c90-4f5b-add2-63f53bae3dc5"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/apricot.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a91d2498-3fbd-4251-a6f2-15d9ac386b45"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/berry-crunch.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="6aed6007-1eb9-455a-b5cf-c6ab0cd9bb35"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/apple-pie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="649d28c9-7d39-4803-a11e-e3f2673d7907"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/western.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a5448e1c-d6e6-4ef0-a769-d09d691f07d8"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/spearmint.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="70888c23-4ed5-4dd0-bfd1-ea8c75829fd3"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/fruity-stick-gum.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="c6889220-042c-45c3-91c0-84ca4e05708a"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/dr.-pop.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7a2c2e4f-d017-4a43-ab57-1c6c2a086d47"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/bubblegum.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b107cce0-f4bc-43ed-81f7-95d6006fb504"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cappuccino.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="47b1a091-8c99-4d08-95a7-6a391ae491ae"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cinnamon-danish.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a8587d78-e4b4-4298-bb9a-e84261362561"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/pear.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="4f5430a3-2c15-4fa8-82a2-a0c893511491"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/vanilla-cupcake.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="6906026c-852d-4cef-88bf-55dcef14d190"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/peach-juicy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="036ed5f5-0065-4dcf-afc7-8b954d13998c"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/hazelnut.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7885beeb-79d3-45d6-a5c4-878288ff22cd"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/fruit-circles-whith-milk.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="634c23a8-6e15-4e96-a5e1-3dd1e252a952"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cinnamon-red-hot.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b9680022-aeaf-4ea6-b8df-b3caf3ebab17"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cantaloupe.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="125ad584-bdf5-4c18-a811-4fbb60a8931b"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/boysenberry-deluxe.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="950fdc0e-72ea-403b-935c-401cb35a842f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/kiwi-double.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="607bbf02-982f-4b51-a495-b8a46da6c5d4"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/honey.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="c5fe20ec-c404-47c7-8895-e803f629ddaf"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/creme-de-menthe-ii.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="78aa6e5d-f573-4501-a5f4-dcf4b631bfd9"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/rainbow-drops.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="93128f54-1151-45bb-88c7-af2fe0aa399b"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/irish-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b3f477b8-7dc5-49fd-a20b-afed531738c0"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/dairy-milk.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f93bb7b3-c9b5-43cf-bbf6-fe3e41363d88"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/sour.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="ec0a9c1f-7b31-447f-8831-fabb49ec4d0e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/papaya.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="517e8833-565b-4a30-be42-97b645bb8b7a"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/graham-cracker.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="4094d48a-533d-4295-9015-78f1c390594d"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/vanilla-bean-ice-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="eafc59ec-c106-45cb-8a91-4b34a2b98aac"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/orange-mandarin.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5cd905aa-cd59-469c-8dae-07fb0c376845"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cheesecake-graham-crust.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="dffc590c-7113-4da0-ab44-48243bf2e2e6"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cola-cherry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="ddc5b2dd-b84f-497a-951e-cdc8e7991a07"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/berry-mix.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="04edb47e-e788-49b8-a30e-dd9b9e557335"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/bavarian-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="aea94fa6-5e16-4420-9e44-b09b3bfb4024"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/pineapple.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="d3e4f516-8d65-44f1-be2a-17af3a0c735e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cinnamon-sugar-cookie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="d5e01832-8283-4d3e-b8ff-dcb759856a64"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/watermelon.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b6e4513a-daa7-4472-b224-e4bed1aea5d9"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/egg-nog.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="36f184e4-c9ec-4839-b422-0b52f1327fe1"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/orange-cream-bar.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="adb9cdd4-25ad-4fda-9b49-b5d42ce4c120"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/espresso.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5d232b23-9573-4fe7-b177-9564eb60a8c3"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/banana-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5550e990-d6a7-4f7b-9a09-1722ab763cbe"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/meringue.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7aac5e2b-004c-48f3-b320-0d5f980579fd"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/black-honey.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="144d6d86-0bcf-43ab-9152-7255d8b8898c"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/citrus-punch-ii.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b9a6fa67-0e59-4304-9185-29bb3217aaca"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/strawberry-ripe.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7b448329-2780-4b44-a58e-c379a8265a8e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/lychee.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="714928b2-9986-49d4-b992-0a063d58b1a9"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/earl-grey-tea-ii.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="363e22f0-b265-426c-8358-bb9ca108b0c5"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/sweetener.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="c8f574c2-dfcc-4907-8daf-ede3159b4e14"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/rainbow-sherbet.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="314de9a7-8962-4909-9ccf-7613f2249086"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/coconut-extra.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7d452366-6dd4-4e4e-b9a3-fedbd803ee78"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/blueberry-extra.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="da7ed431-f612-4d4b-9c7a-5d8abbecad0f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/passion-fruit.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5b3b4664-ae97-4d20-a409-ac97a1076d11"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/horehound.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="12dfea83-b2c6-418f-8e7e-26b762503d14"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/malted-milk.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="879bee63-bb12-4c1f-9b3d-8c45a7a89542"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/hawaiian-drink.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="861fd055-f98d-4636-a441-825f44e3cec4"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/frosted-donut.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a6211d58-5b79-4ed1-a991-6a36311ac84a"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/lemon.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="1fc17628-ea6f-41a4-985d-e93761fee541"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/ry-4-double.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="d2533834-2055-4c77-a4ab-61959b061551"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/plum.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="83437d53-c55c-4f9c-a053-912737c6c8c5"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/mint-candy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f185b903-8e8c-45f1-93f6-915e52db87bf"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/energy-drink.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="4304d40c-0798-4c93-8eae-7b95a27639a4"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cinnamon-spice.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="dfc54cb0-609e-4132-bf77-abba63d8f967"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/strawberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a63e5c4e-b50e-4373-9901-9aad288201f5"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/bittersweet-chocolate.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7041e912-24e9-47ce-aa1b-05a3cde3af29"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/dragonfruit.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="3c2e943f-19c6-47e4-b3d5-2c9cab18dc03"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/double-chocolate.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="cce6341b-6edc-4042-b40c-634f6a4dbaed"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/pomegranate.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="59d5238c-bd2e-4941-b898-cafa9f2ccf7f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/mary-jane.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f75735e8-840f-4f1d-b19d-3ae16c4794f1"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/marshmallow.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b8cff637-0257-46e4-92a4-5302f75defa0"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/french-vanilla-creme.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f2812976-d0f6-4435-a136-5eb3486b6161"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/philippine-mango.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="deec2abb-10bc-40a4-ab85-ff55de6fe9b4"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/lemon-lime-ii.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="68ebd1c0-5eb0-4d3b-b00c-53ccf2a04d5a"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/black-cherry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="e1e37ddb-d4ce-4675-a751-440e39122990"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/nectarine.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5bab8f31-164c-4b61-9836-c364a2eb89a0"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/koolada.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b3713287-f5ce-4a77-a9a7-ee97f00e2562"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/hypno-ii.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="15a453cf-6ad3-4653-98bb-e4f90e3c057f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/tutti-frutti-deluxe.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="1db5ef04-50a6-427f-b7a6-a102e41ff593"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/wintergreen.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="09a1e77e-cfb6-4010-9c16-fd0b31e27e7f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/raspberry-sweet.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="836ec62e-b005-4a88-838c-802125b0ba57"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/gummy-candy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="dd2565a1-dc9f-4cb9-a34f-2520198eb48d"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/honeydew.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="9ddec984-92af-4d99-9392-691bffa3cecb"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cherry-blossom.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="9a9c388b-6c42-4f8d-b21a-90732c6292d8"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/blackberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="2925d178-d2f6-4dcc-8379-8de7628997cc"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/strawberries-and-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="b9c5aa2a-b758-46cb-8382-1bd940c331be"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/menthol-liquid.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="1a2f9c95-b554-47bd-8c44-a69a46ac54a7"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/mango.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="957922a2-c00d-4b68-a7ec-6f0aaac8e477"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/fruit-circles.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5000176d-1c7d-49e5-b883-92e9d449e9dd"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/cotton-candy-circus.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="acdafc0d-671c-4561-88d9-fcbe9270065e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/french-vanilla-deluxe.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="aa0ab09a-f4c1-424f-8729-2f47c6c20e88"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/vanilla-custard.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="1ac9d096-02d6-4466-8975-0cb94943ca60"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/black-tea-deluxe.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="4cc3e716-8148-41cf-b60a-aa93e04c5b2a"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/whipped-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="c0d42cd5-aae7-45d4-abd6-e4aa24bc99e9"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/guava.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="fe3a6fb3-5a77-49d4-a5d5-012dffdee8ac"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/pie-crust.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="59540c70-b2e0-4b92-89b4-cb6995dab56a"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/milk-chocolate.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="572d53de-e077-4681-9a33-4b8d6d71fae6"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/pina-colada.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="decfe323-c217-4e22-af1e-484d8458f311"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/absinthe-ii.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="ec213cc9-46f5-4822-969c-a2cc159f05fb"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/dx-jamaican-rum.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="e7c22ae3-6161-45ce-9bde-deb782ca4264"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/ry4-asian.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="75acba9d-ccd5-45a2-90f5-18d0fb04f47f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/apple.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f6acc16e-1532-4f44-96de-4e591509f134"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/grape-candy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="21abc469-2291-47b6-b709-c0ae2fd0dced"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/dx-peanut-butter.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="ea63cf8d-7029-4fbf-a206-24203ff70f07"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/green-apple.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="d438b231-9d0b-40fc-91f1-5d45a27a352e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/acai.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7e9978be-cd96-4999-82f2-178c01183ca2"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/black-currant.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a199d89b-45ba-4727-a9e3-3c3a82ded764"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/hazelnut-praline.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="30173ecb-984d-4f35-895e-28ebe65f00c3"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/jackfruit.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="07f813f9-a4af-4a94-a0f5-1061f1de65ee"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/tpa/elderberry.jpg"/>
+        </insert>
+
+    </changeSet>
+    <changeSet id="20180411_6" author="justandreyb">
+        <insert tableName="FLAVOR">
+            <column name="ID" value="3398db5c-d3b1-410e-a632-3a49741a4a32"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="White Chocolate"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="d751b3e9-41c1-47d3-99e9-8975c675605c"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="6c6e65cc-5431-4c18-b41a-71527c6f1ab4"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Greek Yogurt"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="86718f25-748a-424b-bcd4-d1491aff9cd9"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="4e2d2d1e-65fb-4350-bfc0-4a6c9ee6241c"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Watermelon Candy"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="200092fc-512e-4aae-9aa4-17d73a10aa53"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="1206c400-b13c-4126-bbda-1d2d805b8a65"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Mojito Havana"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="d01a640a-d73c-4064-b120-f92d4decef81"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5c9b9b92-d348-4d4d-9d9d-93f985e7e30a"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Apricot"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="c585975d-8c90-4f5b-add2-63f53bae3dc5"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="4910206a-5ab6-4188-a9bf-b73ed14cb670"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Berry Crunch"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="a91d2498-3fbd-4251-a6f2-15d9ac386b45"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="be8f56fe-831e-429e-89e6-312e27fb4c6b"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Apple Pie"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="6aed6007-1eb9-455a-b5cf-c6ab0cd9bb35"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="88c32d14-8a08-4347-9a40-f20c08089f9d"/>
+            <column name="DESCRIPTION" value="Tasty tobacco flavor"/>
+            <column name="NAME" value="Western"/>
+            <column name="TYPE_ID" value="275d019b-011c-4fb1-b717-6327a2aa5f42"/>
+            <column name="IMAGE_ID" value="649d28c9-7d39-4803-a11e-e3f2673d7907"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d864bf1c-5823-4dee-863a-9c4d39192d98"/>
+            <column name="DESCRIPTION" value="Tasty menthol and mints flavor"/>
+            <column name="NAME" value="Spearmint"/>
+            <column name="TYPE_ID" value="fae8a148-2096-40d1-b404-7fb7ae3327f0"/>
+            <column name="IMAGE_ID" value="a5448e1c-d6e6-4ef0-a769-d09d691f07d8"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="85e059fe-116d-4122-8e32-a928585a2df7"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Fruity Stick Gum"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="70888c23-4ed5-4dd0-bfd1-ea8c75829fd3"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="057c0f94-a5bc-4613-b883-855d075551b6"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Dr. Pop"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="c6889220-042c-45c3-91c0-84ca4e05708a"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5ff60947-c98f-43e3-a514-97a87f32dc0b"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Bubblegum"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="7a2c2e4f-d017-4a43-ab57-1c6c2a086d47"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="54de9f95-6722-4c07-8234-b2a1aa770e47"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Cappuccino"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="b107cce0-f4bc-43ed-81f7-95d6006fb504"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="fdc525cf-58fc-4906-985f-ecd0eed22dce"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cinnamon Danish"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="47b1a091-8c99-4d08-95a7-6a391ae491ae"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f1c4fa58-4b8e-4662-ac57-8fa1c19f22b7"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Pear"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="a8587d78-e4b4-4298-bb9a-e84261362561"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5e56eda4-b7fd-4860-911f-d328ed520de2"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Vanilla Cupcake"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="4f5430a3-2c15-4fa8-82a2-a0c893511491"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="63306b53-f9b9-4a02-a059-eec5c81a87f2"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Peach Juicy"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="6906026c-852d-4cef-88bf-55dcef14d190"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f18792fa-18f6-427a-8a24-31942edca98c"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Hazelnut"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="036ed5f5-0065-4dcf-afc7-8b954d13998c"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="df19f588-876e-45c1-a358-9cefffa5dd28"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Fruit Circles Whith Milk"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="7885beeb-79d3-45d6-a5c4-878288ff22cd"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="33fb699e-e1c3-4045-8b8f-27e637654c23"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cinnamon Red Hot"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="634c23a8-6e15-4e96-a5e1-3dd1e252a952"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="fe30a244-7782-4e6c-90ea-f69f321b93f2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Cantaloupe"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="b9680022-aeaf-4ea6-b8df-b3caf3ebab17"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="bbf61127-6be4-47b9-9ef5-2f82ea5ff64d"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Boysenberry Deluxe"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="125ad584-bdf5-4c18-a811-4fbb60a8931b"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="0ee2d4a4-ac1f-4f78-943a-516e0399811b"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Kiwi Double"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="950fdc0e-72ea-403b-935c-401cb35a842f"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="15109306-3db2-451d-86ca-499b715aa7b1"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Honey"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="607bbf02-982f-4b51-a495-b8a46da6c5d4"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="2c815dd8-7d01-4ab0-8395-ea5b94549fb4"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Creme de Menthe II"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="c5fe20ec-c404-47c7-8895-e803f629ddaf"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="23fa5f84-acf9-4ed5-b461-6a0e8375be3e"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Rainbow Drops"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="78aa6e5d-f573-4501-a5f4-dcf4b631bfd9"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="81885b10-bf59-4f08-a6e0-9db72546965f"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Irish Cream"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="93128f54-1151-45bb-88c7-af2fe0aa399b"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ca9f8e38-8673-42e4-8566-b787f4b0d598"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Dairy Milk"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="b3f477b8-7dc5-49fd-a20b-afed531738c0"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5e8a19e8-976b-4a4e-9929-a41b35b19310"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Sour"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="f93bb7b3-c9b5-43cf-bbf6-fe3e41363d88"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e813ca04-cf23-409b-8922-1fffdb00aca2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Papaya"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="ec0a9c1f-7b31-447f-8831-fabb49ec4d0e"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="17eefc5d-f3c1-44db-8ca5-cd377df8202e"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Graham Cracker"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="517e8833-565b-4a30-be42-97b645bb8b7a"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d3b30b1a-c08d-4b71-a7dc-2938ec899ba0"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Vanilla Bean Ice Cream"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="4094d48a-533d-4295-9015-78f1c390594d"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ab842445-81bc-4c25-825b-5cff8ef712d6"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Orange Mandarin"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="eafc59ec-c106-45cb-8a91-4b34a2b98aac"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="525683f1-f968-45c1-a8b8-37cd99cbbe9f"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cheesecake Graham Crust"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="5cd905aa-cd59-469c-8dae-07fb0c376845"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="c3bfecaa-34cf-4d85-aa0b-88156887942a"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Cola Cherry"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="dffc590c-7113-4da0-ab44-48243bf2e2e6"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d01567c1-3ab9-4186-a2fe-35258877ea3a"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Berry Mix"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="ddc5b2dd-b84f-497a-951e-cdc8e7991a07"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="95212684-7991-4f49-a8e3-7d66ba280cc7"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Bavarian Cream"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="04edb47e-e788-49b8-a30e-dd9b9e557335"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e75e9107-5366-4c2a-ada1-a1eeea23f152"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Pineapple"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="aea94fa6-5e16-4420-9e44-b09b3bfb4024"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="622f5f2d-59d0-4aa6-9a22-1323f424e87c"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cinnamon Sugar Cookie"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="d3e4f516-8d65-44f1-be2a-17af3a0c735e"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d781a81d-6f8c-4fe2-b6a5-0d6460ed78f6"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Watermelon"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="d5e01832-8283-4d3e-b8ff-dcb759856a64"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ba0357c0-8579-4a10-8e36-85136df54d9d"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Egg Nog"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="b6e4513a-daa7-4472-b224-e4bed1aea5d9"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="c7fb0ee9-3140-4de2-8892-4fe4d183e64a"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Orange Cream Bar"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="36f184e4-c9ec-4839-b422-0b52f1327fe1"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="dfb1bda6-4e7f-437a-bef5-2c4855bd6e2e"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Espresso"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="adb9cdd4-25ad-4fda-9b49-b5d42ce4c120"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="18698415-871b-4fc7-ab9a-4cc37fa6e7bd"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Banana Cream"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="5d232b23-9573-4fe7-b177-9564eb60a8c3"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="1782f65f-d424-4e65-8f68-dffa198e8ca2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Meringue"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5550e990-d6a7-4f7b-9a09-1722ab763cbe"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5e8b5a12-ac36-4e3d-8ecc-98ec460ce7c7"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Black Honey"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="7aac5e2b-004c-48f3-b320-0d5f980579fd"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="57c26ef4-ab84-4a08-9cfc-2402f797f3cc"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Citrus Punch II"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="144d6d86-0bcf-43ab-9152-7255d8b8898c"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="3abab8d5-27d1-4fc6-af89-970235712de8"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Strawberry Ripe"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="b9a6fa67-0e59-4304-9185-29bb3217aaca"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="803bbd58-f6e9-423c-99a5-99388d794c0e"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Lychee"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="7b448329-2780-4b44-a58e-c379a8265a8e"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="16bc68e3-f4d9-4e43-95c4-319cb97bdeee"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Earl Grey Tea II"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="714928b2-9986-49d4-b992-0a063d58b1a9"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="c8cd9d49-ae58-44d8-8f58-ea753e82b55a"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Sweetener"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="363e22f0-b265-426c-8358-bb9ca108b0c5"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f65eff57-83a1-4941-9c38-9ac9fdd2e1a4"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Rainbow Sherbet"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="c8f574c2-dfcc-4907-8daf-ede3159b4e14"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f837a3ba-04f2-4faa-88d6-ad26c0ef1b79"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Coconut Extra"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="314de9a7-8962-4909-9ccf-7613f2249086"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e1f700d4-d300-4d48-904b-05eb48519565"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Blueberry Extra"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="7d452366-6dd4-4e4e-b9a3-fedbd803ee78"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="6e32ef6e-33b6-47c3-b969-b640ee1c8235"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Passion Fruit"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="da7ed431-f612-4d4b-9c7a-5d8abbecad0f"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="7493f1d3-43b8-4dcf-b415-796256398b8f"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Horehound"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="5b3b4664-ae97-4d20-a409-ac97a1076d11"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="223cb7d0-7311-4725-ac82-f8aa042f43b6"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Malted Milk"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="12dfea83-b2c6-418f-8e7e-26b762503d14"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f442e4ad-7b3a-4ddb-ab9e-bee83f82b9bd"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Hawaiian Drink"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="879bee63-bb12-4c1f-9b3d-8c45a7a89542"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="634e611f-31b2-49db-a977-d2328c539105"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Frosted Donut"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="861fd055-f98d-4636-a441-825f44e3cec4"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="be429beb-8f70-4dd7-a403-d9df4b062545"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Lemon"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="a6211d58-5b79-4ed1-a991-6a36311ac84a"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f1a23693-bebb-4c41-88a9-c82afd9652c8"/>
+            <column name="DESCRIPTION" value="Tasty tobacco flavor"/>
+            <column name="NAME" value="RY-4 Double"/>
+            <column name="TYPE_ID" value="275d019b-011c-4fb1-b717-6327a2aa5f42"/>
+            <column name="IMAGE_ID" value="1fc17628-ea6f-41a4-985d-e93761fee541"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5a59eacd-52f2-43df-9081-d4cd283869b4"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Plum"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="d2533834-2055-4c77-a4ab-61959b061551"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e5e8d831-40c2-4e2d-a9d2-db6aeb16e374"/>
+            <column name="DESCRIPTION" value="Tasty menthol and mints flavor"/>
+            <column name="NAME" value="Mint Candy"/>
+            <column name="TYPE_ID" value="fae8a148-2096-40d1-b404-7fb7ae3327f0"/>
+            <column name="IMAGE_ID" value="83437d53-c55c-4f9c-a053-912737c6c8c5"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="1d06051f-c9ce-4fe3-9503-85321a96347e"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Energy Drink"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="f185b903-8e8c-45f1-93f6-915e52db87bf"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="41dd74fa-c307-4fca-a56d-74ffb1aef3c2"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cinnamon Spice"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="4304d40c-0798-4c93-8eae-7b95a27639a4"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="62d3cca0-e924-4757-b0ed-39c0bd337430"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Strawberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="dfc54cb0-609e-4132-bf77-abba63d8f967"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="b704b9f1-c69c-4ff5-8e73-9df5460afdf4"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Bittersweet Chocolate"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="a63e5c4e-b50e-4373-9901-9aad288201f5"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="dfa71f74-2f84-4979-89d1-84670e112ed6"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Dragonfruit"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="7041e912-24e9-47ce-aa1b-05a3cde3af29"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="78f33995-5a72-4fda-8214-da8fa27db0b9"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Double Chocolate"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="3c2e943f-19c6-47e4-b3d5-2c9cab18dc03"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="eb545bcc-e5f1-48ee-b197-b680a7727f14"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Pomegranate"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="cce6341b-6edc-4042-b40c-634f6a4dbaed"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="a50708ab-7017-459a-92f5-eab997ce4dc4"/>
+            <column name="DESCRIPTION" value="Tasty tobacco flavor"/>
+            <column name="NAME" value="Mary Jane"/>
+            <column name="TYPE_ID" value="275d019b-011c-4fb1-b717-6327a2aa5f42"/>
+            <column name="IMAGE_ID" value="59d5238c-bd2e-4941-b898-cafa9f2ccf7f"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f1819b59-1756-4d01-b870-9b569c366701"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Marshmallow"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="f75735e8-840f-4f1d-b19d-3ae16c4794f1"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="51aabc56-87b6-48f3-91a5-a233e5f02913"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="French Vanilla Creme"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="b8cff637-0257-46e4-92a4-5302f75defa0"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="515f37b2-1227-48d6-a345-002c71b547d5"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Philippine Mango"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="f2812976-d0f6-4435-a136-5eb3486b6161"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ef5834b3-5ad6-4eb8-b126-7e9663448415"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Lemon Lime II"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="deec2abb-10bc-40a4-ab85-ff55de6fe9b4"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="b6e872dd-b12b-43be-ae8d-fc42d4edb71c"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Black Cherry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="68ebd1c0-5eb0-4d3b-b00c-53ccf2a04d5a"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="2a14d6e7-313f-4de2-87b7-163ec68e725d"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Nectarine"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="e1e37ddb-d4ce-4675-a751-440e39122990"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="a890b93e-e10c-4515-a0be-9e49b3a1b786"/>
+            <column name="DESCRIPTION" value="Tasty menthol and mints flavor"/>
+            <column name="NAME" value="Koolada"/>
+            <column name="TYPE_ID" value="fae8a148-2096-40d1-b404-7fb7ae3327f0"/>
+            <column name="IMAGE_ID" value="5bab8f31-164c-4b61-9836-c364a2eb89a0"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="b22db0b2-d2a5-4ff0-b20c-4de4a4843cc5"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="HYPNO II"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="b3713287-f5ce-4a77-a9a7-ee97f00e2562"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="6645f230-a7bf-42d6-a920-6952808b1ab7"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Tutti Frutti Deluxe"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="15a453cf-6ad3-4653-98bb-e4f90e3c057f"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="c9dde655-7914-4fcd-9b14-5e3c8c31a7d1"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Wintergreen"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="1db5ef04-50a6-427f-b7a6-a102e41ff593"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="7fc9b86f-754f-482b-9503-430a1ffccdc5"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Raspberry Sweet"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="09a1e77e-cfb6-4010-9c16-fd0b31e27e7f"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="30b71a5e-a935-44ff-9adf-9a98a206b3b0"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Gummy Candy"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="836ec62e-b005-4a88-838c-802125b0ba57"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="3162aaf0-d493-4a64-8465-06a2fde03f0b"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Honeydew"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="dd2565a1-dc9f-4cb9-a34f-2520198eb48d"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5c32759a-13e8-427b-9df4-82a1b91bf787"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Cherry Blossom"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="9ddec984-92af-4d99-9392-691bffa3cecb"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="351cf184-96b7-4501-9aed-1efda7a07309"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Blackberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="9a9c388b-6c42-4f8d-b21a-90732c6292d8"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="835fe26e-8694-4ac7-9926-b9d61c5551fa"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Strawberries and Cream"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="2925d178-d2f6-4dcc-8379-8de7628997cc"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d2c8aca3-4d1f-4d0a-9310-3a0c41ec4f88"/>
+            <column name="DESCRIPTION" value="Tasty menthol and mints flavor"/>
+            <column name="NAME" value="Menthol Liquid"/>
+            <column name="TYPE_ID" value="fae8a148-2096-40d1-b404-7fb7ae3327f0"/>
+            <column name="IMAGE_ID" value="b9c5aa2a-b758-46cb-8382-1bd940c331be"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e473c670-b633-455f-b97f-66280d060537"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Mango"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="1a2f9c95-b554-47bd-8c44-a69a46ac54a7"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d7ac10c4-c1c2-4177-94cf-5b568b1a0f20"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Fruit Circles"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="957922a2-c00d-4b68-a7ec-6f0aaac8e477"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="0ff9261a-a077-4192-8dbc-537dc36b027f"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Cotton Candy Circus"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="5000176d-1c7d-49e5-b883-92e9d449e9dd"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="1411753d-e9fa-4f41-a0e5-8085c9a43da1"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="French Vanilla Deluxe"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="acdafc0d-671c-4561-88d9-fcbe9270065e"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="4184a30b-ae2d-4acf-9d30-6a1a38429af0"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Vanilla Custard"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="aa0ab09a-f4c1-424f-8729-2f47c6c20e88"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="3affac22-a162-4a9d-8dcb-6c865fa4a842"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Black Tea Deluxe"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="1ac9d096-02d6-4466-8975-0cb94943ca60"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ba3754b0-739c-4ea4-a3a5-1c9dbcc4847e"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Whipped Cream"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="4cc3e716-8148-41cf-b60a-aa93e04c5b2a"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="465d5be5-8538-4fcc-a168-553047e586ad"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Guava"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="c0d42cd5-aae7-45d4-abd6-e4aa24bc99e9"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="a0611130-c9de-4f93-911a-94d7a9b2dbf4"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Pie Crust"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="fe3a6fb3-5a77-49d4-a5d5-012dffdee8ac"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="6c49a874-60c9-4c68-82e8-6563623a6987"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Milk Chocolate"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="59540c70-b2e0-4b92-89b4-cb6995dab56a"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="c3255f02-b6a6-4d8c-8742-81e6900545d1"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Pina Colada"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="572d53de-e077-4681-9a33-4b8d6d71fae6"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="0b58348a-73f1-4b2a-b6ab-a3454f3ad7c2"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Absinthe II"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="decfe323-c217-4e22-af1e-484d8458f311"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="41d8e7d5-b6d8-4514-a6ef-3ba581f7418d"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="DX Jamaican Rum"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="ec213cc9-46f5-4822-969c-a2cc159f05fb"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="9eed3f6d-7368-43f0-b90e-a2de4b5e5d24"/>
+            <column name="DESCRIPTION" value="Tasty tobacco flavor"/>
+            <column name="NAME" value="RY4 Asian"/>
+            <column name="TYPE_ID" value="275d019b-011c-4fb1-b717-6327a2aa5f42"/>
+            <column name="IMAGE_ID" value="e7c22ae3-6161-45ce-9bde-deb782ca4264"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="77722465-cfd4-45c0-9716-1e58dde6d613"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Apple"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="75acba9d-ccd5-45a2-90f5-18d0fb04f47f"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="bbdb6aa9-608a-4e52-b7e8-a3778fcb8090"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Grape Candy"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="f6acc16e-1532-4f44-96de-4e591509f134"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="0d3d1797-ed78-420c-866a-a23ee3481d3e"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="DX Peanut Butter"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="21abc469-2291-47b6-b709-c0ae2fd0dced"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="bcceb7d1-6a6a-441f-ba82-d1e889a0062a"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Green Apple"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="ea63cf8d-7029-4fbf-a206-24203ff70f07"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="a361c707-61b2-4425-92b4-ff43c78fabba"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Acai"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="d438b231-9d0b-40fc-91f1-5d45a27a352e"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="eb27046c-4837-413b-b5a3-6e293ad245bb"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Black Currant"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="7e9978be-cd96-4999-82f2-178c01183ca2"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="48141ae7-bf34-43d0-94da-169378e8bbfa"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Hazelnut Praline"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="a199d89b-45ba-4727-a9e3-3c3a82ded764"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="6c3fd9ef-8dda-4625-93a1-a0e8f20a13b2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Jackfruit"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="30173ecb-984d-4f35-895e-28ebe65f00c3"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="9f2d7d98-b4ec-467e-8c36-82c4800d5a71"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Elderberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="07f813f9-a4af-4a94-a0f5-1061f1de65ee"/>
+            <column name="MANUFACTURER_ID" value="816ed13b-921b-4f6e-bf0c-d2fa410c757b"/>
+        </insert>
+
+    </changeSet>
+
+    <!-- Flavor West flavors & images -->
+    <changeSet id="20180411_7" author="justandreyb">
+        <insert tableName="IMAGE">
+            <column name="ID" value="10fe6896-97c7-4122-952f-29dafa74437f"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/kiwi-natural.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="e3cdf7ba-a90f-482f-b789-c9c900084650"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/papaya.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5e363121-4041-4428-a13d-d1ec210b043e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/coconut.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="688349ad-a5a2-4dd9-b5e1-3b124b670161"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/acai-berry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a3c3cc86-dcfd-42e3-b6e2-353002a394dc"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/cherry-natural.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="22f6047c-bd79-44e1-8d2d-d31375e04217"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/bavarian-cream.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="e59487f0-6662-4171-9214-a6a7ec39ed8c"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/caramel-cinnamon-roll.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="1595f5e4-bb4e-4226-9f4e-06c0ad7a3409"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/blueberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="2fe5867b-086b-4c9d-974e-eefb2bc7f8f6"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/blood-orange.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="7497a47e-b66b-4194-a1de-6391e9dba447"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/cream-soda.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="99bb5255-e0b5-491e-8175-449e32318c72"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/key-lime.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="4a511aa8-8ee8-4a3e-a8ca-d6d22b98d339"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/pineapple.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="a179a4d8-023d-4194-b278-f82f6d64ff1b"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/pomegranate.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="c1af2e9a-e39e-4806-aab6-72dc0e037d36"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/crunch-cereal.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="073e6a33-f02e-4031-9617-c5867188cf65"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/marshmallow.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="337ff5c1-7e8b-43db-b175-f2165e2c0f71"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/cinnamon-churro.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="130fcd84-c70a-41a9-b388-bf3f15849d4e"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/pear.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="123ee0bf-4490-40af-9105-282a4a89a872"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/fruity-flakes.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="61e83b5c-7db6-48f1-8b1a-049f89aa7132"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/orange-flavor.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f3e0e1bd-ef32-4d62-b589-45fcf365688d"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/cantaloupe.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="ed8c605d-e56f-4ca0-be74-1221157972f2"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/creamberry.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="613898de-40ee-4d01-86bf-c6f04733116d"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/caramel-candy.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="e1328977-b4f1-4782-8d32-2876ccc275d9"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/cinnamon-roll.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="f0c770af-bc79-4c10-a106-967be4e690af"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/dutch-apple-pie.jpg"/>
+        </insert>
+        <insert tableName="IMAGE">
+            <column name="ID" value="5cd48cdb-960d-4c44-91ed-a57034746627"/>
+            <column name="CREATION_DATE" value="2018-04-11 12:12:12.121212121"/>
+            <column name="PATH" value="/storage/images/flavors/flavor-west/apple-jacks.jpg"/>
+        </insert>
+
+    </changeSet>
+    <changeSet id="20180411_8" author="justandreyb">
+        <insert tableName="FLAVOR">
+            <column name="ID" value="d36a644c-fdb8-4153-b6fd-6d2df9b21776"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Kiwi Natural"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="10fe6896-97c7-4122-952f-29dafa74437f"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e2bc7833-9c94-48ea-8f3c-6656cb0e4611"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Papaya"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="e3cdf7ba-a90f-482f-b789-c9c900084650"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f6e6dab4-842c-4fac-a094-40280e91a65e"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Coconut"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5e363121-4041-4428-a13d-d1ec210b043e"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="1b3e92c4-2147-4624-b5c4-50d1eedbbb26"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Acai Berry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="688349ad-a5a2-4dd9-b5e1-3b124b670161"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f5813f76-5200-44f9-bf82-17dc01263655"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Cherry Natural"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="a3c3cc86-dcfd-42e3-b6e2-353002a394dc"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="7cef60c3-d384-49b8-8a43-40d49baee23a"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Bavarian Cream"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="22f6047c-bd79-44e1-8d2d-d31375e04217"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f8c38600-12a2-4dbe-b520-3e4e4f27c835"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Caramel Cinnamon Roll"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="e59487f0-6662-4171-9214-a6a7ec39ed8c"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="34fb779e-ae69-4930-badf-b2fcbda912a5"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Blueberry"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="1595f5e4-bb4e-4226-9f4e-06c0ad7a3409"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="a485b187-a9fd-4df9-bbcc-852f4c9ce1d5"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Blood Orange"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="2fe5867b-086b-4c9d-974e-eefb2bc7f8f6"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="f89e20c4-c589-45c6-9004-930d7583844d"/>
+            <column name="DESCRIPTION" value="Tasty drinks flavor"/>
+            <column name="NAME" value="Cream Soda"/>
+            <column name="TYPE_ID" value="a89db72f-458b-4b04-a66d-031008dfd4e6"/>
+            <column name="IMAGE_ID" value="7497a47e-b66b-4194-a1de-6391e9dba447"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="44da8fd6-93f3-40f0-b162-1a3c944037ef"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Key Lime"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="99bb5255-e0b5-491e-8175-449e32318c72"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="99253b22-34e1-4b80-a746-4144514b88e6"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Pineapple"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="4a511aa8-8ee8-4a3e-a8ca-d6d22b98d339"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="6f07992a-65c7-4819-84f0-c524524ac963"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Pomegranate"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="a179a4d8-023d-4194-b278-f82f6d64ff1b"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="171c90d8-c1d7-478f-966d-b7ab00758e07"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Crunch Cereal"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="c1af2e9a-e39e-4806-aab6-72dc0e037d36"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="b3ec1bd8-7961-4f94-8e78-8625d11afe6c"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Marshmallow"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="073e6a33-f02e-4031-9617-c5867188cf65"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="2a3644b4-2f93-412e-b53f-30259b358b7d"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cinnamon Churro"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="337ff5c1-7e8b-43db-b175-f2165e2c0f71"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="4ad4dcc0-7509-40e2-9e81-fbb20276b6f2"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Pear"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="130fcd84-c70a-41a9-b388-bf3f15849d4e"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="e3568146-8740-4e8e-a5d4-ce76d9bc7631"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Fruity Flakes"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="123ee0bf-4490-40af-9105-282a4a89a872"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="ed521088-76ba-4020-8a1e-c6a4b80a0be1"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Orange Flavor"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="61e83b5c-7db6-48f1-8b1a-049f89aa7132"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="5fa1ba19-d2cd-4060-ac45-dd99300a96f4"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Cantaloupe"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="f3e0e1bd-ef32-4d62-b589-45fcf365688d"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="128f2f86-17bd-4672-9497-a88e0dafb946"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Creamberry"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="ed8c605d-e56f-4ca0-be74-1221157972f2"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="401dd16c-dd66-4ff8-b86b-86d849f17e73"/>
+            <column name="DESCRIPTION" value="Tasty other flavor"/>
+            <column name="NAME" value="Caramel Candy"/>
+            <column name="TYPE_ID" value="7e6a1e6c-6992-4ab1-b6f2-95a7db4f75cc"/>
+            <column name="IMAGE_ID" value="613898de-40ee-4d01-86bf-c6f04733116d"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="230cb8c5-5a7e-458f-b951-fbbeff92c503"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Cinnamon Roll"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="e1328977-b4f1-4782-8d32-2876ccc275d9"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="bf568ba2-fdf0-49cb-9c42-e86663161403"/>
+            <column name="DESCRIPTION" value="Tasty bakery flavor"/>
+            <column name="NAME" value="Dutch Apple Pie"/>
+            <column name="TYPE_ID" value="949119a5-c0f0-4e9a-870b-21e9470d8b72"/>
+            <column name="IMAGE_ID" value="f0c770af-bc79-4c10-a106-967be4e690af"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+        <insert tableName="FLAVOR">
+            <column name="ID" value="a5644dc8-d7ac-438b-952c-fdac790d8046"/>
+            <column name="DESCRIPTION" value="Tasty fruit flavor"/>
+            <column name="NAME" value="Apple Jacks"/>
+            <column name="TYPE_ID" value="f01452fd-4b6e-424c-a2e3-1b7e332e4596"/>
+            <column name="IMAGE_ID" value="5cd48cdb-960d-4c44-91ed-a57034746627"/>
+            <column name="MANUFACTURER_ID" value="1dbd79c6-9d4a-45c3-942a-89e67d933653"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
