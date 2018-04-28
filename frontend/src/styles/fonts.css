@@ -5,9 +5,9 @@
     --secondary-font-family: 'Source Sans Pro', sans-serif;
     --additional-font-family: 'Lobster', cursive;
 
-    --default-font-size: 16px;
-    --small-font-size: 12px;
-    --medium-font-size: 18px;
-    --big-font-size: 20px;
-    --biggest-font-size: 24px;
+    --default-font-size: 1em;
+    --small-font-size: 0.85em;
+    --medium-font-size: 1.125em;
+    --big-font-size: 1.3em;
+    --biggest-font-size: 1.8em;
 }

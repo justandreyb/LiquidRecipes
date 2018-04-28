@@ -1,0 +1,45 @@
+/* Styles of list item */
+
+.entity-item {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--primary-color--hover);
+    border-radius: var(--border-radius-default);
+    padding: 5px;
+
+    transition: 0.2s linear;
+}
+.entity-item:hover {
+    box-shadow: 0 0 30px 5px var(--primary-color--hover);
+}
+
+.entity-item__image {
+    border-radius: var(--border-radius-default);
+    max-width: 300px;
+}
+
+.entity-item__info {
+    margin-top: 5px;
+
+    display: flex;
+    align-items: center;
+}
+
+.entity-item__title {
+   margin-left: 5px;
+}
+
+.entity-item__label {
+    align-self: baseline;
+    margin-left: auto;
+
+    background-color: var(--additional-color);
+
+    border-radius: var(--border-radius-default);
+    padding: 2px 5px;
+
+    font-size: var(--small-font-size);
+    color: var(--primary-color);
+}

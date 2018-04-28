@@ -1,0 +1,14 @@
+
+.manufacturer-nested {
+    display: flex;
+    align-items: center;
+}
+
+.manufacturer-nested__logo {
+    max-width: 50px;
+    border-radius: var(--border-radius-circle);
+}
+
+.manufacturer-nested__name {
+
+}

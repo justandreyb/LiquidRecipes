@@ -11,6 +11,13 @@ class Flavor extends Component {
   }
 
   render() {
+    const {
+      flavor,
+      interaction
+    } = this.props;
+
+    console.log(flavor.name);
+
     return (
       <div className="container-fluid">
 
@@ -20,25 +27,25 @@ class Flavor extends Component {
 
             <div className="entity-view__container__information__bar">
               <div className="entity-view__container__information__bar__title">
-                <label>{this.props.flavor.name}</label>
+                <label>{flavor.name}</label>
               </div>
               <div className="entity-view__container__information__bar__labels">
                 <div className="entity-view__container__information__bar__labels__item">
-                  <span className="label label-info --clickable">{this.props.flavor.type}</span>
+                  <span className="label label-info --clickable">{flavor.flavorType.name}</span>
                 </div>
               </div>
             </div>
 
             <div className="entity-view__container__information__main">
               <div className="entity-view__container__information__main__image">
-                <img alt={"Image for " + this.props.flavor.name} src={this.props.image.path}/>
+                <img alt={"Image for " + flavor.name} src={flavor.image}/>
               </div>
-              <div className="entity-view__container__information__main__description">{this.props.flavor.description}</div>
+              <div className="entity-view__container__information__main__description">{flavor.description}</div>
             </div>
 
             <div className="entity-view__container__information__additional">
               <ManufacturerNestedComponent
-                manufacturer={this.props.manufacturer}
+                manufacturer={flavor.manufacturer}
               />
             </div>
 
@@ -46,9 +53,9 @@ class Flavor extends Component {
 
           <div className="entity-view__container__like">
             <LikeComponent
-              entityId={this.props.flavor.id}
-              likes={this.props.likes}
-              interaction={this.props.interaction}
+              entityId={flavor.id}
+              likes={flavor.likes}
+              interaction={interaction}
             />
           </div>
 
@@ -58,7 +65,7 @@ class Flavor extends Component {
 
         <div className="comments__container">
           <div className="comments__container__title">
-            <label>Comments <span className={"badge"}>{this.props.comments.length}</span></label>
+            <label>Comments <span className={"badge"}>{flavor.comments}</span></label>
           </div>
           <div className="comments__container__form">
             <CommentFormComponent
@@ -67,7 +74,7 @@ class Flavor extends Component {
           </div>
           <div className="comments__container__list">
             <CommentsComponent
-              comments={this.props.comments}
+              comments={flavor.comments}
             />
           </div>
         </div>
