@@ -1,6 +1,7 @@
 import {getCookies, setCookies} from "./utils/cookies";
 
-export const API_URL = "http://localhost:8181/storage";
+export const URL = "http://localhost:8181";
+export const API_URL = URL + "/storage";
 
 export const CLIENT_ID = "liquid_recipes_frontend";
 export const CLIENT_SECRET = "lirefrse";

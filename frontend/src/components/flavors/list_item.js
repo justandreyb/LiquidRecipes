@@ -1,12 +1,19 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import {URL} from "../../settings";
 
 class FlavorItem extends Component {
   render() {
+    const {
+      key,
+      cssClass,
+      flavor
+    } = this.props;
+
     return (
-      <div className="container-fluid">
-        {/*<img src={this.props.news.img} className="img-responsive" style={imageStyle} alt={this.props.news.img}/>*/}
-        <p><Link to={"/flavors/" + this.props.flavor.id}>{this.props.flavor.name}</Link></p>
+      <div key={key} className={cssClass ? cssClass : "item"}>
+        <img src={URL + flavor.image.path} className="img-responsive" alt={"Image of " + flavor.name}/>
+        <p><Link to={"/flavors/" + flavor.id}>{flavor.name}</Link></p>
       </div>
     );
   }

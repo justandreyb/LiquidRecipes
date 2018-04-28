@@ -17,7 +17,8 @@ import {
   RecipeCreate,
   RecipeEdit,
   UserFlavorsList,
-  UserRecipesList
+  UserRecipesList,
+  PrivateRoute
 } from "./containers";
 
 export const routes =
@@ -42,8 +43,9 @@ export const routes =
 
     <Route exact path="/account" component={PageForSign}/>
 
-    {/*<Route exact path="/im" component={User}/>*/}
-    <Route exact path="/im/flavors" component={UserFlavorsList}/>
-    <Route exact path="/im/recipes" component={UserRecipesList}/>
+    <PrivateRoute exact path="/im" component={UserFlavorsList}/>
+    <PrivateRoute exact path="/im/flavors" component={UserFlavorsList}/>
+    <PrivateRoute exact path="/im/recipes" component={UserRecipesList}/>
 
+    <Route component={PageForSign}/>
   </Switch>;

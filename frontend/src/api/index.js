@@ -5,12 +5,14 @@ import {API_URL} from "../settings";
 import {getAuthenticationHeader} from "../modules/user";
 
 export function* getElements(url, successHandler, failHandler) {
-  yield axios.get(API_URL + url, { headers: getAuthenticationHeader() })
-    .then((response) => put(successHandler(response.data)))
-    .catch((exception) => {
-      call(console.log, "[Get elements]: " + exception);
-      put(failHandler(exception.error))
-    });
+  try {
+    const response = yield call(axios.get, API_URL + url, { headers: getAuthenticationHeader()} );
+    yield put(successHandler(response.data));
+  }
+  catch (e) {
+    yield call(console.log, "[Get elements]: " + e);
+    yield put(failHandler(e.error_description));
+  }
 }
 
 export function* getElement(url, id, successHandler, failHandler) {

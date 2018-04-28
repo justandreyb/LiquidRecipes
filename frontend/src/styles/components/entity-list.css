@@ -1,0 +1,24 @@
+/* List of entities */
+
+.entity-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.entity-list__header {
+
+}
+
+.entity-list__items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.entity-list__item {
+
+}
+
+.entity-list__footer {
+
+}

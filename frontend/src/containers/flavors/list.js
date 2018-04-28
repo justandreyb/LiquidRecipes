@@ -17,14 +17,17 @@ class FlavorsContainer extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="text-center">
+      <div className="entity-list">
+        <div className="entity-list__header">
           <h3>Flavors</h3>
-          <div className="row">
-            <FlavorsListComponent
-              flavors={this.props.flavors}
-            />
-          </div>
+        </div>
+        <FlavorsListComponent
+          cssClass={"entity-list__items"}
+          cssClassForItem={"entity-list__item"}
+          flavors={this.props.flavors}
+        />
+        <div className="entity-list__footer">
+          Paginator
         </div>
       </div>
     )
