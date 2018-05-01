@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {LikeComponent} from "../users/like";
-import {CommentFormComponent} from "../users/comment";
-import {CommentsComponent} from "../users/comments";
+import {CommentFormComponent} from "../comments/comment";
+import {CommentsComponent} from "../comments/comments";
 
 class Recipe extends Component {
 

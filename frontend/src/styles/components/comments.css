@@ -1,18 +1,18 @@
 /* COMMENTS STYLES */
 
-.comments__container {
+.comments {
     display: flex;
     flex-flow: column;
     margin-bottom: 20px;
 }
 
-.comments__container__title {
+.comments__title {
     font-size: var(--medium-font-size);
 }
 
-.comments__container__form {
+.comments__form {
 }
-.comments__container__form textarea {
+.comments__form textarea {
     outline: none;
     -moz-appearance: none;
     resize: none;
@@ -31,7 +31,7 @@
     font-family: var(--secondary-font-family);
     font-size: var(--medium-font-size);
 }
-.comments__container__form button {
+.comments__form button {
     outline: none;
     padding: 5px 10px;
 
@@ -41,7 +41,7 @@
 
     cursor: pointer;
 }
-.comments__container__form button:hover {
+.comments__form button:hover {
     -webkit-transition: background-color 2s;
     transition: background-color 0.5s;
     background: #e7e7e7;
@@ -49,7 +49,7 @@
     cursor: pointer;
 }
 
-.comments__container__list {
+.comments__list {
     padding-top: 15px;
 
     display: flex;
@@ -61,19 +61,19 @@
     cursor: default;
 }
 
-.comments__container__list__no-comments {
+.comments__list__no-comments {
     align-self: center;
 }
 
-.comments__container__list__view {
+.comments__list__view {
     display: flex;
     flex-flow: column;
 }
 
-.comments__container__list__view__item {
+.comments__list__view__item {
 }
 
-.comments__container__list__view__item__info {
+.comments__list__view__item__info {
     font-family: var(--primary-font-family);
 
     display: flex;
@@ -81,7 +81,7 @@
 
     padding-bottom: 5px;
 }
-.comments__container__list__view__item__info img {
+.comments__list__view__item__info img {
     border-radius: 50px;
     margin-right: 10px;
 
@@ -89,7 +89,7 @@
     max-width: 24px;
 }
 
-.comments__container__list__view__item__text {
+.comments__list__view__item__text {
     border: 1px solid #eee;
     border-radius: 5px;
     padding: 5px 10px;

@@ -12,8 +12,9 @@ export {RecipeFormComponent} from "./recipes/edit_form";
 
 export {LikeComponent} from "./users/like";
 
-export {CommentsComponent} from "./users/comments";
-export {CommentFormComponent} from "./users/comment";
+export {CommentsBlockComponent} from "./comments/on-view-page";
+export {CommentsComponent} from "./comments/comments";
+export {CommentFormComponent} from "./comments/comment";
 
 export {LoginForm} from "./users/login"
 export {RegistrationForm} from "./users/registration"

@@ -19,6 +19,7 @@ import {
   createFlavorLike,
   deleteFlavorLike
 } from "../../modules/flavors/flavor_likes"
+import {CommentsBlockComponent} from "../../components";
 
 class FlavorContainer extends Component {
 
@@ -58,16 +59,14 @@ class FlavorContainer extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h3>Flavors</h3>
-        <hr/>
-
-        <div className="row">
-          <FlavorViewComponent
-            flavor      ={this.getMyFlavor()}
-            interaction ={this.props.interaction}
-          />
-        </div>
+      <div className="flavor-view">
+        <FlavorViewComponent
+          flavor      ={this.getMyFlavor()}
+          interaction ={this.props.interaction}
+        />
+        <CommentsBlockComponent
+          comments = {this.getMyFlavor().comments}
+        />
       </div>
     )
   }
