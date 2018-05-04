@@ -6,7 +6,8 @@
 }
 
 .entity-list__header {
-
+    display: flex;
+    justify-content: center;
 }
 
 .entity-list__items {
@@ -16,8 +17,11 @@
     justify-content: center;
 }
 
-.entity-list__item {
-
+@media (max-width: 500px) {
+    .entity-list__item > img {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
 .entity-list__footer {

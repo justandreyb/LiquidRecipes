@@ -10,5 +10,6 @@
 }
 
 .manufacturer-nested__name {
-
+    font-family: var(--secondary-font-family);
+    margin-right: 8px;
 }

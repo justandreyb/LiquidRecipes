@@ -14,30 +14,24 @@ class Flavor extends Component {
     return (
       <div className="flavor-view">
 
-        <div className="flavor-view__bar">
-          <div className="flavor-view__bar__title">
-            <label>{flavor.name}</label>
-          </div>
-          <div className="flavor-view__bar__labels">
-            <div className="flavor-view__bar__labels__item">
-              <span className="label label-info --clickable">{flavor.flavorType.name}</span>
-            </div>
-          </div>
+        <div className="flavor-view__header">
+          <label className="flavor-view__title">{flavor.name}</label>
+          <span className="flavor-view__label">{flavor.flavorType.name}</span>
         </div>
 
-        <div className="flavor-view__main">
-          <div className="flavor-view__main__image">
+        <div className="flavor-view__body">
+          <div className="flavor-view__image">
             <img alt={"Image for " + flavor.name} src={URL + flavor.image.path}/>
           </div>
-          <div className="flavor-view__main__description">{flavor.description}</div>
+          <div className="flavor-view__info">
+	          <ManufacturerNestedComponent
+		          cssClass="flavor-view__manufacturer"
+		          manufacturer={flavor.manufacturer}
+              visibleName={true}
+	          />
+            <div className="flavor-view__description">{flavor.description}</div>
+          </div>
         </div>
-
-        <div className="flavor-view__additional">
-          <ManufacturerNestedComponent
-            manufacturer={flavor.manufacturer}
-          />
-        </div>
-
       </div>
     );
   }

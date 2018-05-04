@@ -28,7 +28,7 @@
     max-width: 1500px;
     width: 100%;
 }
-@media (max-width: 450px) {
+@media (max-width: 510px) {
     .navigation__panel {
         flex-direction: column;
         justify-items: center;

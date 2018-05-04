@@ -12,10 +12,9 @@ class Like extends Component {
 
   render() {
     return (
-      <div onClick={this.putLike.bind(this)}>
-        <span className={"label --label-rounded " + (this.props.pressed ? "label-primary" : "label-success")}>
-          <span role="img" aria-label="Like symbol">❤</span>️ {this.props.likes.length === 0 ? "No likes" : this.props.likes.length}
-        </span>
+      <div onClick={this.putLike.bind(this)} className={"likes" + (this.props.pressed ? " liked" : "")}>
+        <span className="likes__symbol" role="img" aria-label="Like symbol">❤</span>️
+        <label className="likes__info">{this.props.likes.length === 0 ? "No likes" : this.props.likes.length}</label>
       </div>
     );
   }

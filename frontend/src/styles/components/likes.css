@@ -1,0 +1,25 @@
+.likes {
+    align-self: baseline;
+
+    padding: 2px 5px;
+    margin-bottom: 10px;
+
+    background-color: var(--secondary-color);
+
+    border-radius: var(--border-radius-default);
+
+    font-size: var(--default-font-size);
+    color: var(--primary-color);
+}
+
+.likes__symbol {
+    margin-right: 5px;
+}
+
+.likes__info {
+
+}
+
+.likes.liked .likes__symbol {
+    color: var(--error-color);
+}

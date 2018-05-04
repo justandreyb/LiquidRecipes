@@ -5,6 +5,7 @@ class Manufacturer extends Component {
 
   render() {
     const {
+      cssClass,
       manufacturer,
       visibleName
     } = this.props;
@@ -12,11 +13,11 @@ class Manufacturer extends Component {
     const css = "manufacturer-nested";
 
     return (
-      <div className={css}>
-        <img className={css + "__logo"} alt={manufacturer.name} src={URL + manufacturer.logo.path}/>
+      <div className={cssClass ? cssClass + " " + css : css}>
         {visibleName &&
-          <label className={css + "__name"}>{manufacturer.name}</label>
+          <label className={css + "__name"}>Created by </label>
         }
+	      <img className={css + "__logo"} alt={manufacturer.name} src={URL + manufacturer.logo.path}/>
       </div>
     );
   }

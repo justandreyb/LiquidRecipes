@@ -6,10 +6,10 @@
 @import "components/entity-list.css";
 @import "components/entity-item.css";
 @import "components/form.css";
+@import "components/likes.css";
+@import "components/manufacturer.css";
 @import "components/navbar.css";
 @import "components/footer.css";
-
-@import "components/manufacturer.css";
 
 @import "themes.css";
 @import "fonts.css";
@@ -28,7 +28,7 @@
 body {
     margin: 0;
     padding: 0;
-    min-width: 305px;
+    min-width: 336px;
     font-family: var(--primary-font-family);
 }
 
