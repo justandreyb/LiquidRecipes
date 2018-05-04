@@ -1,19 +1,16 @@
 /* ENTITY VIEW PAGE STYLES */
 
 .entity-view {
+    width: 100%;
+    max-width: var(--max-container-width);
+
     display: flex;
+    flex-direction: column;
+
     cursor: default;
 }
-@media (max-width: 670px) {
-    .entity-view {
-        flex-flow: column;
-    }
-}
-@media (min-width: 670px) {
-    .entity-view {
-        flex-flow: row;
-    }
-}
+
+
 .entity-view__information {
     flex-grow: 2;
 

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {LikeComponent} from "../users/like";
 import {ManufacturerNestedComponent} from "../manufacturers/nested";
+import {URL} from "../../settings";
 
 class Flavor extends Component {
   render() {
@@ -12,41 +12,29 @@ class Flavor extends Component {
     console.log(flavor.name);
 
     return (
-      <div className="entity-view">
+      <div className="flavor-view">
 
-        <div className="entity-view__information">
-
-          <div className="entity-view__information__bar">
-            <div className="entity-view__information__bar__title">
-              <label>{flavor.name}</label>
-            </div>
-            <div className="entity-view__information__bar__labels">
-              <div className="entity-view__information__bar__labels__item">
-                <span className="label label-info --clickable">{flavor.flavorType.name}</span>
-              </div>
+        <div className="flavor-view__bar">
+          <div className="flavor-view__bar__title">
+            <label>{flavor.name}</label>
+          </div>
+          <div className="flavor-view__bar__labels">
+            <div className="flavor-view__bar__labels__item">
+              <span className="label label-info --clickable">{flavor.flavorType.name}</span>
             </div>
           </div>
-
-          <div className="entity-view__information__main">
-            <div className="entity-view__information__main__image">
-              <img alt={"Image for " + flavor.name} src={flavor.image}/>
-            </div>
-            <div className="entity-view__information__main__description">{flavor.description}</div>
-          </div>
-
-          <div className="entity-view__information__additional">
-            <ManufacturerNestedComponent
-              manufacturer={flavor.manufacturer}
-            />
-          </div>
-
         </div>
 
-        <div className="entity-view__like">
-          <LikeComponent
-            entityId={flavor.id}
-            likes={flavor.likes}
-            interaction={interaction}
+        <div className="flavor-view__main">
+          <div className="flavor-view__main__image">
+            <img alt={"Image for " + flavor.name} src={URL + flavor.image.path}/>
+          </div>
+          <div className="flavor-view__main__description">{flavor.description}</div>
+        </div>
+
+        <div className="flavor-view__additional">
+          <ManufacturerNestedComponent
+            manufacturer={flavor.manufacturer}
           />
         </div>
 

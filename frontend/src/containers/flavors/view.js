@@ -19,7 +19,7 @@ import {
   createFlavorLike,
   deleteFlavorLike
 } from "../../modules/flavors/flavor_likes"
-import {CommentsBlockComponent} from "../../components";
+import {CommentsBlockComponent, LikeComponent} from "../../components";
 
 class FlavorContainer extends Component {
 
@@ -59,10 +59,15 @@ class FlavorContainer extends Component {
 
   render() {
     return (
-      <div className="flavor-view">
+      <div className="entity-view">
         <FlavorViewComponent
           flavor      ={this.getMyFlavor()}
           interaction ={this.props.interaction}
+        />
+        <LikeComponent
+          entityId={this.getMyFlavor().id}
+          likes={this.getMyFlavor().likes}
+          interaction={this.props.interaction}
         />
         <CommentsBlockComponent
           comments = {this.getMyFlavor().comments}
