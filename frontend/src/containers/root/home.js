@@ -9,16 +9,15 @@ import {
 } from "../../modules/news/news_list"
 
 import {
-  getTop10Flavors,
-  clearTopFlavorsWorkspace,
-  selectTopFlavorsData
-} from "../../modules/flavors/flavors"
+  getTop10Flavors
+} from "../../modules/flavor/actions"
 
 import {
   getTop10Recipes,
   clearTopRecipesWorkspace,
   selectTopRecipesData
 } from "../../modules/recipes/recipes"
+import {selectTopFlavorsData} from "../../modules/flavor/selectors";
 
 class HomeContainer extends Component {
 
@@ -30,7 +29,6 @@ class HomeContainer extends Component {
 
   componentWillUnmount() {
     this.props.actions.clearTopNewsWorkspace();
-    this.props.actions.clearTopFlavorsWorkspace();
     this.props.actions.clearTopRecipesWorkspace();
   }
 
@@ -55,7 +53,6 @@ export const Home = connect(
       getTop10Flavors,
       getTop10Recipes,
       clearTopNewsWorkspace,
-      clearTopFlavorsWorkspace,
       clearTopRecipesWorkspace
     }, dispatch)
   })

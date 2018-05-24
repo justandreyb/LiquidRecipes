@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 
 import {RecipeFormComponent} from "../../components/index";
 
-import {getFlavors, selectFlavorsData} from "../../modules/flavors/flavors";
+import {getFlavors} from "../../modules/flavor/actions";
 import {createRecipe} from "../../modules/recipes/recipe";
+import {selectFlavorsData} from "../../modules/flavor/selectors";
 
 class RecipeCreateContainer extends Component {
 

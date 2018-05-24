@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 
 import {FlavorFormComponent} from "../../components/index";
 
-import {selectFlavorData, updateFlavor} from "../../modules/flavors/flavor"
+import {updateFlavor} from "../../modules/flavor/actions"
 import {getManufacturers, selectManufacturersData} from "../../modules/manufacturers";
+import {selectFlavorData} from "../../modules/flavor/selectors";
 
 class FlavorEditContainer extends Component {
 
@@ -37,8 +38,8 @@ class FlavorEditContainer extends Component {
 }
 
 export const FlavorEdit = connect(
-  (store) => ({
-    flavor       : selectFlavorData(store),
+  (store, props) => ({
+    flavor       : selectFlavorData(store, props.match.id),
     manufacturers: selectManufacturersData(store)
   }),
   (dispatch) => ({

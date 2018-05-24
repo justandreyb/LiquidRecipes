@@ -5,7 +5,6 @@ import {snackbarReducer} from "react-redux-snackbar";
 import {reducer as appReducer} from "./modules/application";
 import {reducer as accountReducer} from "./modules/user";
 
-import {reducer as userFlavorsReducer} from "./modules/flavors/user_flavors";
 import {reducer as userRecipesReducer} from "./modules/recipes/user_recipes";
 
 import {reducer as newsReducer} from "./modules/news/news_list";
@@ -14,12 +13,7 @@ import {reducer as newsCommentsReducer} from "./modules/news/news_comments";
 import {reducer as newsLikesReducer} from "./modules/news/news_likes";
 import {reducer as newsImageReducer} from "./modules/news/news_image";
 
-import {reducer as flavorsReducer} from "./modules/flavors/flavors";
-import {reducer as flavorReducer} from "./modules/flavors/flavor";
-import {reducer as flavorCommentsReducer} from "./modules/flavors/flavor_comments";
-import {reducer as flavorLikesReducer} from "./modules/flavors/flavor_likes";
-import {reducer as flavorImageReducer} from "./modules/flavors/flavor_image";
-import {reducer as flavorManufacturerReducer} from "./modules/flavors/flavor_manufacturer";
+import {reducer as flavorsReducer} from "./modules/flavor/reducer";
 
 import {reducer as recipesReducer} from "./modules/recipes/recipes";
 import {reducer as recipeReducer} from "./modules/recipes/recipe";
@@ -37,7 +31,6 @@ const containersReducer = {
       workspace: appReducer,
       account  : combineReducers({
         info   : accountReducer,
-        flavors: userFlavorsReducer,
         recipes: userRecipesReducer
       })
     }),
@@ -50,16 +43,7 @@ const containersReducer = {
         image   : newsImageReducer
       })
     }),
-    flavors: combineReducers({
-      list  : flavorsReducer,
-      target: combineReducers({
-        flavor      : flavorReducer,
-        comments    : flavorCommentsReducer,
-        likes       : flavorLikesReducer,
-        image       : flavorImageReducer,
-        manufacturer: flavorManufacturerReducer
-      })
-    }),
+    flavors: flavorsReducer,
     recipes: combineReducers({
       list  : recipesReducer,
       target: combineReducers({

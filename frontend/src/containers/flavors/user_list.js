@@ -7,9 +7,9 @@ import { FlavorsListComponent } from "../../components/index";
 import {
   getUserFlavors,
   addFlavorToUser,
-  deleteFlavorFromUser,
-  selectUserFlavorsData
-} from "../../modules/flavors/user_flavors"
+  deleteFlavorFromUser
+} from "../../modules/flavor/actions"
+import {selectUserFlavorsData} from "../../modules/flavor/selectors";
 
 class FlavorsContainer extends Component {
 

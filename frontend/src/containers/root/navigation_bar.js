@@ -86,7 +86,7 @@ class NavigationBarContainer extends Component {
             <LinkContainer to="/recipes">
               <NavItem eventkey={2}>RecipesList</NavItem>
             </LinkContainer>
-            <LinkContainer to="/flavors">
+            <LinkContainer to="/flavor">
               <NavItem eventkey={3}>FlavorsList</NavItem>
             </LinkContainer>
             <LinkContainer to="/news">
@@ -114,7 +114,7 @@ class NavigationBarContainer extends Component {
                     </MenuItem>
                   </LinkContainer>
                 }
-                <LinkContainer to="/im/flavors">
+                <LinkContainer to="/im/flavor">
                   <MenuItem eventKey={8.3}>FlavorsList</MenuItem>
                 </LinkContainer>
                 <LinkContainer to="/im/recipes">

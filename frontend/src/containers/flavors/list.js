@@ -4,10 +4,8 @@ import { connect } from "react-redux";
 
 import { FlavorsListComponent } from "../../components/index";
 
-import {
-  getFlavors,
-  selectFlavorsData
-} from "../../modules/flavors/flavors"
+import {getFlavors} from "../../modules/flavor/actions"
+import {selectFlavorsData} from "../../modules/flavor/selectors";
 
 class FlavorsContainer extends Component {
 

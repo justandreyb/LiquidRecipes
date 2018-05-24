@@ -32,7 +32,7 @@ public class User extends BaseEntity implements Validatable {
     private String name;
 
     @NotNull
-    @Email
+    @Size(min = 1, max = 256)
     @Column(nullable = false)
     private String email;
 

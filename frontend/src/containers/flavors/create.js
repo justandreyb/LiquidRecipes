@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import {FlavorFormComponent} from "../../components/index";
 
-import {createFlavor} from "../../modules/flavors/flavor"
+import {createFlavor} from "../../modules/flavor/actions"
 
 import {
   getManufacturers,
