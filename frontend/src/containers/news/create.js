@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 
 import {NewsFormComponent} from "../../components/index";
 
-import {createNewsSingle} from "../../modules/news/news";
+import {createSingleNews} from "../../modules/news/actions";
 
 class NewsCreateContainer extends Component {
 
   checkAndSend(data) {
-    this.props.actions.createNewsSingle(data);
+    this.props.actions.createSingleNews(data);
   }
 
   render() {
@@ -33,7 +33,7 @@ export const NewsCreate = connect(
   }),
   (dispatch) => ({
     actions: bindActionCreators({
-      createNewsSingle
+      createSingleNews
     }, dispatch)
   })
 )(NewsCreateContainer);

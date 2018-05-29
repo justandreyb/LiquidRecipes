@@ -15,11 +15,9 @@ class Comments extends Component {
         <div className="comments__title">
           <label>Comments <span className={"badge"}>{comments.length}</span></label>
         </div>
-        <div className="comments__form">
-          <CommentFormComponent
-            processSubmit={sendComment}
-          />
-        </div>
+        <CommentFormComponent
+          processSubmit={sendComment}
+        />
         <div className="comments__list">
           <CommentsComponent
             comments={comments}

@@ -5,7 +5,7 @@ import {
   ApplicationRoot,
   NewsList,
   PageForSign,
-  NewsView,
+  SingleNewsView,
   NewsCreate,
   NewsEdit,
   FlavorsList,
@@ -28,7 +28,7 @@ export const routes =
 
     <Route exact path="/news" component={NewsList}/>
     <PrivateRoute exact path="/news/new" component={NewsCreate}/>
-    <PrivateRoute exact path="/news/:id" component={NewsView}/>
+    <PrivateRoute exact path="/news/:id" component={SingleNewsView}/>
     <PrivateRoute exact path="/news/:id/edit" component={NewsEdit}/>
 
     <Route exact path="/flavors" component={FlavorsList}/>

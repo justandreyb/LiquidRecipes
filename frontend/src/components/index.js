@@ -1,5 +1,5 @@
 export {NewsListComponent} from "./news/list";
-export {NewsViewComponent} from "./news/view";
+export {SingleNewsViewComponent} from "./news/view";
 export {NewsFormComponent} from "./news/edit_form";
 
 export {FlavorsListComponent} from "./flavors/list";

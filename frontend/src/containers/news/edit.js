@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 import {NewsFormComponent} from "../../components/index";
 
-import {getNewsSingle, selectNewsSingleData, updateNewsSingle} from "../../modules/news/news";
+import {updateSingleNews} from "../../modules/news/actions";
+import {selectSingleNewsData} from "../../modules/news/selectors";
 
 class NewsEditContainer extends Component {
 
@@ -23,7 +24,7 @@ class NewsEditContainer extends Component {
           <div className="row">
             <NewsFormComponent
               onSubmit={this.checkAndSend.bind(this)}
-              news={this.props.news}
+              news={this.props.singleNews}
             />
           </div>
         </div>
@@ -33,13 +34,12 @@ class NewsEditContainer extends Component {
 }
 
 export const NewsEdit = connect(
-  (store) => ({
-    news: selectNewsSingleData(store)
+  (state, props) => ({
+    singleNews: selectSingleNewsData(state, props.match.params.id)
   }),
   (dispatch) => ({
     actions: bindActionCreators({
-      getNewsSingle,
-      updateNewsSingle
+      updateSingleNews
     }, dispatch)
   })
 )(NewsEditContainer);

@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { NewsListComponent } from "../../components/index";
+import { NewsListComponent } from "../../components";
 
-import {
-  getNews,
-  selectNewsData
-} from "../../modules/news/news_list"
+import {getNews} from "../../modules/news/actions"
+import {selectNewsData} from "../../modules/news/selectors";
 
 class NewsContainer extends Component {
 
@@ -17,14 +15,17 @@ class NewsContainer extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="text-center">
+      <div className="entity-list">
+        <div className="entity-list__header">
           <h3>News</h3>
-          <div className="row">
-            <NewsListComponent
-              news={this.props.news}
-            />
-          </div>
+        </div>
+        <NewsListComponent
+          cssClass={"entity-list__items"}
+          cssClassForItem={"entity-list__item"}
+          newss={this.props.news}
+        />
+        <div className="entity-list__footer">
+          Paginator
         </div>
       </div>
     )

@@ -10,7 +10,7 @@ const CommentForm = (props) => {
     <Form
       onSubmit={onSubmit}
       render={({handleSubmit, submitting, pristine}) =>
-        <form onSubmit={handleSubmit}>
+        <form className="comments__form" onSubmit={handleSubmit}>
           <Field name="text" component="textarea" maxLength="255" placeholder="Enter your comment here"/>
           <button type="submit" disabled={pristine || submitting}>Send</button>
         </form>

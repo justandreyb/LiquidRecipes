@@ -20,6 +20,6 @@ export {RecipeCreate} from "./recipes/create";
 export {RecipeEdit} from "./recipes/edit";
 
 export {NewsList} from "./news/list";
-export {NewsView} from "./news/view";
+export {SingleNewsView} from "./news/view";
 export {NewsCreate} from "./news/create";
 export {NewsEdit} from "./news/edit";

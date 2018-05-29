@@ -70,4 +70,4 @@ class EntitySingle extends Component {
   }
 }
 
-export const NewsViewComponent = EntitySingle;
+export const SingleNewsViewComponent = EntitySingle;

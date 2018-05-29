@@ -12,6 +12,11 @@
     color: var(--primary-color);
 }
 
+.likes:hover {
+    transition: var(--fast-transition-time);
+    background-color: var(--secondary-color--hover);
+}
+
 .likes__symbol {
     margin-right: 5px;
 }

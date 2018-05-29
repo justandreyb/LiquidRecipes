@@ -1,17 +1,23 @@
 /* COMMENTS STYLES */
 
 .comments {
+    margin-top: 10px;
+
     display: flex;
     flex-flow: column;
     margin-bottom: 20px;
 }
 
 .comments__title {
+    border-top: 1px solid var(--secondary-color);
+
     font-size: var(--medium-font-size);
 }
 
 .comments__form {
+    margin-top: 5px;
 }
+
 .comments__form textarea {
     outline: none;
     -moz-appearance: none;
@@ -19,8 +25,7 @@
     width: 100%;
     padding: 5px 10px;
 
-    border: 1px solid #eee;
-    border-radius: 5px;
+    border: 1px solid var(--primary-color);
 
     overflow-x: hidden;
     overflow-y: auto;
@@ -32,6 +37,11 @@
     font-family: var(--secondary-font-family);
     font-size: var(--medium-font-size);
 }
+.comments__form textarea:focus {
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
 .comments__form button {
     outline: none;
     padding: 5px 10px;

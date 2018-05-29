@@ -252,7 +252,7 @@ function* handleToken(action) {
 }
 
 function* handleLogin(action) {
-  yield* navigateTo("/");
+  // yield* navigateTo("/");
 }
 
 function* handleLogout() {

@@ -7,11 +7,7 @@ import {reducer as accountReducer} from "./modules/user";
 
 import {reducer as userRecipesReducer} from "./modules/recipes/user_recipes";
 
-import {reducer as newsReducer} from "./modules/news/news_list";
-import {reducer as newsSingleReducer} from "./modules/news/news";
-import {reducer as newsCommentsReducer} from "./modules/news/news_comments";
-import {reducer as newsLikesReducer} from "./modules/news/news_likes";
-import {reducer as newsImageReducer} from "./modules/news/news_image";
+import {reducer as newsReducer} from "./modules/news/reducer";
 
 import {reducer as flavorsReducer} from "./modules/flavor/reducer";
 
@@ -34,15 +30,7 @@ const containersReducer = {
         recipes: userRecipesReducer
       })
     }),
-    news: combineReducers({
-      list  : newsReducer,
-      target: combineReducers({
-        news    : newsSingleReducer,
-        comments: newsCommentsReducer,
-        likes   : newsLikesReducer,
-        image   : newsImageReducer
-      })
-    }),
+    news   : newsReducer,
     flavors: flavorsReducer,
     recipes: combineReducers({
       list  : recipesReducer,

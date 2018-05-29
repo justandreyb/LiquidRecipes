@@ -5,11 +5,7 @@ import {watchAccountActions} from "./modules/user";
 
 import {watchUserRecipesActions} from "./modules/recipes/user_recipes";
 
-import {watchNewsActions} from "./modules/news/news_list";
-import {watchNewsSingleActions} from "./modules/news/news";
-import {watchNewsCommentsActions} from "./modules/news/news_comments";
-import {watchNewsLikesActions} from "./modules/news/news_likes";
-import {watchNewsImageActions} from "./modules/news/news_image";
+import {watchNewsActions} from "./modules/news/sagas";
 
 import {watchFlavorsActions} from "./modules/flavor/sagas";
 
@@ -32,10 +28,6 @@ const sagas = [
   watchUserRecipesActions,
 
   watchNewsActions,
-  watchNewsSingleActions,
-  watchNewsCommentsActions,
-  watchNewsLikesActions,
-  watchNewsImageActions,
 
   watchFlavorsActions,
 

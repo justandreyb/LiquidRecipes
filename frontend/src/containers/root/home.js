@@ -3,10 +3,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import {
-  getTop10News,
-  clearTopNewsWorkspace,
-  selectTopNewsData
-} from "../../modules/news/news_list"
+  getTop10News
+} from "../../modules/news/actions"
 
 import {
   getTop10Flavors
@@ -18,6 +16,7 @@ import {
   selectTopRecipesData
 } from "../../modules/recipes/recipes"
 import {selectTopFlavorsData} from "../../modules/flavor/selectors";
+import {selectTopNewsData} from "../../modules/news/selectors";
 
 class HomeContainer extends Component {
 
@@ -52,7 +51,6 @@ export const Home = connect(
       getTop10News,
       getTop10Flavors,
       getTop10Recipes,
-      clearTopNewsWorkspace,
       clearTopRecipesWorkspace
     }, dispatch)
   })

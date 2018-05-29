@@ -2,86 +2,58 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { NewsViewComponent } from "../../components/index";
+import { SingleNewsViewComponent } from "../../components";
 
 import {
-  getNewsSingle,
-  cleanNewsSingleWorkspace,
-  selectNewsSingleData
-} from "../../modules/news/news"
+  createSingleNewsComment,
+  deleteSingleNewsComment,
+  createSingleNewsLike,
+  deleteSingleNewsLike
+} from "../../modules/news/actions"
+import {selectSingleNewsData} from "../../modules/news/selectors";
 
-import {
-  getNewsComments,
-  selectNewsCommentsData,
-  createNewsComment,
-  deleteNewsComment
-} from "../../modules/news/news_comments"
+import {CommentsBlockComponent, LikeComponent} from "../../components";
 
-import {
-  getNewsLikes,
-  selectNewsLikesData,
-  createNewsLike,
-  deleteNewsLike
-} from "../../modules/news/news_likes"
-
-import {
-  getNewsImage,
-  selectNewsImageData
-} from "../../modules/news/news_image"
-
-class NewsSingleContainer extends Component {
-
-  componentWillMount() {
-    this.props.actions.getNewsSingle(this.props.match.params.id);
-    this.props.actions.getNewsComments(this.props.match.params.id);
-    this.props.actions.getNewsLikes(this.props.match.params.id);
-    this.props.actions.getNewsImage(this.props.match.params.id);
-  }
-
-  componentWillUnmount() {
-    this.props.actions.cleanNewsSingleWorkspace()
-  }
+class SingleNewsContainer extends Component {
 
   render() {
-    return (
-      <div className="container">
-        <h3>News</h3>
-        <hr/>
+    const {
+      interaction,
+      singleNews
+    } = this.props;
 
-        <div className="row">
-          <NewsViewComponent
-            news       ={this.props.news}
-            comments   ={this.props.comments}
-            likes      ={this.props.likes}
-            image      ={this.props.image}
-            interaction={this.props.interaction}
-          />
-        </div>
+    return (
+      <div className="entity-view">
+        <SingleNewsViewComponent
+          singleNews = {singleNews}
+        />
+        <LikeComponent
+          entityId = {singleNews.id}
+          likes = {singleNews.likes}
+          pressLike = {interaction.createSingleNewsLike}
+          removeLike = {interaction.deleteSingleNewsLike}
+        />
+        <CommentsBlockComponent
+          entityId = {singleNews.id}
+          comments = {singleNews.comments}
+          postComment = {interaction.createSingleNewsComment}
+          deleteComment = {interaction.deleteSingleNewsComment}
+        />
       </div>
     )
   }
 }
 
-export const NewsView = connect(
-  (state) => ({
-    news    : selectNewsSingleData(state),
-    comments: selectNewsCommentsData(state),
-    likes   : selectNewsLikesData(state),
-    image   : selectNewsImageData(state)
+export const SingleNewsView = connect(
+  (state, props) => ({
+    singleNews: selectSingleNewsData(state, props.match.params.id)
   }),
   (dispatch) => ({
-    actions: bindActionCreators({
-      getNewsSingle,
-      cleanNewsSingleWorkspace,
-      getNewsComments,
-      getNewsLikes,
-      getNewsImage
-    }, dispatch),
     interaction: bindActionCreators({
-      createNewsComment,
-      deleteNewsComment,
-      createNewsLike,
-      deleteNewsLike
+      createSingleNewsComment,
+      deleteSingleNewsComment,
+      createSingleNewsLike,
+      deleteSingleNewsLike
     }, dispatch)
   })
-)(NewsSingleContainer);
+)(SingleNewsContainer);
