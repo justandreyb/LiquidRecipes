@@ -2,17 +2,14 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { RecipesListComponent } from "../../components/index";
-
-import {
-  createRecipe,
-  deleteRecipe
-} from "../../modules/recipes/recipe"
+import { RecipesListComponent } from "../../components";
 
 import {
   getUserRecipes,
-  selectUserRecipesData
-} from "../../modules/recipes/user_recipes"
+  addRecipeToUser,
+  deleteRecipeFromUser
+} from "../../modules/recipes/actions"
+import {selectUserRecipesData} from "../../modules/recipes/selectors";
 
 class RecipesContainer extends Component {
 
@@ -46,8 +43,8 @@ export const UserRecipesList = connect(
       getUserRecipes
     }, dispatch),
     interaction: bindActionCreators({
-      createRecipe,
-      deleteRecipe
+      addRecipeToUser,
+      deleteRecipeFromUser
     }, dispatch)
   })
 )(RecipesContainer);

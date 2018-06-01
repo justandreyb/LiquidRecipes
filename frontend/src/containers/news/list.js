@@ -22,7 +22,7 @@ class NewsContainer extends Component {
         <NewsListComponent
           cssClass={"entity-list__items"}
           cssClassForItem={"entity-list__item"}
-          newss={this.props.news}
+          news={this.props.news}
         />
         <div className="entity-list__footer">
           Paginator

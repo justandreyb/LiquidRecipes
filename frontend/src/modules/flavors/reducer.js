@@ -50,8 +50,10 @@ export const reducer = (state = store.initialState, action) => {
   case constants.CREATE_FLAVOR_COMMENT_REQUEST: return handleRequest(state);
   case constants.CREATE_FLAVOR_COMMENT_FAIL:    return handleFail(state, action);
   case constants.CREATE_FLAVOR_COMMENT_SUCCESS: return state
-    .updateIn([store.list], (arr) => updateElementInArray(arr, action.payload))
-    .updateIn([store.userList], (arr) => updateElementInArray(arr, action.payload))
+    .updateIn([store.list], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.comment, updateInSublist))
+    .updateIn([store.userList], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.comment, updateInSublist))
     .set(store.loading, false)
     .set(store.error, null);
 
@@ -59,16 +61,20 @@ export const reducer = (state = store.initialState, action) => {
   case constants.DELETE_FLAVOR_COMMENT_REQUEST: return handleRequest(state);
   case constants.DELETE_FLAVOR_COMMENT_FAIL:    return handleFail(state, action);
   case constants.DELETE_FLAVOR_COMMENT_SUCCESS: return state
-    .updateIn([store.list], (arr) => updateElementInArray(arr, action.payload))
-    .updateIn([store.userList], (arr) => updateElementInArray(arr, action.payload))
+    .updateIn([store.list], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.commentId, deleteFromSublist))
+    .updateIn([store.userList], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.commentId, deleteFromSublist))
     .set(store.loading, false)
     .set(store.error, null);
 
   case constants.CREATE_FLAVOR_LIKE_REQUEST: return handleRequest(state);
   case constants.CREATE_FLAVOR_LIKE_FAIL:    return handleFail(state, action);
   case constants.CREATE_FLAVOR_LIKE_SUCCESS: return state
-    .updateIn([store.list], (arr) => updateElementInArray(arr, action.payload))
-    .updateIn([store.userList], (arr) => updateElementInArray(arr, action.payload))
+    .updateIn([store.list], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.like, updateInSublist))
+    .updateIn([store.userList], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.like, updateInSublist))
     .set(store.loading, false)
     .set(store.error, null);
 
@@ -76,8 +82,10 @@ export const reducer = (state = store.initialState, action) => {
   case constants.DELETE_FLAVOR_LIKE_REQUEST: return handleRequest(state);
   case constants.DELETE_FLAVOR_LIKE_FAIL:    return handleFail(state, action);
   case constants.DELETE_FLAVOR_LIKE_SUCCESS: return state
-    .updateIn([store.list], (arr) => updateElementInArray(arr, action.payload))
-    .updateIn([store.userList], (arr) => updateElementInArray(arr, action.payload))
+    .updateIn([store.list], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.likeId, deleteFromSublist))
+    .updateIn([store.userList], (arr) =>
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.likeId, deleteFromSublist))
     .set(store.loading, false)
     .set(store.error, null);
 
@@ -116,7 +124,30 @@ export const reducer = (state = store.initialState, action) => {
 const updateElementInArray = function(array, element) {
   const index = array.findIndex((item) => item.id === element.id);
   if (index) array[ index ] = element;
+};
+
+const updateElementsPropertyInArray = function (array, elementId, sublistName, sublistItem, updateFunction) {
+  const index = array.findIndex((item) => item.id === elementId);
+  if (index) array[ index ] = updateFunction(array[ index ], sublistName, sublistItem);
   return array;
+};
+
+const updateInSublist = function (element, sublistName, sublistItem) {
+  if (!element[ sublistName ]) element[ sublistName ] = [];
+  const index = element[ sublistName ].findIndex((item) => item.id === sublistItem.id);
+  if (index)
+    element[ sublistName ][ index ] = sublistItem;
+  else
+    element[ sublistName ].concat(sublistItem);
+
+  return element;
+};
+
+const deleteFromSublist = function (element, sublistName, sublistItemId) {
+  if (!element[ sublistName ]) element[ sublistName ] = [];
+  const index = element[ sublistName ].findIndex((item) => item.id === sublistItemId);
+  if (index) element[ sublistName ].splice(index, 1);
+  return element;
 };
 
 const handleRequest = function (state) {

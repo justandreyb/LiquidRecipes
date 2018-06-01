@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import {FlavorFormComponent} from "../../components/index";
+import {FlavorFormComponent} from "../../components";
 
-import {updateFlavor} from "../../modules/flavor/actions"
+import {updateFlavor} from "../../modules/flavors/actions"
 import {getManufacturers, selectManufacturersData} from "../../modules/manufacturers";
-import {selectFlavorData} from "../../modules/flavor/selectors";
+import {selectFlavorData} from "../../modules/flavors/selectors";
 
 class FlavorEditContainer extends Component {
 

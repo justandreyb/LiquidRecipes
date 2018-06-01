@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import {FlavorFormComponent} from "../../components/index";
+import {FlavorFormComponent} from "../../components";
 
-import {createFlavor} from "../../modules/flavor/actions"
+import {createFlavor} from "../../modules/flavors/actions"
 
 import {
   getManufacturers,

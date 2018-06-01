@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { RecipesListComponent } from "../../components/index";
+import { RecipesListComponent } from "../../components";
 
-import {
-  getRecipes,
-  selectRecipesData
-} from "../../modules/recipes/recipes"
+import {getRecipes} from "../../modules/recipes/actions"
+import {selectRecipesData} from "../../modules/recipes/selectors";
 
 class RecipesContainer extends Component {
 
@@ -17,14 +15,17 @@ class RecipesContainer extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="text-center">
+      <div className="entity-list">
+        <div className="entity-list__header">
           <h3>Recipes</h3>
-          <div className="row">
-            <RecipesListComponent
-              recipes={this.props.recipes}
-            />
-          </div>
+        </div>
+        <RecipesListComponent
+          cssClass={"entity-list__items"}
+          cssClassForItem={"entity-list__item"}
+          recipes={this.props.recipes}
+        />
+        <div className="entity-list__footer">
+          Paginator
         </div>
       </div>
     )

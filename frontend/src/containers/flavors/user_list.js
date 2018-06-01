@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { FlavorsListComponent } from "../../components/index";
+import { FlavorsListComponent } from "../../components";
 
 import {
   getUserFlavors,
   addFlavorToUser,
   deleteFlavorFromUser
-} from "../../modules/flavor/actions"
-import {selectUserFlavorsData} from "../../modules/flavor/selectors";
+} from "../../modules/flavors/actions"
+import {selectUserFlavorsData} from "../../modules/flavors/selectors";
 
 class FlavorsContainer extends Component {
 

@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { FlavorViewComponent } from "../../components/index";
+import { FlavorViewComponent } from "../../components";
 
 import {
   createFlavorComment,
   deleteFlavorComment,
   createFlavorLike,
   deleteFlavorLike
-} from "../../modules/flavor/actions"
-import {selectFlavorData} from "../../modules/flavor/selectors";
+} from "../../modules/flavors/actions"
+import {selectFlavorData} from "../../modules/flavors/selectors";
 
 import {CommentsBlockComponent, LikeComponent} from "../../components";
 

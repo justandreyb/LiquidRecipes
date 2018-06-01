@@ -95,9 +95,12 @@ export const createFlavorComment = (flavorId, comment) => ({
   }
 });
 
-export const createFlavorCommentSuccess = (comment) => ({
+export const createFlavorCommentSuccess = (flavorId, comment) => ({
   type   : constants.CREATE_FLAVOR_COMMENT_SUCCESS,
-  payload: comment
+  payload: {
+    flavorId: flavorId,
+    comment : comment
+  }
 });
 
 export const createFlavorCommentFail = (error) => ({
@@ -115,9 +118,12 @@ export const deleteFlavorComment = (flavorId, commentId) => ({
   }
 });
 
-export const deleteFlavorCommentSuccess = (commentId) => ({
+export const deleteFlavorCommentSuccess = (flavorId, commentId) => ({
   type   : constants.DELETE_FLAVOR_COMMENT_SUCCESS,
-  payload: commentId
+  payload: {
+    flavorId : flavorId,
+    commentId: commentId
+  }
 });
 
 export const deleteFlavorCommentFail = (error) => ({
@@ -134,9 +140,12 @@ export const createFlavorLike = (flavorId, like) => ({
   }
 });
 
-export const createFlavorLikeSuccess = (like) => ({
+export const createFlavorLikeSuccess = (flavorId, like) => ({
   type   : constants.CREATE_FLAVOR_LIKE_SUCCESS,
-  payload: like
+  payload: {
+    flavorId: flavorId,
+    like    : like
+  }
 });
 
 export const createFlavorLikeFail = (error) => ({
@@ -154,9 +163,12 @@ export const deleteFlavorLike = (flavorId, likeId) => ({
   }
 });
 
-export const deleteFlavorLikeSuccess = (likeId) => ({
+export const deleteFlavorLikeSuccess = (flavorId, likeId) => ({
   type   : constants.DELETE_FLAVOR_LIKE_SUCCESS,
-  payload: likeId
+  payload: {
+    flavorId: flavorId,
+    likeId  : likeId
+  }
 });
 
 export const deleteFlavorLikeFail = (error) => ({

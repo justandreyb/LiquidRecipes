@@ -8,15 +8,14 @@ import {
 
 import {
   getTop10Flavors
-} from "../../modules/flavor/actions"
+} from "../../modules/flavors/actions"
 
 import {
-  getTop10Recipes,
-  clearTopRecipesWorkspace,
   selectTopRecipesData
-} from "../../modules/recipes/recipes"
-import {selectTopFlavorsData} from "../../modules/flavor/selectors";
+} from "../../modules/recipes/selectors"
+import {selectTopFlavorsData} from "../../modules/flavors/selectors";
 import {selectTopNewsData} from "../../modules/news/selectors";
+import {getTop10Recipes} from "../../modules/recipes/actions";
 
 class HomeContainer extends Component {
 
@@ -24,11 +23,6 @@ class HomeContainer extends Component {
     this.props.actions.getTop10News();
     this.props.actions.getTop10Flavors();
     this.props.actions.getTop10Recipes();
-  }
-
-  componentWillUnmount() {
-    this.props.actions.clearTopNewsWorkspace();
-    this.props.actions.clearTopRecipesWorkspace();
   }
 
   render() {
@@ -50,8 +44,7 @@ export const Home = connect(
     actions: bindActionCreators({
       getTop10News,
       getTop10Flavors,
-      getTop10Recipes,
-      clearTopRecipesWorkspace
+      getTop10Recipes
     }, dispatch)
   })
 )(HomeContainer);

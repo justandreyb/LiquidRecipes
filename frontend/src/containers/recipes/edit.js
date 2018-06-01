@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import {RecipeFormComponent} from "../../components/index";
+import {RecipeFormComponent} from "../../components";
 
-import {getFlavors} from "../../modules/flavor/actions";
-import {getRecipe, selectRecipeData, updateRecipe} from "../../modules/recipes/recipe";
-import {createRecipeItem, deleteRecipeItem, getRecipeItems} from "../../modules/recipes/recipe_items";
-import {selectFlavorsData} from "../../modules/flavor/selectors";
+import {getFlavors} from "../../modules/flavors/actions";
+import {addItemToRecipe, deleteItemFromRecipe, updateRecipe} from "../../modules/recipes/actions";
+import {selectFlavorsData} from "../../modules/flavors/selectors";
+import {selectRecipeData} from "../../modules/recipes/selectors";
 
 class RecipeEditContainer extends Component {
 
@@ -38,17 +38,15 @@ class RecipeEditContainer extends Component {
 }
 
 export const RecipeEdit = connect(
-  (store) => ({
-    recipe : selectRecipeData(store),
+  (store, props) => ({
+    recipe : selectRecipeData(store, props.match.id),
     flavors: selectFlavorsData(store)
   }),
   (dispatch) => ({
     actions: bindActionCreators({
-      getRecipe,
       updateRecipe,
-      createRecipeItem,
-      deleteRecipeItem,
-      getRecipeItems,
+      addItemToRecipe,
+      deleteItemFromRecipe,
       getFlavors
     }, dispatch)
   })

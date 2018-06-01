@@ -95,9 +95,12 @@ export const createSingleNewsComment = (singleNewsId, comment) => ({
   }
 });
 
-export const createSingleNewsCommentSuccess = (comment) => ({
+export const createSingleNewsCommentSuccess = (singleNewsId, comment) => ({
   type   : constants.CREATE_SINGLE_NEWS_COMMENT_SUCCESS,
-  payload: comment
+  payload: {
+    singleNewsId: singleNewsId,
+    comment     : comment
+  }
 });
 
 export const createSingleNewsCommentFail = (error) => ({
@@ -115,9 +118,12 @@ export const deleteSingleNewsComment = (singleNewsId, commentId) => ({
   }
 });
 
-export const deleteSingleNewsCommentSuccess = (commentId) => ({
+export const deleteSingleNewsCommentSuccess = (singleNewsId, commentId) => ({
   type   : constants.DELETE_SINGLE_NEWS_COMMENT_SUCCESS,
-  payload: commentId
+  payload: {
+    singleNewsId: singleNewsId,
+    commentId   : commentId
+  }
 });
 
 export const deleteSingleNewsCommentFail = (error) => ({
@@ -134,9 +140,12 @@ export const createSingleNewsLike = (singleNewsId, like) => ({
   }
 });
 
-export const createSingleNewsLikeSuccess = (like) => ({
+export const createSingleNewsLikeSuccess = (singleNewsId, like) => ({
   type   : constants.CREATE_SINGLE_NEWS_LIKE_SUCCESS,
-  payload: like
+  payload: {
+    singleNewsId: singleNewsId,
+    like        : like
+  }
 });
 
 export const createSingleNewsLikeFail = (error) => ({
@@ -154,9 +163,12 @@ export const deleteSingleNewsLike = (singleNewsId, likeId) => ({
   }
 });
 
-export const deleteSingleNewsLikeSuccess = (likeId) => ({
+export const deleteSingleNewsLikeSuccess = (singleNewsId, likeId) => ({
   type   : constants.DELETE_SINGLE_NEWS_LIKE_SUCCESS,
-  payload: likeId
+  payload: {
+    singleNewsId: singleNewsId,
+    likeId      : likeId
+  }
 });
 
 export const deleteSingleNewsLikeFail = (error) => ({

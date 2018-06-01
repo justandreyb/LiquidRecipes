@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import {RecipeFormComponent} from "../../components/index";
+import {RecipeFormComponent} from "../../components";
 
-import {getFlavors} from "../../modules/flavor/actions";
-import {createRecipe} from "../../modules/recipes/recipe";
-import {selectFlavorsData} from "../../modules/flavor/selectors";
+import {getFlavors} from "../../modules/flavors/actions";
+import {createRecipe} from "../../modules/recipes/actions";
+import {selectFlavorsData} from "../../modules/flavors/selectors";
 
 class RecipeCreateContainer extends Component {
 
