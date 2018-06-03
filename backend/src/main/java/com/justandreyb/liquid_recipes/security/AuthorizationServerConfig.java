@@ -59,7 +59,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .scopes(reactAppScopes)
                 .resourceIds(liquidRecipesResourceId)
                 .authorizedGrantTypes(reactAppGrantTypes)
-                .accessTokenValiditySeconds(reactAppTokenActionTime);
+                .accessTokenValiditySeconds(reactAppTokenActionTime)
+        ;
     }
 
     @Override
