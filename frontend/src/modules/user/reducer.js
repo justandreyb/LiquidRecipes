@@ -1,7 +1,7 @@
 import * as constants from "./constants"
-import * as store from "../recipes/initialState";
+import * as store from "./initialState";
 
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = store.initialState, action) => {
   switch (action.type) {
 
   case constants.SIGN_UP_REQUEST: return handleRequest(state);
@@ -48,11 +48,11 @@ export const reducer = (state = initialState, action) => {
   case constants.LOGOUT_REQUEST: return handleRequest(state);
   case constants.LOGOUT_FAIL:    return handleFail(state, action);
   case constants.LOGOUT_SUCCESS:
-    return initialState;
+    return store.initialState;
 
 
   case constants.CLEAN_ACCOUNT_DATA:
-    return initialState;
+    return store.initialState;
 
   default:
     return state;

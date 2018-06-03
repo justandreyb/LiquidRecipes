@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import {
   signIn,
   signUp
-} from "../../modules/user"
+} from "../../modules/user/actions"
 
 import {LoginForm, RegistrationForm} from "../../components/index";
 

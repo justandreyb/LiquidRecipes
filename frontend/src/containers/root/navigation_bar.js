@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import {selectApplicationName} from "../../modules/application";
-import {selectIsAdmin, selectUserData} from "../../modules/user";
+import {selectIsAdmin, selectIsAuthenticated, selectUserData} from "../../modules/user/selectors";
 import {ACCESS_TOKEN_NAME} from "../../settings";
 import {getCookies} from "../../utils/cookies";
-import {loadAccount, logout, selectIsAuthenticated} from "../../modules/user";
+import {loadAccount, logout} from "../../modules/user/actions";
 import {LinkContainer} from "react-router-bootstrap";
 
 class NavigationBarContainer extends Component {

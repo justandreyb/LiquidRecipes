@@ -3,7 +3,7 @@ import {routerReducer} from "react-router-redux";
 import {snackbarReducer} from "react-redux-snackbar";
 
 import {reducer as appReducer} from "./modules/application";
-import {reducer as accountReducer} from "./modules/user";
+import {reducer as accountReducer} from "./modules/user/reducer";
 
 import {reducer as newsReducer} from "./modules/news/reducer";
 

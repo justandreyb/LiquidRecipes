@@ -1,7 +1,7 @@
 import {fork, all} from "redux-saga/effects";
 
 import {watchAppActions} from "./modules/application";
-import {watchAccountActions} from "./modules/user";
+import {watchAccountActions} from "./modules/user/sagas";
 
 import {watchNewsActions} from "./modules/news/sagas";
 

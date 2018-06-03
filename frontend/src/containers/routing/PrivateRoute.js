@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Redirect, Route} from "react-router-dom";
 import {connect} from "react-redux";
-import {selectIsAuthenticated} from "../../modules/user";
+import {selectIsAuthenticated} from "../../modules/user/selectors";
 
 class PrivateRouteContainer extends Component {
   render() {
