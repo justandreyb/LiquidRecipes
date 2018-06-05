@@ -1,17 +1,10 @@
 package com.justandreyb.liquid_recipes.security;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,14 +13,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
-import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.stereotype.Component;
 
 import com.justandreyb.liquid_recipes.config.Paths;
 import com.justandreyb.liquid_recipes.config.Roles;
@@ -71,9 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(Paths.getByRole(Roles.GUEST)).permitAll()
                 .anyRequest().authenticated()
         .and()
-            .exceptionHandling()
-                .accessDeniedHandler(accessDeniedHandler)
-        .and()
             .csrf()
                 .disable();
     }
@@ -97,16 +83,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
         return defaultTokenServices;
-    }
-
-    @Component
-    public class CustomAccessDeniedHandler implements AccessDeniedHandler {
-
-        @Override
-        public void handle
-                (HttpServletRequest request, HttpServletResponse response, AccessDeniedException ex)
-                throws IOException, ServletException {
-            response.sendRedirect("/my-error-page");
-        }
     }
 }
