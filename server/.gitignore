@@ -20,6 +20,7 @@ mvnw
 mvnw.cmd
 target/
 out/
+build/
 src/main/resources/static/built/**
 .database/
 
