@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="20180113_1" author="justandreyb">
+        <sql>
+            CREATE TABLE ROLE
+            (
+            ID char(36) PRIMARY KEY NOT NULL,
+            NAME varchar(255) NOT NULL
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20180113_2" author="justandreyb">
+        <sql>
+            CREATE TABLE ROLES_TO_USERS
+            (
+            ROLE_ID char(36) NOT NULL,
+            USER_ID char(36) NOT NULL,
+            CONSTRAINT ROLES_TO_USERS_PK PRIMARY KEY (ROLE_ID, USER_ID),
+            CONSTRAINT FKSEFROLEABU87WPDWOC6O10BIRN FOREIGN KEY (ROLE_ID) REFERENCES ROLE (ID),
+            CONSTRAINT FKSEDUSERSIFFIR6XD3TBRX200SX FOREIGN KEY (USER_ID) REFERENCES USER (ID)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="20180113_3" author="justandreyb">
+        <insert tableName="ROLE">
+            <column name="ID" value="e446eb5e-c01f-4d6c-b7b9-671786f06a53"/>
+            <column name="NAME" value="admin"/>
+        </insert>
+        <insert tableName="ROLE">
+            <column name="ID" value="502d6c4b-ab33-4r5d-2855-2ba4af564b6c"/>
+            <column name="NAME" value="client"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

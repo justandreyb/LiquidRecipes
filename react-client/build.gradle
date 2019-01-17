@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+build {
+    doLast {
+        exec {
+            commandLine 'npm'
+            args = ['install']
+        }
+    }
+}
+
+task runReactClient(type: Exec) {
+    dependsOn clean
+    dependsOn build
+
+    tasks.findByName('build').mustRunAfter 'clean'
+
+    group 'Client'
+    description 'Run the react application'
+    commandLine 'npm'
+    args = ['start']
+}

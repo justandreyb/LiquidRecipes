@@ -1,0 +1,84 @@
+plugins {
+    id 'java'
+    id 'war'
+    id "io.franzbecker.gradle-lombok" version "1.14"
+    id "org.springframework.boot" version "2.1.2.RELEASE"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+}
+
+ext {
+    validationApiVersion = "2.0.1.Final"
+    hibernateValidatorVersion = "6.0.14.Final"
+    springBootVersion = "2.1.2.RELEASE"
+    springOAuthVersion = "2.3.4.RELEASE"
+    springJWTVersion = "1.0.9.RELEASE"
+    lombokVersion = "1.18.4"
+    h2Version = "1.4.197"
+    liquibaseVersion = "3.6.2"
+    mapstructVersion = "1.3.0.Beta2"
+}
+
+dependencies {
+    // Validation
+    compile "javax.validation:validation-api:${validationApiVersion}"
+    compile "org.hibernate.validator:hibernate-validator:${hibernateValidatorVersion}"
+    compile "org.hibernate.validator:hibernate-validator-annotation-processor:${hibernateValidatorVersion}"
+
+    // Spring
+    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+
+    // Spring Security
+    compile "org.springframework.security.oauth:spring-security-oauth2:${springOAuthVersion}"
+    compile "org.springframework.security:spring-security-jwt:${springJWTVersion}"
+
+    // Lombok
+    compile "org.projectlombok:lombok:${lombokVersion}"
+
+    // Database
+    compile "org.liquibase:liquibase-core:${liquibaseVersion}"
+    runtime "com.h2database:h2:${h2Version}"
+
+    // MapStruct
+    compile "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    // Test
+    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// Workaround for https://github.com/gradle/gradle/issues/4956
+sourceSets.configureEach { sourceSet ->
+    tasks.named(sourceSet.compileJavaTaskName).configure {
+        options.annotationProcessorGeneratedSourcesDirectory = file("$buildDir/generated/sources/annotationProcessor/java/${sourceSet.name}")
+    }
+}
+
+jar {
+    group    = "${project.group}"
+    version  = "${project.version}"
+    manifest { attributes "Main-Class": "com.justandreyb.liquid_recipes.LiquidRecipesApplication" }
+}
+
+task runServer(type: JavaExec) {
+    dependsOn clean
+    dependsOn build
+
+    tasks.findByName('build').mustRunAfter 'clean'
+
+    group 'Server'
+    main = "com.justandreyb.liquid_recipes.LiquidRecipesApplication"
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = [
+            "-Dspring.profiles.active=dev"
+    ]
+}
