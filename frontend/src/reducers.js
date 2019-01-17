@@ -1,6 +1,8 @@
 import {combineReducers} from "redux";
 import {routerReducer} from "react-router-redux";
 import {snackbarReducer} from "react-redux-snackbar";
+import {errorReducer} from "./modules/errors/reducer";
+import {loadingReducer} from "./modules/loading/reducer";
 
 import {reducer as appReducer} from "./modules/application";
 import {reducer as accountReducer} from "./modules/user/reducer";
@@ -19,7 +21,11 @@ const containersReducer = {
   containers: combineReducers({
     app: combineReducers({
       workspace: appReducer,
-      account  : combineReducers({
+      workflow : combineReducers({
+        errors : errorReducer,
+        loading: loadingReducer
+      }),
+      account: combineReducers({
         info: accountReducer
       })
     }),

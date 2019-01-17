@@ -1,7 +1,7 @@
 import {getCookies, removeCookies, setCookies} from "../../utils/cookies";
 import {ACCESS_TOKEN_NAME, CLIENT_ID, CLIENT_SECRET} from "../../settings";
 import axios from "axios/index";
-import {showSuccess} from "../../utils/notificator";
+import {showSuccessMessage} from "../../utils/notificator";
 import {navigateTo} from "../../utils/navigator";
 import takeLatest from "redux-saga/es/internal/sagaHelpers/takeLatest";
 import takeEvery from "redux-saga/es/internal/sagaHelpers/takeEvery";
@@ -26,46 +26,22 @@ export function* watchAccountActions() {
 }
 
 function* tokenRequest(action) {
-  try {
-    const body = `username=${encodeURIComponent(action.payload.email)}&password=${encodeURIComponent(action.payload.password)}&grant_type=password`;
+  const body = `username=${encodeURIComponent(action.payload.email)}&password=${encodeURIComponent(action.payload.password)}&grant_type=password`;
 
-    const response = yield call(axios, constants.ENDPOINT_AUTH + "/token", {
-      method : "POST",
-      data   : body,
-      headers: getLoginHeaders()
-    });
-
-    yield put(actions.getTokenSuccess(response.data));
-  }
-  catch (e) {
-    yield put(actions.getTokenFail(e.message));
-  }
+  yield makePostRequest(constants.ENDPOINT_AUTH + "/token", body, getLoginHeaders(), actions.getTokenSuccess, actions.getTokenFail);
 }
 
 function* signUpRequest(action) {
-  try {
-    const response = yield call(axios.post, constants.ENDPOINT_ACCOUNT + "/registration", action.payload);
-
-    yield put(actions.createAccountSuccess(response.data));
-  }
-  catch (e) {
-    yield put(actions.createAccountFail(e.message));
-  }
+  yield makePostRequest(constants.ENDPOINT_ACCOUNT + "/registration", action.payload, null, actions.createAccountSuccess, actions.createAccountFail);
 }
 
 function* loadAccountRequest() {
-  try {
-    const response = yield call(axios.get, constants.ENDPOINT_ACCOUNT + "/im", { headers: getAuthenticationHeader() });
-
-    yield put(actions.loadAccountSuccess(response.data));
-  }
-  catch (e) {
-    yield put(actions.loadAccountFail(e.message));
-  }
+  yield makeGetRequest(constants.ENDPOINT_ACCOUNT + "/im", getAuthenticationHeader(), actions.loadAccountSuccess, actions.loadAccountFail)
 }
 
 function* logoutRequest() {
   try {
+    yield handleLogout();
     yield put(actions.logoutSuccess());
   }
   catch (e) {
@@ -75,23 +51,22 @@ function* logoutRequest() {
 
 function* handleToken(action) {
   yield* setCookies(ACCESS_TOKEN_NAME, action.payload.access_token, action.payload.expires_in);
-  yield* showSuccess("You are signed in");
+  yield showSuccessMessage("Welcome! You are signed in");
 
   yield put(actions.loadAccount());
 }
 
 function* handleLogin(action) {
-  // yield* navigateTo("/");
+  yield* navigateTo("/");
 }
 
 function* handleLogout() {
   yield* removeCookies(ACCESS_TOKEN_NAME);
-  yield* showSuccess("Logout complete");
-  yield* navigateTo("/");
+  yield showSuccessMessage("Logout complete");
 }
 
 function* handleSuccessSignUp(action) {
-  yield* showSuccess("Account created. You can enter now");
+  yield* showSuccessMessage("Account created successful");
 }
 
 function* removeTokenFromCookies(action) {
@@ -110,4 +85,43 @@ export function getAuthenticationHeader() {
     return {
       "Authorization": `Bearer ${getCookies(ACCESS_TOKEN_NAME)}`
     };
+}
+
+export function* makeGetRequest(url, headers, successHandler, failHandler) {
+  const { response, error } = yield call(() => get(url, headers));
+  if (response)
+    yield put(successHandler(response.data));
+  else
+  if (error.response)
+    yield put(failHandler(error.response.data.error_description));
+  else
+    yield put(failHandler(error.message));
+}
+
+export function* makePostRequest(url, data, headers, successHandler, failHandler) {
+  const { response, error } = yield call(() => post(url, data, headers));
+  if (response)
+    yield put(successHandler(response.data));
+  else
+  if (error.response)
+    yield put(failHandler(error.response.data.error_description));
+  else
+    yield put(failHandler(error));
+
+}
+
+function get(url, headers) {
+  return axios.get(url, {
+    headers: headers
+  })
+    .then((response) => ({ response }))
+    .catch((error) => ({ error }));
+}
+
+function post(url, data, headers) {
+  return axios.post(url, data, {
+    headers: headers
+  })
+    .then((response) => ({ response }))
+    .catch((error) => ({ error }));
 }

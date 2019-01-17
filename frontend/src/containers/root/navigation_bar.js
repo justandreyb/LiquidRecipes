@@ -54,9 +54,7 @@ class NavigationBarContainer extends Component {
               }
               {
                 this.props.authenticated &&
-                <LinkContainer to="/sign_out">
-                  <div className="navigation__auth--link --clickable --fast-transition"><i className="fas fa-sign-out-alt"/></div>
-                </LinkContainer>
+                <div className="navigation__auth--link --clickable --fast-transition" onClick={this.props.actions.logout}><i className="fas fa-sign-out-alt"/></div>
               }
             </div>
           </div>

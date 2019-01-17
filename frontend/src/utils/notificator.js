@@ -1,4 +1,3 @@
-import {takeEvery} from "redux-saga/effects";
 import {showSnack} from "react-redux-snackbar";
 import {put} from "redux-saga/effects";
 
@@ -38,41 +37,13 @@ export function* showFail(action) {
   }));
 }
 
+export const showSuccessMessage = (message) => put(showSnack(getCurrentDate(), {
+  label  : message,
+  timeout: NOTIFICATION_TIMEOUT
+}));
 
-export function* showSuccess(action) {
-  yield put(showSnack(getCurrentDate(), {
-    label  : action.payload,
-    timeout: NOTIFICATION_TIMEOUT
-  }));
-}
 
-/*
-function* showWarning(action) {
-  yield* toastr.warning(action.payload, "Warning !", toastrOptions);
-}
-
-let spinner;
-let target = document.getElementById("spinner");
-
-function* showSpinner() {
-  if (!spinner) new Spinner(spinnerOptions);
-
-  yield* spinner.spin(target);
-}
-
-function* stopSpinner() {
-  if (!spinner) new Spinner(spinnerOptions);
-
-  yield* spinner.stop();
-}
-
-function* watchSpinnerActions() {
-  yield takeEvery((action) => action.type.includes("REQUEST"), showSpinner);
-  yield takeEvery((action) => action.type.includes("SUCCESS"), stopSpinner);
-  yield takeEvery((action) => action.type.includes("FAIL"), stopSpinner);
-}
-*/
-
-export function* watchNotificationsActions() {
-  yield takeEvery((action) => action.type.includes("FAIL"), showFail);
-}
+export const showFailMessage = (message) => put(showSnack(getCurrentDate(), {
+  label  : message,
+  timeout: NOTIFICATION_TIMEOUT
+}));

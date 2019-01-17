@@ -4,114 +4,67 @@ import * as store from "./initialState";
 export const reducer = (state = store.initialState, action) => {
   switch (action.type) {
 
-  case constants.GET_FLAVORS_REQUEST: return handleRequest(state);
-  case constants.GET_FLAVORS_FAIL:    return handleFail(state, action);
+
   case constants.GET_FLAVORS_SUCCESS: return state
-    .set(store.list, action.payload)
-    .set(store.loading, false)
-    .set(store.error, null);
+    .set(store.list, action.payload);
 
 
-  case constants.GET_TOP_FLAVORS_REQUEST:    return handleRequest(state);
-  case constants.GET_TOP_10_FLAVORS_REQUEST: return handleRequest(state);
-  case constants.GET_TOP_FLAVORS_FAIL:       return handleFail(state, action);
   case constants.GET_TOP_FLAVORS_SUCCESS:    return state
-    .set(store.list, action.payload)
-    .set(store.loading, false)
-    .set(store.error, null);
+    .set(store.list, action.payload);
 
 
-  case constants.CREATE_FLAVOR_REQUEST: return handleRequest(state);
-  case constants.CREATE_FLAVOR_FAIL:    return handleFail(state, action);
   case constants.CREATE_FLAVOR_SUCCESS: return state
-    .updateIn([store.list], (arr) => arr.concat(action.payload))
-    .set(store.loading, false)
-    .set(store.error, null);
+    .updateIn([store.list], (arr) => arr.concat(action.payload));
 
 
-  case constants.UPDATE_FLAVOR_REQUEST: return handleRequest(state);
-  case constants.UPDATE_FLAVOR_FAIL:    return handleFail(state, action);
   case constants.UPDATE_FLAVOR_SUCCESS: return state
     .updateIn([store.list], (arr) => updateElementInArray(arr, action.payload))
-    .updateIn([store.userList], (arr) => updateElementInArray(arr, action.payload))
-    .set(store.loading, false)
-    .set(store.error, null);
+    .updateIn([store.userList], (arr) => updateElementInArray(arr, action.payload));
 
 
-  case constants.DELETE_FLAVOR_REQUEST: return handleRequest(state);
-  case constants.DELETE_FLAVOR_FAIL:    return handleFail(state, action);
   case constants.DELETE_FLAVOR_SUCCESS: return state
     .updateIn([store.list], (arr) => arr.filter((val) => val.id !== action.payload))
-    .updateIn([store.userList], (arr) => arr.filter((val) => val.id !== action.payload))
-    .set(store.loading, false)
-    .set(store.error, null);
+    .updateIn([store.userList], (arr) => arr.filter((val) => val.id !== action.payload));
 
 
-  case constants.CREATE_FLAVOR_COMMENT_REQUEST: return handleRequest(state);
-  case constants.CREATE_FLAVOR_COMMENT_FAIL:    return handleFail(state, action);
   case constants.CREATE_FLAVOR_COMMENT_SUCCESS: return state
     .updateIn([store.list], (arr) =>
       updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.comment, updateInSublist))
     .updateIn([store.userList], (arr) =>
-      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.comment, updateInSublist))
-    .set(store.loading, false)
-    .set(store.error, null);
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.comment, updateInSublist));
 
 
-  case constants.DELETE_FLAVOR_COMMENT_REQUEST: return handleRequest(state);
-  case constants.DELETE_FLAVOR_COMMENT_FAIL:    return handleFail(state, action);
   case constants.DELETE_FLAVOR_COMMENT_SUCCESS: return state
     .updateIn([store.list], (arr) =>
       updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.commentId, deleteFromSublist))
     .updateIn([store.userList], (arr) =>
-      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.commentId, deleteFromSublist))
-    .set(store.loading, false)
-    .set(store.error, null);
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.comments, action.payload.commentId, deleteFromSublist));
 
-  case constants.CREATE_FLAVOR_LIKE_REQUEST: return handleRequest(state);
-  case constants.CREATE_FLAVOR_LIKE_FAIL:    return handleFail(state, action);
+  
   case constants.CREATE_FLAVOR_LIKE_SUCCESS: return state
     .updateIn([store.list], (arr) =>
       updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.like, updateInSublist))
     .updateIn([store.userList], (arr) =>
-      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.like, updateInSublist))
-    .set(store.loading, false)
-    .set(store.error, null);
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.like, updateInSublist));
 
 
-  case constants.DELETE_FLAVOR_LIKE_REQUEST: return handleRequest(state);
-  case constants.DELETE_FLAVOR_LIKE_FAIL:    return handleFail(state, action);
   case constants.DELETE_FLAVOR_LIKE_SUCCESS: return state
     .updateIn([store.list], (arr) =>
       updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.likeId, deleteFromSublist))
     .updateIn([store.userList], (arr) =>
-      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.likeId, deleteFromSublist))
-    .set(store.loading, false)
-    .set(store.error, null);
+      updateElementsPropertyInArray(arr, action.payload.flavorId, store.likes, action.payload.likeId, deleteFromSublist));
 
 
-  case constants.GET_USER_FLAVORS_REQUEST: return handleRequest(state);
-  case constants.GET_USER_FLAVORS_FAIL:    return handleFail(state, action);
   case constants.GET_USER_FLAVORS_SUCCESS: return state
-    .set(store.userList, action.payload)
-    .set(store.loading, false)
-    .set(store.error, null);
+    .set(store.userList, action.payload);
 
 
-  case constants.ADD_FLAVOR_TO_USER_REQUEST: return handleRequest(state);
-  case constants.ADD_FLAVOR_TO_USER_FAIL:    return handleFail(state, action);
   case constants.ADD_FLAVOR_TO_USER_SUCCESS: return state
-    .updateIn([store.userList], (arr) => arr.concat(action.payload))
-    .set(store.loading, false)
-    .set(store.error, null);
+    .updateIn([store.userList], (arr) => arr.concat(action.payload));
 
 
-  case constants.DELETE_FLAVOR_FROM_USER_REQUEST: return handleRequest(state);
-  case constants.DELETE_FLAVOR_FROM_USER_FAIL:    return handleFail(state, action);
   case constants.DELETE_FLAVOR_FROM_USER_SUCCESS: return state
-    .updateIn([store.userList], (arr) => arr.filter((val) => val.id !== action.payload))
-    .set(store.loading, false)
-    .set(store.error, null);
+    .updateIn([store.userList], (arr) => arr.filter((val) => val.id !== action.payload));
 
 
   case constants.CLEAR_FLAVORS: return store.initialState;
@@ -148,16 +101,4 @@ const deleteFromSublist = function (element, sublistName, sublistItemId) {
   const index = element[ sublistName ].findIndex((item) => item.id === sublistItemId);
   if (index) element[ sublistName ].splice(index, 1);
   return element;
-};
-
-const handleRequest = function (state) {
-  return state
-    .set(store.loading, true)
-    .set(store.error, null);
-};
-
-const handleFail = function (state, action) {
-  return state
-    .set(store.loading, false)
-    .set(store.error, action.payload);
 };

@@ -3,6 +3,7 @@ export {Navigation} from "./root/navigation_bar";
 export {Footer} from "./root/footer";
 export {Home} from "./root/home";
 
+export {DefaultRoute} from "./routing/DefaultRoute";
 export {PrivateRoute} from "./routing/PrivateRoute";
 
 export {PageForSign} from "./users/unauthenticated";

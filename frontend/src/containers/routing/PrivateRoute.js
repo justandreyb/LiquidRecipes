@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Redirect, Route} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {selectIsAuthenticated} from "../../modules/user/selectors";
+import {DefaultRoute} from "./DefaultRoute";
 
 class PrivateRouteContainer extends Component {
   render() {
@@ -12,7 +13,7 @@ class PrivateRouteContainer extends Component {
     } = this.props;
 
     return (
-      <Route
+      <DefaultRoute
         {...props}
         render={(props) =>
           isAuthenticated

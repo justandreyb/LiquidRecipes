@@ -13,8 +13,6 @@ import {watchManufacturersActions} from "./modules/manufacturers";
 import {watchImagesActions} from "./modules/images";
 import {watchCountriesActions} from "./modules/countries";
 
-import {watchNotificationsActions} from "./utils/notificator";
-
 const sagas = [
   watchAppActions,
   watchAccountActions,
@@ -27,9 +25,7 @@ const sagas = [
 
   watchManufacturersActions,
   watchImagesActions,
-  watchCountriesActions,
-
-  watchNotificationsActions
+  watchCountriesActions
 ];
 
 export default function* globalSagas() {
