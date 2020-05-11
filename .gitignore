@@ -5,6 +5,7 @@
 .project
 .settings
 .springBeans
+.gradle
 
 ### IntelliJ IDEA ###
 .idea
