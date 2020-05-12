@@ -9,7 +9,7 @@
     "immutable": "^3.8.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.2.1",
     "react-final-form": "^3.0.4",
     "react-final-form-arrays": "^1.0.3",
     "react-loading": "^2.0.2",
